@@ -3,13 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>HireLoop ERP Flextudio Preview</title>
+    <title>HireLoop ERP Flextudio Preview v3</title>
   </head>
   <body>
     <script src="./hireloop_shared.js"></script>
     <script>
       window.addEventListener("hireloop:step", function (event) {
-        console.log("Mock Flextudio step event:", event.detail.stepName);
+        console.log("Mock Flextudio step event:", event.detail);
       });
       window.HireLoopERP.renderDashboard();
     </script>

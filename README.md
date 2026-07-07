@@ -1,6 +1,6 @@
 # HireLoop Flextudio Assets
 
-`HireLoop ERP (standalone) (2).html`을 Flextudio에서 수정/붙여넣기 쉬운 형태로 분리한 산출물입니다.
+`original/HireLoop ERP (standalone) (3).html`을 Flextudio에서 수정/붙여넣기 쉬운 형태로 분리한 산출물입니다.
 
 ## 폴더 구성
 
