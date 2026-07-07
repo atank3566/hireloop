@@ -1637,7 +1637,8 @@ h1,h2,h3,p,span,div,button{overflow-wrap:anywhere;}
             </div>
             <p style="font-size:14px; color:var(--label-secondary); margin:6px 0 0;">{{ dt.role }} · {{ dt.exp }} · 지원자 상세 적합도 인사이트</p>
           </div>
-          <div style="display:flex; gap:10px;">            <button style="{{ aiBtnStyle }}" onclick="{{ runAi }}">{{ aiBtnLabel }}</button>
+          <div style="display:flex; gap:10px;">            <button style="height:42px; padding:0 18px; border-radius:11px; border:1px solid rgba(60,60,67,0.16); background:#fff; color:#1c1c1e; font-size:14px; font-weight:700; cursor:pointer;" style-hover="background:var(--ios-gray6);" onclick="{{ openCoverLetter }}">자소서 보기</button>
+            <button style="{{ aiBtnStyle }}" onclick="{{ runAi }}">{{ aiBtnLabel }}</button>
             <button style="height:42px; padding:0 20px; border-radius:11px; border:none; background:rgba(255,59,48,0.12); color:var(--ios-red); font-size:14px; font-weight:700; cursor:pointer;" style-hover="background:rgba(255,59,48,0.2);" onclick="{{ dt.reject }}">서류 불합격</button>
             <button style="height:42px; padding:0 22px; border-radius:11px; border:none; background:var(--ios-blue); color:#fff; font-size:14px; font-weight:700; cursor:pointer;" style-hover="filter:brightness(1.05);" onclick="{{ dt.interview }}">면접 진행 →</button>
           </div>
@@ -2069,7 +2070,35 @@ h1,h2,h3,p,span,div,button{overflow-wrap:anywhere;}
   </div>
   </sc-if>
 
-\n  <!-- ============ TOAST ============ -->
+\n  <!-- ============ COVER LETTER MODAL ============ -->
+  <sc-if value="{{ coverOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute; inset:0; z-index:70; display:flex; align-items:center; justify-content:center; padding:clamp(16px,3vw,40px);">
+    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.32); backdrop-filter:blur(3px);" onclick="{{ closeCoverLetter }}"></div>
+    <div style="position:relative; width:min(760px,100%); max-height:min(760px,88vh); overflow:hidden; background:#fff; border-radius:24px; box-shadow:0 20px 70px rgba(0,0,0,0.28); animation:hl-fade .25s ease both; display:flex; flex-direction:column;">
+      <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:16px; padding:24px 28px 18px; border-bottom:1px solid rgba(60,60,67,0.10);">
+        <div>
+          <div style="font-size:12px; font-weight:800; color:var(--ios-blue); letter-spacing:0.4px; text-transform:uppercase; margin-bottom:6px;">Cover Letter</div>
+          <h2 style="font-size:22px; font-weight:800; letter-spacing:-0.5px; margin:0;">{{ coverLetter.title }}</h2>
+          <p style="font-size:13px; color:var(--label-secondary); margin:7px 0 0;">{{ coverLetter.meta }}</p>
+        </div>
+        <button style="width:34px; height:34px; border-radius:10px; border:none; background:var(--ios-gray6); color:#1c1c1e; font-size:20px; cursor:pointer;" onclick="{{ closeCoverLetter }}">×</button>
+      </div>
+      <div style="padding:24px 28px 28px; overflow-y:auto;">
+        <sc-for list="{{ coverLetter.sections }}" as="sec" hint-placeholder-count="3">
+          <section style="margin-bottom:22px;">
+            <h3 style="font-size:15px; font-weight:800; margin:0 0 9px; color:#1c1c1e;">{{ sec.heading }}</h3>
+            <p style="font-size:14px; line-height:24px; color:#3c3c43; margin:0; white-space:pre-line;">{{ sec.body }}</p>
+          </section>
+        </sc-for>
+        <div style="background:rgba(0,122,255,0.08); border:1px solid rgba(0,122,255,0.16); border-radius:16px; padding:15px 16px; font-size:13px; line-height:21px; color:#1c1c1e;">
+          <b>AI 요약</b><br>{{ coverLetter.aiNote }}
+        </div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ TOAST ============ -->
   <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
   <div style="position:absolute; bottom:28px; left:50%; z-index:60; background:#1c1c1e; color:#fff; padding:14px 22px; border-radius:12px; font-size:14px; font-weight:600; box-shadow:0 8px 30px rgba(0,0,0,0.28); animation:hl-toast .25s ease both; display:flex; align-items:center; gap:10px; min-width:0; flex-shrink:1; white-space:nowrap;">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ios-green)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -2083,7 +2112,7 @@ h1,h2,h3,p,span,div,button{overflow-wrap:anywhere;}
 class Component extends DCLogic {
   state = {
     screen: 'dashboard', jobId: 'j1', reviewFilter: '전체', stageTab: 'doc', advanced: [], finalized: {},
-    detailId: null, interviewId: 'a1', ai: 'idle', ivNote: '',
+    detailId: null, interviewId: 'a1', ai: 'idle', coverOpen: false, ivNote: '',
     evalScores: { '직무지식': 0, '문제 해결 능력': 0, '성과 지향성': 0, '협업/커뮤니케이션': 0, '리더십': 0, '성장 가능성': 0, '조직 적합성': 0, '직무 적합성': 0 }, evalNotes: {},
     checks: {}, recommend: null,
     wfDept: '전체', wfGender: '전체', wfTenure: '전체', wfId: null,
@@ -2395,6 +2424,20 @@ class Component extends DCLogic {
       reject: () => { this.setState({ finalized: { ...(this.state.finalized || {}), [da.id]: { ...(this.state.finalized || {})[da.id], result: '서류 불합격' } }, screen: 'final', stageTab: 'final' }); showToast(da.name + ' 님을 서류 불합격 처리했습니다'); },
     };
 
+    const coverProject = (da.summary && da.summary[2] && da.summary[2][1]) || '직무 관련 프로젝트';
+    const coverSkill = (da.summary && da.summary[1] && da.summary[1][1]) || '직무 기본 역량';
+    const coverTone = da.cat === '우선 검토' ? '성과 사례가 구체적이고 직무 연결성이 높습니다.' : (da.cat === '추가 확인 필요' ? '기본 역량은 보이나 경험의 깊이와 협업 사례 확인이 필요합니다.' : '직무 관심과 기본 경험은 확인되며 면접에서 세부 검증이 필요합니다.');
+    const coverLetter = {
+      title: da.name + ' 자기소개서',
+      meta: da.role + ' · ' + da.exp + ' · ' + da.cat,
+      sections: [
+        { heading: '1. 지원 동기', body: '저는 ' + da.role + ' 직무에서 현장의 문제를 데이터와 실행력으로 해결하는 과정에 매력을 느껴 지원했습니다. 회사가 축적한 채용·성과 데이터를 기반으로 더 나은 제품과 조직 운영을 만든다는 점이 제 경험과 맞닿아 있다고 생각했습니다.' },
+        { heading: '2. 주요 경험', body: coverProject + '를 수행하며 문제를 정의하고 원인을 나누어 개선안을 도출했습니다. 특히 ' + coverSkill + '을 활용해 팀원들과 역할을 분담하고 결과를 일정 안에 완성한 경험이 있습니다.' },
+        { heading: '3. 입사 후 기여', body: '입사 후에는 빠르게 현장과 제품 맥락을 익히고, 반복되는 비효율을 기록해 개선하겠습니다. 단기적으로는 실무 적응과 협업 신뢰 형성에 집중하고, 중장기적으로는 성과가 재현되는 업무 방식을 팀에 남기는 구성원이 되겠습니다.' },
+      ],
+      aiNote: coverTone + ' 자소서에서는 ' + coverProject + ' 경험이 핵심 근거로 보이며, 면접에서는 실제 본인 기여도와 갈등 조율 방식을 추가 확인하는 것이 좋습니다.'
+    };
+
     // ---- ai ----
     const aiBtnLabel = s.ai === 'loading' ? '생성 중…' : (s.ai === 'done' ? 'AI 인사이트 ✓' : 'AI 인사이트 생성');
     const aiBtnStyle = { height: '42px', padding: '0 20px', borderRadius: '11px', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: '14px', fontWeight: 700, background: s.ai === 'done' ? 'rgba(88,86,214,0.12)' : '#fff', color: s.ai === 'done' ? 'var(--ios-indigo)' : 'var(--ios-indigo)', boxShadow: s.ai === 'done' ? 'none' : 'inset 0 0 0 1px rgba(88,86,214,0.4)', opacity: s.ai === 'loading' ? 0.6 : 1 };
@@ -2592,6 +2635,7 @@ class Component extends DCLogic {
       boardHeading, boardSub, boardEmptyTitle, boardEmptySub,
       finalRows, finalEmpty,
       dt, aiBtnLabel, aiBtnStyle, aiDone: s.ai === 'done', aiIdle: s.ai !== 'done',
+      coverOpen: !!s.coverOpen, coverLetter, openCoverLetter: () => this.setState({ coverOpen: true }), closeCoverLetter: () => this.setState({ coverOpen: false }),
       runAi: () => { if (s.ai === 'loading') return; this.setState({ ai: 'loading' }); setTimeout(() => this.setState({ ai: 'done' }), 900); },
 
       iv, stages, finalBtns, finalReason, setFinalReason, ivNote, setIvNote, finalizeSave, checklist, evalRows, evalAvg, recommendBtns,
