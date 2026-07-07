@@ -2105,7 +2105,7 @@ h1,h2,h3,p,span,div,button{overflow-wrap:anywhere;}
 <script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080}}">
 class Component extends DCLogic {
   state = {
-    screen: 'dashboard', jobId: 'j1', reviewFilter: '전체', stageTab: 'doc', advanced: [], finalized: {},
+    screen: 'dashboard', dataReady: false, dataReadyArmed: false, jobId: 'j1', reviewFilter: '전체', stageTab: 'doc', advanced: [], finalized: {},
     detailId: null, interviewId: 'a1', ai: 'idle', coverOpen: false, ivNote: '',
     evalScores: { '직무지식': 0, '문제 해결 능력': 0, '성과 지향성': 0, '협업/커뮤니케이션': 0, '리더십': 0, '성장 가능성': 0, '조직 적합성': 0, '직무 적합성': 0 }, evalNotes: {},
     checks: {}, recommend: null,
@@ -2242,8 +2242,17 @@ class Component extends DCLogic {
   }
   fit(a) { return Math.round(a.cs.reduce((x, y) => x + y, 0) / a.cs.length); }
 
+  mockApi(nextState, delay) {
+    this.setState({ ...nextState, dataReady: false });
+    setTimeout(() => this.setState({ dataReady: true }), delay || 2000);
+  }
+
   renderVals() {
     const s = this.state;
+    if (!s.dataReady && !s.dataReadyArmed) {
+      this.setState({ dataReadyArmed: true });
+      setTimeout(() => this.setState({ dataReady: true }), 2000);
+    }
     const showToast = (msg) => { this.setState({ toast: msg }); setTimeout(() => { if (this.state.toast === msg) this.setState({ toast: null }); }, 2600); };
     const jobs = this.jobsData();
     const apps = this.applicantsData();
@@ -2269,7 +2278,7 @@ class Component extends DCLogic {
       { label: 'ERP 추적 재직자', value: '214명', color: '#1c1c1e' },
       { label: '최근 입사자', value: '6명', color: '#1c1c1e' },
     ];
-    const jobRows = jobs.map(j => ({ ...j, open: () => this.setState({ screen: 'review', jobId: j.id, reviewFilter: '전체' }) }));
+    const jobRows = jobs.map(j => ({ ...j, open: () => this.mockApi({ screen: 'review', jobId: j.id, reviewFilter: '전체' }) }));
 
     // ---- review board ----
     const job = jobs.find(j => j.id === s.jobId) || jobs[0];
@@ -2335,15 +2344,15 @@ class Component extends DCLogic {
         name: a.name, role: a.role, exp: a.exp, fit: f, fitPct: f + '%', fitColor: this.fitColor(f),
         success: a.success, risk: a.risk, met, unmet: a.cs.length - met, cat: a.cat, catStyle: this.catChip(a.cat),
         stop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
-        open: () => this.setState({ screen: 'detail', detailId: a.id, ai: 'idle' }),
+        open: () => this.mockApi({ screen: 'detail', detailId: a.id, ai: 'idle' }),
         rowClick: stage === 'doc'
-          ? () => this.setState({ screen: 'detail', detailId: a.id, ai: 'idle' })
-          : () => this.setState({ screen: 'interview', interviewId: a.id }),
+          ? () => this.mockApi({ screen: 'detail', detailId: a.id, ai: 'idle' })
+          : () => this.mockApi({ screen: 'interview', interviewId: a.id }),
         actionLabel: stage === 'doc' ? '면접 심사로 →' : '면접 진행',
         actionStyle: stage === 'doc' ? docActionStyle : intActionStyle,
         action: stage === 'doc'
           ? () => { this.setState({ advanced: [...(this.state.advanced || []), a.id] }); showToast(a.name + ' 님을 면접 심사로 이동했습니다'); }
-          : () => this.setState({ screen: 'interview', interviewId: a.id }),
+          : () => this.mockApi({ screen: 'interview', interviewId: a.id }),
       };
     });
     const reviewEmpty = stage !== 'final' && filtered.length === 0;
@@ -2380,7 +2389,7 @@ class Component extends DCLogic {
           this.setState({ finalized: { ...fz, [a.id]: { ...fz[a.id], ...cur } }, finalDraft: { ...d, [a.id]: undefined } });
           showToast(a.name + ' 님의 최종 판정이 업데이트되었습니다');
         },
-        open: () => this.setState({ screen: 'detail', detailId: a.id, ai: 'idle' }),
+        open: () => this.mockApi({ screen: 'detail', detailId: a.id, ai: 'idle' }),
         resultBtns: ['최종 합격', '보류', '면접 불합격'].map(r => {
           const active = curResult === r;
           const bg = r === '최종 합격' ? 'var(--ios-green)' : (r === '면접 불합격' ? 'var(--ios-red)' : 'var(--ios-orange)');
@@ -2414,7 +2423,7 @@ class Component extends DCLogic {
       successSignals: da.successSignals || ['-'], riskSignals: da.riskSignals || ['-'],
       questions: (da.questions || []).map((text, i) => ({ n: i + 1, text })),
       aiText: da.aiText || '',
-      interview: () => this.setState({ screen: 'interview', interviewId: da.id }),
+      interview: () => this.mockApi({ screen: 'interview', interviewId: da.id }),
       reject: () => { this.setState({ finalized: { ...(this.state.finalized || {}), [da.id]: { ...(this.state.finalized || {})[da.id], result: '서류 불합격' } }, screen: 'final', stageTab: 'final' }); showToast(da.name + ' 님을 서류 불합격 처리했습니다'); },
     };
 
@@ -2599,17 +2608,43 @@ class Component extends DCLogic {
       note: pfe.note,
     } : { stats: [], trend: [] };
 
+    const showDataValue = (v) => s.dataReady ? v : '';
+    const maskObj = (o, keys) => { const n = { ...o }; keys.forEach(k => { if (k in n) n[k] = showDataValue(n[k]); }); return n; };
+    const dashKpisView = dashKpis.map(x => maskObj(x, ['value']));
+    const jobRowsView = jobRows.map(x => maskObj(x, ['title', 'role', 'applicants', 'priority', 'addCheck', 'deadline']));
+    const jobView = maskObj(job, ['title', 'role', 'applicants', 'priority', 'addCheck', 'deadline']);
+    const reviewKpisView = reviewKpis.map(x => maskObj(x, ['value']));
+    const reviewRowsView = reviewRows.map(x => maskObj(x, ['name', 'role', 'exp', 'fit', 'fitPct', 'success', 'risk', 'met', 'unmet', 'cat', 'actionLabel']));
+    const finalRowsView = finalRows.map(x => maskObj(x, ['name', 'role', 'exp', 'fit', 'fitPct', 'result', 'reason', 'saveLabel']));
+    const dtView = maskObj(dt, ['name', 'role', 'exp', 'cat', 'fit', 'gaugeOffset', 'fitVerdict', 'success', 'risk', 'aiText']);
+    dtView.criteria = (dt.criteria || []).map(x => maskObj(x, ['scoreLabel', 'reqLabel', 'scorePct', 'reqPct']));
+    dtView.compare = (dt.compare || []).map(x => maskObj(x, ['company', 'applicant', 'match']));
+    dtView.questions = (dt.questions || []).map(x => maskObj(x, ['text']));
+    dtView.successSignals = s.dataReady ? dt.successSignals : (dt.successSignals || []).map(() => '');
+    dtView.riskSignals = s.dataReady ? dt.riskSignals : (dt.riskSignals || []).map(() => '');
+    const coverLetterView = s.dataReady ? coverLetter : { title: '', meta: '', sections: (coverLetter.sections || []).map(() => ({ heading: '', body: '' })), aiNote: '' };
+    const ivView = maskObj(iv, ['name', 'role', 'exp', 'fit', 'gaugeOffset', 'verdict', 'introSummary']);
+    ivView.criteria = (iv.criteria || []).map(x => maskObj(x, ['tag', 'scorePct']));
+    ivView.summary = (iv.summary || []).map(x => maskObj(x, ['v']));
+    const wfRowsView = wfRows.map(x => maskObj(x, ['name', 'dept', 'role', 'level', 'join', 'tenure', 'perf', 'sat', 'eng', 'proj']));
+    const wfKpisView = wfKpis.map(x => maskObj(x, ['value']));
+    const perfRowsView = perfRows.map(x => maskObj(x, ['name', 'dept', 'role', 'level', 'perf', 'goal', 'sat', 'eng', 'proj']));
+    const perfKpisView = perfKpis.map(x => maskObj(x, ['value']));
+    const pdView = maskObj(pd, ['name', 'dept', 'role', 'level', 'note']);
+    pdView.stats = (pd.stats || []).map(x => maskObj(x, ['v']));
+    pdView.trend = (pd.trend || []).map(x => maskObj(x, ['value', 'delta']));
+
     return {
       nav,
-      navDashboard: () => this.setState({ screen: 'dashboard' }),
-      navReview: () => this.setState({ screen: 'review', reviewFilter: '전체' }),
-      navInterviewList: () => this.setState({ screen: 'interviewList', reviewFilter: '전체' }),
-      navFinal: () => this.setState({ screen: 'final', reviewFilter: '전체' }),
-      navWorkforce: () => this.setState({ screen: 'workforce' }),
-      navPerformance: () => this.setState({ screen: 'performance' }),
-      backToReview: () => this.setState({ screen: 'review' }),
-      backToInterviewList: () => this.setState({ screen: 'interviewList' }),
-      resetDemo: () => this.setState({ screen: 'dashboard', jobId: 'j1', reviewFilter: '전체', stageTab: 'doc', advanced: [], finalized: {}, ai: 'idle', evalScores: { '직무지식': 0, '문제 해결 능력': 0, '성과 지향성': 0, '협업/커뮤니케이션': 0, '리더십': 0, '성장 가능성': 0, '조직 적합성': 0, '직무 적합성': 0 }, evalNotes: {}, checks: {}, recommend: null, ivNote: '', wfDept: '전체', wfGender: '전체', wfTenure: '전체', wfId: null, perfDept: '전체', perfGender: '전체' }),
+      navDashboard: () => this.mockApi({ screen: 'dashboard' }),
+      navReview: () => this.mockApi({ screen: 'review', reviewFilter: '전체' }),
+      navInterviewList: () => this.mockApi({ screen: 'interviewList', reviewFilter: '전체' }),
+      navFinal: () => this.mockApi({ screen: 'final', reviewFilter: '전체' }),
+      navWorkforce: () => this.mockApi({ screen: 'workforce' }),
+      navPerformance: () => this.mockApi({ screen: 'performance' }),
+      backToReview: () => this.mockApi({ screen: 'review' }),
+      backToInterviewList: () => this.mockApi({ screen: 'interviewList' }),
+      resetDemo: () => this.mockApi({ screen: 'dashboard', jobId: 'j1', reviewFilter: '전체', stageTab: 'doc', advanced: [], finalized: {}, ai: 'idle', evalScores: { '직무지식': 0, '문제 해결 능력': 0, '성과 지향성': 0, '협업/커뮤니케이션': 0, '리더십': 0, '성장 가능성': 0, '조직 적합성': 0, '직무 적합성': 0 }, evalNotes: {}, checks: {}, recommend: null, ivNote: '', wfDept: '전체', wfGender: '전체', wfTenure: '전체', wfId: null, perfDept: '전체', perfGender: '전체' }),
 
       isDashboard: s.screen === 'dashboard',
       isBoard: s.screen === 'review' || s.screen === 'interviewList',
@@ -2624,23 +2659,23 @@ class Component extends DCLogic {
       badgeInt: `margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:19px; height:19px; padding:0 5px; border-radius:10px; font-size:11px; font-weight:800; color:#fff; background:var(--ios-blue);`,
       badgeFin: `margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:19px; height:19px; padding:0 5px; border-radius:10px; font-size:11px; font-weight:800; color:var(--label-secondary); background:var(--ios-gray5);`,
 
-      dashKpis, jobRows,
-      job, reviewKpis, reviewFilters, reviewRows, stageTabs, stageTitle, stageDesc, stageNote, reviewEmpty,
+      dashKpis: dashKpisView, jobRows: jobRowsView,
+      job: jobView, reviewKpis: reviewKpisView, reviewFilters, reviewRows: reviewRowsView, stageTabs, stageTitle, stageDesc, stageNote, reviewEmpty,
       boardHeading, boardSub, boardEmptyTitle, boardEmptySub,
-      finalRows, finalEmpty,
-      dt, aiBtnLabel, aiBtnStyle, aiDone: s.ai === 'done', aiIdle: s.ai !== 'done',
-      coverOpen: !!s.coverOpen, coverLetter, openCoverLetter: () => this.setState({ coverOpen: true }), closeCoverLetter: () => this.setState({ coverOpen: false }),
+      finalRows: finalRowsView, finalEmpty,
+      dt: dtView, aiBtnLabel, aiBtnStyle, aiDone: s.ai === 'done', aiIdle: s.ai !== 'done',
+      coverOpen: !!s.coverOpen, coverLetter: coverLetterView, openCoverLetter: () => this.setState({ coverOpen: true }), closeCoverLetter: () => this.setState({ coverOpen: false }),
       runAi: () => { if (s.ai === 'loading') return; this.setState({ ai: 'loading' }); setTimeout(() => this.setState({ ai: 'done' }), 900); },
 
-      iv, stages, finalBtns, finalReason, setFinalReason, ivNote, setIvNote, finalizeSave, checklist, evalRows, evalAvg, recommendBtns,
+      iv: ivView, stages, finalBtns, finalReason, setFinalReason, ivNote, setIvNote, finalizeSave, checklist, evalRows, evalAvg, recommendBtns,
 
-      wfKpis, wfDeptDD, wfGenderDD, wfTenureDD, wfRows,
+      wfKpis: wfKpisView, wfDeptDD, wfGenderDD, wfTenureDD, wfRows: wfRowsView,
       wfDDOpen: !!s.wfOpenDD, closeWfDD: () => this.setState({ wfOpenDD: null }),
       wfDetailOpen: !!wfe, wfd, closeWfDetail: () => this.setState({ wfId: null }),
       toast: s.toast,
 
-      perfDeptFilters, perfGenderFilters, perfDeptDD, perfGenderDD, perfKpis, perfTrend, perfByDept, perfRows, perfCount: pFiltered.length,
-      perfDetailOpen: !!pfe, pd, closePerfDetail: () => this.setState({ perfId: null }),
+      perfDeptFilters, perfGenderFilters, perfDeptDD, perfGenderDD, perfKpis, perfTrend, perfByDept, perfRows: perfRowsView, perfCount: pFiltered.length,
+      perfDetailOpen: !!pfe, pd: pdView, closePerfDetail: () => this.setState({ perfId: null }),
     };
   }
 }
