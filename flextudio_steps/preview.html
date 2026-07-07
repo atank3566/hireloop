@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HireLoop ERP Flextudio Preview</title>
+  </head>
+  <body>
+    <script src="./hireloop_shared.js"></script>
+    <script>
+      window.addEventListener("hireloop:step", function (event) {
+        console.log("Mock Flextudio step event:", event.detail.stepName);
+      });
+      window.HireLoopERP.renderDashboard();
+    </script>
+  </body>
+</html>

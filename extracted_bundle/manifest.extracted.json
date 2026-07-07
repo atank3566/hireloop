@@ -1,0 +1,126 @@
+{
+  "source": "/Users/phw/Desktop/flextudio/HireLoop ERP (standalone) (2).html",
+  "extractedAt": "2026-07-07T18:26:40.378Z",
+  "assets": [
+    {
+      "uuid": "271db9db-92d0-4bfc-b558-6e86bce8122e",
+      "file": "assets/271db9db.js",
+      "mime": "text/javascript",
+      "compressed": true,
+      "bytes": 61088,
+      "externalResource": null
+    },
+    {
+      "uuid": "cc486064-d47f-467b-8d96-52c4d71fcc56",
+      "file": "assets/cc486064.js",
+      "mime": "application/javascript",
+      "compressed": true,
+      "bytes": 41025,
+      "externalResource": null
+    },
+    {
+      "uuid": "cc3a632f-c616-47ef-a257-861e1a9b2219",
+      "file": "assets/cc3a632f.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 25844,
+      "externalResource": null
+    },
+    {
+      "uuid": "44c83696-9c79-4d60-9c1e-a29b0dee4a2b",
+      "file": "assets/44c83696.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 18744,
+      "externalResource": null
+    },
+    {
+      "uuid": "2dc99ef6-7047-4973-a642-9ed20878ebf0",
+      "file": "assets/2dc99ef6.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 11272,
+      "externalResource": null
+    },
+    {
+      "uuid": "cc4c6841-42f8-4fe8-8f4e-d9db857faccc",
+      "file": "assets/cc4c6841.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 19044,
+      "externalResource": null
+    },
+    {
+      "uuid": "ed27aa12-0b77-4104-92cf-3801204e2101",
+      "file": "assets/ed27aa12.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 10280,
+      "externalResource": null
+    },
+    {
+      "uuid": "56d23f50-ca51-4318-a9e7-3099c5f17d2f",
+      "file": "assets/56d23f50.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 85272,
+      "externalResource": null
+    },
+    {
+      "uuid": "40b6e147-9f94-4f38-a49e-cef8eba6ea1f",
+      "file": "assets/40b6e147.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 48432,
+      "externalResource": null
+    },
+    {
+      "uuid": "7b8409ce-14d9-4cfb-95e5-190449bd9989",
+      "file": "assets/7b8409ce.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 1664,
+      "externalResource": null
+    },
+    {
+      "uuid": "561bd568-3f26-40b8-97e6-5d38a8017748",
+      "file": "assets/561bd568.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 8892,
+      "externalResource": null
+    },
+    {
+      "uuid": "68e9dac1-8124-4c5e-b4f1-1eb0f20421ea",
+      "file": "assets/68e9dac1.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 6800,
+      "externalResource": null
+    },
+    {
+      "uuid": "d75a12a8-2c7f-4d76-a7cb-b1e8dbf9495d",
+      "file": "assets/d75a12a8.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 5872,
+      "externalResource": null
+    },
+    {
+      "uuid": "5482481f-cccf-490b-9d64-c3c246b7aaff",
+      "file": "assets/5482481f.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 11596,
+      "externalResource": null
+    },
+    {
+      "uuid": "a7c46e10-48ec-4f10-afbf-adaaf3c82592",
+      "file": "assets/a7c46e10.woff2",
+      "mime": "font/woff2",
+      "compressed": false,
+      "bytes": 31340,
+      "externalResource": null
+    }
+  ]
+}

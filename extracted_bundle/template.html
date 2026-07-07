@@ -1,0 +1,2556 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="assets/271db9db.js"></script>
+
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>/* ============================================================
+   Apple iOS 26 Design System — Colors & Type
+   Source: Apple Design Resources "iOS and iPadOS 26 (Community)"
+   ============================================================ */
+
+/* SF Pro is Apple-licensed; we substitute Inter from Google Fonts
+   for web preview. Replace with the real SF Pro family when used in
+   Apple-internal contexts. */
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/cc3a632f.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/44c83696.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/2dc99ef6.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/cc4c6841.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/ed27aa12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/56d23f50.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/40b6e147.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/cc3a632f.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/44c83696.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/2dc99ef6.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/cc4c6841.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/ed27aa12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/56d23f50.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/40b6e147.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/cc3a632f.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/44c83696.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/2dc99ef6.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/cc4c6841.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/ed27aa12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/56d23f50.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/40b6e147.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/cc3a632f.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/44c83696.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/2dc99ef6.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/cc4c6841.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/ed27aa12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/56d23f50.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/40b6e147.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/cc3a632f.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/44c83696.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/2dc99ef6.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/cc4c6841.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/ed27aa12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/56d23f50.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/40b6e147.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/7b8409ce.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/561bd568.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/68e9dac1.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/d75a12a8.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/5482481f.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/a7c46e10.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/7b8409ce.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/561bd568.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/68e9dac1.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/d75a12a8.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/5482481f.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/a7c46e10.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+:root {
+  /* ---------- System Colors (Light) ---------- */
+  --ios-red:        rgb(255, 59, 48);
+  --ios-orange:     rgb(255, 149, 0);
+  --ios-yellow:     rgb(255, 204, 0);
+  --ios-green:      rgb(52, 199, 89);
+  --ios-mint:       rgb(0, 199, 190);
+  --ios-teal:       rgb(48, 176, 199);
+  --ios-cyan:       rgb(50, 173, 230);
+  --ios-blue:       rgb(0, 122, 255);
+  --ios-indigo:     rgb(88, 86, 214);
+  --ios-purple:     rgb(175, 82, 222);
+  --ios-pink:       rgb(255, 45, 85);
+  --ios-brown:      rgb(162, 132, 94);
+
+  /* ---------- System Colors (Dark) ---------- */
+  --ios-red-dark:    rgb(255, 69, 58);
+  --ios-orange-dark: rgb(255, 159, 10);
+  --ios-yellow-dark: rgb(255, 214, 10);
+  --ios-green-dark:  rgb(48, 209, 88);
+  --ios-mint-dark:   rgb(102, 212, 207);
+  --ios-teal-dark:   rgb(64, 200, 224);
+  --ios-cyan-dark:   rgb(100, 210, 255);
+  --ios-blue-dark:   rgb(10, 132, 255);
+  --ios-indigo-dark: rgb(94, 92, 230);
+  --ios-purple-dark: rgb(191, 90, 242);
+  --ios-pink-dark:   rgb(255, 55, 95);
+  --ios-brown-dark:  rgb(172, 142, 104);
+
+  /* ---------- Grays (Light) ---------- */
+  --ios-gray:    rgb(142, 142, 147);
+  --ios-gray2:   rgb(174, 174, 178);
+  --ios-gray3:   rgb(199, 199, 204);
+  --ios-gray4:   rgb(209, 209, 214);
+  --ios-gray5:   rgb(229, 229, 234);
+  --ios-gray6:   rgb(242, 242, 247);
+
+  /* ---------- Grays (Dark) ---------- */
+  --ios-gray-dark:  rgb(142, 142, 147);
+  --ios-gray2-dark: rgb(99, 99, 102);
+  --ios-gray3-dark: rgb(72, 72, 74);
+  --ios-gray4-dark: rgb(58, 58, 60);
+  --ios-gray5-dark: rgb(44, 44, 46);
+  --ios-gray6-dark: rgb(28, 28, 30);
+
+  /* ---------- Labels (semantic text) ---------- */
+  --label-primary:    rgb(0, 0, 0);
+  --label-secondary:  rgba(60, 60, 67, 0.6);
+  --label-tertiary:   rgba(60, 60, 67, 0.3);
+  --label-quaternary: rgba(60, 60, 67, 0.18);
+
+  --label-primary-dark:    rgb(255, 255, 255);
+  --label-secondary-dark:  rgba(235, 235, 245, 0.6);
+  --label-tertiary-dark:   rgba(235, 235, 245, 0.3);
+  --label-quaternary-dark: rgba(235, 235, 245, 0.16);
+
+  /* ---------- Fills (control backgrounds) ---------- */
+  --fill-primary:    rgba(120, 120, 128, 0.2);
+  --fill-secondary:  rgba(120, 120, 128, 0.16);
+  --fill-tertiary:   rgba(118, 118, 128, 0.12);
+  --fill-quaternary: rgba(116, 116, 128, 0.08);
+
+  /* ---------- Backgrounds ---------- */
+  --bg-primary:   rgb(255, 255, 255);
+  --bg-secondary: rgb(242, 242, 247);
+  --bg-tertiary:  rgb(255, 255, 255);
+
+  --bg-primary-dark:   rgb(0, 0, 0);
+  --bg-secondary-dark: rgb(28, 28, 30);
+  --bg-tertiary-dark:  rgb(44, 44, 46);
+
+  /* ---------- Grouped Backgrounds ---------- */
+  --bg-grouped-primary:   rgb(242, 242, 247);
+  --bg-grouped-secondary: rgb(255, 255, 255);
+  --bg-grouped-tertiary:  rgb(242, 242, 247);
+
+  /* ---------- Separators ---------- */
+  --separator-opaque:    rgb(198, 198, 200);
+  --separator-nonopaque: rgba(60, 60, 67, 0.29);
+
+  /* ---------- Tint (default app accent) ---------- */
+  --tint: var(--ios-blue);
+
+  /* ============================================================
+     Type — SF Pro substituted with Inter for the web
+     Apple text styles (Default Dynamic Type "Large")
+     ============================================================ */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont,
+               'SF Pro Text', 'SF Pro Display', 'Helvetica Neue',
+               Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace,
+               Menlo, Consolas, monospace;
+
+  /* iOS text styles (size / line-height / weight / tracking) */
+  --t-largetitle: 700 34px/41px var(--font-sans);     /* Bold */
+  --t-title1:     400 28px/34px var(--font-sans);     /* Regular */
+  --t-title2:     400 22px/28px var(--font-sans);     /* Regular */
+  --t-title3:     400 20px/25px var(--font-sans);     /* Regular */
+  --t-headline:   600 17px/22px var(--font-sans);     /* Semibold */
+  --t-body:       400 17px/22px var(--font-sans);     /* Regular */
+  --t-callout:    400 16px/21px var(--font-sans);     /* Regular */
+  --t-subhead:    400 15px/20px var(--font-sans);     /* Regular */
+  --t-footnote:   400 13px/18px var(--font-sans);     /* Regular */
+  --t-caption1:   400 12px/16px var(--font-sans);     /* Regular */
+  --t-caption2:   400 11px/13px var(--font-sans);     /* Regular */
+
+  /* Tracking values (apply with letter-spacing) */
+  --tracking-largetitle: 0.37px;
+  --tracking-title1:     0.36px;
+  --tracking-title2:     0.35px;
+  --tracking-title3:     0.38px;
+  --tracking-headline:   -0.41px;
+  --tracking-body:       -0.41px;
+  --tracking-callout:    -0.31px;
+  --tracking-subhead:    -0.24px;
+  --tracking-footnote:   -0.08px;
+  --tracking-caption1:    0px;
+  --tracking-caption2:    0.06px;
+
+  /* ---------- Spacing (Apple's 8pt grid + system insets) ---------- */
+  --space-2:  2px;
+  --space-4:  4px;
+  --space-8:  8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-44: 44px;  /* min hit target */
+  --space-50: 50px;  /* nav bar height */
+
+  /* ---------- Radii ---------- */
+  --r-2: 2px;
+  --r-4: 4px;
+  --r-8: 8px;
+  --r-10: 10px;     /* small controls */
+  --r-12: 12px;     /* list rows, sheets */
+  --r-16: 16px;     /* cards */
+  --r-20: 20px;     /* large cards */
+  --r-22: 22px;     /* sheets */
+  --r-28: 28px;     /* large sheets */
+  --r-full: 9999px; /* pills, capsules */
+
+  /* iOS app-icon "squircle" (continuous corner) approximation */
+  --r-app-icon-iphone: 22.5%;
+  --r-app-icon-ipad:   22.37%;
+
+  /* ---------- Shadows / Elevation ---------- */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-2: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-3: 0 8px 24px rgba(0,0,0,0.12);
+  --shadow-sheet: 0 -2px 8px rgba(0,0,0,0.06), 0 -8px 32px rgba(0,0,0,0.18);
+  --shadow-glass: 0 1px 0 rgba(255,255,255,0.6) inset,
+                  0 0 0 0.5px rgba(0,0,0,0.08),
+                  0 8px 24px rgba(0,0,0,0.12);
+
+  /* ---------- Liquid Glass (iOS 26 signature) ---------- */
+  --glass-bg-light:   rgba(255, 255, 255, 0.55);
+  --glass-bg-dark:    rgba(28, 28, 30, 0.55);
+  --glass-tint-light: rgba(255, 255, 255, 0.22);
+  --glass-tint-dark:  rgba(0, 0, 0, 0.22);
+  --glass-border:     rgba(255, 255, 255, 0.35);
+  --glass-blur:       blur(40px) saturate(180%);
+
+  /* ---------- Materials (vibrancy) ---------- */
+  --mat-ultrathin-light: rgba(255,255,255,0.55);
+  --mat-thin-light:      rgba(255,255,255,0.70);
+  --mat-regular-light:   rgba(255,255,255,0.82);
+  --mat-thick-light:     rgba(255,255,255,0.92);
+
+  --mat-ultrathin-dark:  rgba(28,28,30,0.55);
+  --mat-thin-dark:       rgba(28,28,30,0.70);
+  --mat-regular-dark:    rgba(28,28,30,0.82);
+  --mat-thick-dark:      rgba(28,28,30,0.92);
+}
+
+/* ----- Semantic helpers ----- */
+.t-largetitle { font: var(--t-largetitle); letter-spacing: var(--tracking-largetitle); }
+.t-title1     { font: var(--t-title1);     letter-spacing: var(--tracking-title1); }
+.t-title2     { font: var(--t-title2);     letter-spacing: var(--tracking-title2); }
+.t-title3     { font: var(--t-title3);     letter-spacing: var(--tracking-title3); }
+.t-headline   { font: var(--t-headline);   letter-spacing: var(--tracking-headline); }
+.t-body       { font: var(--t-body);       letter-spacing: var(--tracking-body); }
+.t-callout    { font: var(--t-callout);    letter-spacing: var(--tracking-callout); }
+.t-subhead    { font: var(--t-subhead);    letter-spacing: var(--tracking-subhead); }
+.t-footnote   { font: var(--t-footnote);   letter-spacing: var(--tracking-footnote); }
+.t-caption1   { font: var(--t-caption1);   letter-spacing: var(--tracking-caption1); }
+.t-caption2   { font: var(--t-caption2);   letter-spacing: var(--tracking-caption2); }
+
+.glass-light {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 0.5px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+.glass-dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 0.5px solid rgba(255,255,255,0.12);
+  box-shadow: var(--shadow-glass);
+}
+</style>
+<style>/* Shared styles for design-system preview cards */
+/* ============================================================
+   Apple iOS 26 Design System — Colors & Type
+   Source: Apple Design Resources "iOS and iPadOS 26 (Community)"
+   ============================================================ */
+
+/* SF Pro is Apple-licensed; we substitute Inter from Google Fonts
+   for web preview. Replace with the real SF Pro family when used in
+   Apple-internal contexts. */
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/cc3a632f.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/44c83696.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/2dc99ef6.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/cc4c6841.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/ed27aa12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/56d23f50.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/40b6e147.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/cc3a632f.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/44c83696.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/2dc99ef6.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/cc4c6841.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/ed27aa12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/56d23f50.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/40b6e147.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/cc3a632f.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/44c83696.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/2dc99ef6.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/cc4c6841.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/ed27aa12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/56d23f50.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("assets/40b6e147.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/cc3a632f.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/44c83696.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/2dc99ef6.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/cc4c6841.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/ed27aa12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/56d23f50.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("assets/40b6e147.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/cc3a632f.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/44c83696.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/2dc99ef6.woff2") format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+/* greek */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/cc4c6841.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/ed27aa12.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/56d23f50.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("assets/40b6e147.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/7b8409ce.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/561bd568.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/68e9dac1.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/d75a12a8.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/5482481f.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("assets/a7c46e10.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/7b8409ce.woff2") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/561bd568.woff2") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* greek */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/68e9dac1.woff2") format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/d75a12a8.woff2") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/5482481f.woff2") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("assets/a7c46e10.woff2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+
+:root {
+  /* ---------- System Colors (Light) ---------- */
+  --ios-red:        rgb(255, 59, 48);
+  --ios-orange:     rgb(255, 149, 0);
+  --ios-yellow:     rgb(255, 204, 0);
+  --ios-green:      rgb(52, 199, 89);
+  --ios-mint:       rgb(0, 199, 190);
+  --ios-teal:       rgb(48, 176, 199);
+  --ios-cyan:       rgb(50, 173, 230);
+  --ios-blue:       rgb(0, 122, 255);
+  --ios-indigo:     rgb(88, 86, 214);
+  --ios-purple:     rgb(175, 82, 222);
+  --ios-pink:       rgb(255, 45, 85);
+  --ios-brown:      rgb(162, 132, 94);
+
+  /* ---------- System Colors (Dark) ---------- */
+  --ios-red-dark:    rgb(255, 69, 58);
+  --ios-orange-dark: rgb(255, 159, 10);
+  --ios-yellow-dark: rgb(255, 214, 10);
+  --ios-green-dark:  rgb(48, 209, 88);
+  --ios-mint-dark:   rgb(102, 212, 207);
+  --ios-teal-dark:   rgb(64, 200, 224);
+  --ios-cyan-dark:   rgb(100, 210, 255);
+  --ios-blue-dark:   rgb(10, 132, 255);
+  --ios-indigo-dark: rgb(94, 92, 230);
+  --ios-purple-dark: rgb(191, 90, 242);
+  --ios-pink-dark:   rgb(255, 55, 95);
+  --ios-brown-dark:  rgb(172, 142, 104);
+
+  /* ---------- Grays (Light) ---------- */
+  --ios-gray:    rgb(142, 142, 147);
+  --ios-gray2:   rgb(174, 174, 178);
+  --ios-gray3:   rgb(199, 199, 204);
+  --ios-gray4:   rgb(209, 209, 214);
+  --ios-gray5:   rgb(229, 229, 234);
+  --ios-gray6:   rgb(242, 242, 247);
+
+  /* ---------- Grays (Dark) ---------- */
+  --ios-gray-dark:  rgb(142, 142, 147);
+  --ios-gray2-dark: rgb(99, 99, 102);
+  --ios-gray3-dark: rgb(72, 72, 74);
+  --ios-gray4-dark: rgb(58, 58, 60);
+  --ios-gray5-dark: rgb(44, 44, 46);
+  --ios-gray6-dark: rgb(28, 28, 30);
+
+  /* ---------- Labels (semantic text) ---------- */
+  --label-primary:    rgb(0, 0, 0);
+  --label-secondary:  rgba(60, 60, 67, 0.6);
+  --label-tertiary:   rgba(60, 60, 67, 0.3);
+  --label-quaternary: rgba(60, 60, 67, 0.18);
+
+  --label-primary-dark:    rgb(255, 255, 255);
+  --label-secondary-dark:  rgba(235, 235, 245, 0.6);
+  --label-tertiary-dark:   rgba(235, 235, 245, 0.3);
+  --label-quaternary-dark: rgba(235, 235, 245, 0.16);
+
+  /* ---------- Fills (control backgrounds) ---------- */
+  --fill-primary:    rgba(120, 120, 128, 0.2);
+  --fill-secondary:  rgba(120, 120, 128, 0.16);
+  --fill-tertiary:   rgba(118, 118, 128, 0.12);
+  --fill-quaternary: rgba(116, 116, 128, 0.08);
+
+  /* ---------- Backgrounds ---------- */
+  --bg-primary:   rgb(255, 255, 255);
+  --bg-secondary: rgb(242, 242, 247);
+  --bg-tertiary:  rgb(255, 255, 255);
+
+  --bg-primary-dark:   rgb(0, 0, 0);
+  --bg-secondary-dark: rgb(28, 28, 30);
+  --bg-tertiary-dark:  rgb(44, 44, 46);
+
+  /* ---------- Grouped Backgrounds ---------- */
+  --bg-grouped-primary:   rgb(242, 242, 247);
+  --bg-grouped-secondary: rgb(255, 255, 255);
+  --bg-grouped-tertiary:  rgb(242, 242, 247);
+
+  /* ---------- Separators ---------- */
+  --separator-opaque:    rgb(198, 198, 200);
+  --separator-nonopaque: rgba(60, 60, 67, 0.29);
+
+  /* ---------- Tint (default app accent) ---------- */
+  --tint: var(--ios-blue);
+
+  /* ============================================================
+     Type — SF Pro substituted with Inter for the web
+     Apple text styles (Default Dynamic Type "Large")
+     ============================================================ */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont,
+               'SF Pro Text', 'SF Pro Display', 'Helvetica Neue',
+               Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', ui-monospace,
+               Menlo, Consolas, monospace;
+
+  /* iOS text styles (size / line-height / weight / tracking) */
+  --t-largetitle: 700 34px/41px var(--font-sans);     /* Bold */
+  --t-title1:     400 28px/34px var(--font-sans);     /* Regular */
+  --t-title2:     400 22px/28px var(--font-sans);     /* Regular */
+  --t-title3:     400 20px/25px var(--font-sans);     /* Regular */
+  --t-headline:   600 17px/22px var(--font-sans);     /* Semibold */
+  --t-body:       400 17px/22px var(--font-sans);     /* Regular */
+  --t-callout:    400 16px/21px var(--font-sans);     /* Regular */
+  --t-subhead:    400 15px/20px var(--font-sans);     /* Regular */
+  --t-footnote:   400 13px/18px var(--font-sans);     /* Regular */
+  --t-caption1:   400 12px/16px var(--font-sans);     /* Regular */
+  --t-caption2:   400 11px/13px var(--font-sans);     /* Regular */
+
+  /* Tracking values (apply with letter-spacing) */
+  --tracking-largetitle: 0.37px;
+  --tracking-title1:     0.36px;
+  --tracking-title2:     0.35px;
+  --tracking-title3:     0.38px;
+  --tracking-headline:   -0.41px;
+  --tracking-body:       -0.41px;
+  --tracking-callout:    -0.31px;
+  --tracking-subhead:    -0.24px;
+  --tracking-footnote:   -0.08px;
+  --tracking-caption1:    0px;
+  --tracking-caption2:    0.06px;
+
+  /* ---------- Spacing (Apple's 8pt grid + system insets) ---------- */
+  --space-2:  2px;
+  --space-4:  4px;
+  --space-8:  8px;
+  --space-12: 12px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-24: 24px;
+  --space-32: 32px;
+  --space-44: 44px;  /* min hit target */
+  --space-50: 50px;  /* nav bar height */
+
+  /* ---------- Radii ---------- */
+  --r-2: 2px;
+  --r-4: 4px;
+  --r-8: 8px;
+  --r-10: 10px;     /* small controls */
+  --r-12: 12px;     /* list rows, sheets */
+  --r-16: 16px;     /* cards */
+  --r-20: 20px;     /* large cards */
+  --r-22: 22px;     /* sheets */
+  --r-28: 28px;     /* large sheets */
+  --r-full: 9999px; /* pills, capsules */
+
+  /* iOS app-icon "squircle" (continuous corner) approximation */
+  --r-app-icon-iphone: 22.5%;
+  --r-app-icon-ipad:   22.37%;
+
+  /* ---------- Shadows / Elevation ---------- */
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.06);
+  --shadow-2: 0 2px 8px rgba(0,0,0,0.08);
+  --shadow-3: 0 8px 24px rgba(0,0,0,0.12);
+  --shadow-sheet: 0 -2px 8px rgba(0,0,0,0.06), 0 -8px 32px rgba(0,0,0,0.18);
+  --shadow-glass: 0 1px 0 rgba(255,255,255,0.6) inset,
+                  0 0 0 0.5px rgba(0,0,0,0.08),
+                  0 8px 24px rgba(0,0,0,0.12);
+
+  /* ---------- Liquid Glass (iOS 26 signature) ---------- */
+  --glass-bg-light:   rgba(255, 255, 255, 0.55);
+  --glass-bg-dark:    rgba(28, 28, 30, 0.55);
+  --glass-tint-light: rgba(255, 255, 255, 0.22);
+  --glass-tint-dark:  rgba(0, 0, 0, 0.22);
+  --glass-border:     rgba(255, 255, 255, 0.35);
+  --glass-blur:       blur(40px) saturate(180%);
+
+  /* ---------- Materials (vibrancy) ---------- */
+  --mat-ultrathin-light: rgba(255,255,255,0.55);
+  --mat-thin-light:      rgba(255,255,255,0.70);
+  --mat-regular-light:   rgba(255,255,255,0.82);
+  --mat-thick-light:     rgba(255,255,255,0.92);
+
+  --mat-ultrathin-dark:  rgba(28,28,30,0.55);
+  --mat-thin-dark:       rgba(28,28,30,0.70);
+  --mat-regular-dark:    rgba(28,28,30,0.82);
+  --mat-thick-dark:      rgba(28,28,30,0.92);
+}
+
+/* ----- Semantic helpers ----- */
+.t-largetitle { font: var(--t-largetitle); letter-spacing: var(--tracking-largetitle); }
+.t-title1     { font: var(--t-title1);     letter-spacing: var(--tracking-title1); }
+.t-title2     { font: var(--t-title2);     letter-spacing: var(--tracking-title2); }
+.t-title3     { font: var(--t-title3);     letter-spacing: var(--tracking-title3); }
+.t-headline   { font: var(--t-headline);   letter-spacing: var(--tracking-headline); }
+.t-body       { font: var(--t-body);       letter-spacing: var(--tracking-body); }
+.t-callout    { font: var(--t-callout);    letter-spacing: var(--tracking-callout); }
+.t-subhead    { font: var(--t-subhead);    letter-spacing: var(--tracking-subhead); }
+.t-footnote   { font: var(--t-footnote);   letter-spacing: var(--tracking-footnote); }
+.t-caption1   { font: var(--t-caption1);   letter-spacing: var(--tracking-caption1); }
+.t-caption2   { font: var(--t-caption2);   letter-spacing: var(--tracking-caption2); }
+
+.glass-light {
+  background: var(--glass-bg-light);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 0.5px solid var(--glass-border);
+  box-shadow: var(--shadow-glass);
+}
+.glass-dark {
+  background: var(--glass-bg-dark);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 0.5px solid rgba(255,255,255,0.12);
+  box-shadow: var(--shadow-glass);
+}
+
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  color: var(--label-primary);
+  background: var(--bg-primary);
+  -webkit-font-smoothing: antialiased;
+}
+.card {
+  width: 700px;
+  padding: 24px;
+  background: var(--bg-primary);
+}
+.card.padless { padding: 0; }
+.card-row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.card-grid { display: grid; gap: 12px; }
+.label { font: var(--t-caption2); color: var(--label-secondary); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+.mono { font-family: var(--font-mono); font-size: 11px; color: var(--label-secondary); }
+.swatch {
+  border-radius: 12px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: flex-end;
+  padding: 8px;
+  color: white;
+  font: var(--t-caption2);
+  font-weight: 600;
+}
+</style>
+<script src="assets/cc486064.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--font-sans); background: #e9e9ee; -webkit-font-smoothing: antialiased; }
+  a { color: var(--ios-blue); text-decoration: none; }
+  a:hover { color: rgb(0, 100, 210); }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-thumb { background: rgba(60,60,67,0.22); border-radius: 8px; border: 2px solid transparent; background-clip: padding-box; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  input, select, textarea { font-family: var(--font-sans); }
+  @keyframes hl-fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes hl-toast { from { opacity: 0; transform: translate(-50%, 16px); } to { opacity: 1; transform: translate(-50%, 0); } }
+  .dd { position: relative; }
+  .dd > button { white-space: nowrap; }
+  .dd > .ddm { position: absolute; top: calc(100% + 6px); left: 0; min-width: 170px; background: #fff; border: 1px solid rgba(60,60,67,0.12); border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.14); padding: 6px; display: none; z-index: 30; }
+  .dd:hover > .ddm { display: block; }
+</style>
+</helmet>
+<div style="width:1920px; height:1080px; display:flex; background:#f2f2f7; overflow:hidden; font-family:var(--font-sans); color:#1c1c1e; position:relative;">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside style="width:262px; flex-shrink:0; height:100%; background:#fff; border-right:1px solid rgba(60,60,67,0.10); display:flex; flex-direction:column; padding:22px 16px;">
+    <div style="display:flex; align-items:center; gap:11px; padding:6px 10px 24px;">
+      <div style="width:38px; height:38px; border-radius:11px; background:linear-gradient(135deg, var(--ios-blue), var(--ios-indigo)); display:flex; align-items:center; justify-content:center; box-shadow:0 2px 8px rgba(0,122,255,0.35);">
+        <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.2-8.56"></path><polyline points="21 3 21 8 16 8"></polyline></svg>
+      </div>
+      <div>
+        <div style="font-size:16px; font-weight:800; letter-spacing:-0.4px; white-space:nowrap;">HireLoop <span style="color:var(--ios-blue);">ERP</span></div>
+        <div style="font-size:11px; color:var(--label-secondary); letter-spacing:-0.1px; white-space:nowrap;">채용 품질 피드백 루프</div>
+      </div>
+    </div>
+
+    <div style="font-size:11px; font-weight:700; letter-spacing:0.5px; color:var(--label-tertiary); padding:0 10px 8px;">채용 운영</div>
+    <button style="{{ nav.dashboard }}" style-hover="filter:brightness(0.98);" onclick="{{ navDashboard }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"></rect><rect x="14" y="3" width="7" height="5"></rect><rect x="14" y="12" width="7" height="9"></rect><rect x="3" y="16" width="7" height="5"></rect></svg>
+      <span>채용 대시보드</span>
+    </button>
+    <button style="{{ nav.review }}" style-hover="filter:brightness(0.98);" onclick="{{ navReview }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path></svg>
+      <span>지원자 검토</span>
+    </button>
+    <button style="{{ nav.docSub }}" style-hover="filter:brightness(0.98);" onclick="{{ navReview }}">
+      <span style="width:18px; display:flex; justify-content:center; color:var(--label-tertiary);">└</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="13" y2="17"></line></svg>
+      <span>서류 심사</span>
+      <span style="{{ badgeDoc }}">{{ docCount }}</span>
+    </button>
+    <button style="{{ nav.interviewList }}" style-hover="filter:brightness(0.98);" onclick="{{ navInterviewList }}">
+      <span style="width:18px; display:flex; justify-content:center; color:var(--label-tertiary);">└</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg>
+      <span>면접 진행</span>
+      <span style="{{ badgeInt }}">{{ intCount }}</span>
+    </button>
+    <button style="{{ nav.final }}" style-hover="filter:brightness(0.98);" onclick="{{ navFinal }}">
+      <span style="width:18px; display:flex; justify-content:center; color:var(--label-tertiary);">└</span>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle></svg>
+      <span>최종 심사</span>
+      <span style="{{ badgeFin }}">{{ finCount }}</span>
+    </button>
+
+    <div style="font-size:11px; font-weight:700; letter-spacing:0.5px; color:var(--label-tertiary); padding:20px 10px 8px;">인사 데이터</div>
+    <button style="{{ nav.workforce }}" style-hover="filter:brightness(0.98);" onclick="{{ navWorkforce }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M18 21a8 8 0 0 0-12 0"></path><circle cx="12" cy="7" r="4"></circle><path d="M3 21h18"></path></svg>
+      <span>인력 현황</span>
+    </button>
+    <button style="{{ nav.performance }}" style-hover="filter:brightness(0.98);" onclick="{{ navPerformance }}">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"></path><path d="m19 9-5 5-4-4-3 3"></path></svg>
+      <span>재직자 성과</span>
+    </button>
+
+    <div style="margin-top:auto; padding:14px; border-radius:14px; background:var(--ios-gray6);">
+      <div style="font-size:12px; font-weight:700; color:#1c1c1e; margin-bottom:4px;">피드백 루프</div>
+      <div style="font-size:11px; line-height:16px; color:var(--label-secondary);">지원 → 서류·면접 평가 → 입사 → 재직·성과 → 다음 채용 적합도 기준</div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div style="flex:1; display:flex; flex-direction:column; height:100%; min-width:0;">
+    <header style="height:64px; flex-shrink:0; background:rgba(255,255,255,0.72); backdrop-filter:blur(20px) saturate(180%); -webkit-backdrop-filter:blur(20px) saturate(180%); border-bottom:1px solid rgba(60,60,67,0.10); display:flex; align-items:center; justify-content:space-between; padding:0 32px;">
+      <div>
+        <div style="font-size:14px; font-weight:700; letter-spacing:-0.3px; white-space:nowrap;">동성정밀 · Demo Workspace</div>
+        <div style="font-size:11px; color:var(--label-secondary); white-space:nowrap;">중소 제조기업 채용 품질 데모 · 샘플 데이터</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px;">
+        <button style="height:36px; padding:0 16px; border-radius:9px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:13px; font-weight:600; color:#1c1c1e; cursor:pointer;" style-hover="background:var(--ios-gray6);" onclick="{{ resetDemo }}">데모 초기화</button>
+        <div style="width:36px; height:36px; border-radius:50%; background:var(--ios-gray5); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; color:var(--label-secondary);">인</div>
+      </div>
+    </header>
+
+    <main style="flex:1; overflow-y:auto; padding:32px 40px 60px;">
+
+      <!-- ================= DASHBOARD ================= -->
+      <sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ true }}">
+      <div style="animation:hl-fade .35s ease both; max-width:1480px; margin:0 auto;">
+        <h1 style="font-size:30px; font-weight:800; letter-spacing:-0.6px; margin:0;">채용 대시보드</h1>
+        
+
+        <div style="display:grid; grid-template-columns:repeat(6,1fr); gap:14px; margin:24px 0 20px;">
+          <sc-for list="{{ dashKpis }}" as="k" hint-placeholder-count="6">
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; padding:18px; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
+              <div style="font-size:12px; color:var(--label-secondary); font-weight:600; min-height:32px;">{{ k.label }}</div>
+              <div style="font-size:26px; font-weight:800; letter-spacing:-0.6px; margin-top:2px; color:{{ k.color }};">{{ k.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="background:#1c1c1e; color:#fff; border-radius:18px; padding:22px 24px; margin-bottom:20px; display:flex; gap:16px; align-items:flex-start;">
+          <div style="width:34px; height:34px; border-radius:10px; background:rgba(255,255,255,0.12); display:flex; align-items:center; justify-content:center; flex-shrink:0;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.1v.2h6v-.2c0-.8.4-1.6 1-2.1A7 7 0 0 0 12 2Z"></path><path d="M9 21h6"></path></svg>
+          </div>
+          <div>
+            <div style="font-size:13px; font-weight:700; color:rgba(255,255,255,0.6); margin-bottom:5px;">ERP 기반 핵심 인사이트</div>
+            <div style="font-size:15px; line-height:23px; color:rgba(255,255,255,0.94);">최근 3년간 생산기술 입사자 <b style="color:#fff;">214명의 ERP 성과·재직 데이터</b>를 분석한 결과, 현장 프로젝트 경험·문제 해결력·협업 평가가 높은 인재가 장기 정착·고성과로 이어졌습니다. 신규 지원자를 이 기준으로 자동 우선순위화했습니다.</div>
+          </div>
+        </div>
+
+        <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:18px; box-shadow:0 1px 2px rgba(0,0,0,0.04); overflow:hidden;">
+          <div style="display:flex; align-items:center; justify-content:space-between; padding:22px 24px 16px;">
+            <h2 style="font-size:18px; font-weight:700; letter-spacing:-0.4px; margin:0;">채용 공고 목록</h2>
+            <span style="font-size:12px; color:var(--label-tertiary);">공고를 열면 지원자별 적합도 검토로 이동합니다</span>
+          </div>
+          <div style="display:grid; grid-template-columns:1.7fr 1fr 110px 110px 110px 100px 150px; padding:12px 24px; border-top:1px solid rgba(60,60,67,0.08); border-bottom:1px solid rgba(60,60,67,0.08); font-size:12px; font-weight:700; color:var(--label-secondary); background:var(--ios-gray6);">
+            <span>채용명</span><span>직무</span><span style="text-align:right;">지원자</span><span style="text-align:right;">우선 검토</span><span style="text-align:right;">추가 확인</span><span style="text-align:center;">상태</span><span style="text-align:right;">작업</span>
+          </div>
+          <sc-for list="{{ jobRows }}" as="j" hint-placeholder-count="3">
+            <div style="display:grid; grid-template-columns:1.7fr 1fr 110px 110px 110px 100px 150px; padding:18px 24px; border-bottom:1px solid rgba(60,60,67,0.06); align-items:center;" style-hover="background:var(--ios-gray6);">
+              <div>
+                <div style="font-size:15px; font-weight:700;">{{ j.title }}</div>
+                <div style="font-size:12px; color:var(--label-tertiary); margin-top:2px;">마감 {{ j.deadline }}</div>
+              </div>
+              <span style="font-size:14px; color:var(--label-secondary);">{{ j.role }}</span>
+              <span style="font-size:15px; font-weight:700; text-align:right; font-variant-numeric:tabular-nums;">{{ j.applicants }}</span>
+              <span style="font-size:14px; font-weight:700; color:var(--ios-blue); text-align:right;">{{ j.priority }}</span>
+              <span style="font-size:14px; font-weight:700; color:var(--ios-orange); text-align:right;">{{ j.addCheck }}</span>
+              <span style="text-align:center;"><span style="display:inline-block; font-size:12px; font-weight:700; color:var(--ios-green); background:rgba(52,199,89,0.14); padding:3px 10px; border-radius:7px;">진행 중</span></span>
+              <span style="text-align:right;">
+                <button style="height:36px; padding:0 16px; border-radius:9px; border:none; background:#1c1c1e; color:#fff; font-size:13px; font-weight:700; cursor:pointer;" style-hover="filter:brightness(1.2);" onclick="{{ j.open }}">지원자 검토 →</button>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ================= BOARD (서류 심사 / 면접 진행 목록) ================= -->
+      <sc-if value="{{ isBoard }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:hl-fade .35s ease both; max-width:1480px; margin:0 auto;">
+        <div style="display:flex; align-items:center; gap:12px; margin-bottom:4px;">
+          <button style="height:30px; padding:0 12px; border-radius:8px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:12px; font-weight:600; cursor:pointer; color:var(--label-secondary);" style-hover="background:var(--ios-gray6);" onclick="{{ navDashboard }}">← 대시보드</button>
+        </div>
+        <h1 style="font-size:30px; font-weight:800; letter-spacing:-0.6px; margin:6px 0 0;">{{ boardHeading }}</h1>
+        
+
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:22px 0 18px;">
+          <sc-for list="{{ reviewKpis }}" as="k" hint-placeholder-count="4">
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; padding:18px;">
+              <div style="font-size:12px; color:var(--label-secondary); font-weight:600;">{{ k.label }}</div>
+              <div style="font-size:24px; font-weight:800; letter-spacing:-0.5px; margin-top:3px; color:{{ k.color }};">{{ k.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:inline-flex; background:var(--ios-gray6); border-radius:12px; padding:4px; gap:3px; margin-bottom:16px;">
+          <sc-for list="{{ stageTabs }}" as="t" hint-placeholder-count="3">
+            <button style="{{ t.style }}" onclick="{{ t.onClick }}"><span>{{ t.label }}</span><span style="{{ t.badgeStyle }}">{{ t.count }}</span></button>
+          </sc-for>
+        </div>
+
+        
+
+        <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+          <sc-for list="{{ reviewFilters }}" as="f" hint-placeholder-count="2">
+            <button style="{{ f.style }}" onclick="{{ f.onClick }}">{{ f.label }}</button>
+          </sc-for>
+        </div>
+
+        <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; box-shadow:0 1px 2px rgba(0,0,0,0.04); overflow:hidden;">
+          <div style="display:flex; align-items:center; gap:10px; padding:18px 22px 14px;">
+            <span style="font-size:16px; font-weight:800; letter-spacing:-0.3px;">{{ stageTitle }}</span>
+            <span style="font-size:12px; color:var(--label-tertiary);">{{ stageDesc }}</span>
+          </div>
+          <div style="display:grid; grid-template-columns:150px 130px 90px 130px 130px 130px 1fr; padding:13px 22px; border-top:1px solid rgba(60,60,67,0.08); border-bottom:1px solid rgba(60,60,67,0.08); font-size:12px; font-weight:700; color:var(--label-secondary); background:var(--ios-gray6);">
+            <span>지원자</span><span>지원 직무</span><span>경력</span><span>적합도</span><span style="text-align:center;">충족/미충족</span><span style="text-align:center;">분류</span><span style="text-align:right;">추천 액션</span>
+          </div>
+          <sc-for list="{{ reviewRows }}" as="a" hint-placeholder-count="6">
+            <div style="display:grid; grid-template-columns:150px 130px 90px 130px 130px 130px 1fr; padding:15px 22px; border-bottom:1px solid rgba(60,60,67,0.06); align-items:center; cursor:pointer;" style-hover="background:var(--ios-gray6);" onclick="{{ a.rowClick }}">
+              <span style="font-size:14px; font-weight:700;">{{ a.name }}</span>
+              <span style="font-size:13px; color:var(--label-secondary);">{{ a.role }}</span>
+              <span style="font-size:13px; color:var(--label-secondary);">{{ a.exp }}</span>
+              <span style="display:flex; align-items:center; gap:8px;">
+                <div style="width:56px; height:6px; background:var(--ios-gray5); border-radius:4px; overflow:hidden;"><div style="height:100%; width:{{ a.fitPct }}; background:{{ a.fitColor }}; border-radius:4px;"></div></div>
+                <span style="font-size:13px; font-weight:800; color:{{ a.fitColor }};">{{ a.fit }}</span>
+              </span>
+              <span style="text-align:center; font-size:13px;"><b style="color:var(--ios-green);">{{ a.met }}</b> <span style="color:var(--label-tertiary);">/</span> <b style="color:var(--ios-red);">{{ a.unmet }}</b></span>
+              <span style="text-align:center;"><span style="{{ a.catStyle }}">{{ a.cat }}</span></span>
+              <span style="text-align:right; display:flex; gap:8px; justify-content:flex-end;" onclick="{{ a.stop }}">
+                <button style="height:32px; padding:0 12px; border-radius:8px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:12px; font-weight:600; cursor:pointer;" style-hover="background:var(--ios-gray6);" onclick="{{ a.open }}">적합도 보기</button>
+                <button style="{{ a.actionStyle }}" onclick="{{ a.action }}">{{ a.actionLabel }}</button>
+              </span>
+            </div>
+          </sc-for>
+          <sc-if value="{{ reviewEmpty }}" hint-placeholder-val="{{ false }}">
+            <div style="padding:56px 22px; text-align:center;">
+              <div style="font-size:15px; font-weight:700; color:#1c1c1e;">{{ boardEmptyTitle }}</div>
+              <div style="font-size:13px; color:var(--label-secondary); margin-top:6px;">{{ boardEmptySub }}</div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ================= FINAL (최종 심사) ================= -->
+      <sc-if value="{{ isFinal }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:hl-fade .35s ease both; max-width:1480px; margin:0 auto;">
+        <h1 style="font-size:30px; font-weight:800; letter-spacing:-0.6px; margin:0;">최종 심사</h1>
+        
+
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:22px 0 18px;">
+          <sc-for list="{{ reviewKpis }}" as="k" hint-placeholder-count="4">
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; padding:18px;">
+              <div style="font-size:12px; color:var(--label-secondary); font-weight:600;">{{ k.label }}</div>
+              <div style="font-size:24px; font-weight:800; letter-spacing:-0.5px; margin-top:3px; color:{{ k.color }};">{{ k.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:inline-flex; background:var(--ios-gray6); border-radius:12px; padding:4px; gap:3px; margin:20px 0 16px;">
+          <sc-for list="{{ stageTabs }}" as="t" hint-placeholder-count="3">
+            <button style="{{ t.style }}" onclick="{{ t.onClick }}"><span>{{ t.label }}</span><span style="{{ t.badgeStyle }}">{{ t.count }}</span></button>
+          </sc-for>
+        </div>
+
+        <div style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;">
+          <sc-for list="{{ reviewFilters }}" as="f" hint-placeholder-count="2">
+            <button style="{{ f.style }}" onclick="{{ f.onClick }}">{{ f.label }}</button>
+          </sc-for>
+        </div>
+
+        <div style="display:flex; flex-direction:column; gap:14px;">
+          <sc-for list="{{ finalRows }}" as="a" hint-placeholder-count="1">
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:18px; padding:22px 26px; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
+              <div style="display:flex; align-items:flex-start; justify-content:space-between;">
+                <div style="display:flex; align-items:center; gap:14px;">
+                  <div>
+                    <div style="font-size:18px; font-weight:800; letter-spacing:-0.3px;">{{ a.name }}</div>
+                    <div style="font-size:13px; color:var(--label-secondary); margin-top:2px;">{{ a.role }} · {{ a.exp }} · 적합도 <b style="color:{{ a.fitColor }};">{{ a.fit }}</b> · {{ a.evalSummary }}</div>
+                  </div>
+                  <span style="{{ a.resultChip }}">{{ a.result }}</span>
+                </div>
+                <button style="height:34px; padding:0 14px; border-radius:9px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:13px; font-weight:600; cursor:pointer;" style-hover="background:var(--ios-gray6);" onclick="{{ a.open }}">적합도 보기</button>
+              </div>
+              <div style="display:grid; grid-template-columns:auto 1fr; gap:24px; margin-top:18px; align-items:start;">
+                <div>
+                  <div style="font-size:12px; font-weight:700; color:var(--label-secondary); margin-bottom:8px;">최종 결과</div>
+                  <div style="display:flex; gap:8px;">
+                    <sc-for list="{{ a.resultBtns }}" as="b" hint-placeholder-count="3">
+                      <button style="{{ b.style }}" onclick="{{ b.onClick }}">{{ b.label }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+                <div>
+                  <div style="font-size:12px; font-weight:700; color:var(--label-secondary); margin-bottom:8px;">최종 판정 사유 · 수기 입력</div>
+                  <textarea value="{{ a.reason }}" oninput="{{ a.onReason }}" placeholder="예) 현장 프로젝트 경험과 문제 해결력이 우수해 최종 합격 / 협업 사례 부족으로 보류" style="width:100%; height:52px; padding:11px 14px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); font-size:13px; resize:none; outline:none;"></textarea>
+                  <button style="height:38px; margin-top:10px; padding:0 18px; border-radius:9px; border:none; background:var(--ios-blue); color:#fff; font-size:13px; font-weight:700; cursor:pointer;" style-hover="filter:brightness(1.05);" onclick="{{ a.save }}">최종 판정 저장</button>
+                </div>
+              </div>
+            </div>
+          </sc-for>
+          <sc-if value="{{ finalEmpty }}" hint-placeholder-val="{{ true }}">
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; padding:56px 22px; text-align:center;">
+              <div style="font-size:15px; font-weight:700; color:#1c1c1e;">아직 최종 심사로 넘어간 지원자가 없습니다</div>
+              <div style="font-size:13px; color:var(--label-secondary); margin-top:6px;">면접 진행에서 최종 판정을 내리면 이곳에 표시됩니다.</div>
+            </div>
+          </sc-if>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ================= DETAIL (적합도 인사이트) ================= -->
+      <sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:hl-fade .35s ease both; max-width:1480px; margin:0 auto;">
+        <button style="height:30px; padding:0 12px; border-radius:8px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:12px; font-weight:600; cursor:pointer; color:var(--label-secondary);" style-hover="background:var(--ios-gray6);" onclick="{{ backToReview }}">← 지원자 검토 보드</button>
+
+        <div style="display:flex; align-items:flex-start; justify-content:space-between; margin:14px 0 4px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:10px;">
+              <h1 style="font-size:28px; font-weight:800; letter-spacing:-0.6px; margin:0;">{{ dt.name }}</h1>
+              <span style="{{ dt.catStyle }}">{{ dt.cat }}</span>
+            </div>
+            <p style="font-size:14px; color:var(--label-secondary); margin:6px 0 0;">{{ dt.role }} · {{ dt.exp }} · 지원자 상세 적합도 인사이트</p>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button style="{{ aiBtnStyle }}" onclick="{{ runAi }}">{{ aiBtnLabel }}</button>
+            <button style="height:42px; padding:0 20px; border-radius:11px; border:none; background:rgba(255,59,48,0.12); color:var(--ios-red); font-size:14px; font-weight:700; cursor:pointer;" style-hover="background:rgba(255,59,48,0.2);" onclick="{{ dt.reject }}">서류 불합격</button>
+            <button style="height:42px; padding:0 22px; border-radius:11px; border:none; background:var(--ios-blue); color:#fff; font-size:14px; font-weight:700; cursor:pointer;" style-hover="filter:brightness(1.05);" onclick="{{ dt.interview }}">면접 진행 →</button>
+          </div>
+        </div>
+
+        <!-- gauge + criteria -->
+        <div style="display:grid; grid-template-columns:340px 1fr; gap:18px; margin:20px 0 18px;">
+          <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:20px; padding:26px; box-shadow:0 1px 2px rgba(0,0,0,0.04); display:flex; flex-direction:column; align-items:center; justify-content:center;">
+            <div style="font-size:13px; font-weight:700; color:var(--label-secondary); align-self:flex-start; white-space:nowrap;">종합 적합도</div>
+            <div style="position:relative; width:200px; height:200px; margin:14px 0 6px;">
+              <svg width="200" height="200" viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="82" fill="none" stroke="var(--ios-gray5)" stroke-width="18"></circle>
+                <circle cx="100" cy="100" r="82" fill="none" stroke="{{ dt.fitColor }}" stroke-width="18" stroke-linecap="round" stroke-dasharray="515.2" stroke-dashoffset="{{ dt.gaugeOffset }}" transform="rotate(-90 100 100)" style="transition:stroke-dashoffset .8s cubic-bezier(0.32,0.72,0,1);"></circle>
+              </svg>
+              <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                <div style="font-size:48px; font-weight:800; letter-spacing:-1.5px; color:{{ dt.fitColor }};">{{ dt.fit }}</div>
+                <div style="font-size:13px; color:var(--label-tertiary); margin-top:-4px;">/ 100</div>
+              </div>
+            </div>
+            <div style="font-size:13px; line-height:19px; color:var(--label-secondary); text-align:center; margin-top:6px;">{{ dt.fitVerdict }}</div>
+          </div>
+
+          <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:20px; padding:26px 28px; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:6px;">
+              <h2 style="font-size:17px; font-weight:700; letter-spacing:-0.4px; margin:0;">기준별 적합도</h2>
+              <div style="display:flex; align-items:center; gap:16px; font-size:12px; color:var(--label-secondary);">
+                <span style="display:flex; align-items:center; gap:6px;"><span style="width:12px; height:8px; border-radius:3px; background:var(--ios-blue);"></span>지원자</span>
+                <span style="display:flex; align-items:center; gap:6px;"><span style="width:2px; height:14px; background:#1c1c1e;"></span>회사 요구 수준</span>
+              </div>
+            </div>
+            <div style="margin-top:18px;">
+              <sc-for list="{{ dt.criteria }}" as="c" hint-placeholder-count="5">
+                <div style="margin-bottom:17px;">
+                  <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:7px;">
+                    <span style="font-size:14px; font-weight:600;">{{ c.name }}</span>
+                    <span style="font-size:13px; font-weight:700; color:{{ c.color }};">{{ c.scoreLabel }} <span style="font-size:11px; color:var(--label-tertiary); font-weight:500;">(요구 {{ c.reqLabel }})</span></span>
+                  </div>
+                  <div style="height:16px; background:var(--ios-gray6); border-radius:6px; overflow:hidden; position:relative;">
+                    <div style="height:100%; width:{{ c.scorePct }}; background:{{ c.color }}; border-radius:6px; transition:width .6s;"></div>
+                    <div style="position:absolute; top:-2px; bottom:-2px; width:2px; background:#1c1c1e; left:{{ c.reqPct }};"></div>
+                  </div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <!-- comparison table -->
+        <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:20px; box-shadow:0 1px 2px rgba(0,0,0,0.04); overflow:hidden; margin-bottom:18px;">
+          <h2 style="font-size:17px; font-weight:700; letter-spacing:-0.4px; margin:0; padding:22px 26px 14px;">회사 적합도 기준 ↔ 지원자 비교</h2>
+          <div style="display:grid; grid-template-columns:1fr 1.4fr 1.4fr 90px; padding:12px 26px; background:var(--ios-gray6); border-top:1px solid rgba(60,60,67,0.08); border-bottom:1px solid rgba(60,60,67,0.08); font-size:12px; font-weight:700; color:var(--label-secondary);">
+            <span>비교 항목</span><span>회사 기준 (과거 성공군)</span><span>지원자 데이터</span><span style="text-align:center;">매칭</span>
+          </div>
+          <sc-for list="{{ dt.compare }}" as="c" hint-placeholder-count="4">
+            <div style="display:grid; grid-template-columns:1fr 1.4fr 1.4fr 90px; padding:16px 26px; border-bottom:1px solid rgba(60,60,67,0.06); align-items:center; font-size:13px;">
+              <span style="font-weight:600;">{{ c.field }}</span>
+              <span style="color:var(--label-secondary); line-height:19px;">{{ c.company }}</span>
+              <span style="line-height:19px;">{{ c.applicant }}</span>
+              <span style="text-align:center;"><span style="{{ c.matchStyle }}">{{ c.match }}</span></span>
+            </div>
+          </sc-for>
+        </div>
+
+        <!-- AI-generated block: signals + insight + questions -->
+        <sc-if value="{{ aiDone }}" hint-placeholder-val="{{ false }}">
+        <div style="animation:hl-fade .4s ease both;">
+          <div style="background:linear-gradient(180deg,#f5f3ff,#fff); border:1px solid rgba(88,86,214,0.2); border-radius:18px; padding:24px 26px; margin-bottom:18px;">
+            <div style="display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:var(--ios-indigo); margin-bottom:10px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--ios-indigo);"></span>AI 인사이트 — 어디를 평가 기준으로 볼까요</div>
+            <div style="font-size:14px; line-height:23px; color:#1c1c1e;">{{ dt.aiText }}</div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-bottom:18px;">
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:18px; padding:24px;">
+              <div style="display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:var(--ios-green); margin-bottom:12px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--ios-green);"></span>성공 신호 ({{ dt.success }})</div>
+              <sc-for list="{{ dt.successSignals }}" as="s" hint-placeholder-count="3">
+                <div style="display:flex; gap:10px; align-items:flex-start; padding:9px 0; border-bottom:1px solid rgba(60,60,67,0.06);">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="var(--ios-green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span style="font-size:14px; line-height:20px;">{{ s }}</span>
+                </div>
+              </sc-for>
+            </div>
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:18px; padding:24px;">
+              <div style="display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:var(--ios-orange); margin-bottom:12px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--ios-orange);"></span>리스크 · 추가 확인 ({{ dt.risk }})</div>
+              <sc-for list="{{ dt.riskSignals }}" as="r" hint-placeholder-count="2">
+                <div style="display:flex; gap:10px; align-items:flex-start; padding:9px 0; border-bottom:1px solid rgba(60,60,67,0.06);">
+                  <span style="width:17px;height:17px;border-radius:50%;border:2px solid var(--ios-orange); flex-shrink:0; margin-top:1px; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:800; color:var(--ios-orange);">!</span>
+                  <span style="font-size:14px; line-height:20px;">{{ r }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:18px; padding:24px 26px;">
+            <div style="display:inline-flex; align-items:center; gap:7px; font-size:13px; font-weight:700; color:var(--ios-blue); margin-bottom:12px;"><span style="width:8px;height:8px;border-radius:50%;background:var(--ios-blue);"></span>추천 면접 질문</div>
+            <sc-for list="{{ dt.questions }}" as="q" hint-placeholder-count="3">
+              <div style="display:flex; gap:12px; align-items:flex-start; padding:11px 0; border-bottom:1px solid rgba(60,60,67,0.06);">
+                <span style="font-size:13px; font-weight:800; color:var(--ios-blue); flex-shrink:0;">Q{{ q.n }}</span>
+                <span style="font-size:14px; line-height:20px;">{{ q.text }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        </sc-if>
+
+        <sc-if value="{{ aiIdle }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#fff; border:1px dashed rgba(88,86,214,0.35); border-radius:18px; padding:48px; text-align:center;">
+          <div style="width:52px; height:52px; margin:0 auto 14px; border-radius:15px; background:rgba(88,86,214,0.10); display:flex; align-items:center; justify-content:center;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ios-indigo)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v2M12 19v2M5 12H3M21 12h-2M6 6l1.5 1.5M16.5 16.5 18 18M18 6l-1.5 1.5M7.5 16.5 6 18"></path><circle cx="12" cy="12" r="4"></circle></svg>
+          </div>
+          <div style="font-size:16px; font-weight:700;">AI 인사이트를 생성하세요</div>
+          <div style="font-size:13px; color:var(--label-secondary); margin-top:6px;">성공·리스크 신호, 추가 확인 항목, 추천 면접 질문을 과거 채용 결과 기반으로 정리합니다.</div>
+        </div>
+        </sc-if>
+      </div>
+      </sc-if>
+
+      <!-- ================= INTERVIEW ================= -->
+      <sc-if value="{{ isInterview }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:hl-fade .35s ease both; max-width:1480px; margin:0 auto;">
+        <button style="height:30px; padding:0 12px; border-radius:8px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:12px; font-weight:600; cursor:pointer; color:var(--label-secondary);" style-hover="background:var(--ios-gray6);" onclick="{{ backToInterviewList }}">← 면접 진행 목록</button>
+        <h1 style="font-size:30px; font-weight:800; letter-spacing:-0.6px; margin:14px 0 0;">면접 진행 — {{ iv.name }}</h1>
+        <p style="font-size:15px; color:var(--label-secondary); margin:8px 0 0;">{{ iv.role }} · {{ iv.exp }} · 면접 중 사용하는 추천 질문·기준별 적합도·평가 입력 화면입니다.</p>
+
+        <!-- row1: fit gauge + summary -->
+        <div style="display:grid; grid-template-columns:340px 1fr; gap:18px; margin:20px 0 18px;">
+          <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:20px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.04); display:flex; flex-direction:column; align-items:center;">
+            <div style="font-size:13px; font-weight:700; color:var(--label-secondary); align-self:flex-start; white-space:nowrap;">자기소개서 기반 예상 적합도</div>
+            <div style="position:relative; width:186px; height:186px; margin:12px 0 6px;">
+              <svg width="186" height="186" viewBox="0 0 200 200">
+                <circle cx="100" cy="100" r="82" fill="none" stroke="var(--ios-gray5)" stroke-width="18"></circle>
+                <circle cx="100" cy="100" r="82" fill="none" stroke="{{ iv.fitColor }}" stroke-width="18" stroke-linecap="round" stroke-dasharray="515.2" stroke-dashoffset="{{ iv.gaugeOffset }}" transform="rotate(-90 100 100)" style="transition:stroke-dashoffset .8s cubic-bezier(0.32,0.72,0,1);"></circle>
+              </svg>
+              <div style="position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;">
+                <div style="font-size:44px; font-weight:800; letter-spacing:-1.5px; color:{{ iv.fitColor }};">{{ iv.fit }}</div>
+                <div style="font-size:12px; color:var(--label-tertiary); margin-top:-4px;">/ 100</div>
+              </div>
+            </div>
+            <div style="font-size:13px; line-height:19px; color:var(--label-secondary); text-align:center; margin-top:4px;">{{ iv.fitVerdict }}</div>
+          </div>
+          <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:20px; padding:24px; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
+            <h3 style="font-size:16px; font-weight:700; margin:0 0 6px;">지원서 요약</h3>
+            <p style="font-size:13px; line-height:20px; color:var(--label-secondary); margin:0 0 16px;">{{ iv.introSummary }}</p>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+              <sc-for list="{{ iv.summary }}" as="s" hint-placeholder-count="4">
+                <div style="background:var(--ios-gray6); border-radius:12px; padding:13px 15px;"><div style="font-size:11px; color:var(--label-secondary); font-weight:600;">{{ s.k }}</div><div style="font-size:13px; font-weight:600; margin-top:3px; line-height:18px;">{{ s.v }}</div></div>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1.05fr; gap:18px;">
+          <!-- left: questions + criteria -->
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:18px; padding:24px;">
+              <h3 style="font-size:16px; font-weight:700; margin:0 0 4px;">기준별 적합도 <span style="font-size:12px; font-weight:500; color:var(--label-tertiary);">· 낮은 항목을 중심으로 질문하세요</span></h3>
+              <div style="margin-top:16px;">
+                <sc-for list="{{ iv.criteria }}" as="c" hint-placeholder-count="5">
+                  <div style="display:grid; grid-template-columns:120px 1fr 62px; align-items:center; gap:10px; margin-bottom:10px;">
+                    <span style="font-size:13px; font-weight:600; color:{{ c.labelColor }};">{{ c.name }}</span>
+                    <div style="height:10px; background:var(--ios-gray6); border-radius:5px; overflow:hidden;"><div style="height:100%; width:{{ c.scorePct }}; background:{{ c.color }}; border-radius:5px;"></div></div>
+                    <span style="font-size:12px; font-weight:700; text-align:right; color:{{ c.color }};">{{ c.tag }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:18px; padding:24px;">
+              <h3 style="font-size:16px; font-weight:700; margin:0 0 4px;">추천 면접 질문</h3>
+              <p style="font-size:12px; color:var(--label-secondary); margin:0 0 14px;">적합도가 낮은 항목·리스크 중심으로 확인이 필요한 질문</p>
+              <sc-for list="{{ iv.questions }}" as="q" hint-placeholder-count="3">
+                <div style="padding:12px 0; border-bottom:1px solid rgba(60,60,67,0.06);">
+                  <div style="font-size:14px; font-weight:600; line-height:20px;">Q{{ q.n }}. {{ q.text }}</div>
+                  <div style="font-size:12px; color:var(--label-secondary); margin-top:4px; line-height:17px;">질문 이유 · {{ q.why }}</div>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+
+          <!-- right: eval input -->
+          <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:18px; padding:24px;">
+            <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:14px;">
+              <h3 style="font-size:16px; font-weight:700; margin:0;">면접 평가 입력</h3>
+              <div style="font-size:13px; color:var(--label-secondary);">종합 <b style="font-size:17px; color:var(--ios-blue);">{{ evalAvg }}</b> / 5</div>
+            </div>
+            <sc-for list="{{ evalRows }}" as="e" hint-placeholder-count="8">
+              <div style="padding:11px 0; border-bottom:1px solid rgba(60,60,67,0.06);">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+                  <span style="font-size:14px; font-weight:600;">{{ e.item }}</span>
+                  <div style="display:flex; gap:5px;">
+                    <sc-for list="{{ e.dots }}" as="d" hint-placeholder-count="5">
+                      <button style="{{ d.style }}" onclick="{{ d.onClick }}">{{ d.n }}</button>
+                    </sc-for>
+                  </div>
+                </div>
+                <input value="{{ e.note }}" oninput="{{ e.onNote }}" placeholder="{{ e.ph }}" style="width:100%; height:36px; padding:0 12px; border-radius:9px; border:1px solid rgba(60,60,67,0.14); font-size:13px; outline:none;">
+              </div>
+            </sc-for>
+            <div style="margin-top:16px;">
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">최종 판정</div>
+              <div style="display:flex; gap:8px;">
+                <sc-for list="{{ finalBtns }}" as="b" hint-placeholder-count="3">
+                  <button style="{{ b.style }}" onclick="{{ b.onClick }}">{{ b.label }}</button>
+                </sc-for>
+              </div>
+            </div>
+            <textarea value="{{ ivNote }}" oninput="{{ setIvNote }}" placeholder="종합 의견 · 판정 사유를 문장으로 기록하세요" style="width:100%; height:70px; margin-top:14px; padding:12px 14px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); font-size:13px; resize:none; outline:none;"></textarea>
+            <button style="width:100%; height:44px; margin-top:12px; border-radius:11px; border:none; background:var(--ios-blue); color:#fff; font-size:14px; font-weight:700; cursor:pointer;" style-hover="filter:brightness(1.05);" onclick="{{ finalizeSave }}">면접 평가 저장 · 최종 심사로 →</button>
+          </div>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ================= WORKFORCE ================= -->
+      <sc-if value="{{ isWorkforce }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:hl-fade .35s ease both; max-width:1480px; margin:0 auto;">
+        <h1 style="font-size:30px; font-weight:800; letter-spacing:-0.6px; margin:0;">인력 현황</h1>
+        <p style="font-size:15px; color:var(--label-secondary); margin:8px 0 0;">전체 재직자를 부서·직무·직급·성과 등으로 탐색합니다. 행을 클릭하면 상세를 확인할 수 있습니다.</p>
+
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin:22px 0 18px;">
+          <sc-for list="{{ wfKpis }}" as="k" hint-placeholder-count="4">
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; padding:18px;">
+              <div style="font-size:12px; color:var(--label-secondary); font-weight:600;">{{ k.label }}</div>
+              <div style="font-size:24px; font-weight:800; letter-spacing:-0.5px; margin-top:3px; color:{{ k.color }};">{{ k.value }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-bottom:16px; flex-wrap:wrap; align-items:center;">
+          <div class="dd">
+            <button style="height:38px; padding:0 16px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px;">부서 · <b style="color:var(--ios-blue);">{{ wfDeptDD.value }}</b> <span style="color:var(--label-tertiary);">▾</span></button>
+            <div class="ddm">
+              <sc-for list="{{ wfDeptDD.options }}" as="o" hint-placeholder-count="7"><button style="{{ o.style }}" onclick="{{ o.onClick }}">{{ o.label }}</button></sc-for>
+            </div>
+          </div>
+          <div class="dd">
+            <button style="height:38px; padding:0 16px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px;">성별 · <b style="color:var(--ios-blue);">{{ wfGenderDD.value }}</b> <span style="color:var(--label-tertiary);">▾</span></button>
+            <div class="ddm">
+              <sc-for list="{{ wfGenderDD.options }}" as="o" hint-placeholder-count="3"><button style="{{ o.style }}" onclick="{{ o.onClick }}">{{ o.label }}</button></sc-for>
+            </div>
+          </div>
+          <div class="dd">
+            <button style="height:38px; padding:0 16px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px;">근속 기간 · <b style="color:var(--ios-blue);">{{ wfTenureDD.value }}</b> <span style="color:var(--label-tertiary);">▾</span></button>
+            <div class="ddm">
+              <sc-for list="{{ wfTenureDD.options }}" as="o" hint-placeholder-count="5"><button style="{{ o.style }}" onclick="{{ o.onClick }}">{{ o.label }}</button></sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; box-shadow:0 1px 2px rgba(0,0,0,0.04); overflow:hidden;">
+          <div style="display:grid; grid-template-columns:130px 120px 130px 90px 110px 110px 90px 1fr; padding:13px 22px; border-bottom:1px solid rgba(60,60,67,0.08); font-size:12px; font-weight:700; color:var(--label-secondary); background:var(--ios-gray6);">
+            <span>이름</span><span>부서</span><span>직무</span><span>직급</span><span>입사일</span><span>재직 기간</span><span style="text-align:right;">성과</span><span style="text-align:right;">최근 프로젝트</span>
+          </div>
+          <sc-for list="{{ wfRows }}" as="e" hint-placeholder-count="8">
+            <div style="display:grid; grid-template-columns:130px 120px 130px 90px 110px 110px 90px 1fr; padding:14px 22px; border-bottom:1px solid rgba(60,60,67,0.06); align-items:center; font-size:13px; cursor:pointer;" style-hover="background:var(--ios-gray6);" onclick="{{ e.open }}">
+              <span style="font-size:14px; font-weight:700;">{{ e.name }}</span>
+              <span style="color:var(--label-secondary);">{{ e.dept }}</span>
+              <span style="color:var(--label-secondary);">{{ e.role }}</span>
+              <span style="color:var(--label-secondary);">{{ e.level }}</span>
+              <span style="color:var(--label-secondary); font-variant-numeric:tabular-nums;">{{ e.join }}</span>
+              <span style="color:var(--label-secondary); font-variant-numeric:tabular-nums;">{{ e.tenure }}</span>
+              <span style="text-align:right; font-weight:700; color:{{ e.perfColor }};">{{ e.perf }}</span>
+              <span style="text-align:right; color:var(--label-secondary);">{{ e.proj }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+      <!-- ================= PERFORMANCE ================= -->
+      <sc-if value="{{ isPerformance }}" hint-placeholder-val="{{ false }}">
+      <div style="animation:hl-fade .35s ease both; max-width:1480px; margin:0 auto;">
+        <h1 style="font-size:30px; font-weight:800; letter-spacing:-0.6px; margin:0;">재직자 성과</h1>
+        <p style="font-size:15px; color:var(--label-secondary); margin:8px 0 0; max-width:860px;">ERP 성과 평가·몰입 설문·근속 데이터를 <b style="color:#1c1c1e;">시점(measured_at) 기준 시계열</b>로 분석합니다. 분기별 추이와 부서·직무별 성과를 확인하세요.</p>
+
+        <div style="display:flex; gap:12px; margin:22px 0 18px; flex-wrap:wrap; align-items:center;">
+          <div class="dd">
+            <button style="height:38px; padding:0 16px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px;">부서 · <b style="color:var(--ios-blue);">{{ perfDeptDD.value }}</b> <span style="color:var(--label-tertiary);">▾</span></button>
+            <div class="ddm">
+              <sc-for list="{{ perfDeptDD.options }}" as="o" hint-placeholder-count="7"><button style="{{ o.style }}" onclick="{{ o.onClick }}">{{ o.label }}</button></sc-for>
+            </div>
+          </div>
+          <div class="dd">
+            <button style="height:38px; padding:0 16px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px;">성별 · <b style="color:var(--ios-blue);">{{ perfGenderDD.value }}</b> <span style="color:var(--label-tertiary);">▾</span></button>
+            <div class="ddm">
+              <sc-for list="{{ perfGenderDD.options }}" as="o" hint-placeholder-count="3"><button style="{{ o.style }}" onclick="{{ o.onClick }}">{{ o.label }}</button></sc-for>
+            </div>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:18px;">
+          <sc-for list="{{ perfKpis }}" as="k" hint-placeholder-count="4">
+            <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; padding:20px;">
+              <div style="font-size:12px; color:var(--label-secondary); font-weight:600;">{{ k.label }}</div>
+              <div style="font-size:28px; font-weight:800; letter-spacing:-0.6px; margin-top:3px; color:{{ k.color }};">{{ k.value }}</div>
+              <div style="font-size:11px; color:var(--label-tertiary); margin-top:2px;">{{ k.sub }}</div>
+            </div>
+          </sc-for>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1.3fr 1fr; gap:18px; margin-bottom:18px;">
+          <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:20px; padding:26px; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
+            <h2 style="font-size:17px; font-weight:700; letter-spacing:-0.4px; margin:0 0 4px;">분기별 평균 성과 추이</h2>
+            <p style="font-size:12px; color:var(--label-secondary); margin:0 0 20px;">performance_review · 최근 4개 분기</p>
+            <div style="display:flex; align-items:flex-end; justify-content:space-around; gap:20px; height:210px; padding-top:10px;">
+              <sc-for list="{{ perfTrend }}" as="t" hint-placeholder-count="4">
+                <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%; justify-content:flex-end; gap:9px;">
+                  <span style="font-size:15px; font-weight:800; color:var(--ios-blue);">{{ t.value }}</span>
+                  <div style="width:100%; max-width:60px; border-radius:9px 9px 0 0; background:linear-gradient(180deg,#0a84ff,#007aff); height:{{ t.pct }}; transition:height .7s cubic-bezier(0.32,0.72,0,1);"></div>
+                  <span style="font-size:12px; color:var(--label-secondary); font-weight:600;">{{ t.label }}</span>
+                </div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:20px; padding:26px; box-shadow:0 1px 2px rgba(0,0,0,0.04);">
+            <h2 style="font-size:17px; font-weight:700; letter-spacing:-0.4px; margin:0 0 20px;">부서별 평균 성과</h2>
+            <sc-for list="{{ perfByDept }}" as="d" hint-placeholder-count="6">
+              <div style="display:grid; grid-template-columns:84px 1fr 44px; align-items:center; gap:12px; margin-bottom:14px;">
+                <span style="font-size:13px; font-weight:600;">{{ d.dept }}</span>
+                <div style="height:14px; background:var(--ios-gray6); border-radius:6px; overflow:hidden;"><div style="height:100%; width:{{ d.pct }}; background:{{ d.color }}; border-radius:6px;"></div></div>
+                <span style="font-size:13px; font-weight:700; text-align:right; color:{{ d.color }};">{{ d.value }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; box-shadow:0 1px 2px rgba(0,0,0,0.04); overflow:hidden;">
+          <h2 style="font-size:16px; font-weight:700; margin:0; padding:20px 24px 14px;">재직자 성과 상세 <span style="font-size:12px; font-weight:500; color:var(--label-tertiary);">({{ perfCount }}명)</span></h2>
+          <div style="display:grid; grid-template-columns:120px 110px 120px 100px 90px 100px 100px 1fr; padding:12px 24px; border-top:1px solid rgba(60,60,67,0.08); border-bottom:1px solid rgba(60,60,67,0.08); font-size:12px; font-weight:700; color:var(--label-secondary); background:var(--ios-gray6);">
+            <span>이름</span><span>부서</span><span>직무</span><span>재직 기간</span><span style="text-align:right;">성과</span><span style="text-align:right;">목표 달성</span><span style="text-align:right;">직무 만족</span><span style="text-align:right;">분기 추이 (클릭)</span>
+          </div>
+          <sc-for list="{{ perfRows }}" as="e" hint-placeholder-count="8">
+            <div style="display:grid; grid-template-columns:120px 110px 120px 100px 90px 100px 100px 1fr; padding:14px 24px; border-bottom:1px solid rgba(60,60,67,0.06); align-items:center; font-size:13px; cursor:pointer;" style-hover="background:var(--ios-gray6);" onclick="{{ e.open }}">
+              <span style="font-size:14px; font-weight:700;">{{ e.name }}</span>
+              <span style="color:var(--label-secondary);">{{ e.dept }}</span>
+              <span style="color:var(--label-secondary);">{{ e.role }}</span>
+              <span style="color:var(--label-secondary); font-variant-numeric:tabular-nums;">{{ e.tenure }}</span>
+              <span style="text-align:right; font-weight:700; color:{{ e.perfColor }};">{{ e.perf }}</span>
+              <span style="text-align:right; color:var(--label-secondary);">{{ e.goal }}</span>
+              <span style="text-align:right; color:var(--label-secondary);">{{ e.sat }}</span>
+              <span style="display:flex; align-items:center; justify-content:flex-end; gap:10px;">
+                <svg width="76" height="30" viewBox="0 0 76 30" style="overflow:visible;">
+                  <polyline points="{{ e.sparkPts }}" fill="none" stroke="{{ e.sparkColor }}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></polyline>
+                  <circle cx="{{ e.lastX }}" cy="{{ e.lastY }}" r="2.6" fill="{{ e.sparkColor }}"></circle>
+                </svg>
+                <span style="font-size:12px; font-weight:700; color:{{ e.deltaColor }}; min-width:44px; text-align:right;">{{ e.deltaLabel }}</span>
+              </span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      </sc-if>
+
+    </main>
+  </div>
+
+  <!-- ============ WORKFORCE DETAIL DRAWER ============ -->
+  <sc-if value="{{ wfDetailOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute; inset:0; z-index:40;">
+    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.28); animation:hl-fade .25s ease both;" onclick="{{ closeWfDetail }}"></div>
+    <div style="position:absolute; right:0; top:0; height:100%; width:460px; background:#fff; box-shadow:-8px 0 40px rgba(0,0,0,0.18); padding:28px 30px; overflow-y:auto; animation:hl-fade .3s ease both;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <div style="font-size:22px; font-weight:800; letter-spacing:-0.4px;">{{ wfd.name }}</div>
+          <div style="font-size:14px; color:var(--label-secondary); margin-top:3px;">{{ wfd.dept }} · {{ wfd.role }} · {{ wfd.level }}</div>
+        </div>
+        <button style="width:34px; height:34px; border-radius:9px; border:none; background:var(--ios-gray6); font-size:17px; cursor:pointer; color:var(--label-secondary);" onclick="{{ closeWfDetail }}">✕</button>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:22px;">
+        <sc-for list="{{ wfd.stats }}" as="s" hint-placeholder-count="4">
+          <div style="background:var(--ios-gray6); border-radius:12px; padding:15px 16px;"><div style="font-size:11px; color:var(--label-secondary); font-weight:600;">{{ s.k }}</div><div style="font-size:20px; font-weight:800; margin-top:3px; color:{{ s.color }};">{{ s.v }}</div></div>
+        </sc-for>
+      </div>
+      <div style="margin-top:20px;">
+        <div style="font-size:13px; font-weight:700; margin-bottom:12px;">분기별 성과 추이</div>
+        <div style="display:flex; align-items:flex-end; gap:12px; height:120px;">
+          <sc-for list="{{ wfd.trend }}" as="t" hint-placeholder-count="4">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%; justify-content:flex-end; gap:6px;">
+              <span style="font-size:12px; font-weight:700; color:var(--ios-blue);">{{ t.value }}</span>
+              <div style="width:100%; border-radius:7px 7px 0 0; background:var(--ios-blue); height:{{ t.pct }};"></div>
+              <span style="font-size:11px; color:var(--label-secondary);">{{ t.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="margin-top:20px;">
+        <div style="font-size:13px; font-weight:700; margin-bottom:8px;">주요 프로젝트 · 평가</div>
+        <div style="background:var(--ios-gray6); border-radius:12px; padding:16px; font-size:13px; line-height:21px;">{{ wfd.note }}</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ PERFORMANCE DETAIL DRAWER ============ -->
+  <sc-if value="{{ perfDetailOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute; inset:0; z-index:40;">
+    <div style="position:absolute; inset:0; background:rgba(0,0,0,0.28); animation:hl-fade .25s ease both;" onclick="{{ closePerfDetail }}"></div>
+    <div style="position:absolute; right:0; top:0; height:100%; width:480px; background:#fff; box-shadow:-8px 0 40px rgba(0,0,0,0.18); padding:28px 30px; overflow-y:auto; animation:hl-fade .3s ease both;">
+      <div style="display:flex; justify-content:space-between; align-items:flex-start;">
+        <div>
+          <div style="font-size:22px; font-weight:800; letter-spacing:-0.4px;">{{ pd.name }}</div>
+          <div style="font-size:14px; color:var(--label-secondary); margin-top:3px;">{{ pd.dept }} · {{ pd.role }} · {{ pd.level }}</div>
+        </div>
+        <button style="width:34px; height:34px; border-radius:9px; border:none; background:var(--ios-gray6); font-size:17px; cursor:pointer; color:var(--label-secondary);" onclick="{{ closePerfDetail }}">✕</button>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:22px;">
+        <sc-for list="{{ pd.stats }}" as="s" hint-placeholder-count="4">
+          <div style="background:var(--ios-gray6); border-radius:12px; padding:15px 16px;"><div style="font-size:11px; color:var(--label-secondary); font-weight:600;">{{ s.k }}</div><div style="font-size:22px; font-weight:800; margin-top:3px; color:{{ s.color }};">{{ s.v }}</div></div>
+        </sc-for>
+      </div>
+      <div style="margin-top:22px;">
+        <div style="font-size:13px; font-weight:700; margin-bottom:14px;">분기별 성과 추이 <span style="font-size:12px; font-weight:500; color:var(--label-tertiary);">· performance_review</span></div>
+        <div style="display:flex; align-items:flex-end; gap:14px; height:150px;">
+          <sc-for list="{{ pd.trend }}" as="t" hint-placeholder-count="4">
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; height:100%; justify-content:flex-end; gap:7px;">
+              <span style="font-size:14px; font-weight:800; color:var(--ios-blue);">{{ t.value }}</span>
+              <div style="width:100%; max-width:46px; border-radius:8px 8px 0 0; background:linear-gradient(180deg,#0a84ff,#007aff); height:{{ t.pct }};"></div>
+              <span style="font-size:11px; color:var(--label-tertiary); font-weight:600;">{{ t.delta }}</span>
+              <span style="font-size:11px; color:var(--label-secondary);">{{ t.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="margin-top:22px;">
+        <div style="font-size:13px; font-weight:700; margin-bottom:8px;">주요 프로젝트 · 평가</div>
+        <div style="background:var(--ios-gray6); border-radius:12px; padding:16px; font-size:13px; line-height:21px;">{{ pd.note }}</div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- ============ TOAST ============ -->
+  <sc-if value="{{ toast }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute; bottom:28px; left:50%; z-index:60; background:#1c1c1e; color:#fff; padding:14px 22px; border-radius:12px; font-size:14px; font-weight:600; box-shadow:0 8px 30px rgba(0,0,0,0.28); animation:hl-toast .25s ease both; display:flex; align-items:center; gap:10px; white-space:nowrap;">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--ios-green)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    {{ toast }}
+  </div>
+  </sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script="" data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080}}">
+class Component extends DCLogic {
+  state = {
+    screen: 'dashboard', jobId: 'j1', reviewFilter: '전체', stageTab: 'doc', advanced: [], finalized: {},
+    detailId: null, interviewId: 'a1', ai: 'idle', ivNote: '',
+    evalScores: { '직무지식': 0, '문제 해결 능력': 0, '성과 지향성': 0, '협업/커뮤니케이션': 0, '리더십': 0, '성장 가능성': 0, '조직 적합성': 0, '직무 적합성': 0 }, evalNotes: {},
+    checks: {}, recommend: null,
+    wfDept: '전체', wfGender: '전체', wfTenure: '전체', wfId: null,
+    perfDept: '전체', perfGender: '전체',
+  };
+
+  CRIT = ['직무 전문성', '문제 해결력', '협업·커뮤니케이션', '조직 적합성', '성장 가능성'];
+  REQ = [80, 75, 70, 70, 65];
+
+  jobsData() {
+    return [
+      { id: 'j1', title: '2026 상반기 생산기술 직무 채용', role: '생산기술', applicants: '1,284명', priority: 86, addCheck: 143, deadline: '2026-08-15' },
+      { id: 'j2', title: '품질관리 경력 채용', role: '품질관리', applicants: '342명', priority: 31, addCheck: 52, deadline: '2026-08-02' },
+      { id: 'j3', title: '연구개발 신입 채용', role: '연구개발', applicants: '768명', priority: 64, addCheck: 91, deadline: '2026-09-01' },
+    ];
+  }
+
+  applicantsData() {
+    return [
+      { id: 'a1', job: 'j1', name: '김도현', role: '생산기술', track: '경력', exp: '경력 2년', success: 4, risk: 1, cat: '우선 검토', cs: [90, 88, 82, 80, 86],
+        summary: [['주요 강점', '현장 공정 개선 2건'], ['보유 기술', 'CAD · 공정설계 · PLC'], ['이전 프로젝트', '생산 라인 개선 프로젝트'], ['학부 전공', '기계공학']],
+        successSignals: ['현장 프로젝트 경험 2건 보유 — 과거 성공군의 핵심 신호', '문제 해결력 면접 점수 4점 (성과 예측력 최상위 항목)', '반복 업무 개선 사례를 구체적으로 설명'],
+        riskSignals: ['협업 태도 — 구체 사례 추가 확인 필요'],
+        compare: [
+          ['현장 경험', '현장 프로젝트 경험 2건 이상', '생산 라인 개선 2건 참여', '충족'],
+          ['문제 해결력', '면접 4점 이상', '4점 (우수)', '충족'],
+          ['협업·커뮤니케이션', '이해관계자 조율 경험', '팀 협업 언급, 사례 부족', '보완'],
+          ['조직 적합성', '반복·교대 업무 수용', '반복 업무 개선 경험 보유', '충족'],
+        ],
+        questions: ['생산 일정이 갑자기 변경되었을 때 어떻게 대응했습니까?', '현장 작업자와 의견이 충돌했을 때 어떻게 조율했습니까?', '반복 생산 이슈 개선안을 제안한 경험이 있습니까?'],
+        aiText: '이 지원자는 현장 프로젝트 경험과 문제 해결력에서 과거 고성과 정착군과 매우 유사합니다. 평가의 초점은 강점 확인이 아니라 유일한 리스크인 협업·커뮤니케이션에 두는 것이 좋습니다. 이해관계자와의 갈등 조율 경험을 구체적 사례 수준까지 확인하세요.' },
+      { id: 'a2', job: 'j1', name: '이서연', role: '생산기술', track: '신입', exp: '신입', success: 2, risk: 3, cat: '추가 확인 필요', cs: [60, 68, 72, 55, 74],
+        summary: [['주요 강점', '학습 의지 · 기초 이론'], ['보유 기술', 'CAD 기초 · Excel'], ['이전 프로젝트', '캡스톤 설계'], ['학부 전공', '기계설계']],
+        successSignals: ['성장 가능성 지표가 높음', '기초 공학 이론 이해도 우수'],
+        riskSignals: ['현장 경험 부재 — 실무 적응도 확인 필요', '조직 적합성 점수가 요구 수준 미달', '반복 업무 수용도 미확인'],
+        compare: [
+          ['현장 경험', '현장 프로젝트 경험 2건 이상', '학내 프로젝트만 보유', '미달'],
+          ['문제 해결력', '면접 4점 이상', '3점 (보통)', '보완'],
+          ['협업·커뮤니케이션', '이해관계자 조율 경험', '팀 프로젝트 경험 보유', '충족'],
+          ['조직 적합성', '반복·교대 업무 수용', '경험 확인 안 됨', '미달'],
+        ],
+        questions: ['현장 실무 경험이 부족한데 어떻게 빠르게 적응할 계획입니까?', '반복적인 업무를 장기간 수행할 때 동기를 어떻게 유지합니까?', '이론과 현장이 달랐던 경험이 있습니까?'],
+        aiText: '성장 가능성은 높지만 현장 경험과 조직 적합성이 회사 요구 수준에 미달합니다. 신입 특성상 잠재력 위주로 보되, 반복·교대 근무 수용도와 실무 적응 계획을 반드시 확인하세요.' },
+      { id: 'a3', job: 'j1', name: '최지훈', role: '생산기술', track: '신입', exp: '신입', success: 1, risk: 4, cat: '추가 확인 필요', cs: [55, 58, 62, 50, 70],
+        summary: [['주요 강점', '자격증 다수'], ['보유 기술', 'AutoCAD · 기초 통계'], ['이전 프로젝트', '없음'], ['학부 전공', '산업공학']],
+        successSignals: ['직무 관련 자격증 보유'],
+        riskSignals: ['프로젝트 경험 전무', '문제 해결력 면접 점수 낮음', '조직 적합성 미달', '협업 사례 확인 안 됨'],
+        compare: [
+          ['현장 경험', '현장 프로젝트 경험 2건 이상', '경험 없음', '미달'],
+          ['문제 해결력', '면접 4점 이상', '2~3점', '미달'],
+          ['협업·커뮤니케이션', '이해관계자 조율 경험', '확인 안 됨', '보완'],
+          ['조직 적합성', '반복·교대 업무 수용', '확인 안 됨', '미달'],
+        ],
+        questions: ['실무 프로젝트 경험이 없는데 어떤 방식으로 역량을 키워왔습니까?', '문제가 생겼을 때 스스로 해결한 경험을 말해주세요.', '장기 반복 업무에 대한 생각은 어떻습니까?'],
+        aiText: '현재 데이터만으로는 회사 요구 수준과의 격차가 큽니다. 자격증 외에 실제 문제 해결·협업 경험이 있는지 면접에서 집중 확인하고, 없다면 일반 검토로 조정하는 것이 합리적입니다.' },
+      { id: 'a4', job: 'j1', name: '한유주', role: '생산기술', track: '경력', exp: '경력 4년', success: 4, risk: 1, cat: '우선 검토', cs: [88, 84, 80, 82, 84],
+        summary: [['주요 강점', '라인 셋업 리드'], ['보유 기술', '공정설계 · Lean · MES'], ['이전 프로젝트', '신규 라인 셋업 2건'], ['학부 전공', '기계공학']],
+        successSignals: ['신규 라인 셋업을 리드한 경험', '협업·커뮤니케이션 점수 우수', '문제 해결력 면접 4점'],
+        riskSignals: ['이직 사유 확인 필요'],
+        compare: [
+          ['현장 경험', '현장 프로젝트 경험 2건 이상', '라인 셋업 2건 리드', '충족'],
+          ['문제 해결력', '면접 4점 이상', '4점 (우수)', '충족'],
+          ['협업·커뮤니케이션', '이해관계자 조율 경험', '부서 간 협업 리드', '충족'],
+          ['조직 적합성', '반복·교대 업무 수용', '교대 근무 경험 보유', '충족'],
+        ],
+        questions: ['라인 셋업 중 가장 어려웠던 의사결정은 무엇이었습니까?', '이전 회사를 떠나게 된 이유는 무엇입니까?', '부서 간 갈등을 조율한 사례를 말해주세요.'],
+        aiText: '거의 모든 기준에서 회사 요구 수준을 상회하는 강력한 후보입니다. 평가의 초점은 역량 검증이 아니라 장기 정착 의지와 이직 사유에 두는 것이 좋습니다.' },
+      { id: 'a5', job: 'j1', name: '오준서', role: '생산기술', track: '경력', exp: '경력 1년', success: 3, risk: 2, cat: '일반 검토', cs: [74, 72, 70, 68, 74],
+        summary: [['주요 강점', '데이터 기반 개선'], ['보유 기술', 'MES · Python 기초'], ['이전 프로젝트', '설비 데이터 대시보드'], ['학부 전공', '산업공학']],
+        successSignals: ['데이터 기반 개선 경험', '성장 가능성 우수'],
+        riskSignals: ['경력이 짧아 현장 깊이 확인 필요', '조직 적합성 소폭 미달'],
+        compare: [
+          ['현장 경험', '현장 프로젝트 경험 2건 이상', '개선 프로젝트 1건', '보완'],
+          ['문제 해결력', '면접 4점 이상', '3~4점', '보완'],
+          ['협업·커뮤니케이션', '이해관계자 조율 경험', '팀 협업 경험', '충족'],
+          ['조직 적합성', '반복·교대 업무 수용', '확인 필요', '보완'],
+        ],
+        questions: ['데이터로 현장 문제를 해결한 사례를 말해주세요.', '현장 경험이 상대적으로 짧은데 어떻게 보완할 계획입니까?', '반복 업무를 개선한 경험이 있습니까?'],
+        aiText: '데이터 활용 강점이 뚜렷하나 현장 깊이와 조직 적합성이 경계선에 있습니다. 실제 현장 개선 기여도와 반복 업무 수용도를 확인하면 판단이 명확해집니다.' },
+      { id: 'a6', job: 'j1', name: '민건우', role: '생산기술', track: '신입', exp: '신입', success: 2, risk: 2, cat: '일반 검토', cs: [66, 70, 68, 66, 72],
+        summary: [['주요 강점', '성실성 · 기초 역량'], ['보유 기술', 'CAD · Excel'], ['이전 프로젝트', '학내 설계 공모전'], ['학부 전공', '기계공학']],
+        successSignals: ['기초 역량 균형', '성장 가능성 양호'],
+        riskSignals: ['현장 경험 부족', '문제 해결 구체 사례 부족'],
+        compare: [
+          ['현장 경험', '현장 프로젝트 경험 2건 이상', '학내 공모전', '보완'],
+          ['문제 해결력', '면접 4점 이상', '3점', '보완'],
+          ['협업·커뮤니케이션', '이해관계자 조율 경험', '팀 활동 경험', '충족'],
+          ['조직 적합성', '반복·교대 업무 수용', '확인 필요', '보완'],
+        ],
+        questions: ['공모전에서 본인이 맡은 역할과 기여를 말해주세요.', '어려운 문제를 끝까지 해결한 경험이 있습니까?', '현장 근무 환경에 대한 이해가 있습니까?'],
+        aiText: '전형적인 신입 프로파일로 큰 리스크도 강점도 두드러지지 않습니다. 성장 가능성과 학습 태도를 중심으로, 현장 근무 이해도를 함께 확인하세요.' },
+      // j2
+      { id: 'b1', job: 'j2', name: '서지우', role: '품질관리', track: '경력', exp: '경력 3년', success: 3, risk: 1, cat: '우선 검토', cs: [86, 80, 78, 80, 80] },
+      { id: 'b2', job: 'j2', name: '정예준', role: '품질관리', track: '경력', exp: '경력 5년', success: 3, risk: 1, cat: '우선 검토', cs: [84, 82, 76, 80, 78] },
+      { id: 'b3', job: 'j2', name: '박하린', role: '품질관리', track: '경력', exp: '경력 2년', success: 2, risk: 2, cat: '일반 검토', cs: [72, 70, 72, 70, 72] },
+      { id: 'b4', job: 'j2', name: '김도이', role: '품질관리', track: '신입', exp: '신입', success: 1, risk: 3, cat: '추가 확인 필요', cs: [58, 64, 68, 56, 72] },
+      // j3
+      { id: 'c1', job: 'j3', name: '이수민', role: '연구개발', track: '신입', exp: '신입', success: 3, risk: 1, cat: '우선 검토', cs: [82, 84, 78, 74, 88] },
+      { id: 'c2', job: 'j3', name: '윤서아', role: '연구개발', track: '신입', exp: '신입', success: 3, risk: 1, cat: '우선 검토', cs: [80, 82, 80, 76, 86] },
+      { id: 'c3', job: 'j3', name: '조현우', role: '연구개발', track: '신입', exp: '신입', success: 2, risk: 2, cat: '일반 검토', cs: [70, 74, 72, 68, 80] },
+      { id: 'c4', job: 'j3', name: '한지호', role: '연구개발', track: '신입', exp: '신입', success: 1, risk: 3, cat: '추가 확인 필요', cs: [60, 66, 64, 58, 78] },
+    ];
+  }
+
+  employeesData() {
+    return [
+      { id: 'e1', name: '김하준', dept: '생산기술', role: '생산기술', level: '대리', join: '2023-05', tenureM: 38, gender: '남', perf: 88, goal: 92, sat: 82, eng: 80, proj: '공정 자동화', trend: [80, 83, 85, 88], note: '공정 자동화 프로젝트를 주도하며 라인 가동률을 8% 개선. 문제 해결력과 문서화가 안정적.' },
+      { id: 'e2', name: '배수빈', dept: '품질관리', role: '품질관리', level: '주임', join: '2024-02', tenureM: 29, gender: '여', perf: 84, goal: 88, sat: 85, eng: 83, proj: '불량률 개선', trend: [78, 80, 82, 84], note: '품질 불량률 개선 TF에서 데이터 기반 원인 분석을 담당. 협업 평가 우수.' },
+      { id: 'e3', name: '신유나', dept: '생산관리', role: '생산관리', level: '과장', join: '2021-03', tenureM: 64, gender: '여', perf: 91, goal: 95, sat: 88, eng: 90, proj: '생산계획 고도화', trend: [86, 88, 90, 91], note: '생산계획 고도화로 납기 준수율을 크게 개선. 조직 몰입·리더십 최상위.' },
+      { id: 'e4', name: '장예린', dept: '연구개발', role: '연구개발', level: '대리', join: '2023-09', tenureM: 34, gender: '여', perf: 86, goal: 89, sat: 84, eng: 82, proj: '신소재 검증', trend: [80, 82, 84, 86], note: '신소재 검증 실험을 체계화. 정성 리뷰를 정량 지표로 연결하는 역량 보유.' },
+      { id: 'e5', name: '한서진', dept: '생산기술', role: '생산기술', level: '사원', join: '2024-07', tenureM: 24, gender: '남', perf: 79, goal: 82, sat: 78, eng: 76, proj: '설비 표준화', trend: [72, 75, 77, 79], note: '설비 표준화 문서를 정비. 성장 곡선이 꾸준히 우상향.' },
+      { id: 'e6', name: '임현우', dept: '구매자재', role: '구매자재', level: '주임', join: '2023-01', tenureM: 42, gender: '남', perf: 74, goal: 78, sat: 72, eng: 70, proj: '자재 리드타임', trend: [70, 72, 73, 74], note: '자재 리드타임 단축 프로젝트 참여. 반복 업무 안정적 수행.' },
+      { id: 'e7', name: '노시우', dept: '설비보전', role: '설비보전', level: '사원', join: '2024-11', tenureM: 20, gender: '남', perf: 72, goal: 74, sat: 70, eng: 68, proj: '예방정비 체계화', trend: [66, 68, 70, 72], note: '예방정비 체계화를 진행 중. 현장 대응력은 좋으나 문서화 보완 필요.' },
+      { id: 'e8', name: '권태준', dept: '생산관리', role: '생산관리', level: '대리', join: '2022-06', tenureM: 49, gender: '남', perf: 82, goal: 85, sat: 80, eng: 79, proj: '실적 대시보드', trend: [76, 78, 80, 82], note: '생산 실적 대시보드를 구축해 의사결정 속도 개선.' },
+      { id: 'e9', name: '오하늘', dept: '연구개발', role: '연구개발', level: '주임', join: '2023-11', tenureM: 32, gender: '여', perf: 88, goal: 90, sat: 86, eng: 85, proj: '공정 시뮬레이션', trend: [82, 84, 86, 88], note: '공정 시뮬레이션 모델을 도입해 시제품 반복을 절감.' },
+      { id: 'e10', name: '정민석', dept: '품질관리', role: '품질관리', level: '과장', join: '2020-09', tenureM: 70, gender: '남', perf: 90, goal: 93, sat: 87, eng: 88, proj: '품질 시스템 표준화', trend: [85, 87, 89, 90], note: '전사 품질 시스템 표준화를 리드. 조직 몰입 최상위.' },
+    ];
+  }
+
+  navStyle(active) {
+    return { display: 'flex', alignItems: 'center', gap: '12px', width: '100%', padding: '11px 12px', border: 'none', borderRadius: '10px', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: '14.5px', letterSpacing: '-0.24px', textAlign: 'left', marginBottom: '3px', whiteSpace: 'nowrap', background: active ? 'rgba(0,122,255,0.12)' : 'transparent', color: active ? 'var(--ios-blue)' : '#3c3c43', fontWeight: active ? 700 : 500 };
+  }
+  chip(color, bg) { return `display:inline-block; white-space:nowrap; font-size:12px; font-weight:700; padding:3px 10px; border-radius:7px; color:${color}; background:${bg};`; }
+  catChip(cat) {
+    const m = { '우선 검토': ['var(--ios-blue)', 'rgba(0,122,255,0.12)'], '추가 확인 필요': ['var(--ios-orange)', 'rgba(255,149,0,0.14)'], '일반 검토': ['var(--label-secondary)', 'var(--ios-gray6)'] };
+    const [c, b] = m[cat] || m['일반 검토']; return this.chip(c, b);
+  }
+  fitColor(v) { return v >= 80 ? 'var(--ios-green)' : (v >= 65 ? 'var(--ios-blue)' : 'var(--ios-orange)'); }
+  perfColor(v) { return v >= 85 ? 'var(--ios-green)' : (v >= 75 ? 'var(--ios-blue)' : (v >= 65 ? 'var(--ios-orange)' : 'var(--ios-red)')); }
+  pillBtn(active, activeBg) {
+    return { height: '36px', padding: '0 15px', borderRadius: '10px', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: '13px', fontWeight: active ? 700 : 500, whiteSpace: 'nowrap', border: active ? 'none' : '1px solid rgba(60,60,67,0.16)', background: active ? (activeBg || '#1c1c1e') : '#fff', color: active ? '#fff' : '#1c1c1e' };
+  }
+  fit(a) { return Math.round(a.cs.reduce((x, y) => x + y, 0) / a.cs.length); }
+
+  renderVals() {
+    const s = this.state;
+    const showToast = (msg) => { this.setState({ toast: msg }); setTimeout(() => { if (this.state.toast === msg) this.setState({ toast: null }); }, 2600); };
+    const jobs = this.jobsData();
+    const apps = this.applicantsData();
+    const emps = this.employeesData();
+
+    // ---- nav ----
+    const nav = {
+      dashboard: this.navStyle(s.screen === 'dashboard'),
+      review: this.navStyle(s.screen === 'detail'),
+      docSub: this.navStyle(s.screen === 'review'),
+      interviewList: this.navStyle(s.screen === 'interviewList' || s.screen === 'interview'),
+      final: this.navStyle(s.screen === 'final'),
+      workforce: this.navStyle(s.screen === 'workforce'),
+      performance: this.navStyle(s.screen === 'performance'),
+    };
+
+    // ---- dashboard ----
+    const dashKpis = [
+      { label: '채용 진행중', value: '3건', color: '#1c1c1e' },
+      { label: '전체 지원자', value: '2,394명', color: '#1c1c1e' },
+      { label: '우선 검토 대상', value: '181명', color: 'var(--ios-blue)' },
+      { label: '추가 확인 필요', value: '286명', color: 'var(--ios-orange)' },
+      { label: 'ERP 추적 재직자', value: '214명', color: '#1c1c1e' },
+      { label: '최근 입사자', value: '6명', color: '#1c1c1e' },
+    ];
+    const jobRows = jobs.map(j => ({ ...j, open: () => this.setState({ screen: 'review', jobId: j.id, reviewFilter: '전체' }) }));
+
+    // ---- review board ----
+    const job = jobs.find(j => j.id === s.jobId) || jobs[0];
+    const jobApps = apps.filter(a => a.job === s.jobId);
+    const advanced = s.advanced || [];
+    const finalized = s.finalized || {};
+    const stage = s.screen === 'interviewList' ? 'interview' : (s.screen === 'final' ? 'final' : 'doc');
+    const rf = s.reviewFilter;
+
+    // stage split: 서류 심사 → 면접 심사 → 최종 심사
+    const docApps = jobApps.filter(a => !advanced.includes(a.id));
+    const intApps = jobApps.filter(a => advanced.includes(a.id) && !finalized[a.id]);
+    const finApps = jobApps.filter(a => finalized[a.id]);
+    const stageApps = stage === 'doc' ? docApps : (stage === 'interview' ? intApps : finApps);
+    const filtered = stageApps.filter(a => rf === '전체' ? true : a.cat === rf);
+
+    const stageTabDefs = [
+      { key: 'doc', label: '서류 심사', count: docApps.length },
+      { key: 'interview', label: '면접 심사', count: intApps.length },
+      { key: 'final', label: '최종 심사', count: finApps.length },
+    ];
+    const stageTabs = stageTabDefs.map(t => {
+      const active = stage === t.key;
+      return {
+        label: t.label, count: t.count,
+        onClick: () => this.setState({ screen: t.key === 'doc' ? 'review' : (t.key === 'interview' ? 'interviewList' : 'final'), reviewFilter: '전체' }),
+        style: { display: 'inline-flex', alignItems: 'center', gap: '8px', border: 'none', cursor: 'pointer', padding: '9px 18px', borderRadius: '9px', fontFamily: 'var(--font-sans)', fontSize: '14px', fontWeight: active ? 700 : 600, whiteSpace: 'nowrap', background: active ? '#fff' : 'transparent', color: active ? '#1c1c1e' : 'var(--label-secondary)', boxShadow: active ? '0 1px 3px rgba(0,0,0,0.12)' : 'none' },
+        badgeStyle: `display:inline-flex; align-items:center; justify-content:center; min-width:20px; height:20px; padding:0 6px; border-radius:10px; font-size:11px; font-weight:800; color:${active ? '#fff' : 'var(--label-tertiary)'}; background:${active ? 'var(--ios-blue)' : 'var(--ios-gray5)'};`,
+      };
+    });
+    const stageTitle = stage === 'doc' ? '서류 심사' : (stage === 'interview' ? '면접 심사' : '최종 심사');
+    const stageDesc = stage === 'doc' ? '서류 검토 중인 지원자 · 면접 심사로 이동할 지원자를 선택하세요' : (stage === 'interview' ? '서류 심사를 통과해 면접 대상이 된 지원자' : '면접 심사를 거쳐 최종 판정을 받은 지원자');
+    const stageNote = stage === 'doc'
+      ? '현재 지원자들은 서류 검토 단계입니다. ‘면접 심사로’를 누르면 해당 지원자가 다음 관문인 면접 심사로 이동합니다.'
+      : (stage === 'interview'
+        ? '면접 심사 대상 지원자입니다. ‘면접 진행’을 누르면 실제 면접 지원 화면으로 이동합니다. (자동 합·불 판정이 아닌 참고 정보)'
+        : '면접 심사를 거친 지원자의 최종 결과입니다. 합격·불합격·보류를 다시 선택하고, 판정 사유를 수기로 기록할 수 있습니다.');
+
+    const reviewKpis = stage === 'doc' ? [
+      { label: '서류 심사 인원', value: docApps.length + '명', color: '#1c1c1e' },
+      { label: '우선 검토', value: docApps.filter(a => a.cat === '우선 검토').length + '명', color: 'var(--ios-blue)' },
+      { label: '면접 심사 이동', value: intApps.length + '명', color: 'var(--ios-green)' },
+      { label: '최종 심사 완료', value: finApps.length + '명', color: '#1c1c1e' },
+    ] : stage === 'interview' ? [
+      { label: '면접 심사 인원', value: intApps.length + '명', color: 'var(--ios-blue)' },
+      { label: '우선 검토', value: intApps.filter(a => a.cat === '우선 검토').length + '명', color: 'var(--ios-blue)' },
+      { label: '평균 적합도', value: intApps.length ? Math.round(intApps.reduce((x, a) => x + this.fit(a), 0) / intApps.length) + '점' : '—', color: 'var(--ios-green)' },
+      { label: '서류 심사 대기', value: docApps.length + '명', color: 'var(--label-secondary)' },
+    ] : [
+      { label: '최종 심사 인원', value: finApps.length + '명', color: '#1c1c1e' },
+      { label: '최종 합격', value: finApps.filter(a => finalized[a.id].result === '최종 합격').length + '명', color: 'var(--ios-green)' },
+      { label: '보류', value: finApps.filter(a => finalized[a.id].result === '보류').length + '명', color: 'var(--ios-orange)' },
+      { label: '불합격', value: finApps.filter(a => finalized[a.id].result === '면접 불합격' || finalized[a.id].result === '서류 탈락').length + '명', color: 'var(--ios-red)' },
+    ];
+    const filterDefs = ['전체', '우선 검토'];
+    const reviewFilters = filterDefs.map(f => ({ label: f, onClick: () => this.setState({ reviewFilter: f }), style: this.pillBtn(rf === f) }));
+    const docActionStyle = { height: '32px', padding: '0 12px', borderRadius: '8px', border: 'none', background: '#1c1c1e', color: '#fff', fontSize: '12px', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap', fontFamily: 'var(--font-sans)' };
+    const intActionStyle = { height: '32px', padding: '0 12px', borderRadius: '8px', border: 'none', background: 'rgba(0,122,255,0.12)', color: 'var(--ios-blue)', fontSize: '12px', fontWeight: 700, cursor: 'pointer', whiteSpace: 'nowrap', fontFamily: 'var(--font-sans)' };
+    const reviewRows = filtered.map(a => {
+      const f = this.fit(a);
+      const met = a.cs.filter((v, i) => v >= this.REQ[i]).length;
+      return {
+        name: a.name, role: a.role, exp: a.exp, fit: f, fitPct: f + '%', fitColor: this.fitColor(f),
+        success: a.success, risk: a.risk, met, unmet: a.cs.length - met, cat: a.cat, catStyle: this.catChip(a.cat),
+        stop: (e) => { if (e && e.stopPropagation) e.stopPropagation(); },
+        open: () => this.setState({ screen: 'detail', detailId: a.id, ai: 'idle' }),
+        rowClick: stage === 'doc'
+          ? () => this.setState({ screen: 'detail', detailId: a.id, ai: 'idle' })
+          : () => this.setState({ screen: 'interview', interviewId: a.id }),
+        actionLabel: stage === 'doc' ? '면접 심사로 →' : '면접 진행',
+        actionStyle: stage === 'doc' ? docActionStyle : intActionStyle,
+        action: stage === 'doc'
+          ? () => { this.setState({ advanced: [...(this.state.advanced || []), a.id] }); showToast(a.name + ' 님을 면접 심사로 이동했습니다'); }
+          : () => this.setState({ screen: 'interview', interviewId: a.id }),
+      };
+    });
+    const reviewEmpty = stage !== 'final' && filtered.length === 0;
+    const boardHeading = stage === 'interview' ? '면접 진행' : '지원자 검토 보드';
+    const boardSub = stage === 'interview'
+      ? job.title + ' · 면접 심사 대상자 목록입니다. 이름을 클릭하면 면접 진행 화면이 열립니다.'
+      : job.title + ' · 서류 검토 중인 지원자입니다. 이름을 클릭하면 적합도 상세가 열립니다.';
+    const boardEmptyTitle = stage === 'interview' ? '면접 진행할 지원자가 없습니다' : '조건에 맞는 지원자가 없습니다';
+    const boardEmptySub = stage === 'interview' ? '지원자 검토에서 ‘면접 심사로’를 눌러 지원자를 이동하세요.' : '필터를 조정해 보세요.';
+
+    // ---- final stage cards ----
+    const resultColor = { '최종 합격': ['var(--ios-green)', 'rgba(52,199,89,0.14)'], '보류': ['var(--ios-orange)', 'rgba(255,149,0,0.14)'], '면접 불합격': ['var(--ios-red)', 'rgba(255,59,48,0.12)'], '서류 탈락': ['var(--ios-red)', 'rgba(255,59,48,0.12)'] };
+    const setResult = (id, r, nm) => { this.setState({ finalized: { ...(this.state.finalized || {}), [id]: { ...(this.state.finalized || {})[id], result: r } } }); showToast((nm || '지원자') + ' 님 최종 결과를 ' + r + '(으)로 변경했습니다'); };
+    const setResultReason = (id, e) => { const v = e.target.value; this.setState({ finalized: { ...(this.state.finalized || {}), [id]: { ...(this.state.finalized || {})[id], reason: v } } }); };
+    const finalRows = filtered.map(a => {
+      const f = this.fit(a), fin = finalized[a.id] || {};
+      const [rc, rb] = resultColor[fin.result] || ['var(--label-secondary)', 'var(--ios-gray6)'];
+      return {
+        id: a.id, name: a.name, role: a.role, exp: a.exp, fit: f, fitColor: this.fitColor(f),
+        result: fin.result || '미정', resultChip: `display:inline-block; white-space:nowrap; font-size:13px; font-weight:800; padding:5px 14px; border-radius:8px; color:${rc}; background:${rb};`,
+        reason: fin.reason || '',
+        evalSummary: fin.savedEval ? `면접 종합 ${fin.savedEval} / 5` + (fin.recommend ? ` · 추천 ${fin.recommend}` : '') : '면접 평가 미저장',
+        onReason: (e) => setResultReason(a.id, e),
+        save: () => showToast(a.name + ' 님의 최종 판정·사유를 저장했습니다'),
+        open: () => this.setState({ screen: 'detail', detailId: a.id, ai: 'idle' }),
+        resultBtns: ['최종 합격', '보류', '면접 불합격'].map(r => {
+          const active = fin.result === r;
+          const bg = r === '최종 합격' ? 'var(--ios-green)' : (r === '면접 불합격' ? 'var(--ios-red)' : 'var(--ios-orange)');
+          return { label: r, onClick: () => setResult(a.id, r, a.name), style: this.pillBtn(active, bg) };
+        }),
+      };
+    });
+    const isFinalStage = stage === 'final';
+    const notFinalStage = stage !== 'final';
+    const finalEmpty = isFinalStage && filtered.length === 0;
+
+    // ---- detail ----
+    const da = apps.find(a => a.id === s.detailId) || apps[0];
+    const df = this.fit(da);
+    const criteria = this.CRIT.map((name, i) => {
+      const sc = da.cs[i], req = this.REQ[i];
+      return { name, scoreLabel: sc, reqLabel: req, scorePct: sc + '%', reqPct: req + '%', color: sc >= req ? 'var(--ios-green)' : (sc >= req - 12 ? 'var(--ios-blue)' : 'var(--ios-orange)') };
+    });
+    const matchStyleMap = { '충족': this.chip('var(--ios-green)', 'rgba(52,199,89,0.14)'), '보완': this.chip('var(--ios-orange)', 'rgba(255,149,0,0.14)'), '미달': this.chip('var(--ios-red)', 'rgba(255,59,48,0.12)') };
+    const dt = {
+      name: da.name, role: da.role, exp: da.exp, cat: da.cat, catStyle: this.catChip(da.cat),
+      fit: df, fitColor: this.fitColor(df), gaugeOffset: (515.2 * (1 - df / 100)).toFixed(1),
+      fitVerdict: df >= 80 ? '과거 고성과 정착군과 매우 유사한 프로파일입니다.' : (df >= 65 ? '강점과 보완점이 공존합니다. 면접에서 리스크 항목을 확인하세요.' : '회사 요구 수준과 격차가 있어 신중한 검토가 필요합니다.'),
+      criteria,
+      compare: this.CRIT.map((name, i) => {
+        const sc = da.cs[i], req = this.REQ[i];
+        const m = sc >= req ? '충족' : (sc >= req - 12 ? '보완' : '미달');
+        return { field: name, company: `요구 ${req}점 이상`, applicant: `${sc}점 · ${sc >= req ? '기준 상회' : (sc >= req - 12 ? '기준 근접' : '기준 미달')}`, match: m, matchStyle: matchStyleMap[m] };
+      }),
+      success: da.success, risk: da.risk,
+      successSignals: da.successSignals || ['-'], riskSignals: da.riskSignals || ['-'],
+      questions: (da.questions || []).map((text, i) => ({ n: i + 1, text })),
+      aiText: da.aiText || '',
+      interview: () => this.setState({ screen: 'interview', interviewId: da.id }),
+      reject: () => { this.setState({ finalized: { ...(this.state.finalized || {}), [da.id]: { ...(this.state.finalized || {})[da.id], result: '서류 탈락' } }, screen: 'final', stageTab: 'final' }); showToast(da.name + ' 님을 서류 탈락 처리했습니다'); },
+    };
+
+    // ---- ai ----
+    const aiBtnLabel = s.ai === 'loading' ? '생성 중…' : (s.ai === 'done' ? 'AI 인사이트 ✓' : 'AI 인사이트 생성');
+    const aiBtnStyle = { height: '42px', padding: '0 20px', borderRadius: '11px', border: 'none', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: '14px', fontWeight: 700, background: s.ai === 'done' ? 'rgba(88,86,214,0.12)' : '#fff', color: s.ai === 'done' ? 'var(--ios-indigo)' : 'var(--ios-indigo)', boxShadow: s.ai === 'done' ? 'none' : 'inset 0 0 0 1px rgba(88,86,214,0.4)', opacity: s.ai === 'loading' ? 0.6 : 1 };
+
+    // ---- interview ----
+    const ia = apps.find(a => a.id === s.interviewId) || apps[0];
+    const ivFit = this.fit(ia);
+    const ivStrength = (ia.summary && ia.summary[0] && ia.summary[0][1]) || '기초 역량';
+    const iv = {
+      name: ia.name, role: ia.role, exp: ia.exp,
+      fit: ivFit, fitColor: this.fitColor(ivFit), gaugeOffset: (515.2 * (1 - ivFit / 100)).toFixed(1),
+      fitVerdict: ivFit >= 80 ? '과거 고성과 정착군과 매우 유사한 프로파일입니다.' : (ivFit >= 65 ? '강점과 보완점이 공존합니다. 낮은 항목을 면접에서 확인하세요.' : '회사 요구 수준과 격차가 있어 신중한 확인이 필요합니다.'),
+      introSummary: `${ia.role} ${ia.exp} 지원자로 ‘${ivStrength}’을(를) 핵심 강점으로 제시했습니다. 자기소개서를 회사 적합도 기준과 대조한 예상 적합도는 ${ivFit}점입니다.`,
+      criteria: this.CRIT.map((name, i) => {
+        const sc = ia.cs[i], req = this.REQ[i], low = sc < req;
+        return { name, scorePct: sc + '%', color: low ? 'var(--ios-orange)' : (sc >= req + 5 ? 'var(--ios-green)' : 'var(--ios-blue)'), labelColor: low ? 'var(--ios-orange)' : '#1c1c1e', tag: low ? '보완 ' + sc : sc };
+      }),
+      summary: (ia.summary || [['주요 강점', '-'], ['보유 기술', '-'], ['이전 프로젝트', '-'], ['학부 전공', '-']]).map(([k, v]) => ({ k, v })),
+      questions: (ia.questions || []).map((text, i) => ({ n: i + 1, text, why: (ia.riskSignals && ia.riskSignals[0]) ? '리스크 항목 확인: ' + ia.riskSignals[0] : '핵심 역량 재확인' })),
+    };
+    const stageDefs = [
+      { key: 'doc', title: '서류 평가', done: true },
+      { key: 'interview', title: '면접 평가', current: true },
+      { key: 'final', title: '최종 합격', future: true },
+    ];
+    const cf = finalized[ia.id] || {};
+    const kindStyle = {
+      done: { bg: 'var(--ios-green)', border: 'var(--ios-green)', color: '#fff', icon: '✓', text: 'var(--ios-green)' },
+      current: { bg: 'var(--ios-blue)', border: 'var(--ios-blue)', color: '#fff', icon: '2', text: 'var(--ios-blue)' },
+      fail: { bg: 'var(--ios-red)', border: 'var(--ios-red)', color: '#fff', icon: '✕', text: 'var(--ios-red)' },
+      hold: { bg: 'var(--ios-orange)', border: 'var(--ios-orange)', color: '#fff', icon: '!', text: 'var(--ios-orange)' },
+      future: { bg: '#fff', border: 'rgba(60,60,67,0.2)', color: 'var(--label-tertiary)', icon: '3', text: 'var(--label-tertiary)' },
+    };
+    const finalKind = cf.result === '최종 합격' ? 'done' : (cf.result === '불합격' ? 'fail' : (cf.result === '보류' ? 'hold' : 'future'));
+    const stageDefs2 = [
+      { title: '서류 평가', kind: 'done', state: '통과' },
+      { title: '면접 평가', kind: cf.result ? 'done' : 'current', state: cf.result ? '완료' : '진행 중' },
+      { title: '최종 심사', kind: finalKind, state: cf.result || '대기' },
+    ];
+    const stages = stageDefs2.map((st, i) => {
+      const k = kindStyle[st.kind];
+      return {
+        title: st.title, icon: st.kind === 'current' ? (i + 1) : (st.kind === 'future' ? (i + 1) : k.icon),
+        dotBg: k.bg, dotColor: k.color, dotBorder: k.border,
+        titleColor: st.kind === 'future' ? 'var(--label-secondary)' : '#1c1c1e',
+        stateLabel: st.state, stateColor: k.text,
+        hasLine: i < 2, lineColor: (st.kind === 'done') ? 'var(--ios-green)' : 'rgba(60,60,67,0.14)',
+      };
+    });
+    const setResultIv = (r) => { this.setState({ finalized: { ...(this.state.finalized || {}), [ia.id]: { ...(this.state.finalized || {})[ia.id], result: r } } }); showToast(ia.name + ' 님 최종 판정: ' + r); };
+    const finalBtns = ['최종 합격', '보류', '면접 불합격'].map(r => {
+      const active = cf.result === r;
+      const bg = r === '최종 합격' ? 'var(--ios-green)' : (r === '면접 불합격' ? 'var(--ios-red)' : 'var(--ios-orange)');
+      return { label: r, onClick: () => setResultIv(r), style: this.pillBtn(active, bg) };
+    });
+    const finalReason = cf.reason || '';
+    const setFinalReason = (e) => { const v = e.target.value; this.setState({ finalized: { ...(this.state.finalized || {}), [ia.id]: { ...(this.state.finalized || {})[ia.id], reason: v } } }); };
+    const ivNote = s.ivNote || '';
+    const setIvNote = (e) => this.setState({ ivNote: e.target.value });
+    const finalizeSave = () => {
+      const st = this.state; const fin = st.finalized || {}; const cur = fin[ia.id] || {};
+      const sv = Object.values(st.evalScores).filter(v => v > 0);
+      const avgN = sv.length ? (sv.reduce((a, b) => a + b, 0) / sv.length).toFixed(1) : null;
+      this.setState({ finalized: { ...fin, [ia.id]: { ...cur, savedEval: avgN, recommend: st.recommend, note: st.ivNote } }, screen: 'review', stageTab: 'final', reviewFilter: '전체' });
+      showToast(ia.name + ' 님 면접 평가를 저장하고 최종 심사로 이동했습니다');
+    };
+    const checkDefs = ['직무 이해도 확인', '현장 적응 가능성 확인', '반복 업무 수용도 확인', '협업 경험 확인', '장기 근속 의향 확인'];
+    const checklist = checkDefs.map(label => {
+      const checked = !!s.checks[label];
+      return { label, checked, toggle: () => this.setState({ checks: { ...s.checks, [label]: !checked } }), color: checked ? 'var(--ios-blue)' : 'rgba(60,60,67,0.3)', bg: checked ? 'var(--ios-blue)' : 'transparent', textColor: checked ? '#1c1c1e' : 'var(--label-secondary)' };
+    });
+    const evalPh = { '직무지식': '예) 공정·설비 이해도가 실무 수준', '문제 해결 능력': '예) 라인 문제를 데이터로 해결한 사례 우수', '성과 지향성': '예) 목표 대비 개선 실적을 구체적으로 설명', '협업/커뮤니케이션': '예) 부서 간 조율 경험은 다소 추상적', '리더십': '예) 소규모 TF 리드 경험 보유', '성장 가능성': '예) 학습 의지와 확장성 우수', '조직 적합성': '예) 교대·반복 업무 수용도 확인 필요', '직무 적합성': '예) 지원 직무와 경험이 잘 부합' };
+    const evalItems = Object.keys(s.evalScores);
+    const evalNotes = s.evalNotes || {};
+    const evalRows = evalItems.map(item => ({
+      item, ph: evalPh[item] || '평가 코멘트를 입력하세요',
+      note: evalNotes[item] || '',
+      onNote: (e) => { const v = e.target.value; this.setState({ evalNotes: { ...(this.state.evalNotes || {}), [item]: v } }); },
+      dots: [1, 2, 3, 4, 5].map(n => {
+        const on = s.evalScores[item] >= n;
+        return { n, onClick: () => this.setState({ evalScores: { ...s.evalScores, [item]: n } }), style: { width: '28px', height: '28px', borderRadius: '8px', border: 'none', cursor: 'pointer', fontSize: '12px', fontWeight: 700, background: on ? 'var(--ios-blue)' : 'var(--ios-gray6)', color: on ? '#fff' : 'var(--label-tertiary)' } };
+      }),
+    }));
+    const scoreVals = evalItems.map(i => s.evalScores[i]).filter(v => v > 0);
+    const evalAvg = scoreVals.length ? (scoreVals.reduce((a, b) => a + b, 0) / scoreVals.length).toFixed(1) : '—';
+    const recommendBtns = ['추천', '보류', '비추천'].map(r => {
+      const active = s.recommend === r;
+      const bg = r === '추천' ? 'var(--ios-green)' : (r === '비추천' ? 'var(--ios-red)' : 'var(--ios-orange)');
+      return { label: r, onClick: () => this.setState({ recommend: r }), style: this.pillBtn(active, bg) };
+    });
+
+    // ---- workforce ----
+    const depts = ['전체', '생산기술', '품질관리', '생산관리', '연구개발', '설비보전', '구매자재'];
+    const genders = ['전체', '남', '여'];
+    const tenureBands = ['전체', '1년 미만', '1~3년', '3~5년', '5년+'];
+    const inBand = (m, b) => b === '전체' || (b === '1년 미만' && m < 12) || (b === '1~3년' && m >= 12 && m < 36) || (b === '3~5년' && m >= 36 && m < 60) || (b === '5년+' && m >= 60);
+    const wfFiltered = emps.filter(e => (s.wfDept === '전체' || e.dept === s.wfDept) && (s.wfGender === '전체' || e.gender === s.wfGender) && inBand(e.tenureM, s.wfTenure || '전체'));
+    const wfDeptFilters = depts.map(d => ({ label: d, onClick: () => this.setState({ wfDept: d }), style: this.pillBtn(s.wfDept === d) }));
+    const wfGenderFilters = genders.map(g => ({ label: g, onClick: () => this.setState({ wfGender: g }), style: this.pillBtn(s.wfGender === g) }));
+    const wfTenureFilters = tenureBands.map(b => ({ label: b, onClick: () => this.setState({ wfTenure: b }), style: this.pillBtn((s.wfTenure || '전체') === b) }));
+    const ddOpts = (list, cur, set) => list.map(o => ({ label: o, active: cur === o, onClick: () => this.setState(set(o)), style: `display:block; width:100%; text-align:left; padding:9px 12px; border-radius:8px; font-size:13px; border:none; cursor:pointer; font-family:var(--font-sans); white-space:nowrap; font-weight:${cur === o ? 700 : 500}; color:${cur === o ? 'var(--ios-blue)' : '#1c1c1e'}; background:${cur === o ? 'rgba(0,122,255,0.10)' : 'transparent'};` }));
+    const wfDeptDD = { value: s.wfDept, options: ddOpts(depts, s.wfDept, v => ({ wfDept: v })) };
+    const wfGenderDD = { value: s.wfGender, options: ddOpts(genders, s.wfGender, v => ({ wfGender: v })) };
+    const wfTenureDD = { value: s.wfTenure || '전체', options: ddOpts(tenureBands, s.wfTenure || '전체', v => ({ wfTenure: v })) };
+    const wfKpis = [
+      { label: '재직 인원', value: wfFiltered.length + '명', color: '#1c1c1e' },
+      { label: '평균 재직 기간', value: Math.round(wfFiltered.reduce((x, e) => x + e.tenureM, 0) / (wfFiltered.length || 1)) + '개월', color: '#1c1c1e' },
+      { label: '평균 성과', value: Math.round(wfFiltered.reduce((x, e) => x + e.perf, 0) / (wfFiltered.length || 1)) + '점', color: 'var(--ios-blue)' },
+      { label: '최근 1년 입사', value: emps.filter(e => e.tenureM <= 24).length + '명', color: '#1c1c1e' },
+    ];
+    const wfRows = wfFiltered.map(e => ({ name: e.name, dept: e.dept, role: e.role, level: e.level, join: e.join, tenure: e.tenureM + '개월', perf: e.perf + '점', perfColor: this.perfColor(e.perf), proj: e.proj, open: () => this.setState({ wfId: e.id }) }));
+    const wfe = emps.find(e => e.id === s.wfId);
+    const tmax = 100;
+    const wfd = wfe ? {
+      name: wfe.name, dept: wfe.dept, role: wfe.role, level: wfe.level,
+      stats: [{ k: '최근 성과', v: wfe.perf, color: this.perfColor(wfe.perf) }, { k: '목표 달성률', v: wfe.goal + '%', color: '#1c1c1e' }, { k: '직무 만족', v: wfe.sat, color: '#1c1c1e' }, { k: '조직 몰입', v: wfe.eng, color: '#1c1c1e' }],
+      trend: wfe.trend.map((v, i) => ({ value: v, label: 'Q' + (i + 1), pct: Math.round(v / tmax * 100) + '%' })),
+      note: wfe.note,
+    } : { stats: [], trend: [] };
+
+    // ---- performance ----
+    const pFiltered = emps.filter(e => (s.perfDept === '전체' || e.dept === s.perfDept) && (s.perfGender === '전체' || e.gender === s.perfGender));
+    const perfDeptFilters = depts.map(d => ({ label: d, onClick: () => this.setState({ perfDept: d }), style: this.pillBtn(s.perfDept === d) }));
+    const perfGenderFilters = genders.map(g => ({ label: g, onClick: () => this.setState({ perfGender: g }), style: this.pillBtn(s.perfGender === g) }));
+    const perfDeptDD = { value: s.perfDept, options: ddOpts(depts, s.perfDept, v => ({ perfDept: v })) };
+    const perfGenderDD = { value: s.perfGender, options: ddOpts(genders, s.perfGender, v => ({ perfGender: v })) };
+    const avg = arr => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : 0;
+    const perfKpis = [
+      { label: '평균 성과 점수', value: avg(pFiltered.map(e => e.perf)) + '점', sub: 'performance_review', color: 'var(--ios-blue)' },
+      { label: '목표 달성률', value: avg(pFiltered.map(e => e.goal)) + '%', sub: '최근 분기 기준', color: '#1c1c1e' },
+      { label: '직무 만족', value: avg(pFiltered.map(e => e.sat)) + '점', sub: 'engagement_survey', color: '#1c1c1e' },
+      { label: '조직 몰입', value: avg(pFiltered.map(e => e.eng)) + '점', sub: 'engagement_survey', color: '#1c1c1e' },
+    ];
+    const trendVals = [0, 1, 2, 3].map(q => avg(pFiltered.map(e => e.trend[q])));
+    const perfTrend = trendVals.map((v, i) => ({ value: v, label: '2025 Q' + (i + 1), pct: Math.round(v / 100 * 100) + '%' }));
+    const deptList = [...new Set(pFiltered.map(e => e.dept))];
+    const perfByDept = deptList.map(d => { const v = avg(pFiltered.filter(e => e.dept === d).map(e => e.perf)); return { dept: d, value: v + '점', pct: v + '%', color: this.perfColor(v) }; }).sort((a, b) => parseInt(b.value) - parseInt(a.value));
+    const perfRows = pFiltered.map(e => {
+      const tr = e.trend, first = tr[0], last = tr[tr.length - 1], delta = last - first;
+      const mn = Math.min(...tr), mx = Math.max(...tr), rng = (mx - mn) || 1, W = 76, H = 30, pad = 4;
+      const pts = tr.map((v, i) => `${(i * (W / (tr.length - 1))).toFixed(1)},${(H - pad - ((v - mn) / rng) * (H - 2 * pad)).toFixed(1)}`).join(' ');
+      const lastY = (H - pad - ((last - mn) / rng) * (H - 2 * pad)).toFixed(1);
+      return {
+        id: e.id, name: e.name, dept: e.dept, role: e.role, tenure: e.tenureM + '개월', perf: e.perf + '점', perfColor: this.perfColor(e.perf), goal: e.goal + '%', sat: e.sat + '점',
+        sparkPts: pts, sparkColor: this.perfColor(last), lastX: W.toFixed(1), lastY,
+        deltaLabel: (delta >= 0 ? '▲ +' : '▼ ') + delta, deltaColor: delta > 0 ? 'var(--ios-green)' : (delta < 0 ? 'var(--ios-red)' : 'var(--label-secondary)'),
+        open: () => this.setState({ perfId: e.id }),
+      };
+    });
+    const pfe = emps.find(e => e.id === s.perfId);
+    const pd = pfe ? {
+      name: pfe.name, dept: pfe.dept, role: pfe.role, level: pfe.level,
+      stats: [{ k: '최근 성과', v: pfe.perf, color: this.perfColor(pfe.perf) }, { k: '목표 달성률', v: pfe.goal + '%', color: '#1c1c1e' }, { k: '직무 만족', v: pfe.sat, color: '#1c1c1e' }, { k: '조직 몰입', v: pfe.eng, color: '#1c1c1e' }],
+      trend: pfe.trend.map((v, i) => ({ value: v, label: '2025 Q' + (i + 1), pct: Math.round(v / 100 * 100) + '%', delta: i === 0 ? '기준' : ((v - pfe.trend[i - 1]) >= 0 ? '+' + (v - pfe.trend[i - 1]) : '' + (v - pfe.trend[i - 1])) })),
+      note: pfe.note,
+    } : { stats: [], trend: [] };
+
+    return {
+      nav,
+      navDashboard: () => this.setState({ screen: 'dashboard' }),
+      navReview: () => this.setState({ screen: 'review', reviewFilter: '전체' }),
+      navInterviewList: () => this.setState({ screen: 'interviewList', reviewFilter: '전체' }),
+      navFinal: () => this.setState({ screen: 'final', reviewFilter: '전체' }),
+      navWorkforce: () => this.setState({ screen: 'workforce' }),
+      navPerformance: () => this.setState({ screen: 'performance' }),
+      backToReview: () => this.setState({ screen: 'review' }),
+      backToInterviewList: () => this.setState({ screen: 'interviewList' }),
+      resetDemo: () => this.setState({ screen: 'dashboard', jobId: 'j1', reviewFilter: '전체', stageTab: 'doc', advanced: [], finalized: {}, ai: 'idle', evalScores: { '직무지식': 0, '문제 해결 능력': 0, '성과 지향성': 0, '협업/커뮤니케이션': 0, '리더십': 0, '성장 가능성': 0, '조직 적합성': 0, '직무 적합성': 0 }, evalNotes: {}, checks: {}, recommend: null, ivNote: '', wfDept: '전체', wfGender: '전체', wfTenure: '전체', wfId: null, perfDept: '전체', perfGender: '전체' }),
+
+      isDashboard: s.screen === 'dashboard',
+      isBoard: s.screen === 'review' || s.screen === 'interviewList',
+      isInterviewList: s.screen === 'interviewList',
+      isFinal: s.screen === 'final',
+      isDetail: s.screen === 'detail',
+      isInterview: s.screen === 'interview',
+      isWorkforce: s.screen === 'workforce',
+      isPerformance: s.screen === 'performance',
+      intCount: intApps.length, finCount: finApps.length, docCount: docApps.length,
+      badgeDoc: `margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:19px; height:19px; padding:0 5px; border-radius:10px; font-size:11px; font-weight:800; color:var(--label-secondary); background:var(--ios-gray5);`,
+      badgeInt: `margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:19px; height:19px; padding:0 5px; border-radius:10px; font-size:11px; font-weight:800; color:#fff; background:var(--ios-blue);`,
+      badgeFin: `margin-left:auto; display:inline-flex; align-items:center; justify-content:center; min-width:19px; height:19px; padding:0 5px; border-radius:10px; font-size:11px; font-weight:800; color:var(--label-secondary); background:var(--ios-gray5);`,
+
+      dashKpis, jobRows,
+      job, reviewKpis, reviewFilters, reviewRows, stageTabs, stageTitle, stageDesc, stageNote, reviewEmpty,
+      boardHeading, boardSub, boardEmptyTitle, boardEmptySub,
+      finalRows, finalEmpty,
+      dt, aiBtnLabel, aiBtnStyle, aiDone: s.ai === 'done', aiIdle: s.ai !== 'done',
+      runAi: () => { if (s.ai === 'loading') return; this.setState({ ai: 'loading' }); setTimeout(() => this.setState({ ai: 'done' }), 900); },
+
+      iv, stages, finalBtns, finalReason, setFinalReason, ivNote, setIvNote, finalizeSave, checklist, evalRows, evalAvg, recommendBtns,
+
+      wfKpis, wfDeptFilters, wfGenderFilters, wfTenureFilters, wfDeptDD, wfGenderDD, wfTenureDD, wfRows,
+      wfDetailOpen: !!wfe, wfd, closeWfDetail: () => this.setState({ wfId: null }),
+      toast: s.toast,
+
+      perfDeptFilters, perfGenderFilters, perfDeptDD, perfGenderDD, perfKpis, perfTrend, perfByDept, perfRows, perfCount: pFiltered.length,
+      perfDetailOpen: !!pfe, pd, closePerfDetail: () => this.setState({ perfId: null }),
+    };
+  }
+}
+</script>
+
+
+</body></html>
