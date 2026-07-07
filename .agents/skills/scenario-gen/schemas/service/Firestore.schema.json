@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/service/Firestore.schema.json",
+  "title": "Firestore ServiceBinding",
+  "description": "Google Firestore 서비스 호출 정의. SystemID='Firestore' 고정. ModuleID 로 작업 종류 식별 (Query / Save / Update / Delete).",
+  "type": "object",
+  "required": ["SystemID", "ModuleID"],
+  "additionalProperties": true,
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/commonBase" },
+    {
+      "properties": {
+        "SystemID": { "const": "Firestore" },
+        "ModuleID": {
+          "type": "string",
+          "enum": ["Query", "Save", "Update", "Delete"],
+          "description": "Firestore 작업 종류. Query=조회 / Save=신규 저장 / Update=업데이트 / Delete=삭제."
+        },
+        "Collection":     { "type": "string", "description": "Firestore 컬렉션 명칭 (서비스 대상)." },
+        "UseSearch":      { "type": "boolean", "description": "검색 모드 토글. true 면 인덱스 기반 텍스트 검색 활성화 (정렬+검색 동시 사용 시 복합 인덱스 등록 필요)." },
+        "UsePKey":        { "type": "boolean" },
+        "UseParamBlock":  { "type": "boolean" },
+        "UseResultBlock": { "type": "boolean" },
+        "UseInnerBlock":  { "type": "boolean" }
+      }
+    }
+  ]
+}

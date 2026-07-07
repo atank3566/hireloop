@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/input-file.schema.json",
+  "title": "InputFile",
+  "description": "파일 첨부 컨트롤. Module 값에 따라 백엔드 저장 방식이 갈리고 그에 맞는 Attributes shape 가 적용된다. 공통 옵션 (Title/Description/Limit/AllowExtensions/UseClickdownload) 은 본체에, 모듈별 옵션은 Attributes 안에. property-data.js inputFile() 진실원본.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType", "Module"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "InputFile" },
+
+        "Title": {
+          "type": "string",
+          "description": "컨트롤 제목 (스튜디오 프로퍼티 EDITOR_CTRL.INPUTBOX). 화면 표시용은 아니며 식별/문서용."
+        },
+        "Description": {
+          "type": "string",
+          "description": "컨트롤 설명 텍스트 (스튜디오 프로퍼티 EDITOR_CTRL.INPUTBOX)."
+        },
+
+        "Module": {
+          "type": "string",
+          "enum": ["FlexFile", "KsystemFile", "KsystemPayPDF", "HostingFolder", "ServerkitFile"],
+          "default": "FlexFile",
+          "description": "파일 저장 백엔드. ★ engine const FILE_MODULE — 'FlexFile'/'KsystemFile'/'KsystemPayPDF' 는 모든 워크스페이스, 'HostingFolder'/'ServerkitFile' 은 flex/okong/hallim/bhidev 워크스페이스에서만 노출 (스튜디오 프로퍼티 가시성). Module 변경 시 Attributes 가 해당 모듈의 FILEATTR 기본형으로 자동 초기화."
+        },
+
+        "Limit": {
+          "type": ["number", "string"],
+          "description": "업로드 제한 (개수). 프로퍼티 EDITOR_CTRL.INPUTBOX(NUMBER) — 숫자 저장 권장. 빈 문자열/0/미설정=런타임 기본."
+        },
+        "AllowExtensions": {
+          "type": "array",
+          "items": { "type": "string", "pattern": "^[a-z0-9]+$" },
+          "description": "허용 확장자 화이트리스트. 소문자/숫자만 (런타임 검증: `/^[a-z0-9]+$/`). 차단 확장자: exe, msi, bat, cmd, com, ps1, vbs, js, jar, sh, apk, dmg, docm, xlsm, pptm. ★ 스튜디오 프로퍼티 가시성: Module ∈ {FlexFile, HostingFolder, ServerkitFile} 만 노출 (KsystemFile / KsystemPayPDF 는 확장자 제어 없음)."
+        },
+        "UseClickdownload": {
+          "type": "boolean",
+          "default": false,
+          "description": "★ 키 표기 'UseClickdownload' — 소문자 'd' (engine const K.FILE.USE_CLICK_DOWNLOAD='UseClickdownload'). 'UseClickDownload' 아님. true=클릭 다운로드 활성화. ★ 스튜디오 프로퍼티 가시성: Module ≠ HostingFolder 일 때 노출 (HostingFolder 는 자체 다운로드 라우팅이라 불필요)."
+        },
+
+        "Attributes": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Module 별 백엔드 속성. shape 가 Module 값에 따라 결정됨 — 아래 if/then 분기로 강제. 운영 메타에는 모듈 전환 시 이전 모듈의 키가 남아있을 수 있어 additionalProperties:true.",
+          "properties": {
+            "UseCategory":  { "type": "boolean", "default": false, "description": "true=별도 컬렉션 카테고리에 파일 메타 누적. false=Ckeys 단일 필드에 저장 (★ InnerCKey 경로는 [no-inner-block] 정책으로 차단). FILEATTR 기본값 — FlexFile/HostingFolder/ServerkitFile=true / KsystemFile=false / KsystemPayPDF=N/A." },
+            "CategoryName": { "type": "string", "description": "UseCategory=true 일 때 사용할 카테고리명 (예: 'CtgFiles'). scenario.Panel.Category 에 정의 필요." },
+            "InnerCKey":    false,
+            "Ckeys":        { "type": "array", "items": { "type": "string" }, "description": "KsystemFile / KsystemPayPDF 의 시퀀스 키 배열 — 업로드된 파일 시퀀스를 저장할 컬렉션 필드들." },
+            "Const":        { "type": "string", "description": "KsystemFile / KsystemPayPDF — 백엔드 상수 식별자." },
+            "FlexKey":      {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "FlexFile / HostingFolder / ServerkitFile — 업로드한 파일키 저장 정보. { ckey } 구조.",
+              "properties": {
+                "ckey": { "type": "string", "description": "파일키를 저장할 컬렉션 필드명." }
+              }
+            },
+            "SharedTarget": {
+              "type": "string",
+              "enum": ["user", "tenant"],
+              "default": "tenant",
+              "description": "FlexFile 전용 공유 범위 — 'user'=사용자 전용 / 'tenant'=테넌트 공유. FILEATTR 기본값 'tenant'."
+            },
+            "Directory":  { "type": "string", "description": "FlexFile 전용 (선택) — 저장 경로 디렉토리." },
+            "FileName":   { "type": "string", "description": "HostingFolder / ServerkitFile — 저장 시 사용할 파일명 컬렉션 필드명." },
+            "FolderRoute":{ "type": "string", "description": "HostingFolder / ServerkitFile — 저장 폴더 경로 (선행/후행 슬래시 자동 정규화 — 항상 'foo/bar/' 형태)." }
+          },
+          "allOf": [
+            {
+              "$comment": "Attributes.UseCategory=true 면 CategoryName 필수.",
+              "if": {
+                "properties": { "UseCategory": { "const": true } },
+                "required": ["UseCategory"]
+              },
+              "then": { "required": ["CategoryName"] }
+            }
+          ]
+        },
+
+        "UseEvents": { "type": "boolean", "default": false, "description": "이벤트 사용. Module=KsystemPayPDF 에서는 스튜디오 프로퍼티에 노출 안 됨 (이벤트 미지원)." },
+        "Events":    { "$ref": "_base.schema.json#/$defs/inputFileEvents" }
+      }
+    },
+    {
+      "$comment": "Module='FlexFile' → Attributes.FlexKey + SharedTarget 권장. FileDataGroup 에 UseCategory 기본 true.",
+      "if": {
+        "properties": { "Module": { "const": "FlexFile" } },
+        "required": ["Module"]
+      },
+      "then": {
+        "properties": {
+          "Attributes": { "required": ["FlexKey"] }
+        }
+      }
+    },
+    {
+      "$comment": "Module='KsystemFile' → Attributes.Ckeys + Const 권장. UseCategory 기본 false.",
+      "if": {
+        "properties": { "Module": { "const": "KsystemFile" } },
+        "required": ["Module"]
+      },
+      "then": {
+        "properties": {
+          "Attributes": { "required": ["Ckeys", "Const"] }
+        }
+      }
+    },
+    {
+      "$comment": "Module='KsystemPayPDF' → Attributes.Ckeys + Const 필수. UseEvents/Events 미지원.",
+      "if": {
+        "properties": { "Module": { "const": "KsystemPayPDF" } },
+        "required": ["Module"]
+      },
+      "then": {
+        "properties": {
+          "Attributes": { "required": ["Ckeys", "Const"] }
+        }
+      }
+    },
+    {
+      "$comment": "Module='HostingFolder' / 'ServerkitFile' → Attributes.FlexKey + FileName + FolderRoute 권장.",
+      "if": {
+        "properties": { "Module": { "enum": ["HostingFolder", "ServerkitFile"] } },
+        "required": ["Module"]
+      },
+      "then": {
+        "properties": {
+          "Attributes": { "required": ["FlexKey"] }
+        }
+      }
+    }
+  ]
+}

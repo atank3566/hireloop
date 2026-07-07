@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/node.schema.json",
+  "title": "Node",
+  "description": "Group | Control 2-union (Step은 Scenario 직속이라 여기 포함하지 않음). Group.Contents[] 의 자식으로 사용.",
+  "oneOf": [
+    {
+      "type": "object",
+      "required": ["ContentsType"],
+      "properties": {
+        "ContentsType": { "const": "Group" }
+      },
+      "$ref": "group.schema.json"
+    },
+    {
+      "type": "object",
+      "required": ["ControlType"],
+      "properties": {
+        "ControlType": { "type": "string" }
+      },
+      "$ref": "control.schema.json"
+    }
+  ]
+}

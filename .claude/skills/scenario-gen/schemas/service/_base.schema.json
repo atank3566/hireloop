@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/service/_base.schema.json",
+  "title": "Service Base",
+  "description": "서비스 종류별 ServiceBinding 분기에서 공통으로 쓰는 $defs. 각 service/<type>.schema.json 은 commonBase 위에 분기별 키를 얹는다 (allOf).",
+
+  "$defs": {
+    "commonBase": {
+      "type": "object",
+      "description": "모든 ServiceBinding 항목에 공통으로 등장하는 필드. 실 샘플 99 항목 통계 기반.",
+      "properties": {
+        "SystemID":             { "type": "string", "description": "시스템 식별자. FlexSQL / Firestore / Custom / ksystem / New_<NN> 등." },
+        "SystemType":           { "type": "string", "description": "시스템 종류 (CustomSystem / 비어있음 / FlexAutoQuery 등)." },
+        "ModuleID":             { "type": "string", "description": "모듈 식별자. FlexSQL='Default' / Firestore='Query' / FlexAPI / GUID(CustomSystem) 등." },
+        "ServiceName":          { "type": "string" },
+        "SetCategory":          { "type": "boolean", "description": "결과 반영 대상 카테고리 토글. 프로퍼티 SWITCH 가 boolean 저장." },
+        "UsePKey":              { "type": "boolean" },
+        "UseParamBlock":        { "type": "boolean" },
+        "UseResultBlock":       { "type": "boolean" },
+        "UseInnerBlock":        { "type": "boolean" },
+        "NotSeperateInnerBlock":{ "type": "boolean", "description": "InnerBlock 분리 안 함. 서버 내부 동작에 영향." }
+      }
+    },
+
+    "systemIDPattern": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_]*$",
+      "description": "SystemID 패턴. 영문 시작, 영문/숫자/언더스코어. 실 샘플: FlexSQL / Firestore / Custom / ksystem / New_01 / New_05."
+    }
+  }
+}

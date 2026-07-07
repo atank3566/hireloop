@@ -1,0 +1,92 @@
+{
+  "tier": "atom",
+  "name": "segmented-radio",
+  "path": "schema/v1/patterns/atom/segmented-radio.schema.json",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://flextudio.local/meta-contract/v1/patterns/atom/segmented-radio.schema.json",
+    "title": "pattern.atom.segmented-radio",
+    "description": "세그먼티드 라디오 아톰. RadioBox + `ControlStyle:\"stylePeriod\"` 로 동등 분할된 탭형 단일 선택. 같은 리스트의 필터/뷰 전환 등 화면 전체가 바뀌지 않는 옵션 토글에 사용 (탭 전환이 필요하면 Tab 컨트롤). items 는 string 배열 — 각 항목의 표시 텍스트와 저장 값이 동일하게 매핑된다. 너비 100% / 높이 35px 고정(단 stylePeriod 항목 높이는 엔진 CSS `.stylePeriod label{min-height:2em}` 가 우선이라 meta Height 는 무시되고 실제 약 25px 로 렌더됨 — meta 로 조절 불가). 선택 시 박스 내부가 Ink(검정) 으로 채워지는 Expo 디자인. 라운드/타이포는 DESIGN.md 기준이라 prop 으로 노출하지 않는다. ★ 데이터 바인딩(폼 입력)으로 쓸 때는 `saveValueKey`(+선택적 `saveNameKey`) 를 넘긴다 — 머티리얼라이저가 `Ckeys`+`SaveValueKey`(+`SaveNameKey`) 로 emit 한다. 이 키들은 **섹터(목업/카테고리 데이터)의 필드명** 이어야 하므로, 목업 데이터를 생성했다면 거기서 쓰는 키로 맞춘다 (rules.md §5.5.1). 순수 필터/뷰 토글(선택값 저장 불필요)이면 생략 가능. `CtrlDisplayCkey` 는 RadioBox 미사용이라 넣지 않는다.",
+    "x-tier": "atom",
+    "x-tags": [
+      "radio",
+      "segmented",
+      "toggle",
+      "tabs",
+      "filter"
+    ],
+    "x-related": [],
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "items"
+    ],
+    "properties": {
+      "items": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 5,
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 20,
+          "description": "세그먼트 라벨. ItemName 과 ItemValue 양쪽에 동일하게 들어간다."
+        },
+        "description": "세그먼트 선택지. 2~5개. 표시 텍스트와 저장 값이 같으면 충분한 단순 필터/뷰 토글에 사용. 더 많거나 더 표현이 필요하면 일반 RadioBox 패턴."
+      },
+      "saveValueKey": {
+        "type": "string",
+        "minLength": 1,
+        "description": "선택값(ItemValue)을 저장할 섹터 필드명 = 목업/카테고리 데이터의 키. 데이터 바인딩(폼 입력)으로 쓸 때 지정 — 지정 시 머티리얼라이저가 SaveValueKey + Ckeys 를 emit. 순수 필터/뷰 토글이면 생략."
+      },
+      "saveNameKey": {
+        "type": "string",
+        "minLength": 1,
+        "description": "표시명(ItemName)을 저장할 섹터 필드명 = 목업/카테고리 데이터의 키. saveValueKey 와 함께 지정 — 지정 시 SaveNameKey + Ckeys 에 포함. segmented 는 ItemName===ItemValue 라 보통 saveValueKey 만으로 충분."
+      },
+      "override": {
+        "type": "object",
+        "propertyNames": {
+          "enum": [
+            "root"
+          ]
+        },
+        "additionalProperties": {
+          "type": "object"
+        },
+        "description": "(L1 escape hatch) 패턴이 노출하지 않는 raw 엔진 메타데이터를 materialized 결과 노드에 deep-merge 로 주입한다. 이 패턴은 단일 컨트롤이라 anchor 는 'root'(결과 노드 자체) 하나. 값은 해당 ControlType 에 유효한 control 레벨 필드 패치이며, 어떤 엔진 스키마에든 정의된 필드명만 검증을 통과한다(예: ControlKey, DefaultValue, 이벤트 바인딩). ★ UseMove/MoveSteps 같은 Step 이동(Group 레벨) 기능은 atom 컨트롤이 아니라 Group(molecule 의 root anchor / raw Group)에 주입한다. 배열 필드는 deep-merge 가 아니라 통째 교체된다. props 로 충분한 일반 케이스엔 쓰지 않는다.",
+        "examples": [
+          {
+            "root": {
+              "DefaultValue": "1"
+            }
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "items": [
+          "대기",
+          "진행중",
+          "완료"
+        ]
+      },
+      {
+        "items": [
+          "법인카드",
+          "개인경비 후정산"
+        ],
+        "saveValueKey": "PaymentValue",
+        "saveNameKey": "PaymentName"
+      },
+      {
+        "items": [
+          "전체",
+          "내 것만"
+        ]
+      }
+    ]
+  }
+}

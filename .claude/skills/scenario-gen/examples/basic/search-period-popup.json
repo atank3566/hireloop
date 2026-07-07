@@ -1,0 +1,1524 @@
+{
+  "Steps": {
+    "Step1": {
+      "StepTitle": "출하의뢰조회",
+      "UseStepHeader": true,
+      "StepType": "StepView",
+      "Next": [
+        "Step2"
+      ],
+      "Padding": {
+        "All": "",
+        "Left": "0",
+        "Top": "0",
+        "UseEach": true,
+        "Right": "0",
+        "Btm": "0",
+        "UseAuto": true
+      },
+      "StepName": "",
+      "UseBackButton": false,
+      "Contents": [
+        {
+          "Contents": [
+            {
+              "DisplayValue": "",
+              "Caption": "",
+              "isColumnCtrl": false,
+              "Dialog": {
+                "Layouts": [
+                  {
+                    "Controls": [
+                      {
+                        "StartDate": {
+                          "Ckeys": []
+                        },
+                        "UseMultiData": false,
+                        "SelectType": "FromTo",
+                        "ControlType": "Calendar",
+                        "Id": "f_40897",
+                        "EndDate": {
+                          "Ckeys": []
+                        },
+                        "CalendarType": "dayCalendar",
+                        "UseCategory": false,
+                        "UseDlgSetting": false
+                      }
+                    ],
+                    "ContentsType": "Layout"
+                  }
+                ]
+              },
+              "DateFormat": "YYYY.MM.DD",
+              "ControlType": "InputDate",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "48",
+                "SizeUnit": "px"
+              },
+              "Id": "f_40898",
+              "ControlName2": "",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13",
+                "FontAlign": "flex-start"
+              },
+              "ControlStyle": "None",
+              "Placeholder": "조회 기간을 선택해주세요.",
+              "BorderStyle": {
+                "Useborder": true,
+                "RadiusSet": "All",
+                "BorderRadius": "8",
+                "BorderColor": "var(--colorGray4)",
+                "BorderType": "solid",
+                "BorderSize": "1",
+                "SizeSet": "All"
+              },
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              }
+            },
+            {
+              "AbsolutePosition": {
+                "Right": "1",
+                "SizeUnit": "px",
+                "Left": "",
+                "Top": "1"
+              },
+              "UseDataConnection": false,
+              "UseAbsoluteLayout": true,
+              "DisplayStyle": {
+                "FlexDirection": "row",
+                "DisplayVerticalAlign": "Center",
+                "DisplayAlign": "Center",
+                "DisplayType": "Flex",
+                "flexBoxType": "align",
+                "UseDisplay": true
+              },
+              "BgStyle": {
+                "BgColor": "var(--colorWhite)",
+                "UseBackground": true
+              },
+              "ContentsName": "필터",
+              "ContentStyle": "None",
+              "Contents": [
+                {
+                  "ControlStyle": "styleLineNone",
+                  "UseClickEvent": false,
+                  "ControlType": "Button",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "28",
+                    "SizeUnit": "px"
+                  },
+                  "UseMove": false,
+                  "Id": "f_40899",
+                  "ControlName2": "",
+                  "ImageStyle": {
+                    "IsLineIcon": true,
+                    "Img": "B_000_108",
+                    "UseImage": true,
+                    "ImageSize": "24",
+                    "ImageColor": "var(--colorGray2)"
+                  },
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": "28",
+                    "SizeUnit": "px"
+                  },
+                  "Caption": "Button1",
+                  "isColumnCtrl": false
+                },
+                {
+                  "FontStyle": {
+                    "FontColor": "rgb(255, 255, 255)",
+                    "UseFont": true,
+                    "FontAlign": "center",
+                    "UseBold": true,
+                    "FontSize": "10"
+                  },
+                  "AbsolutePosition": {
+                    "Right": "7",
+                    "SizeUnit": "px",
+                    "Left": "",
+                    "Top": "10"
+                  },
+                  "UseAbsoluteLayout": true,
+                  "BorderStyle": {
+                    "Useborder": true,
+                    "RadiusSet": "None"
+                  },
+                  "BgStyle": {
+                    "BgColor": "var(--colorPink)",
+                    "UseBackground": true
+                  },
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "ControlStyle": "None",
+                  "labeltext": "2",
+                  "LabelType": "labeltext",
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "12"
+                  },
+                  "Id": "f_40900",
+                  "ControlName2": "",
+                  "ImageStyle": {},
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": "12",
+                    "SizeUnit": "text"
+                  }
+                }
+              ],
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "45"
+              },
+              "UseMove": true,
+              "Id": "f_40901",
+              "Width": {
+                "MatchText": false,
+                "SizeValue": "44",
+                "SizeUnit": "px"
+              },
+              "ContentsType": "Group",
+              "MoveSteps": {
+                "MoveStepOrder": [
+                  "Step2"
+                ],
+                "Step2": {
+                  "Condition": "",
+                  "MoveTo": "Next",
+                  "Direction": "toRight"
+                }
+              }
+            }
+          ],
+          "UseDataConnection": false,
+          "BorderStyle": {},
+          "Padding": {
+            "All": "",
+            "SizeUnit": "px",
+            "Left": "16",
+            "Top": "8",
+            "UseEach": true,
+            "Right": "16",
+            "Btm": "16",
+            "UseAuto": true
+          },
+          "Id": "f_40902",
+          "ContentsName": "기간선택",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsType": "Group",
+          "ContentStyle": "None"
+        },
+        {
+          "UseDataConnection": false,
+          "DisplayStyle": {},
+          "Padding": {
+            "All": "16",
+            "UseAuto": true,
+            "SizeUnit": "px"
+          },
+          "Id": "f_40903",
+          "ContentsName": "ListWrap",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "Contents": [
+            {
+              "Contents": [
+                {
+                  "EditGroup": {},
+                  "ViewGroup": {
+                    "ImageSrcType": "Upload"
+                  },
+                  "BorderStyle": {
+                    "Useborder": true,
+                    "BorderRadius": "8",
+                    "BorderColor": "var(--colorGray5)",
+                    "SizeSet": "All",
+                    "BorderSize": 1,
+                    "BorderType": "solid",
+                    "RadiusSet": "All"
+                  },
+                  "ImageBoxType": "View",
+                  "ControlType": "ImageBox",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "56",
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_40904",
+                  "ControlName2": "ProductImage",
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": "56",
+                    "SizeUnit": "px"
+                  },
+                  "Caption": "ImageBox1",
+                  "isColumnCtrl": false,
+                  "UseFixedSize": true,
+                  "UseDefaultValue": false,
+                  "DefaultViewGroup": {
+                    "ImageSrcType": "Upload"
+                  }
+                },
+                {
+                  "Contents": [
+                    {
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray1)",
+                        "UseFont": true,
+                        "FontSize": "15"
+                      },
+                      "BgStyle": {},
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "None",
+                      "labeltext": "케이숲 카밍 세라 샴푸 허브 플로럴향",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_40905",
+                      "ControlName2": "",
+                      "ImageStyle": {},
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      }
+                    },
+                    {
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray3)",
+                        "UseFont": true,
+                        "FontSize": "13"
+                      },
+                      "BgStyle": {},
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "None",
+                      "labeltext": "KFS-23156",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_40906",
+                      "ControlName2": "",
+                      "ImageStyle": {},
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      }
+                    },
+                    {
+                      "Contents": [
+                        {
+                          "Contents": [
+                            {
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray3)",
+                                "UseFont": true,
+                                "FontSize": "13"
+                              },
+                              "BgStyle": {},
+                              "Caption": "Label1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "None",
+                              "labeltext": "개당 1,200원",
+                              "LabelType": "labeltext",
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_40907",
+                              "ControlName2": "",
+                              "ImageStyle": {},
+                              "Width": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              }
+                            },
+                            {
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray3)",
+                                "UseFont": true,
+                                "FontSize": "13"
+                              },
+                              "BgStyle": {},
+                              "Caption": "Label1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "None",
+                              "labeltext": "1L*50ea",
+                              "LabelType": "labeltext",
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_40908",
+                              "ControlName2": "",
+                              "ImageStyle": {},
+                              "Width": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              }
+                            }
+                          ],
+                          "UseDataConnection": false,
+                          "DisplayStyle": {
+                            "columnGapValue": "4",
+                            "columnGapUnit": "px",
+                            "DisplayType": "Flex",
+                            "FlexDirection": "row",
+                            "DisplayVerticalAlign": "Top",
+                            "DisplayAlign": "Left",
+                            "flexBoxType": "align",
+                            "UseDisplay": true
+                          },
+                          "Id": "f_40909",
+                          "ContentsName": "Option",
+                          "Width": {
+                            "SizeValue": 100,
+                            "SizeUnit": "%"
+                          },
+                          "ContentsType": "Group",
+                          "ContentStyle": "None"
+                        },
+                        {
+                          "Contents": [
+                            {
+                              "ControlType": "Label",
+                              "ControlStyle": "None",
+                              "LabelType": "labeltext",
+                              "Width": {
+                                "SizeValue": "20",
+                                "SizeUnit": "px",
+                                "MatchText": false
+                              },
+                              "Height": {
+                                "MatchText": false,
+                                "SizeValue": "20"
+                              },
+                              "ControlName2": "icon",
+                              "Caption": "Label3",
+                              "Id": "f_41518",
+                              "isColumnCtrl": false,
+                              "ImageStyle": {
+                                "UseImage": true,
+                                "IsLineIcon": true,
+                                "Img": "B_000_040",
+                                "ImageSize": "20",
+                                "ImageColor": "var(--colorSub7)"
+                              }
+                            },
+                            {
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray1)",
+                                "UseFont": true,
+                                "FontWeight": "Medium",
+                                "FontSize": "15"
+                              },
+                              "BorderStyle": {},
+                              "BgStyle": {},
+                              "Caption": "Label2",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "None",
+                              "labeltext": "5/5 Box",
+                              "LabelType": "labeltext",
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_40911",
+                              "ControlName2": "",
+                              "UseTriming": false,
+                              "ImageStyle": {},
+                              "Width": {
+                                "MatchText": true
+                              },
+                              "UseFixedSize": true
+                            }
+                          ],
+                          "UseDataConnection": false,
+                          "DisplayStyle": {
+                            "columnGapValue": "4",
+                            "columnGapUnit": "px",
+                            "DisplayType": "Flex",
+                            "FlexDirection": "row",
+                            "DisplayVerticalAlign": "Center",
+                            "DisplayAlign": "Left",
+                            "flexBoxType": "align",
+                            "UseDisplay": true
+                          },
+                          "Id": "f_40912",
+                          "ContentsName": "Count",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseFixedSize": true
+                        }
+                      ],
+                      "UseDataConnection": false,
+                      "DisplayStyle": {
+                        "columnGapValue": "4",
+                        "columnGapUnit": "px",
+                        "DisplayType": "Flex",
+                        "FlexDirection": "row",
+                        "DisplayVerticalAlign": "Top",
+                        "DisplayAlign": "Left",
+                        "flexBoxType": "align",
+                        "UseDisplay": true
+                      },
+                      "Id": "f_40913",
+                      "ContentsName": "OptionRow",
+                      "Width": {
+                        "SizeValue": 100,
+                        "SizeUnit": "%"
+                      },
+                      "ContentsType": "Group",
+                      "ContentStyle": "None"
+                    }
+                  ],
+                  "UseDataConnection": false,
+                  "DisplayStyle": {
+                    "rowGapValue": "4",
+                    "DisplayType": "Flex",
+                    "FlexDirection": "column",
+                    "DisplayVerticalAlign": "Bottom",
+                    "DisplayAlign": "Left",
+                    "flexBoxType": "align",
+                    "UseDisplay": true,
+                    "rowGapUnit": "px"
+                  },
+                  "Id": "f_40914",
+                  "ContentsName": "Contents",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentsType": "Group",
+                  "ContentStyle": "None"
+                }
+              ],
+              "UseDataConnection": false,
+              "DisplayStyle": {
+                "columnGapValue": "8",
+                "columnGapUnit": "px",
+                "DisplayType": "Flex",
+                "FlexDirection": "row",
+                "DisplayVerticalAlign": "Top",
+                "DisplayAlign": "Left",
+                "flexBoxType": "align",
+                "UseDisplay": true
+              },
+              "BorderStyle": {},
+              "Padding": {
+                "All": "",
+                "SizeUnit": "px",
+                "Left": "0",
+                "Top": "8",
+                "UseEach": true,
+                "Right": "0",
+                "Btm": "8",
+                "UseAuto": true
+              },
+              "Id": "f_40915",
+              "ContentsName": "Item",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "isColumnCtrl": false
+            },
+            {
+              "Contents": [
+                {
+                  "EditGroup": {},
+                  "ViewGroup": {
+                    "ImageSrcType": "Upload"
+                  },
+                  "BorderStyle": {
+                    "Useborder": true,
+                    "BorderRadius": "8",
+                    "BorderColor": "var(--colorGray5)",
+                    "SizeSet": "All",
+                    "BorderSize": 1,
+                    "BorderType": "solid",
+                    "RadiusSet": "All"
+                  },
+                  "ImageBoxType": "View",
+                  "ControlType": "ImageBox",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "56",
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_40916",
+                  "ControlName2": "ProductImage",
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": "56",
+                    "SizeUnit": "px"
+                  },
+                  "Caption": "ImageBox1",
+                  "isColumnCtrl": false,
+                  "UseFixedSize": true,
+                  "UseDefaultValue": false,
+                  "DefaultViewGroup": {
+                    "ImageSrcType": "Upload"
+                  }
+                },
+                {
+                  "Contents": [
+                    {
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray1)",
+                        "UseFont": true,
+                        "FontSize": "15"
+                      },
+                      "BgStyle": {},
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "None",
+                      "labeltext": "케이숲 카밍 세라 샴푸 허브 플로럴향",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_40917",
+                      "ControlName2": "",
+                      "ImageStyle": {},
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      }
+                    },
+                    {
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray3)",
+                        "UseFont": true,
+                        "FontSize": "13"
+                      },
+                      "BgStyle": {},
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "None",
+                      "labeltext": "KFS-23156",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_40918",
+                      "ControlName2": "",
+                      "ImageStyle": {},
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      }
+                    },
+                    {
+                      "Contents": [
+                        {
+                          "Contents": [
+                            {
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray3)",
+                                "UseFont": true,
+                                "FontSize": "13"
+                              },
+                              "BgStyle": {},
+                              "Caption": "Label1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "None",
+                              "labeltext": "개당 1,200원",
+                              "LabelType": "labeltext",
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_40919",
+                              "ControlName2": "",
+                              "ImageStyle": {},
+                              "Width": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              }
+                            },
+                            {
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray3)",
+                                "UseFont": true,
+                                "FontSize": "13"
+                              },
+                              "BgStyle": {},
+                              "Caption": "Label1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "None",
+                              "labeltext": "1L*50ea",
+                              "LabelType": "labeltext",
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_40920",
+                              "ControlName2": "KFS-23156_copy",
+                              "ImageStyle": {},
+                              "Width": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              }
+                            }
+                          ],
+                          "UseDataConnection": false,
+                          "DisplayStyle": {
+                            "columnGapValue": "4",
+                            "columnGapUnit": "px",
+                            "DisplayType": "Flex",
+                            "FlexDirection": "row",
+                            "DisplayVerticalAlign": "Top",
+                            "DisplayAlign": "Left",
+                            "flexBoxType": "align",
+                            "UseDisplay": true
+                          },
+                          "Id": "f_40921",
+                          "ContentsName": "Option",
+                          "Width": {
+                            "SizeValue": 100,
+                            "SizeUnit": "%"
+                          },
+                          "ContentsType": "Group",
+                          "ContentStyle": "None"
+                        },
+                        {
+                          "Contents": [
+                            {
+                              "ControlType": "Label",
+                              "ControlStyle": "None",
+                              "LabelType": "labeltext",
+                              "Width": {
+                                "SizeValue": "20",
+                                "SizeUnit": "px",
+                                "MatchText": false
+                              },
+                              "Height": {
+                                "MatchText": false,
+                                "SizeValue": "20"
+                              },
+                              "ControlName2": "icon_copy",
+                              "Caption": "Label3",
+                              "Id": "f_42308",
+                              "isColumnCtrl": false,
+                              "ImageStyle": {
+                                "UseImage": true,
+                                "IsLineIcon": true,
+                                "Img": "B_000_040",
+                                "ImageSize": "20",
+                                "ImageColor": "var(--colorSub7)"
+                              }
+                            },
+                            {
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray1)",
+                                "UseFont": true,
+                                "FontWeight": "Medium",
+                                "FontSize": "15"
+                              },
+                              "BorderStyle": {},
+                              "BgStyle": {},
+                              "Caption": "Label2",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "None",
+                              "labeltext": "5/5 Box",
+                              "LabelType": "labeltext",
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_40923",
+                              "ControlName2": "",
+                              "UseTriming": false,
+                              "ImageStyle": {},
+                              "Width": {
+                                "MatchText": true
+                              },
+                              "UseFixedSize": true
+                            }
+                          ],
+                          "UseDataConnection": false,
+                          "DisplayStyle": {
+                            "columnGapValue": "4",
+                            "columnGapUnit": "px",
+                            "DisplayType": "Flex",
+                            "FlexDirection": "row",
+                            "DisplayVerticalAlign": "Center",
+                            "DisplayAlign": "Left",
+                            "flexBoxType": "align",
+                            "UseDisplay": true
+                          },
+                          "Id": "f_40924",
+                          "ContentsName": "Count",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseFixedSize": true
+                        }
+                      ],
+                      "UseDataConnection": false,
+                      "DisplayStyle": {
+                        "columnGapValue": "4",
+                        "columnGapUnit": "px",
+                        "DisplayType": "Flex",
+                        "FlexDirection": "row",
+                        "DisplayVerticalAlign": "Top",
+                        "DisplayAlign": "Left",
+                        "flexBoxType": "align",
+                        "UseDisplay": true
+                      },
+                      "Id": "f_40925",
+                      "ContentsName": "OptionRow",
+                      "Width": {
+                        "SizeValue": 100,
+                        "SizeUnit": "%"
+                      },
+                      "ContentsType": "Group",
+                      "ContentStyle": "None"
+                    }
+                  ],
+                  "UseDataConnection": false,
+                  "DisplayStyle": {
+                    "rowGapValue": "4",
+                    "DisplayType": "Flex",
+                    "FlexDirection": "column",
+                    "DisplayVerticalAlign": "Bottom",
+                    "DisplayAlign": "Left",
+                    "flexBoxType": "align",
+                    "UseDisplay": true,
+                    "rowGapUnit": "px"
+                  },
+                  "Id": "f_40926",
+                  "ContentsName": "Contents",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentsType": "Group",
+                  "ContentStyle": "None"
+                }
+              ],
+              "UseDataConnection": false,
+              "DisplayStyle": {
+                "columnGapValue": "8",
+                "columnGapUnit": "px",
+                "DisplayType": "Flex",
+                "FlexDirection": "row",
+                "DisplayVerticalAlign": "Top",
+                "DisplayAlign": "Left",
+                "flexBoxType": "align",
+                "UseDisplay": true
+              },
+              "BorderStyle": {},
+              "Padding": {
+                "All": "",
+                "SizeUnit": "px",
+                "Left": "0",
+                "Top": "8",
+                "UseEach": true,
+                "Right": "0",
+                "Btm": "8",
+                "UseAuto": true
+              },
+              "Id": "f_40927",
+              "ContentsName": "Item-1",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "isColumnCtrl": false
+            },
+            {
+              "Contents": [
+                {
+                  "EditGroup": {},
+                  "ViewGroup": {
+                    "ImageSrcType": "Upload"
+                  },
+                  "BorderStyle": {
+                    "Useborder": true,
+                    "BorderRadius": "8",
+                    "BorderColor": "var(--colorGray5)",
+                    "SizeSet": "All",
+                    "BorderSize": 1,
+                    "BorderType": "solid",
+                    "RadiusSet": "All"
+                  },
+                  "ImageBoxType": "View",
+                  "ControlType": "ImageBox",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "56",
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_40928",
+                  "ControlName2": "ProductImage",
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": "56",
+                    "SizeUnit": "px"
+                  },
+                  "Caption": "ImageBox1",
+                  "isColumnCtrl": false,
+                  "UseFixedSize": true,
+                  "UseDefaultValue": false,
+                  "DefaultViewGroup": {
+                    "ImageSrcType": "Upload"
+                  }
+                },
+                {
+                  "Contents": [
+                    {
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray1)",
+                        "UseFont": true,
+                        "FontSize": "15"
+                      },
+                      "BgStyle": {},
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "None",
+                      "labeltext": "케이숲 카밍 세라 샴푸 허브 플로럴향",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_40929",
+                      "ControlName2": "",
+                      "ImageStyle": {},
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      }
+                    },
+                    {
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray3)",
+                        "UseFont": true,
+                        "FontSize": "13"
+                      },
+                      "BgStyle": {},
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "None",
+                      "labeltext": "KFS-23156",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_40930",
+                      "ControlName2": "",
+                      "ImageStyle": {},
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      }
+                    },
+                    {
+                      "Contents": [
+                        {
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "FontSize": "13"
+                          },
+                          "BgStyle": {},
+                          "Caption": "Label1",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "None",
+                          "labeltext": "개당 1,200원",
+                          "LabelType": "labeltext",
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": ""
+                          },
+                          "Id": "f_40931",
+                          "ControlName2": "",
+                          "ImageStyle": {},
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true
+                        },
+                        {
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "FontSize": "13"
+                          },
+                          "BgStyle": {},
+                          "Caption": "Label1",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "None",
+                          "labeltext": "1L*50ea",
+                          "LabelType": "labeltext",
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": ""
+                          },
+                          "Id": "f_40932",
+                          "ControlName2": "",
+                          "ImageStyle": {},
+                          "Width": {
+                            "MatchText": false,
+                            "SizeValue": "100",
+                            "SizeUnit": "%"
+                          }
+                        },
+                        {
+                          "Contents": [
+                            {
+                              "FontStyle": {
+                                "FontColor": "var(--colorPink)",
+                                "UseFont": true,
+                                "FontWeight": "Medium",
+                                "FontSize": "15"
+                              },
+                              "BorderStyle": {},
+                              "BgStyle": {},
+                              "Caption": "Label2",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "None",
+                              "labeltext": "0/5 Box",
+                              "LabelType": "labeltext",
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_40933",
+                              "ControlName2": "0/5 Box_copy",
+                              "UseTriming": false,
+                              "Width": {
+                                "MatchText": true
+                              },
+                              "UseFixedSize": true
+                            }
+                          ],
+                          "UseDataConnection": false,
+                          "Id": "f_40934",
+                          "ContentsName": "Count",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseFixedSize": true
+                        }
+                      ],
+                      "UseDataConnection": false,
+                      "DisplayStyle": {
+                        "columnGapValue": "4",
+                        "columnGapUnit": "px",
+                        "DisplayType": "Flex",
+                        "FlexDirection": "row",
+                        "DisplayVerticalAlign": "Top",
+                        "DisplayAlign": "Left",
+                        "flexBoxType": "align",
+                        "UseDisplay": true
+                      },
+                      "Id": "f_40935",
+                      "ContentsName": "OptionRow",
+                      "Width": {
+                        "SizeValue": 100,
+                        "SizeUnit": "%"
+                      },
+                      "ContentsType": "Group",
+                      "ContentStyle": "None"
+                    }
+                  ],
+                  "UseDataConnection": false,
+                  "DisplayStyle": {
+                    "rowGapValue": "4",
+                    "DisplayType": "Flex",
+                    "FlexDirection": "column",
+                    "DisplayVerticalAlign": "Bottom",
+                    "DisplayAlign": "Left",
+                    "flexBoxType": "align",
+                    "UseDisplay": true,
+                    "rowGapUnit": "px"
+                  },
+                  "Id": "f_40936",
+                  "ContentsName": "Contents",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "isColumnCtrl": false
+                }
+              ],
+              "UseDataConnection": false,
+              "DisplayStyle": {
+                "columnGapValue": "8",
+                "columnGapUnit": "px",
+                "DisplayType": "Flex",
+                "FlexDirection": "row",
+                "DisplayVerticalAlign": "Top",
+                "DisplayAlign": "Left",
+                "flexBoxType": "align",
+                "UseDisplay": true
+              },
+              "BorderStyle": {},
+              "Padding": {
+                "All": "",
+                "SizeUnit": "px",
+                "Left": "0",
+                "Top": "8",
+                "UseEach": true,
+                "Right": "0",
+                "Btm": "8",
+                "UseAuto": true
+              },
+              "Id": "f_40937",
+              "ContentsName": "Item-3",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "isColumnCtrl": false
+            }
+          ]
+        }
+      ],
+      "StepRow": 0,
+      "StepCol": 0
+    },
+    "Step2": {
+      "StepDialogType": "PopUp",
+      "UseStepHeader": true,
+      "StepType": "StepView",
+      "BottomButtons": [
+        {
+          "BgStyle": {},
+          "FontStyle": {
+            "FontColor": "var(--colorBlack)",
+            "UseFont": true
+          },
+          "Id": "f_41018",
+          "ButtonName": "조회하기",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "BorderStyle": {
+            "BorderColor": "var(--colorBlack)",
+            "SizeSet": "All",
+            "Useborder": true,
+            "BorderSize": "0",
+            "BorderType": "solid",
+            "BorderRadius": "8",
+            "RadiusSet": "All"
+          },
+          "MoveTo": "Prev",
+          "IsRestored": "",
+          "Prev": {
+            "MoveStepOrder": []
+          },
+          "Padding": {}
+        }
+      ],
+      "StepName": "",
+      "BgStyle": {
+        "BgColor": "var(--colorGray10)",
+        "UseBackground": true
+      },
+      "StepTitle": "상세조건",
+      "FixedContentsTop": [],
+      "StepButton": {
+        "Height": {
+          "SizeValue": 56,
+          "SizeUnit": "px"
+        }
+      },
+      "Next": [],
+      "UseBottomButton": true,
+      "UseBackButton": true,
+      "Padding": {
+        "All": "20",
+        "SizeUnit": "px",
+        "UseEach": false,
+        "UseAuto": true
+      },
+      "Contents": [
+        {
+          "Contents": [
+            {
+              "Placeholder": "납기일 선택",
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              },
+              "DisplayValue": "",
+              "Caption": "납기일",
+              "isColumnCtrl": false,
+              "ControlStyle": "None",
+              "Dialog": {
+                "Layouts": [
+                  {
+                    "Controls": [
+                      {
+                        "SelectType": "SingleDate",
+                        "SingleDate": {
+                          "Ckeys": []
+                        },
+                        "ControlType": "Calendar",
+                        "Id": "f_41019",
+                        "CalendarType": "dayCalendar",
+                        "UseDlgSetting": false
+                      }
+                    ],
+                    "ContentsType": "Layout"
+                  }
+                ]
+              },
+              "DateFormat": "YYYY.MM.DD",
+              "ControlType": "InputDate",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "68",
+                "SizeUnit": "px"
+              },
+              "Id": "f_41020",
+              "ControlName2": "",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13",
+                "FontAlign": "flex-start"
+              },
+              "BorderStyle": {
+                "Useborder": true,
+                "RadiusSet": "All",
+                "BorderRadius": "8",
+                "BorderSize": "1",
+                "SizeSet": "All",
+                "BorderColor": "var(--colorGray4)",
+                "BorderType": "solid"
+              }
+            },
+            {
+              "ControlDefaultName": "Search2",
+              "Placeholder": "출하의뢰번호 검색",
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              },
+              "Caption": "출하의뢰번호",
+              "isColumnCtrl": false,
+              "ControlStyle": "None",
+              "Dialog": {
+                "Layouts": [
+                  {
+                    "Controls": [
+                      {
+                        "Title": "",
+                        "ControlType": "List",
+                        "isColumnCtrl": false
+                      }
+                    ],
+                    "ContentsType": "Layout"
+                  }
+                ]
+              },
+              "ControlType": "Search",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "68",
+                "SizeUnit": "px"
+              },
+              "Id": "f_41021",
+              "ControlName2": "",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13",
+                "FontAlign": "flex-start"
+              },
+              "BorderStyle": {
+                "Useborder": true,
+                "RadiusSet": "All",
+                "BorderRadius": "8",
+                "BorderColor": "var(--colorGray4)",
+                "BorderType": "solid",
+                "BorderSize": "1",
+                "SizeSet": "All"
+              }
+            },
+            {
+              "ControlDefaultName": "Search1",
+              "Placeholder": "납품거래처 검색",
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              },
+              "Caption": "납품거래처",
+              "isColumnCtrl": false,
+              "ControlStyle": "None",
+              "Dialog": {
+                "Layouts": [
+                  {
+                    "Controls": [
+                      {
+                        "Title": "",
+                        "ControlType": "List",
+                        "isColumnCtrl": false
+                      }
+                    ],
+                    "ContentsType": "Layout"
+                  }
+                ]
+              },
+              "ControlType": "Search",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "68",
+                "SizeUnit": "px"
+              },
+              "Id": "f_41022",
+              "ControlName2": "",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13",
+                "FontAlign": "flex-start"
+              },
+              "BorderStyle": {
+                "Useborder": true,
+                "RadiusSet": "All",
+                "BorderRadius": "8",
+                "BorderColor": "var(--colorGray4)",
+                "BorderType": "solid",
+                "BorderSize": "1",
+                "SizeSet": "All"
+              }
+            },
+            {
+              "ControlDefaultName": "InputText1",
+              "Placeholder": "품번 입력",
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              },
+              "Caption": "품번",
+              "isColumnCtrl": false,
+              "ControlStyle": "None",
+              "InputType": "text",
+              "ControlType": "InputText",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "68",
+                "SizeUnit": "px"
+              },
+              "Id": "f_41023",
+              "ControlName2": "",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13",
+                "FontAlign": "flex-start"
+              },
+              "BorderStyle": {
+                "Useborder": true,
+                "RadiusSet": "All",
+                "BorderRadius": "8",
+                "BorderColor": "var(--colorGray4)",
+                "BorderType": "solid",
+                "BorderSize": "1",
+                "SizeSet": "All"
+              }
+            },
+            {
+              "ControlDefaultName": "InputText1",
+              "Placeholder": "품명 입력",
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              },
+              "Caption": "품명",
+              "isColumnCtrl": false,
+              "ControlStyle": "None",
+              "InputType": "text",
+              "ControlType": "InputText",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "68",
+                "SizeUnit": "px"
+              },
+              "Id": "f_41024",
+              "ControlName2": "",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13",
+                "FontAlign": "flex-start"
+              },
+              "BorderStyle": {
+                "Useborder": true,
+                "RadiusSet": "All",
+                "BorderRadius": "8",
+                "BorderColor": "var(--colorGray4)",
+                "BorderType": "solid",
+                "BorderSize": "1",
+                "SizeSet": "All"
+              }
+            }
+          ],
+          "UseDataConnection": false,
+          "DisplayStyle": {
+            "rowGapValue": "8",
+            "DisplayType": "Flex",
+            "FlexDirection": "column",
+            "DisplayVerticalAlign": "Top",
+            "DisplayAlign": "Left",
+            "flexBoxType": "align",
+            "UseDisplay": true,
+            "rowGapUnit": "px"
+          },
+          "Padding": {},
+          "Id": "f_41025",
+          "ContentsName": "QueryList",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsType": "Group",
+          "ContentStyle": "None"
+        }
+      ],
+      "PopupPosition": "Top Right",
+      "Width": {
+        "MatchText": false,
+        "SizeValue": "80"
+      },
+      "BackButton": {
+        "Next": "None",
+        "IsRestored": true
+      },
+      "StepRow": 0,
+      "StepCol": 1
+    }
+  },
+  "StartSteps": [
+    "Step1"
+  ],
+  "ServiceBinding": {},
+  "LastSavedTime": 1777508783132,
+  "fConverterVersion": 1,
+  "fScenarioName": "기본형태-조회강화형 (InputDate 기간 + Search + PopUp)",
+  "modules": {},
+  "Panel": {
+    "AuthKey": [],
+    "Collection": {
+      "Ckeys": [
+        "_SUID"
+      ]
+    },
+    "Category": {},
+    "Table": [],
+    "ExternalTable": [],
+    "CategoryOrder": []
+  },
+  "Language": {},
+  "Events": {},
+  "htmlkey": "stephtml",
+  "ScenarioTitle": "",
+  "Collections": {}
+}

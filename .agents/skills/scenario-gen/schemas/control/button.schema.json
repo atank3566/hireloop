@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/button.schema.json",
+  "title": "Button",
+  "description": "액션 트리거 전용 컨트롤. 입력 없음. ButtonName(텍스트) + ImageStyle(아이콘) 단독 또는 조합. UseClickEvent 로 Events.Click 핸들러만 지원. ButtonValueCKey + ButtonValue 로 클릭 시 카테고리 필드에 값 저장 가능. Step 이동 미지원 — Label.UseMove 또는 BottomButton 사용.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "Button" },
+        "ButtonName": {
+          "type": "string",
+          "description": "버튼에 표시할 텍스트. 빈 문자열 가능 (아이콘 전용 버튼). `{{i18n}}` / `{=Field}` / `{=$Field}`(콤마) / `{% JS %}` 사용 가능. Load.sector 사용 불가."
+        },
+        "ButtonValueCKey": {
+          "type": "string",
+          "default": "",
+          "description": "클릭 시 값을 저장할 카테고리 필드명 (ckey 바인딩). 빈 문자열=저장 안 함. ButtonValue 와 함께 사용 — 클릭하면 이 ckey 에 ButtonValue 가 set. 사용 시 상위 Group 계층에 UseDataConnection + DataConnection 필요 (다른 ckey 바인딩 컨트롤과 동일)."
+        },
+        "ButtonValue": {
+          "type": "string",
+          "default": "",
+          "description": "클릭 시 ButtonValueCKey 에 저장할 값. 문자열. ButtonValueCKey 가 비어 있으면 의미 없음. 정적 값만 — 표현식/바인딩 미지원."
+        },
+        "ImageStyle": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "아이콘 버튼용 이미지 스타일. ButtonName='' 와 조합 시 아이콘 전용, ButtonName 과 함께 두면 아이콘+텍스트 버튼."
+        },
+        "UseClickEvent": {
+          "type": "boolean",
+          "default": false,
+          "description": "클릭 이벤트 사용. true 일 때 Events.Click 핸들러 명 필수."
+        },
+        "Events": { "$ref": "_base.schema.json#/$defs/buttonEvents" }
+      }
+    },
+    {
+      "$comment": "UseClickEvent=true 면 Events.Click 필요.",
+      "if": {
+        "properties": { "UseClickEvent": { "const": true } },
+        "required": ["UseClickEvent"]
+      },
+      "then": {
+        "required": ["Events"],
+        "properties": {
+          "Events": { "required": ["Click"] }
+        }
+      }
+    }
+  ]
+}

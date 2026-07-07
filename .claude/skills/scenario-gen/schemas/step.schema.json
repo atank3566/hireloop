@@ -1,0 +1,258 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/step.schema.json",
+  "title": "Step",
+  "description": "Steps[StepId] 의 값. StepType 누락 시 런타임은 StepView 로 처리.",
+  "type": "object",
+  "additionalProperties": true,
+
+  "properties": {
+    "StepType": {
+      "type": "string",
+      "enum": ["StepView", "StepDialog", "StepSub"],
+      "description": "누락 시 런타임은 StepView 로 처리. AI 생성 시 StepView 명시 권장."
+    },
+    "StepDialogType": {
+      "type": "string",
+      "enum": ["", "SlideUp", "PopUp"],
+      "description": "StepView 의 다이얼로그 변종. '' = 일반 화면, SlideUp = 바텀시트, PopUp = 중앙 팝업."
+    },
+    "StepName":  { "type": "string", "description": "내부 표시명 (디자인 탭 '스텝명')." },
+    "StepTitle": { "type": "string", "description": "상단 헤더 타이틀. UseStepHeader=true 일 때 표시." },
+    "StepRow":   { "type": "number", "description": "그리드 좌표." },
+    "StepCol":   { "type": "number", "description": "그리드 좌표." },
+
+    "Contents":            { "type": "array", "items": { "$ref": "group.schema.json" } },
+    "FixedContentsTop":    { "type": "array", "items": { "$ref": "group.schema.json" } },
+    "FixedContentsBottom": { "type": "array", "items": { "$ref": "group.schema.json" } },
+
+    "Padding": {
+      "$ref": "style-objects.schema.json#/$defs/spacing",
+      "$comment": "디자인 탭 '패딩(T,R,B,L)' 토글 ON 시 등장. OFF 시 키 자체 누락 — 런타임 기본값 padding: .5rem 1.25rem 0 1.25rem 적용."
+    },
+    "Margin":  { "$ref": "style-objects.schema.json#/$defs/spacing" },
+    "BgStyle": {
+      "$ref": "style-objects.schema.json#/$defs/bgStyle",
+      "$comment": "디자인 탭 '배경' 토글 ON 시 등장. OFF 시 키 자체 누락."
+    },
+
+    "UseStepHeader": { "type": "boolean", "description": "상단 헤더 사용. 디자인 탭 토글." },
+
+    "Next": {
+      "type": "array",
+      "description": "다음 Step 후보의 StepId 배열. forward-only. StepSub Step 에서는 사용 X.",
+      "items": { "type": "string", "pattern": "^Step[1-9][0-9]*$" }
+    },
+
+    "UseBackButton": {
+      "type": "boolean",
+      "description": "뒤로가기 토글. 디자인 ↔ 데이터 탭 공통. **StepSub 에서는 false 자동 강제**."
+    },
+    "BackButton": {
+      "type": "object",
+      "description": "뒤로가기 버튼. UseBackButton=true 일 때 동반 등장. 데이터 탭에서 세부 설정.",
+      "additionalProperties": true,
+      "properties": {
+        "Next": {
+          "description": "Step 모드의 이동 대상. \"None\" = 직전 스텝(PrevStack), 또는 본인 외 StepId 지정 가능. 자기 자신 StepId 참조 금지 (validate.mjs 후검증).",
+          "anyOf": [
+            { "type": "string", "const": "None" },
+            { "type": "string", "pattern": "^Step[1-9][0-9]*$" }
+          ]
+        },
+        "IsRestored": {
+          "type": "boolean",
+          "description": "콜렉션 이전 상태로 복원하기 토글. true=복원(취소 흐름), false=변경 유지(상세 화면 등)."
+        },
+        "BackButtonMode": {
+          "type": "string",
+          "enum": ["Step", "event"],
+          "description": "Step=이전 스텝 이동 (Next/IsRestored 적용). event=이벤트 실행 (BackButtonEvent 의 이벤트가 동작 제어 — 별도 추가 뒤로가기 동작 없음)."
+        },
+        "BackButtonEvent": {
+          "type": "string",
+          "description": "BackButtonMode='event' 일 때 실행할 이벤트 이름. 사용 안 할 때는 문자열 \"undefined\"."
+        }
+      }
+    },
+
+    "UseBottomButton": {
+      "type": "boolean",
+      "description": "하단 버튼 사용. **StepSub 에서는 false 자동 강제**."
+    },
+    "StepButton":      { "type": "object" },
+    "BottomButtons":   { "type": "array", "items": { "$ref": "bottom-buttons.schema.json" } },
+
+    "UseEvents": {
+      "type": "boolean",
+      "description": "Step 이벤트 사용. **StepSub 에서는 false 자동 강제**."
+    },
+    "Events": {
+      "description": "Step 이벤트 핸들러 맵. const.js STEP_EVENT 6종 + ScrollEnd. 자세한 명세는 step.md §Step Events 상세 명세. UseEvents=true 면 객체, false 면 빈 배열.",
+      "oneOf": [
+        {
+          "type": "object",
+          "description": "UseEvents=true. StepEventOrder enum 으로 활성화 + 이벤트별 핸들러명 (scenario.Events 키 참조).",
+          "additionalProperties": false,
+          "properties": {
+            "StepEventOrder": {
+              "type": "array",
+              "uniqueItems": true,
+              "description": "활성화할 이벤트 enum. 여기 든 이벤트만 호출됨. const.js STEP_EVENT + ScrollEnd.",
+              "items": {
+                "type": "string",
+                "enum": ["Init", "Loaded", "OnBackLoaded", "OnLeave", "OnForeground", "ScrollEnd"]
+              }
+            },
+            "Init":         { "type": "string", "description": "Step 로드 직전 (DOM 그려지기 전). 샘플 데이터 / 카테고리 초기화 (`removeCategory + createCategory + addSector`)." },
+            "Loaded":       { "type": "string", "description": "Step UI 모두 그려진 후. DOM 의존 셋업 (Chart.js / Map / Canvas / Timer / CDN 라이브러리 로드)." },
+            "OnBackLoaded": { "type": "string", "description": "뒤로가기로 이 Step 복원 직후. 데이터 갱신 / 지도 재렌더링 — Init/Loaded 와 별개로 매 복귀 시 호출." },
+            "OnLeave":      { "type": "string", "description": "이 Step 이탈 직전 (Next/Back). Cleanup (`clearInterval` / 외부 SDK destroy)." },
+            "OnForeground": { "type": "string", "description": "**모바일 한정** — 앱이 백그라운드 → 포그라운드 복귀 시. 푸시 후 데이터 동기화 등." },
+            "ScrollEnd":    { "type": "string", "description": "Step 영역 스크롤이 끝까지 닿았을 때. 무한 스크롤 / 페이지네이션." }
+          },
+          "allOf": [
+            { "$comment": "EventOrder 의 각 이벤트는 동명 핸들러 키 필수.",
+              "if": { "properties": { "StepEventOrder": { "type":"array", "contains": { "const": "Init"         } } }, "required": ["StepEventOrder"] }, "then": { "required": ["Init"] } },
+            { "if": { "properties": { "StepEventOrder": { "type":"array", "contains": { "const": "Loaded"       } } }, "required": ["StepEventOrder"] }, "then": { "required": ["Loaded"] } },
+            { "if": { "properties": { "StepEventOrder": { "type":"array", "contains": { "const": "OnBackLoaded" } } }, "required": ["StepEventOrder"] }, "then": { "required": ["OnBackLoaded"] } },
+            { "if": { "properties": { "StepEventOrder": { "type":"array", "contains": { "const": "OnLeave"      } } }, "required": ["StepEventOrder"] }, "then": { "required": ["OnLeave"] } },
+            { "if": { "properties": { "StepEventOrder": { "type":"array", "contains": { "const": "OnForeground" } } }, "required": ["StepEventOrder"] }, "then": { "required": ["OnForeground"] } },
+            { "if": { "properties": { "StepEventOrder": { "type":"array", "contains": { "const": "ScrollEnd"    } } }, "required": ["StepEventOrder"] }, "then": { "required": ["ScrollEnd"] } }
+          ]
+        },
+        {
+          "type": "array",
+          "description": "UseEvents=false. 빈 배열로 둠. (`Events` 키 자체 누락 시 런타임 에러.)",
+          "maxItems": 0
+        }
+      ]
+    },
+
+    "Height": {
+      "$ref": "style-objects.schema.json#/$defs/sizeObject",
+      "$comment": "다이얼로그 SlideUp/PopUp 전용. 디자인 탭에서 SlideUp/PopUp 선택 시만 노출. (Width 는 Step 차원에서 작성 금지 — SlideUp/PopUp 모두 항상 전체 너비 사용.)"
+    },
+    "PopupPosition": {
+      "type": "string",
+      "enum": ["Centered", "Top Left", "Top Center", "Top Right", "Bottom Left", "Bottom Center", "Bottom Right"],
+      "$comment": "PopUp 전용. 위치 지정."
+    },
+    "hideDlgHeader": {
+      "type": "boolean",
+      "$comment": "다이얼로그 SlideUp/PopUp 전용. 헤더 숨김 토글."
+    },
+    "useDim": {
+      "type": "boolean",
+      "$comment": "다이얼로그 SlideUp/PopUp 전용. 어두운 배경 dim 사용."
+    },
+    "dimTransp": {
+      "type": "number",
+      "$comment": "다이얼로그 SlideUp/PopUp 전용. dim 투명도 (0 ~ 1)."
+    },
+    "bgTransparent": {
+      "type": "boolean",
+      "$comment": "다이얼로그 SlideUp/PopUp 전용. 배경 투명 토글."
+    },
+
+    "ScenarioId": {
+      "type": "string",
+      "description": "StepSub 의 호출 대상 시나리오 ID. 형식: 'flex||<숫자_숫자>' 또는 직접입력 문자열."
+    },
+    "ScenarioIdText": {
+      "type": "string",
+      "description": "StepSub 의 시나리오 ID 직접입력 모드 텍스트."
+    },
+    "Protocol": {
+      "type": "object",
+      "description": "StepSub 전용. 호출 시나리오 프로토콜. 참조.",
+      "additionalProperties": true,
+      "properties": {
+        "Protocol":     { "type": "string", "$comment": "레거시 호환. 보통 'Original' 고정." },
+        "StartStep":    { "type": "string", "description": "호출할 서브 시나리오의 시작 StepId." },
+        "StartStepText":{ "type": "string", "description": "StartStep 직접입력 모드 텍스트." },
+        "InitType": {
+          "type": "string",
+          "enum": ["Original", "Parent", "Current"],
+          "description": "Init(처음)으로 돌아갈 시나리오. Original=최상위, Parent=현재, Current=서브."
+        },
+        "UseBackButton": {
+          "type": "boolean",
+          "description": "호출한 시나리오로 돌아가기 허용 (UI 토글)."
+        },
+        "UseCopyCollectionToSub": {
+          "type": "boolean",
+          "description": "서브시나리오로 현재 콜렉션 전달."
+        },
+        "TargetStatusToSub": {
+          "type": "string",
+          "enum": ["all", "active", "selected", "last", "added", "updated", "deleted"],
+          "description": "콜렉션 전달 Status 필터. 기본 All."
+        },
+        "UseCopyCollectionToOrigin": {
+          "type": "boolean",
+          "description": "서브시나리오의 콜렉션으로 대체하기."
+        },
+        "TargetStatusToOrigin": {
+          "type": "string",
+          "enum": ["all", "active", "selected", "last", "added", "updated", "deleted"],
+          "description": "콜렉션 대체 Status 필터. 기본 All."
+        },
+        "beforeLoadSubScenario": {
+          "type": "string",
+          "description": "서브시나리오 로드 전 실행 스크립트. (afterLoadSubScenario 는 메타에 존재하지 않음.)"
+        }
+      }
+    },
+    "SubBackup": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "StepView ↔ StepSub 전환 시 이전 상태 복원용 백업 객체. 예: { UseBackButton: true, Contents: [] }. 직접 편집 금지 — 스튜디오가 자동 관리."
+    }
+  },
+
+  "allOf": [
+    {
+      "$comment": "StepSub 일 때 Protocol 필수.",
+      "if": {
+        "properties": { "StepType": { "const": "StepSub" } },
+        "required": ["StepType"]
+      },
+      "then": { "required": ["Protocol"] }
+    },
+    {
+      "$comment": "다이얼로그(SlideUp/PopUp) 가 아니면 다이얼로그 전용 키들 등장 금지. (Width 는 모든 Step 에서 작성 금지 — properties 에서 제거되어 strict-fields 단계에서 차단.)",
+      "if": {
+        "not": {
+          "properties": { "StepDialogType": { "enum": ["SlideUp", "PopUp"] } },
+          "required": ["StepDialogType"]
+        }
+      },
+      "then": {
+        "allOf": [
+          { "not": { "required": ["hideDlgHeader"] } },
+          { "not": { "required": ["useDim"] } },
+          { "not": { "required": ["dimTransp"] } },
+          { "not": { "required": ["bgTransparent"] } },
+          { "not": { "required": ["Height"] } }
+        ]
+      }
+    },
+    {
+      "$comment": "PopUp 이 아니면 PopupPosition 등장 금지 (PopUp 전용).",
+      "if": {
+        "not": {
+          "properties": { "StepDialogType": { "const": "PopUp" } },
+          "required": ["StepDialogType"]
+        }
+      },
+      "then": {
+        "allOf": [
+          { "not": { "required": ["PopupPosition"] } }
+        ]
+      }
+    }
+  ],
+
+  "$comment": "BottomButton 단일 항목 스키마는 bottom-buttons.schema.json 으로 분리."
+}

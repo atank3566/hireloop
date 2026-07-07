@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/service-binding.schema.json",
+  "title": "ServiceBinding",
+  "description": "scenarioMeta.ServiceBinding — 서비스 호출 정의 맵. 키는 서비스 식별자 (영문/숫자/언더스코어), 값은 호출 정의(SystemID + ModuleID 등). 스킬 생성 시에는 비어있는 객체 `{}` 만 허용 — `[no-service]` 후검증이 strict (`strict_no_service:true`). 운영 메타 호환을 위해 형식만 정의.",
+
+  "$comment": "서비스 종류별 분기 스키마는 service/<type>.schema.json 분리 (FlexSQL / FlexAutoQuery / Firestore / Custom REST / CustomSystem). 본 파일의 serviceBindingEntry 는 모든 분기를 흡수하는 관용 형태 — 운영 메타 검증 시 SystemID / SystemType 으로 구체 분기 선택은 service/README.md 의 분기 결정 규칙 참조.",
+
+  "type": "object",
+  "patternProperties": {
+    "^[A-Za-z_][A-Za-z0-9_]*$": { "$ref": "#/$defs/serviceBindingEntry" }
+  },
+  "additionalProperties": false,
+
+  "$defs": {
+    "serviceBindingEntry": {
+      "title": "ServiceBinding Entry",
+      "description": "단일 서비스 정의. 지원 시스템: FlexSQL / Firestore / FlexAutoQuery / GoogleSheet (flextudio-guide §6.6). 스킬 생성에서는 사용 금지.",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "SystemID":              { "type": "string", "enum": ["Flextudio API", "FlexSQL", "FlexAutoQuery", "Firestore", "GoogleSheet", "ServerKit", "Other"], "description": "시스템 식별자 (예: 'Flextudio', 'Other', 'FlexSQL')." },
+        "SystemType":            { "type": "string" },
+        "ModuleID":              { "type": "string", "description": "모듈 식별자." },
+        "ServiceName":           { "type": "string", "description": "FlexSQL / 외부 시스템에서 정의한 서비스 이름." },
+        "SQLServiceName":        { "type": "string", "description": "FlexSQL 사용 시 등록된 SQL 서비스 이름." },
+        "MajorVersion":          { "type": "integer", "minimum": 1, "description": "서비스 버전 (FlexSQL 등). 정수만 허용 (보통 1 또는 2)." },
+        "ExternalDB":            { "type": "string", "description": "외부 DB 식별자." },
+        "UseTable":              { "type": "boolean", "description": "테이블 직접 사용 토글 (FlexAutoQuery)." },
+        "SelectTable":           { "type": ["string", "object"], "description": "FlexAutoQuery 대상 테이블." },
+        "SPList":                { "type": "array",  "items": { "type": "string" }, "description": "스토어드 프로시저 목록 (FlexAutoQuery)." },
+        "UsePKey":               { "type": "boolean" },
+        "UseParamBlock":         { "type": "boolean" },
+        "UseResultBlock":        { "type": "boolean" },
+        "UseInnerBlock":         { "type": "boolean" },
+        "UseSearch":             { "type": "boolean" },
+        "UseBundle":             { "type": "boolean" },
+        "NotSeperateInnerBlock": { "type": "boolean" },
+        "SetCategory":           { "type": "string", "description": "결과 반영 대상 카테고리 이름." },
+        "fEvent":                { "type": "object", "additionalProperties": { "type": "string" }, "description": "API 연동 Event Config Key 키-값 맵." },
+        "fEventKey":             { "type": "array",  "items": { "type": "string" }, "description": "API 연동 Event Config Key 키 값 배열"},
+        "Method":                { "type": "string", "enum": ["GET", "POST", "PUT", "DELETE", "PATCH"], "description": "외부 REST API 사용 시 HTTP 메서드." },
+        "Url":                   { "type": "string" },
+        "RequestHeader":         { "type": "object" },
+        "BeforeScript":          { "type": "string", "description": "FlexSQL Before Script — 호출 전 전처리." },
+        "ParamScript":           { "type": "string" },
+        "ResultScript":          { "type": "string", "description": "FlexSQL After Script — 결과 후처리." }
+      }
+    }
+  }
+}

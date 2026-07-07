@@ -1,0 +1,284 @@
+{
+  "tier": "molecule",
+  "name": "input-pair",
+  "path": "schema/v1/patterns/molecule/input-pair.schema.json",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://flextudio.local/meta-contract/v1/patterns/molecule/input-pair.schema.json",
+    "title": "pattern.molecule.input-pair",
+    "description": "두 개의 입력 컨트롤이 가로로 나란히 50%/50% 로 배치되는 페어 (molecule). 쿼리/필터 행에 자주 쓰이는 'duo' 구조 — 예: 부서(inputCombo) + 담당자(inputSearch), 시작일(inputDate) + 종료일(inputDate), 기간(inputCombo) + 상태(inputCombo). 두 입력은 서로 다른 inputType 을 가질 수 있다 (per-item). 각 입력은 Caption(입력 위 라벨) 을 옵션으로 가질 수 있으며 Caption 유무에 따라 Height 가 68px(라벨 포함) / 44px(라벨 없음) 로 자동 결정.\n\nbgColor 가 있으면 'carded' 모드 — wrapper 에 라이트 톤 배경 + 상하 20px Margin + (8/10) Padding 이 깔리고, 두 입력은 columnGap 8px 로 모이고 border 는 radius-only(시각 hairline 없음) 가 되어 카드 안에 잠긴다. bgColor 가 없으면 'open' 모드 — wrapper 는 투명, columnGap 16px 로 더 여유 있고, 두 입력은 1px Gray4 hairline 으로 페이지 위에 또렷이 선다.\n\n[naming] inputType 식별자 + per-type 옵션 키 prefix — `inputCombo / inputSearch / inputDate`, `comboItems`, `comboDataSourceName`, `comboTitle`, `searchDataSourceName`, `searchTitle`, `searchSubTitle`, `searchKeywordCkey`, `dateFormat`, `dateSelectType`. 공통 키(`name`, `caption`, `placeholder`) 는 접두사 없음.",
+    "x-tier": "molecule",
+    "x-tags": [
+      "input",
+      "pair",
+      "duo",
+      "horizontal",
+      "filter",
+      "query-row",
+      "combo",
+      "search",
+      "date",
+      "mixed"
+    ],
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "inputOptions"
+    ],
+    "properties": {
+      "inputOptions": {
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "description": "두 입력 컨트롤의 옵션 (배열 인덱스 0=왼쪽, 1=오른쪽). 각 항목이 자신의 inputType 을 가지며 서로 달라도 된다.",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "inputType"
+          ],
+          "properties": {
+            "inputType": {
+              "type": "string",
+              "enum": [
+                "inputCombo",
+                "inputSearch",
+                "inputDate"
+              ],
+              "description": "입력 컨트롤 종류. inputCombo=Combo(고정 Items 또는 DataSource ComboList), inputSearch=Search(DataSource 기반 Lookup List), inputDate=InputDate(Calendar Dialog)."
+            },
+            "caption": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 30,
+              "description": "입력 컨트롤 위에 표시되는 라벨 텍스트. 지정 시 Height 68px(라벨 포함), 미지정 시 44px. CaptionStyle 은 고정 (SemiBold 13 left). 다국어/바인딩 토큰 가능."
+            },
+            "placeholder": {
+              "type": "string",
+              "maxLength": 80,
+              "description": "Placeholder 텍스트. 미지정 시 빈 문자열."
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 40,
+              "description": "ControlName / ControlName2 (스튜디오 explorer 식별자 + 데이터 키). 미지정 시 inputType + 인덱스 기반 기본값 (ComboLeft / ComboRight, DateLeft / DateRight, SearchLeft / SearchRight)."
+            },
+            "comboItems": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 8,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 30
+              },
+              "description": "inputType=inputCombo 의 고정 항목 모드. 각 문자열이 ComboList Items[].ItemName + ItemValue 로 매핑. 8개 초과 / 동적 데이터는 comboDataSourceName 사용."
+            },
+            "comboDataSourceName": {
+              "type": "string",
+              "minLength": 1,
+              "description": "inputType=inputCombo 의 DataSource ComboList 모드. comboItems 와 둘 중 하나 필수."
+            },
+            "comboTitle": {
+              "type": "string",
+              "minLength": 1,
+              "description": "inputType=inputCombo + comboDataSourceName 모드의 ComboList 항목 Title 필드 (선택)."
+            },
+            "searchDataSourceName": {
+              "type": "string",
+              "minLength": 1,
+              "description": "inputType=inputSearch 일 때 필수. Dialog 내 List 의 DataSourceName."
+            },
+            "searchTitle": {
+              "type": "string",
+              "minLength": 1,
+              "description": "inputType=inputSearch 일 때 필수. List 의 항목 Title 필드 (보통 검색 결과의 표시 컬럼명)."
+            },
+            "searchSubTitle": {
+              "type": "string",
+              "description": "inputType=inputSearch 일 때 선택. List 의 SubTitle 필드."
+            },
+            "searchKeywordCkey": {
+              "type": "string",
+              "description": "inputType=inputSearch 일 때 선택. 키워드 검색 컬럼키. 지정 시 UseKeywordSearch=true 활성."
+            },
+            "dateFormat": {
+              "type": "string",
+              "enum": [
+                "YYYY-MM-DD",
+                "YYYY.MM.DD",
+                "YYYY/MM/DD",
+                "YYYY-MM"
+              ],
+              "description": "inputType=inputDate 일 때. 기본 'YYYY-MM-DD'."
+            },
+            "dateSelectType": {
+              "type": "string",
+              "enum": [
+                "SingleDate",
+                "FromTo"
+              ],
+              "description": "inputType=inputDate 의 캘린더 선택 모드. 기본 'SingleDate'. 시작일/종료일 페어는 두 입력 모두 SingleDate."
+            }
+          },
+          "allOf": [
+            {
+              "$comment": "inputCombo 는 comboItems 또는 comboDataSourceName 중 하나 필요.",
+              "if": {
+                "properties": {
+                  "inputType": {
+                    "const": "inputCombo"
+                  }
+                },
+                "required": [
+                  "inputType"
+                ]
+              },
+              "then": {
+                "anyOf": [
+                  {
+                    "required": [
+                      "comboItems"
+                    ]
+                  },
+                  {
+                    "required": [
+                      "comboDataSourceName"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "$comment": "inputSearch 는 searchDataSourceName + searchTitle 필수.",
+              "if": {
+                "properties": {
+                  "inputType": {
+                    "const": "inputSearch"
+                  }
+                },
+                "required": [
+                  "inputType"
+                ]
+              },
+              "then": {
+                "required": [
+                  "searchDataSourceName",
+                  "searchTitle"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "bgColor": {
+        "type": "string",
+        "enum": [
+          "surface",
+          "surface.subtle",
+          "surface.tag",
+          "surface.brand-soft"
+        ],
+        "description": "컨테이너 wrapper 배경 토큰 (_base.style.mjs COLOR 가족 중 surface 톤). 지정 시 wrapper 가 라이트 톤 카드형 쿼리 영역이 되며: 상하 20px Margin + (좌우 10 / 상하 8) Padding 적용, 두 입력 사이 8px gap, 입력 border 는 radius-only(시각 hairline 없음). 미지정 시 wrapper 는 투명, 입력 사이 16px gap, 입력 border 는 1px Gray4 hairline. 일반적 선택: surface.tag (Gray10), surface.subtle (Gray9)."
+      },
+      "override": {
+        "type": "object",
+        "propertyNames": {
+          "enum": [
+            "root",
+            "left",
+            "right"
+          ]
+        },
+        "additionalProperties": {
+          "type": "object"
+        },
+        "description": "(L1 escape hatch) 패턴이 노출하지 않는 raw 엔진 메타데이터를 materialized 트리의 특정 노드에 deep-merge 로 주입한다. anchor 로 위치 지정 — root=외부 Group, left=좌측 입력(inputOptions[0]), right=우측 입력(inputOptions[1]). 값은 엔진 필드 패치 객체이며, 어떤 엔진 스키마에든 정의된 필드명만 검증을 통과한다(예: UseDataConnection, UseMove). 배열 필드는 deep-merge 가 아니라 통째 교체된다. 일반 케이스는 props 로 충분하므로 props 로 표현 못 하는 필드가 필요할 때만 사용.",
+        "examples": [
+          {
+            "left": {
+              "UseDataConnection": true
+            }
+          },
+          {
+            "root": {
+              "UseDataConnection": true
+            }
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "inputOptions": [
+          {
+            "inputType": "inputCombo",
+            "name": "duration",
+            "placeholder": "최근 3개월",
+            "comboItems": [
+              "최근 3개월",
+              "최근 6개월"
+            ]
+          },
+          {
+            "inputType": "inputCombo",
+            "name": "status",
+            "placeholder": "전체",
+            "comboItems": [
+              "전체",
+              "신청",
+              "승인",
+              "완료"
+            ]
+          }
+        ],
+        "bgColor": "surface.tag"
+      },
+      {
+        "inputOptions": [
+          {
+            "inputType": "inputCombo",
+            "name": "replyDept",
+            "caption": "부서선택",
+            "comboItems": [
+              "경영기획팀",
+              "IT전략팀",
+              "시설안전관리팀",
+              "영업팀",
+              "생산팀",
+              "공정개선팀",
+              "제조팀"
+            ]
+          },
+          {
+            "inputType": "inputSearch",
+            "name": "replyUser",
+            "caption": "담당자명",
+            "searchDataSourceName": "UserQuery",
+            "searchTitle": "UserName",
+            "searchKeywordCkey": "UserName"
+          }
+        ]
+      },
+      {
+        "inputOptions": [
+          {
+            "inputType": "inputDate",
+            "caption": "시작일",
+            "placeholder": "YYYY.MM.DD",
+            "dateFormat": "YYYY.MM.DD",
+            "dateSelectType": "SingleDate"
+          },
+          {
+            "inputType": "inputDate",
+            "caption": "종료일",
+            "placeholder": "YYYY.MM.DD",
+            "dateFormat": "YYYY.MM.DD",
+            "dateSelectType": "SingleDate"
+          }
+        ]
+      }
+    ]
+  }
+}

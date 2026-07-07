@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/search.schema.json",
+  "title": "Search",
+  "description": "Code Help / Lookup. 자식 트리 보유 (Dialog.Layouts[*].Controls[*] = List). 항목이 8개를 초과하거나 동적으로 늘어나는 데이터 (고객/사용자/거래처 등) 에 사용. DataSource=Collection/Service 면 Search, Fixed 면 Combo.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    { "$ref": "_base.schema.json#/$defs/inputBase" },
+    {
+      "properties": {
+        "ControlType":  { "const": "Search" },
+        "DisplayValue": {
+          "type": "string",
+          "description": "선택 후 표시 텍스트. 일반적으로 '{{=CkeyName}}' 형식 (현재 섹터의 Ckey 값 표시)."
+        },
+        "Dialog": { "$ref": "_base.schema.json#/$defs/searchDialog" }
+      }
+    }
+  ]
+}

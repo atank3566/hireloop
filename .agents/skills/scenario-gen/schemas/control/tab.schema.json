@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/tab.schema.json",
+  "title": "Tab",
+  "description": "탭 컨트롤. 각 Items[].LinkedStepId 로 다른 Step 의 전체 UI 를 탭 내부에 렌더링한다. (탭마다 화면 전체가 바뀌는 경우 전용. 같은 리스트의 필터만 바뀌는 케이스는 RadioBox + ControlStyle:'styleTab' 권장.) Height 는 반드시 100% — 헤더 높이만 주면 LinkedStep 콘텐츠가 표시되지 않는다. Items[].LinkedStepId 가 자기 자신 Step 을 가리키면 무한 재귀. 핵심 제약: '탭 컨트롤은 일반 스텝에서 제공하는 기능이 적용되지 않는다 → 스텝버튼이 그려지지 않고 스텝 이벤트(Init/Loaded/OnBackLoaded/OnLeave/OnForeground/ScrollEnd)가 실행되지 않으며 서브시나리오 스텝은 표시할 수 없다.'",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "Tab" },
+        "ControlStyle": {
+          "type": "string",
+          "examples": ["", "None"],
+          "description": "기본 'None'."
+        },
+
+        "Height": {
+          "$ref": "../style-objects.schema.json#/$defs/sizeObject",
+          "description": "반드시 100% — `{ SizeValue: '100', SizeUnit: '%', MatchText: false }`. 고정 px 면 탭 헤더만 보이고 LinkedStep 콘텐츠가 잘림. (validate.mjs 후검증으로도 강제.)"
+        },
+
+        "DefaultValue": {
+          "type": "string",
+          "default": "",
+          "description": "초기 선택 탭의 값. Items[].ItemValue 와 일치하는 항목이 시작 시 선택 상태로 그려진다. 빈 문자열/미지정 시 첫 번째 Items 항목이 선택. ★ 초기 선택으로 LinkedStep 이 렌더되더라도 그 Step 의 Step 이벤트(Init/Loaded/OnBackLoaded/OnLeave/OnForeground/ScrollEnd)는 실행되지 않음 — Tab 컨트롤의 일반 제약(공식 가이드). 따라서 초기 데이터 로딩은 부모 Step(Tab 이 있는 Step) 의 Init 에서 처리하고, 탭 전환 시 동작이 필요하면 Items[].Events.Click 에 둔다. controlBase.DefaultValue 의 any 타입을 Tab 에서 string 으로 좁힘 (ItemValue 가 항상 string)."
+        },
+        "Items": {
+          "type": "array",
+          "minItems": 1,
+          "description": "탭 항목 배열. 각 항목이 하나의 탭 헤더 + 연결된 Step.",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["ItemName", "ItemValue", "LinkedStepId"],
+            "properties": {
+              "ItemName":     { "type": "string", "description": "탭 헤더 표시 텍스트. 필요시 `{{}}` 다국어." },
+              "ItemValue":    { "type": "string", "description": "선택 시 Ckeys 에 저장되는 값." },
+              "LinkedStepId": { "type": "string", "pattern": "^Step[1-9][0-9]*$", "description": "이 탭이 선택되었을 때 내부에 렌더할 Step Id. 자기 자신 Step 금지 (무한 재귀)." },
+              "Events": {
+                "type": "object",
+                "additionalProperties": true,
+                "description": "탭 항목 단위 이벤트. Click 핸들러 1종.",
+                "properties": {
+                  "Click": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+
+        "Ckeys": {
+          "$ref": "../naming-objects.schema.json#/$defs/ckeysArray",
+          "description": "선택된 탭의 ItemValue 가 저장될 컬렉션 키 (선택). 시스템 게터 / JS 빌트인 차단."
+        },
+
+        "TabHeader": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "탭 헤더 전체 영역(아이템들을 감싸는 컨테이너) 디자인. 정렬·여백·테두리·배경.",
+          "properties": {
+            "ArrangeItemsStyle": { "$ref": "../style-objects.schema.json#/$defs/arrangeItemsStyle" },
+            "Padding":           { "$ref": "../style-objects.schema.json#/$defs/spacing" },
+            "Margin":            { "$ref": "../style-objects.schema.json#/$defs/spacing" },
+            "BorderStyle":       { "$ref": "../style-objects.schema.json#/$defs/borderStyle" },
+            "BgStyle":           { "$ref": "../style-objects.schema.json#/$defs/bgStyle" }
+          }
+        },
+        "SelectTabHeader": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "선택 상태의 탭 헤더 컨테이너 디자인. TabHeader 와 동일 슬롯. 보통 비워두고 SelectTabHeaderItem 으로 항목별 강조를 처리.",
+          "properties": {
+            "ArrangeItemsStyle": { "$ref": "../style-objects.schema.json#/$defs/arrangeItemsStyle" },
+            "Padding":           { "$ref": "../style-objects.schema.json#/$defs/spacing" },
+            "Margin":            { "$ref": "../style-objects.schema.json#/$defs/spacing" },
+            "BorderStyle":       { "$ref": "../style-objects.schema.json#/$defs/borderStyle" },
+            "BgStyle":           { "$ref": "../style-objects.schema.json#/$defs/bgStyle" }
+          }
+        },
+        "TabHeaderItem": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "각 탭 항목 헤더(미선택 상태) 디자인. 폰트·여백·테두리·배경.",
+          "properties": {
+            "FontStyle":   { "$ref": "../style-objects.schema.json#/$defs/fontStyle" },
+            "Padding":     { "$ref": "../style-objects.schema.json#/$defs/spacing" },
+            "Margin":      { "$ref": "../style-objects.schema.json#/$defs/spacing" },
+            "BorderStyle": { "$ref": "../style-objects.schema.json#/$defs/borderStyle" },
+            "BgStyle":     { "$ref": "../style-objects.schema.json#/$defs/bgStyle" }
+          }
+        },
+        "SelectTabHeaderItem": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "선택된 탭 항목 헤더 디자인. 보통 FontStyle / BgStyle / BorderStyle 만 사용 (선택 강조). Padding/Margin 은 TabHeaderItem 값을 그대로 상속.",
+          "properties": {
+            "FontStyle":   { "$ref": "../style-objects.schema.json#/$defs/fontStyle" },
+            "BgStyle":     { "$ref": "../style-objects.schema.json#/$defs/bgStyle" },
+            "BorderStyle": { "$ref": "../style-objects.schema.json#/$defs/borderStyle" },
+            "Padding":     { "$ref": "../style-objects.schema.json#/$defs/spacing" },
+            "Margin":      { "$ref": "../style-objects.schema.json#/$defs/spacing" }
+          }
+        },
+        "ArrangeItems": { "type": "string", "description": "(레거시) 탭 헤더 정렬/배치 옵션 — 운영 메타 잔존 호환. 신규 생성은 TabHeader.ArrangeItemsStyle 사용." }
+      },
+      "required": ["Items"]
+    }
+  ]
+}

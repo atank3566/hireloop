@@ -1,0 +1,150 @@
+{
+  "count": 12,
+  "examples": [
+    {
+      "id": "basic/basic-list-detail",
+      "path": "basic/basic-list-detail.json",
+      "title": "기본형태-0단계 (List → Input → Detail)",
+      "stepCount": 3,
+      "controlTypes": {
+        "Label": 35,
+        "ImageBox": 2,
+        "RadioBox": 2,
+        "MultiInputBox": 2,
+        "InputText": 2,
+        "Combo": 2,
+        "Search": 1
+      }
+    },
+    {
+      "id": "basic/delivery-address-popup",
+      "path": "basic/delivery-address-popup.json",
+      "title": "배송지 변경 팝업",
+      "stepCount": 2,
+      "controlTypes": {
+        "InputText": 7,
+        "Button": 7,
+        "CheckBox": 6,
+        "Label": 20
+      }
+    },
+    {
+      "id": "basic/fixedtop-floating-form",
+      "path": "basic/fixedtop-floating-form.json",
+      "title": "기본형태-혼합강화형 (FixedTop 검색 + Floating + 입력 다단계)",
+      "stepCount": 2,
+      "controlTypes": {
+        "InputDate": 2,
+        "Button": 1,
+        "Label": 18,
+        "ImageBox": 3,
+        "Search": 2,
+        "InputText": 2
+      }
+    },
+    {
+      "id": "basic/search-period-popup",
+      "path": "basic/search-period-popup.json",
+      "title": "기본형태-조회강화형 (InputDate 기간 + Search + PopUp)",
+      "stepCount": 2,
+      "controlTypes": {
+        "InputDate": 2,
+        "Button": 1,
+        "Label": 18,
+        "ImageBox": 3,
+        "Search": 2,
+        "InputText": 2
+      }
+    },
+    {
+      "id": "design/booking-wizard-3step",
+      "path": "design/booking-wizard-3step.json",
+      "title": "선택→설정→완료 위저드 (3-step)",
+      "stepCount": 3,
+      "controlTypes": {
+        "Label": 30,
+        "InputDate": 1,
+        "RadioBox": 1,
+        "Combo": 2,
+        "InputText": 2,
+        "InputNumber": 1
+      }
+    },
+    {
+      "id": "design/list-detail-form-3step",
+      "path": "design/list-detail-form-3step.json",
+      "title": "리스트→상세→입력 (3-step)",
+      "stepCount": 3,
+      "controlTypes": {
+        "Label": 37,
+        "InputText": 1,
+        "RadioBox": 2,
+        "InputNumber": 3,
+        "MultiInputBox": 1
+      }
+    },
+    {
+      "id": "design/list-filter-2step",
+      "path": "design/list-filter-2step.json",
+      "title": "리스트 + 필터 (2-step)",
+      "stepCount": 2,
+      "controlTypes": {
+        "Label": 35,
+        "InputText": 2,
+        "InputDate": 1
+      },
+      "patterns": [
+        "button",
+        "checklist",
+        "input-action"
+      ]
+    },
+    {
+      "id": "design/list-filter-detail-3step",
+      "path": "design/list-filter-detail-3step.json",
+      "title": "리스트→필터→상세 (3-step)",
+      "stepCount": 3,
+      "controlTypes": {
+        "Label": 39,
+        "InputDate": 1,
+        "InputText": 11
+      },
+      "patterns": [
+        "button",
+        "input-action"
+      ]
+    },
+    {
+      "id": "design/result-entry-wizard-4step",
+      "path": "design/result-entry-wizard-4step.json",
+      "title": "결과 입력 위저드 (4-step)",
+      "stepCount": 4,
+      "controlTypes": {
+        "Label": 48,
+        "CheckBox": 3,
+        "RadioBox": 2
+      },
+      "patterns": [
+        "button"
+      ]
+    },
+    {
+      "id": "intent/mock-employee-list",
+      "path": "intent/mock-employee-list.json",
+      "stepCount": 1,
+      "controlTypes": {}
+    },
+    {
+      "id": "intent/script-cart-flow",
+      "path": "intent/script-cart-flow.json",
+      "stepCount": 1,
+      "controlTypes": {}
+    },
+    {
+      "id": "intent/script-dialog-confirm",
+      "path": "intent/script-dialog-confirm.json",
+      "stepCount": 1,
+      "controlTypes": {}
+    }
+  ]
+}

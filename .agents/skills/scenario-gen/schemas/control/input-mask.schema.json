@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/input-mask.schema.json",
+  "title": "InputMask",
+  "description": "마스크 패턴 입력. hhmm/money/yyyymmdd/phone.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    { "$ref": "_base.schema.json#/$defs/inputBase" },
+    {
+      "properties": {
+        "ControlType":   { "const": "InputMask" },
+        "InputType": {
+          "type": "string",
+          "enum": ["hhmm", "money", "yyyymmdd", "phone"],
+          "description": "hhmm=HH:MM 시간 / money=천단위 콤마 / yyyymmdd=YYYY-MM-DD 날짜 / phone=전화번호 패턴."
+        },
+        "MaskType":      {
+          "type": "string",
+          "enum": ["Time", "Money", "Date", "Phone"],
+          "description": "마스크 카테고리 표시용. InputType 과 정합되어야 함 (hhmm↔Time, money↔Money, yyyymmdd↔Date, phone↔Phone)."
+        },
+        "UseNumberOnly": { "type": "boolean", "default": false, "description": "money 등에서 숫자만 입력 강제. money 사용 시 권장 (필수는 아님)." },
+
+        "UseFixedDecimalPlaces": { "type": "boolean", "default": false, "description": "InputType='money' 일 때 소수점 자릿수 고정 사용 여부. true 일 때 DecimalPlaces + RoundingMode 활성." },
+        "DecimalPlaces": {
+          "type": ["integer", "string", "null"],
+          "minimum": 0,
+          "maximum": 15,
+          "description": "고정 소수점 자릿수 (0~15). UseFixedDecimalPlaces=true 일 때만 의미. 빈 입력은 null."
+        },
+        "RoundingMode": {
+          "type": "string",
+          "enum": ["round", "ceil", "floor"],
+          "default": "round",
+          "description": "소수점 처리 방식. round=반올림 / ceil=올림 / floor=내림. UseFixedDecimalPlaces=true 일 때만 의미."
+        },
+
+        "Events":        { "$ref": "_base.schema.json#/$defs/inputEventsChangeOnly" }
+      }
+    }
+  ]
+}

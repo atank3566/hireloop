@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/calendar-navigator.schema.json",
+  "title": "CalendarNavigator",
+  "description": "캘린더 네비게이터. 월/주/일 단위로 날짜 범위를 이동·선택. (1) TimeTable 내부 자식 (UseTimeTable=true), (2) 독립 컨트롤 (UseTimeTable=false) 두 가지 사용 형태. 독립 사용 시 래퍼 Group 에 UseDataConnection:true 필수. Events / DayArea / DaySetting / SelectDay / UseEvents 는 빈 객체/기본값이라도 반드시 존재해야 한다 (런타임 규약).",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "CalendarNavigator" },
+        "ControlStyle": {
+          "type": "string",
+          "enum": ["", "None", "StyleBack", "StyleHalf", "StyleAlignLeft"],
+          "description": "공식 4종. ''/'None'=기본 / 'StyleBack'=뒤 배경형 / 'StyleHalf'=절반 표시 / 'StyleAlignLeft'=좌측 정렬."
+        },
+
+        "NavigatorType": {
+          "type": "string",
+          "enum": ["Month", "WeekPeriod", "Day"],
+          "description": "공식 3종 — Month=월 단위 / WeekPeriod=주 단위 / Day=일 단위. (운영 메타에 'Custom' 이 있을 수 있으나 AI 생성에서는 사용 금지 — 공식 가이드 미표기.)"
+        },
+        "NavigatorDateFormat": {
+          "type": "string",
+          "enum": [
+            "",
+            "YYYY.MM.DD", "YYYY/MM/DD", "YYYY-MM-DD", "YYYY년MM월DD일",
+            "YYYY-MM-W",
+            "YYYY.MM", "YYYY/MM", "YYYY-MM", "YYYY년MM월",
+            "YYYY년"
+          ],
+          "description": "헤더 날짜 표시 포맷 (공식 10종). 'YYYY-MM-W' 는 NavigatorType='WeekPeriod' (주 단위) 전용. ''=런타임 기본."
+        },
+
+        "UseDaySelector": {
+          "type": "boolean",
+          "default": false,
+          "description": "true=주간 날짜 선택 바 표시 (스와이프 지원). **boolean strict** — true/false 만. 문자열 \"true\"/\"false\" 금지 (JS truthy 함정). 이 값에 따라 바인딩 키가 갈림 — true → SingleDate.Ckeys, false → StartDate.Ckeys + EndDate.Ckeys (studio-panel-cat.js 진실원본)."
+        },
+        "UseTimeTable": {
+          "type": "boolean",
+          "default": false,
+          "description": "true=TimeTable 내부에 종속. false=독립 컨트롤로 사용."
+        },
+        "UseDataConnection": { "type": "boolean", "default": false },
+        "UseDaySetting":     { "type": "boolean", "default": false },
+        "UseDayArea":        { "type": "boolean", "default": false },
+
+        "SingleDate": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Day 모드 또는 UseDaySelector=true 일 때 단일 날짜 바인딩.",
+          "properties": {
+            "Ckeys": { "$ref": "../naming-objects.schema.json#/$defs/ckeysArray" }
+          }
+        },
+        "StartDate": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "WeekPeriod / Month 모드에서 기간 시작일 바인딩.",
+          "properties": {
+            "Ckeys": { "$ref": "../naming-objects.schema.json#/$defs/ckeysArray" }
+          }
+        },
+        "EndDate": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "WeekPeriod / Month 모드에서 기간 종료일 바인딩.",
+          "properties": {
+            "Ckeys": { "$ref": "../naming-objects.schema.json#/$defs/ckeysArray" }
+          }
+        },
+
+        "DayArea":    { "type": "object", "default": {}, "additionalProperties": true, "description": "필수(빈 객체 허용). 일자별 영역 표시 정의." },
+        "DaySetting": { "type": "object", "default": {}, "additionalProperties": true, "description": "필수(빈 객체 허용). 일자별 부가 설정." },
+        "SelectDay":  { "type": "object", "default": {}, "additionalProperties": true, "description": "필수(빈 객체 허용). 선택 일자 디자인." },
+
+        "DayDsKey":   { "type": "string", "description": "DayArea/DaySetting 의 DataSource 키 (선택)." },
+        "TypeDsKey":  { "type": "string", "description": "Day 타입 분류용 DataSource 키 (선택)." },
+
+        "UseEvents": { "type": "boolean", "default": false, "description": "필수(false 라도 키 존재). Events 핸들러 사용 여부." },
+        "Events": {
+          "type": "object",
+          "default": {},
+          "additionalProperties": true,
+          "description": "필수(빈 객체라도). CalendarNaviEventsOrder 로 등록.",
+          "properties": {
+            "CalendarNaviEventsOrder": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "enum": ["ClickPrevNextBtn", "OnChangeSwipe", "SelectDay"]
+              }
+            },
+            "ClickPrevNextBtn": { "type": "string", "description": "이전/다음 버튼 클릭." },
+            "OnChangeSwipe":    { "type": "string", "description": "DaySelector 스와이프로 주 변경." },
+            "SelectDay":        { "type": "string", "description": "DaySelector 에서 날짜 클릭." }
+          },
+          "allOf": [
+            { "if": { "properties": { "CalendarNaviEventsOrder": { "type": "array", "contains": { "const": "ClickPrevNextBtn" } } }, "required": ["CalendarNaviEventsOrder"] }, "then": { "required": ["ClickPrevNextBtn"] } },
+            { "if": { "properties": { "CalendarNaviEventsOrder": { "type": "array", "contains": { "const": "OnChangeSwipe"    } } }, "required": ["CalendarNaviEventsOrder"] }, "then": { "required": ["OnChangeSwipe"]    } },
+            { "if": { "properties": { "CalendarNaviEventsOrder": { "type": "array", "contains": { "const": "SelectDay"        } } }, "required": ["CalendarNaviEventsOrder"] }, "then": { "required": ["SelectDay"]        } }
+          ]
+        }
+      },
+      "required": ["DayArea", "DaySetting", "SelectDay", "Events", "UseEvents"]
+    },
+    {
+      "$comment": "NavigatorType='Day' 또는 UseDaySelector=true → SingleDate 권장(검증은 후검증). NavigatorType='WeekPeriod'|'Month' → StartDate + EndDate 필수, 각각의 Ckeys (1개 이상) 도 필수. 런타임이 dlgJson.StartDate.Ckeys / dlgJson.EndDate.Ckeys 로 직접 접근하므로 빈 객체 {} 는 TypeError.",
+      "if": {
+        "properties": { "NavigatorType": { "enum": ["WeekPeriod", "Month"] } },
+        "required": ["NavigatorType"]
+      },
+      "then": {
+        "required": ["StartDate", "EndDate"],
+        "properties": {
+          "StartDate": {
+            "required": ["Ckeys"],
+            "properties": {
+              "Ckeys": { "minItems": 1 }
+            }
+          },
+          "EndDate": {
+            "required": ["Ckeys"],
+            "properties": {
+              "Ckeys": { "minItems": 1 }
+            }
+          }
+        }
+      }
+    },
+    {
+      "$comment": "NavigatorType='Day' 면 SingleDate + SingleDate.Ckeys (1개 이상) 필수. 런타임이 dlgJson.SingleDate.Ckeys 로 직접 접근.",
+      "if": {
+        "properties": { "NavigatorType": { "const": "Day" } },
+        "required": ["NavigatorType"]
+      },
+      "then": {
+        "required": ["SingleDate"],
+        "properties": {
+          "SingleDate": {
+            "required": ["Ckeys"],
+            "properties": {
+              "Ckeys": { "minItems": 1 }
+            }
+          }
+        }
+      }
+    },
+    {
+      "$comment": "NavigatorDateFormat='YYYY-MM-W' 는 NavigatorType='WeekPeriod' 전용 (공식 가이드).",
+      "if": {
+        "properties": { "NavigatorDateFormat": { "const": "YYYY-MM-W" } },
+        "required": ["NavigatorDateFormat"]
+      },
+      "then": {
+        "properties": { "NavigatorType": { "const": "WeekPeriod" } },
+        "required": ["NavigatorType"]
+      }
+    }
+  ]
+}

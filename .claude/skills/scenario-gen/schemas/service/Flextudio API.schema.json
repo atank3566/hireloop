@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/service/Flextudio%20API.schema.json",
+  "title": "Flextudio API ServiceBinding",
+  "description": "Flextudio API 시스템 호출. const.js 의 SYSTEM_ID.FLEXTUDIO_API='Flextudio API' (공백 포함) 에 매핑. flexApiKey 기반 인증. 사용자(User) / 메시지(Message) / 그룹(Group) 3 모듈 + SubModuleID 로 CRUD 식별. 런타임: public/system/flextudio/flextudio_api.js.",
+  "type": "object",
+  "required": ["SystemID", "ModuleID", "flexApiKey"],
+  "additionalProperties": true,
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/commonBase" },
+    {
+      "properties": {
+        "SystemID":   { "const": "Flextudio API", "description": "Flextudio API 호출 시 'Flextudio API' 고정 (공백 포함)." },
+        "ModuleID":   {
+          "type": "string",
+          "enum": ["User", "Message", "Group"],
+          "description": "Flextudio API 모듈. User=사용자 CRUD / Message=메시지 조회 / Group=그룹 회원 조회. const.js MODULE_ID[FLEXTUDIO_API]."
+        },
+        "SubModuleID":{
+          "type": "string",
+          "enum": ["Query", "Save", "Update", "Delete", "UserQuery"],
+          "description": "ModuleID 별 하위 작업. User: Query/Save/Update/Delete · Message: Query · Group: UserQuery. const.js SUB_MODULE_ID[FLEXTUDIO_API]."
+        },
+        "flexApiKey": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Flextudio API 호출용 인증 키 (필수). HTTP 요청 헤더 `x-flex-api-key` 로 전송. 워크스페이스 콘솔에서 발급."
+        },
+        "useUserAppGrant": {
+          "type": "boolean",
+          "description": "User Save 시 현재 앱 ID(_base.appid)를 함께 전송해 앱 사용 권한 자동 부여. const.js K_FLEXTUDIO_API_PROP.USE_USER_APP_GRANT."
+        },
+        "UseSearch": {
+          "type": "boolean",
+          "description": "User Query 검색 모드 토글. true 면 SearchItem 의 필터 조건이 쿼리 파라미터로 전송."
+        },
+        "SearchItem": {
+          "type": "array",
+          "description": "User Query 검색 조건 배열. UseSearch:true 일 때 사용.",
+          "items": { "$ref": "#/$defs/searchItem" }
+        },
+        "UseUnreadMessage": {
+          "type": "boolean",
+          "description": "Message Query 시 읽지 않은 메시지만 조회 토글. const.js K_FLEXTUDIO_API_PROP.USE_UNREAD_MESSAGE."
+        },
+        "groupName": {
+          "type": "string",
+          "description": "Group UserQuery 의 대상 그룹 이름. `{% %}` 대체 표현식 가능 (예: `'{%_c.activeGroup[0].groupName%}'`)."
+        },
+        "UsePKey":       { "type": "boolean" },
+        "UseParamBlock": { "type": "boolean" },
+        "UseResultBlock":{ "type": "boolean" },
+        "UseInnerBlock": { "type": "boolean" }
+      },
+      "allOf": [
+        {
+          "$comment": "User 모듈은 Query/Save/Update/Delete SubModule 중 하나 필수.",
+          "if": {
+            "properties": { "ModuleID": { "const": "User" } },
+            "required": ["ModuleID"]
+          },
+          "then": {
+            "required": ["SubModuleID"],
+            "properties": {
+              "SubModuleID": { "enum": ["Query", "Save", "Update", "Delete"] }
+            }
+          }
+        },
+        {
+          "$comment": "Message 모듈은 Query 만.",
+          "if": {
+            "properties": { "ModuleID": { "const": "Message" } },
+            "required": ["ModuleID"]
+          },
+          "then": {
+            "required": ["SubModuleID"],
+            "properties": {
+              "SubModuleID": { "const": "Query" }
+            }
+          }
+        },
+        {
+          "$comment": "Group 모듈은 UserQuery 만 + groupName 필수.",
+          "if": {
+            "properties": { "ModuleID": { "const": "Group" } },
+            "required": ["ModuleID"]
+          },
+          "then": {
+            "required": ["SubModuleID", "groupName"],
+            "properties": {
+              "SubModuleID": { "const": "UserQuery" }
+            }
+          }
+        }
+      ]
+    }
+  ],
+
+  "$defs": {
+    "searchItem": {
+      "type": "object",
+      "description": "User Query 검색 항목. 필드명 + 연산자 + 컬렉션 키 매핑.",
+      "additionalProperties": true,
+      "properties": {
+        "FieldName":    { "type": "string", "description": "조회 대상 필드명 (서버 필드)." },
+        "SearchFilter": {
+          "type": "string",
+          "enum": ["contains", "!contains", "exists", "!exists", "==", "!=", "<", "<=", ">", ">="],
+          "description": "검색 연산자. const.js K_FLEXTUDIO_API_USER_FILTER."
+        },
+        "FieldValue":   { "type": "string", "description": "비교값이 들어있는 컬렉션 키 (sector 의 키 이름)." }
+      }
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/multi-input-box.schema.json",
+  "title": "MultiInputBox",
+  "description": "여러 줄 텍스트 입력 (TextArea). Enter 로 줄바꿈. Shared Input Base 사용 — Height 기본 120px (다른 입력은 70px).",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    { "$ref": "_base.schema.json#/$defs/inputBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "MultiInputBox" },
+        "Events":      { "$ref": "_base.schema.json#/$defs/inputEventsFull" }
+      }
+    }
+  ]
+}

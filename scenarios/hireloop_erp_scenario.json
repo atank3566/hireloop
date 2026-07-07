@@ -1,0 +1,209 @@
+{
+  "modules": {},
+  "htmlkey": "stephtml",
+  "ScenarioTitle": "",
+  "fScenarioName": "HireLoop ERP 채용 운영 대시보드",
+  "fConverterVersion": 1,
+  "StartSteps": ["Step1", "Step2", "Step3", "Step4", "Step5", "Step6"],
+  "Language": {},
+  "Events": {},
+  "ServiceBinding": {},
+  "Collections": {},
+  "DataSources": {},
+  "Scenario": {
+    "StyleURLs": []
+  },
+  "Panel": {
+    "Collection": {
+      "Ckeys": []
+    },
+    "Category": {},
+    "CategoryOrder": [],
+    "Table": [],
+    "ExternalTable": [],
+    "AuthKey": []
+  },
+  "FlexSQLService": {},
+  "Steps": {
+    "Step1": {
+      "StepName": "대시보드",
+      "StepTitle": "HireLoop 대시보드",
+      "StepType": "StepView",
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": [],
+      "Next": [],
+      "Padding": { "All": "", "Left": "0", "Top": "0", "Right": "0", "Btm": "0", "UseEach": true, "UseAuto": true, "SizeUnit": "px" },
+      "BgStyle": { "UseBackground": true, "BgColor": "var(--colorGray9)" },
+      "Contents": [
+        {
+          "Id": "f_1001",
+          "ContentsName": "DashboardWrap",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": { "w": "full", "h": "text", "bg": "canvas", "p": "20 20 20 20", "flex": { "dir": "column", "gap": 12 } },
+          "Contents": [
+            { "Id": "f_1002", "ControlType": "Label", "ControlName": "lblDashboardTitle", "labeltext": "HireLoop ERP · 채용 운영 대시보드", "ControlStyle": "None", "Caption": "Title", "isColumnCtrl": false, "design": { "font": "display-medium", "color": "body", "w": "full", "h": "text" } },
+            { "Id": "f_1003", "ControlType": "Label", "ControlName": "lblDashboardSummary", "labeltext": "서류 검토, 면접 평가, 최종 판정, 입사자 분석, 성과 분석까지 한 흐름으로 관리합니다.", "ControlStyle": "None", "Caption": "Summary", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "muted", "w": "full", "h": "text" } },
+            { "Id": "f_1004", "ControlType": "Label", "ControlName": "lblDashboardCards", "labeltext": "진행 현황: 지원자 128명 · 서류 검토 46건 · 면접 예정 18건 · 최종 판정 대기 7건", "ControlStyle": "None", "Caption": "Cards", "isColumnCtrl": false, "design": { "font": "body-large", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } },
+            { "Id": "f_1005", "ControlType": "Label", "ControlName": "lblDashboardPipeline", "labeltext": "파이프라인: 지원 접수 → 서류 검토 → 면접/평가 → 최종 판정 → 입사자 온보딩 → 성과 추적", "ControlStyle": "None", "Caption": "Pipeline", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } }
+          ]
+        }
+      ],
+      "StepRow": 0,
+      "StepCol": 0
+    },
+    "Step2": {
+      "StepName": "서류 검토",
+      "StepTitle": "지원자 서류 검토",
+      "StepType": "StepView",
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": [],
+      "Next": [],
+      "Padding": { "All": "", "Left": "0", "Top": "0", "Right": "0", "Btm": "0", "UseEach": true, "UseAuto": true, "SizeUnit": "px" },
+      "BgStyle": { "UseBackground": true, "BgColor": "var(--colorGray9)" },
+      "Contents": [
+        {
+          "Id": "f_2001",
+          "ContentsName": "ReviewWrap",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": { "w": "full", "h": "text", "bg": "canvas", "p": "20 20 20 20", "flex": { "dir": "column", "gap": 12 } },
+          "Contents": [
+            { "Id": "f_2002", "ControlType": "Label", "ControlName": "lblReviewTitle", "labeltext": "서류 검토 · 후보자 적합도 스크리닝", "ControlStyle": "None", "Caption": "Title", "isColumnCtrl": false, "design": { "font": "display-medium", "color": "body", "w": "full", "h": "text" } },
+            { "Id": "f_2003", "ControlType": "Label", "ControlName": "lblReviewFilters", "labeltext": "필터: 전체 / 직무지식 / 문제 해결 능력 / 성과 지향성 / 협업·커뮤니케이션 / 리더십 / 성장 가능성 / 조직 적합성", "ControlStyle": "None", "Caption": "Filters", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "muted", "w": "full", "h": "text" } },
+            { "Id": "f_2004", "ControlType": "Label", "ControlName": "lblReviewApplicant", "labeltext": "김도현 · 생산기술 · 캡스톤 프로젝트, 학내 공모전, 팀 활동 경험 보유", "ControlStyle": "None", "Caption": "Applicant", "isColumnCtrl": false, "design": { "font": "body-large", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } },
+            { "Id": "f_2005", "ControlType": "Label", "ControlName": "lblReviewMemo", "labeltext": "검토 메모: 현장 프로젝트 경험과 문제 해결력이 우수하나, 협업 사례는 면접에서 추가 확인이 필요합니다.", "ControlStyle": "None", "Caption": "Memo", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } }
+          ]
+        }
+      ],
+      "StepRow": 0,
+      "StepCol": 1
+    },
+    "Step3": {
+      "StepName": "면접 평가",
+      "StepTitle": "면접/평가",
+      "StepType": "StepView",
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": [],
+      "Next": [],
+      "Padding": { "All": "", "Left": "0", "Top": "0", "Right": "0", "Btm": "0", "UseEach": true, "UseAuto": true, "SizeUnit": "px" },
+      "BgStyle": { "UseBackground": true, "BgColor": "var(--colorGray9)" },
+      "Contents": [
+        {
+          "Id": "f_3001",
+          "ContentsName": "InterviewWrap",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": { "w": "full", "h": "text", "bg": "canvas", "p": "20 20 20 20", "flex": { "dir": "column", "gap": 12 } },
+          "Contents": [
+            { "Id": "f_3002", "ControlType": "Label", "ControlName": "lblInterviewTitle", "labeltext": "면접 평가 · 역량 질문과 점수 기록", "ControlStyle": "None", "Caption": "Title", "isColumnCtrl": false, "design": { "font": "display-medium", "color": "body", "w": "full", "h": "text" } },
+            { "Id": "f_3003", "ControlType": "Label", "ControlName": "lblInterviewQuestion", "labeltext": "질문: 공모전에서 본인이 맡은 역할과 기여를 말해주세요.", "ControlStyle": "None", "Caption": "Question", "isColumnCtrl": false, "design": { "font": "body-large", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } },
+            { "Id": "f_3004", "ControlType": "Label", "ControlName": "lblInterviewScores", "labeltext": "평가 항목: 직무 전문성 4.5 · 문제 해결력 4.7 · 협업/커뮤니케이션 4.1 · 성장 가능성 4.6", "ControlStyle": "None", "Caption": "Scores", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } },
+            { "Id": "f_3005", "ControlType": "Label", "ControlName": "lblInterviewNote", "labeltext": "면접관 메모: 답변의 구조와 데이터 기반 설명은 우수하며, 이해관계자 조율 경험을 추가 확인합니다.", "ControlStyle": "None", "Caption": "Note", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "muted", "w": "full", "h": "text" } }
+          ]
+        }
+      ],
+      "StepRow": 0,
+      "StepCol": 2
+    },
+    "Step4": {
+      "StepName": "최종 판정",
+      "StepTitle": "최종 판정",
+      "StepType": "StepView",
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": [],
+      "Next": [],
+      "Padding": { "All": "", "Left": "0", "Top": "0", "Right": "0", "Btm": "0", "UseEach": true, "UseAuto": true, "SizeUnit": "px" },
+      "BgStyle": { "UseBackground": true, "BgColor": "var(--colorGray9)" },
+      "Contents": [
+        {
+          "Id": "f_4001",
+          "ContentsName": "FinalWrap",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": { "w": "full", "h": "text", "bg": "canvas", "p": "20 20 20 20", "flex": { "dir": "column", "gap": 12 } },
+          "Contents": [
+            { "Id": "f_4002", "ControlType": "Label", "ControlName": "lblFinalTitle", "labeltext": "최종 판정 · 종합 의견과 채용 의사결정", "ControlStyle": "None", "Caption": "Title", "isColumnCtrl": false, "design": { "font": "display-medium", "color": "body", "w": "full", "h": "text" } },
+            { "Id": "f_4003", "ControlType": "Label", "ControlName": "lblFinalResult", "labeltext": "추천 판정: 최종 합격 · 종합 점수 91점 · 직무 적합성 높음", "ControlStyle": "None", "Caption": "Result", "isColumnCtrl": false, "design": { "font": "body-large", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } },
+            { "Id": "f_4004", "ControlType": "Label", "ControlName": "lblFinalReason", "labeltext": "판정 사유: 현장 프로젝트 경험과 문제 해결력이 우수해 생산기술 직무에 적합합니다.", "ControlStyle": "None", "Caption": "Reason", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } },
+            { "Id": "f_4005", "ControlType": "Label", "ControlName": "lblFinalRisk", "labeltext": "보완 포인트: 협업 사례 부족은 온보딩 과제로 관리하고, 초기 90일 적응도를 추적합니다.", "ControlStyle": "None", "Caption": "Risk", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "muted", "w": "full", "h": "text" } }
+          ]
+        }
+      ],
+      "StepRow": 1,
+      "StepCol": 0
+    },
+    "Step5": {
+      "StepName": "입사자/인력 분석",
+      "StepTitle": "입사자/인력 분석",
+      "StepType": "StepView",
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": [],
+      "Next": [],
+      "Padding": { "All": "", "Left": "0", "Top": "0", "Right": "0", "Btm": "0", "UseEach": true, "UseAuto": true, "SizeUnit": "px" },
+      "BgStyle": { "UseBackground": true, "BgColor": "var(--colorGray9)" },
+      "Contents": [
+        {
+          "Id": "f_5001",
+          "ContentsName": "WorkforceWrap",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": { "w": "full", "h": "text", "bg": "canvas", "p": "20 20 20 20", "flex": { "dir": "column", "gap": 12 } },
+          "Contents": [
+            { "Id": "f_5002", "ControlType": "Label", "ControlName": "lblWorkforceTitle", "labeltext": "입사자/인력 분석 · 온보딩과 배치 현황", "ControlStyle": "None", "Caption": "Title", "isColumnCtrl": false, "design": { "font": "display-medium", "color": "body", "w": "full", "h": "text" } },
+            { "Id": "f_5003", "ControlType": "Label", "ControlName": "lblWorkforceStats", "labeltext": "입사 예정 12명 · 온보딩 진행 8명 · 부서 배치 완료 5명 · 초기 적응 리스크 2건", "ControlStyle": "None", "Caption": "Stats", "isColumnCtrl": false, "design": { "font": "body-large", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } },
+            { "Id": "f_5004", "ControlType": "Label", "ControlName": "lblWorkforcePlan", "labeltext": "관리 항목: 조직 적합성, 직무 적응도, 교육 이수율, 멘토링 상태, 배치 만족도", "ControlStyle": "None", "Caption": "Plan", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } },
+            { "Id": "f_5005", "ControlType": "Label", "ControlName": "lblWorkforceInsight", "labeltext": "인사이트: 생산기술 직군은 현장 프로젝트 경험 보유자의 초기 생산성 지표가 상대적으로 높습니다.", "ControlStyle": "None", "Caption": "Insight", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "muted", "w": "full", "h": "text" } }
+          ]
+        }
+      ],
+      "StepRow": 1,
+      "StepCol": 1
+    },
+    "Step6": {
+      "StepName": "성과 분석",
+      "StepTitle": "성과 분석",
+      "StepType": "StepView",
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": [],
+      "Next": [],
+      "Padding": { "All": "", "Left": "0", "Top": "0", "Right": "0", "Btm": "0", "UseEach": true, "UseAuto": true, "SizeUnit": "px" },
+      "BgStyle": { "UseBackground": true, "BgColor": "var(--colorGray9)" },
+      "Contents": [
+        {
+          "Id": "f_6001",
+          "ContentsName": "PerformanceWrap",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": { "w": "full", "h": "text", "bg": "canvas", "p": "20 20 20 20", "flex": { "dir": "column", "gap": 12 } },
+          "Contents": [
+            { "Id": "f_6002", "ControlType": "Label", "ControlName": "lblPerformanceTitle", "labeltext": "성과 분석 · 채용 품질과 입사 후 성과 연결", "ControlStyle": "None", "Caption": "Title", "isColumnCtrl": false, "design": { "font": "display-medium", "color": "body", "w": "full", "h": "text" } },
+            { "Id": "f_6003", "ControlType": "Label", "ControlName": "lblPerformanceKpi", "labeltext": "핵심 KPI: 90일 유지율 96% · 6개월 성과 우수 74% · 채용 리드타임 18일 · 면접 정확도 82%", "ControlStyle": "None", "Caption": "KPI", "isColumnCtrl": false, "design": { "font": "body-large", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } },
+            { "Id": "f_6004", "ControlType": "Label", "ControlName": "lblPerformanceChart", "labeltext": "분석 축: 직무지식, 문제 해결 능력, 성과 지향성, 협업/커뮤니케이션, 리더십, 성장 가능성", "ControlStyle": "None", "Caption": "Chart", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "body", "w": "full", "h": "text", "bg": "card", "p": "16 16 16 16", "radius": "12" } },
+            { "Id": "f_6005", "ControlType": "Label", "ControlName": "lblPerformanceInsight", "labeltext": "권장 액션: 성과 예측력이 높은 질문 세트를 다음 채용 공고와 면접 평가표에 반영합니다.", "ControlStyle": "None", "Caption": "Insight", "isColumnCtrl": false, "design": { "font": "body-medium", "color": "muted", "w": "full", "h": "text" } }
+          ]
+        }
+      ],
+      "StepRow": 1,
+      "StepCol": 2
+    }
+  }
+}

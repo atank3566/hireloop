@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/style-objects.schema.json",
+  "title": "Style Objects",
+  "description": "Group/Control/BottomButton 등에서 공통 사용되는 스타일/레이아웃 객체 카탈로그. 모든 객체는 additionalProperties: true (런타임에서 추가 키를 무시하지 않으므로 유연성 유지).",
+
+  "$defs": {
+    "colorToken": {
+      "type": "string",
+      "description": "권장 컬러 토큰. AI 생성 시 이 enum 값들 중에서 선택 권장. 단 BgColor/FontColor/BorderColor 등 색상 필드는 type:string 으로 두며 다음 형태 모두 허용: ① 토큰(`var(--colorMain)`), ② hex(`#333333`, `#000`, `#abc`), ③ rgb/rgba(`rgb(255,0,0)`, `rgba(33,21,7,0.654)`), ④ hsl/hsla, ⑤ legacy(`@colorBlack`), ⑥ CSS color keyword(`red`, `transparent`).",
+      "enum": [
+        "var(--colorMain)",       "var(--colorMainLight)",
+        "var(--colorWhite)",      "var(--colorBlack)",
+        "var(--colorGray1)",      "var(--colorGray2)",      "var(--colorGray3)",
+        "var(--colorGray4)",      "var(--colorGray5)",
+        "var(--colorGray9)",      "var(--colorGray10)",
+        "var(--colorRed)",        "var(--colorRedLight)",
+        "var(--colorBlue)",       "var(--colorBlueLight)",
+        "var(--colorGreen)",      "var(--colorGreenLight)",
+        "var(--colorOrange)",
+        "var(--colorPurple)",     "var(--colorPurpleLight)",
+        "var(--colorYellow)",     "var(--colorYellowLight)",
+        "var(--colorMint)",       "var(--colorMintLight)",
+        "var(--colorSub0)",       "var(--colorSub0Light)",
+        "var(--colorSub1)",       "var(--colorSub3)"
+      ]
+    },
+
+    "sizeObject": {
+      "type": "object",
+      "description": "Width/Height 등 크기 표현. MatchText=true 면 컨텐츠에 맞춤 (SizeValue 무시).",
+      "additionalProperties": false,
+      "properties": {
+        "MatchText": { "type": "boolean" },
+        "SizeValue": { "type": ["number", "string"] },
+        "SizeUnit":  { "type": "string", "examples": ["%", "px", "text"] }
+      }
+    },
+
+    "spacing": {
+      "type": "object",
+      "description": "Padding / Margin / AbsolutePosition 공통 형태. 사용하는 방향만 키 포함. 빈 문자열은 미설정. 하단은 'Btm' 사용 (BorderStyle만 'Bottom').",
+      "additionalProperties": true,
+      "properties": {
+        "UseAuto":  { "type": "boolean" },
+        "UseEach":  { "type": "boolean" },
+        "All":      { "type": "string" },
+        "Top":      { "type": "string" },
+        "Right":    { "type": "string" },
+        "Btm":      { "type": "string" },
+        "Left":     { "type": "string" },
+        "SizeUnit": { "type": "string" }
+      }
+    },
+
+    "absolutePosition": {
+      "allOf": [{ "$ref": "#/$defs/spacing" }],
+      "description": "절대 위치 오버레이. 사용 방향만 키 포함. 값은 '0' 이상의 숫자 문자열."
+    },
+
+    "displayStyle": {
+      "type": "object",
+      "description": "Flex/Display 레이아웃 제어.",
+      "additionalProperties": true,
+      "properties": {
+        "UseDisplay":           { "type": "boolean" },
+        "DisplayType":          { "type": "string", "examples": ["Flex", "None"] },
+        "FlexDirection":        { "type": "string", "examples": ["row", "column", "wrap"] },
+        "FlexWrap":             { "type": "boolean" },
+        "DisplayAlign":         { "type": "string", "examples": ["Left", "Center", "Right", "Between"] },
+        "DisplayVerticalAlign": { "type": "string", "examples": ["Top", "Center", "Bottom"] },
+        "flexBoxType":          { "type": "string", "examples": ["align", "space"] },
+        "columnGapValue":       { "type": "string" },
+        "columnGapUnit":        { "type": "string", "examples": ["px"] },
+        "rowGapValue":          { "type": "string" },
+        "rowGapUnit":           { "type": "string", "examples": ["px"] }
+      }
+    },
+
+    "fontStyle": {
+      "type": "object",
+      "description": "폰트 표현. 색상은 $defs/colorToken 의 var(--colorXxx) 사용 권장 (legacy `@colorXxx` 도 통용).",
+      "additionalProperties": true,
+      "properties": {
+        "UseFont":       { "type": "boolean" },
+        "FontColor":     { "type": "string", "$comment": "권장: $defs/colorToken enum. 실 메타는 hex/legacy 도 통용." },
+        "FontSize":      { "type": "string", "$comment": "프로퍼티 SIZE_INPUT 컨트롤이 항상 string 으로 저장." },
+        "FontWeight":    { "type": "string", "examples": ["Regular", "Medium", "SemiBold", "Bold"] },
+        "FontAlign":     { "type": "string", "examples": ["flex-start", "center", "flex-end"] },
+        "UseBold":       { "type": "boolean" },
+        "LetterSpacing": { "type": "string", "$comment": "프로퍼티 SIZE_INPUT 컨트롤이 항상 string 으로 저장.", "description": "자간. ★ AI 생성 시 미포함 (사용자 수동 설정 전용)." }
+      }
+    },
+
+    "borderStyle": {
+      "type": "object",
+      "description": "테두리. 하단은 'Bottom' 사용 (Padding/Margin은 'Btm'). SizeSet/RadiusSet 이 'Each' 면 per-side / per-corner 키 (Top/Right/Bottom/Left, RadiusTopLeft/RadiusTopRight/RadiusBottomLeft/RadiusBottomRight) 가 활성화되고 균일 키 (BorderSize / BorderRadius) 는 '' 로 비움 — 균일 vs 개별은 상호배타.",
+      "additionalProperties": true,
+      "properties": {
+        "Useborder":           { "type": "boolean" },
+        "BorderColor":         { "type": "string", "$comment": "권장: $defs/colorToken enum. 토큰 외 hex(#333333) / rgb·rgba / hsl·hsla / legacy(@colorXxx) / CSS keyword 모두 허용."},
+        "BorderSize":          { "type": ["number", "string"], "description": "균일 두께. SizeSet:'Each' 면 '' 로 비우고 Top/Right/Bottom/Left 사용." },
+        "BorderType":          { "type": "string", "examples": ["solid", "dashed", "dotted"] },
+        "SizeSet":              { "type": "string", "examples": ["All", "Each", "Top", "Right", "Bottom", "Left"], "description": "균일 두께 = 'All', 사이드별 두께 = 'Each' (Top/Right/Bottom/Left 활성)." },
+        "Top":                 { "type": "string", "description": "SizeSet:'Each' 일 때 상단 두께. 미지정은 ''." },
+        "Right":               { "type": "string", "description": "SizeSet:'Each' 일 때 우측 두께. 미지정은 ''." },
+        "Bottom":              { "type": "string", "description": "SizeSet:'Each' 일 때 하단 두께. 미지정은 ''. (★ Padding/Margin 은 'Btm' 사용)" },
+        "Left":                { "type": "string", "description": "SizeSet:'Each' 일 때 좌측 두께. 미지정은 ''." },
+        "BorderRadius":        { "type": "string", "$comment": "프로퍼티 SIZE_INPUT 컨트롤이 항상 string 으로 저장.", "description": "균일 반경. RadiusSet:'Each' 면 '' 로 비우고 RadiusTopLeft/TopRight/BottomLeft/BottomRight 사용. '9999' 는 자동 RadiusSet:'None' (pill)." },
+        "RadiusSet":           { "type": "string", "examples": ["All", "Each", "None", "Top", "Right", "Bottom", "Left"], "description": "균일 반경 = 'All', 코너별 반경 = 'Each' (RadiusTopLeft 등 활성), pill = 'None'." },
+        "RadiusTopLeft":       { "type": "string", "description": "RadiusSet:'Each' 일 때 좌상단 반경. 미지정은 ''." },
+        "RadiusTopRight":      { "type": "string", "description": "RadiusSet:'Each' 일 때 우상단 반경. 미지정은 ''." },
+        "RadiusBottomLeft":    { "type": "string", "description": "RadiusSet:'Each' 일 때 좌하단 반경. 미지정은 ''." },
+        "RadiusBottomRight":   { "type": "string", "description": "RadiusSet:'Each' 일 때 우하단 반경. 미지정은 ''." }
+      }
+    },
+
+    "bgStyle": {
+      "type": "object",
+      "description": "배경 색/이미지. UseBackground=true 일 때 BgColor 필요.",
+      "additionalProperties": true,
+      "properties": {
+        "UseBackground": { "type": "boolean" },
+        "BgColor":       { "type": "string", "$comment": "권장: $defs/colorToken enum. 토큰 외 hex(#333333) / rgb·rgba / hsl·hsla / legacy(@colorXxx) / CSS keyword 모두 허용."},
+        "UseImage":      { "type": "boolean" },
+        "Image":         { "type": "object" }
+      }
+    },
+
+    "captionStyle": {
+      "type": "object",
+      "description": "Control의 Caption 영역 스타일.",
+      "additionalProperties": true,
+      "properties": {
+        "UseDesign":       { "type": "boolean" },
+        "FontColor":       { "type": "string", "$comment": "권장: $defs/colorToken enum. 토큰 외 hex / rgb / legacy / CSS keyword 도 통용." },
+        "FontWeight":      { "type": "string", "examples": ["Regular", "Medium", "SemiBold", "Bold"] },
+        "CaptionPosition": { "type": "string", "examples": ["", "Left", "Top"] },
+        "FontSize":        { "type": "string", "$comment": "프로퍼티 SIZE_INPUT 컨트롤이 항상 string 으로 저장." },
+        "FontAlign":       { "type": "string", "examples": ["flex-start", "center", "flex-end"] }
+      }
+    },
+
+    "arrangeItemsStyle": {
+      "type": "object",
+      "description": "탭/리스트 헤더 아이템 정렬·배치. ArrangeItemsType 으로 너비 정책, ArrangeItemsAlign 으로 정렬을 지정.",
+      "additionalProperties": true,
+      "properties": {
+        "UseArrangeItems":   { "type": "boolean" },
+        "ArrangeItemsType":  { "type": "string", "examples": ["MatchText", "EqualDistribution", "Fixed"], "description": "MatchText=텍스트 크기에 맞춤 / EqualDistribution=균등분배 / Fixed=고정 너비." },
+        "ArrangeItemsAlign": { "type": "string", "examples": ["Left", "Center", "Right", "Between"], "description": "헤더 영역 안에서의 정렬." }
+      }
+    }
+  }
+}

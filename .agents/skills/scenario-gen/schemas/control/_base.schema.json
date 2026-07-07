@@ -1,0 +1,1296 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/_base.schema.json",
+  "title": "Control Base",
+  "description": "모든 Control 분기가 공통으로 사용하는 $defs. 개별 control/*.schema.json 은 controlBase / inputBase / calendarDialog / comboDialog / searchDialog (+ 내부 calendarControl / comboListControl / searchListControl) 을 $ref 로 합성.",
+
+  "$defs": {
+    "controlBase": {
+      "type": "object",
+      "description": "모든 Control 공통 필드. 각 ControlType 분기는 controlBase 위에 분기별 키를 얹는다 (allOf).",
+      "properties": {
+        "Id": {
+          "type": "string",
+          "pattern": "^f_[1-9][0-9]*$",
+          "description": "f_숫자 형식. 1부터 시작, 선행 0 불가, 영문/언더스코어 불가. 시나리오 전체 유일 (validate.mjs 후검증)."
+        },
+        "ControlType": { "type": "string" },
+        "ControlDefaultName": {
+          "type": "string",
+          "description": "내부 식별 기본명. AI 생성 시 필수."
+        },
+        "ControlName2": {
+          "type": "string",
+          "description": "보조 식별자. ControlDefaultName 과 같은 값. 누락 시 런타임 에러."
+        },
+        "ControlName": { "type": "string", "description": "탐색기 표시명." },
+        "Caption": {
+          "type": "string",
+          "description": "사용자 보이는 라벨. Input 계열은 `{{필드명}}` (다국어). Label 은 내부명(=ControlDefaultName), 화면 텍스트는 `labeltext`."
+        },
+        "ControlStyle": { "type": "string" },
+        "design": {
+          "$ref": "../design-system/design.schema.json",
+          "description": "★ Control 스타일의 권장 short-form (모든 v1 컨트롤 공통 — controlBase 정의). verbose 한 raw 스타일 필드 대신 이 키로 typography·색·여백·테두리·캡션 등 스타일을 슬롯 이름으로 표현한다. materialize.mjs 가 검증 진입 직전에 raw 필드로 expand 하고 본 키는 결과에서 제거 — validation 동작에는 영향 없음. 사용 가능한 슬롯·형식·enum·제약(일부 슬롯은 Group 전용 등) 은 design-system/design.schema.json (Ajv 등록) 또는 DESIGN.md (get_design_rules) 참조. raw 필드와 공존 가능 — leaf 단위에서 design 이 우선."
+        },
+        "ControlKey": { "$ref": "#/$defs/controlKeyValue" },
+        "DefaultValue": {},
+        "Placeholder": { "type": "string" },
+        "Maxlength": {
+          "type": "string",
+          "$comment": "프로퍼티 INPUTBOX 가 string 저장. 숫자 제한이지만 문자열 보관 — 비교 시 Number() 변환."
+        },
+        "Ckeys": {
+          "$ref": "../naming-objects.schema.json#/$defs/ckeysArray",
+          "description": "데이터 바인딩 키. 상위 Group 계층 어딘가에 UseDataConnection:true + DataConnection 필요. 시스템 게터(`status`/`isActive`/`length` 등) / JS 빌트인 충돌 키는 schema 차단 — naming-objects.ckey 참조."
+        },
+        "isColumnCtrl": {
+          "type": "boolean",
+          "const": false,
+          "default": false,
+          "description": "v1 5종 컨트롤은 항상 boolean false. (Sheet 컬럼 모드는 OtherControl). ★ 문자열 \"false\"는 JS truthy 라서 런타임이 Sheet 컨트롤로 오인 — 반드시 boolean false."
+        },
+
+        "Width": { "$ref": "../style-objects.schema.json#/$defs/sizeObject" },
+        "Height": { "$ref": "../style-objects.schema.json#/$defs/sizeObject" },
+
+        "FontStyle": {
+          "$ref": "../style-objects.schema.json#/$defs/fontStyle"
+        },
+        "BorderStyle": {
+          "$ref": "../style-objects.schema.json#/$defs/borderStyle"
+        },
+        "BgStyle": { "$ref": "../style-objects.schema.json#/$defs/bgStyle" },
+        "CaptionStyle": {
+          "$ref": "../style-objects.schema.json#/$defs/captionStyle"
+        },
+        "Padding": { "$ref": "../style-objects.schema.json#/$defs/spacing" },
+        "Margin": { "$ref": "../style-objects.schema.json#/$defs/spacing" },
+
+        "Events": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "이벤트 핸들러 맵. UseEvents/UseClickEvent 와 함께."
+        },
+        "LoadScript": {
+          "type": "string",
+          "description": "컴포넌트 로드 직전 실행 스크립트."
+        },
+
+        "UseAbsoluteLayout": { "type": "boolean", "default": false },
+        "AbsolutePosition": {
+          "$ref": "../style-objects.schema.json#/$defs/absolutePosition"
+        },
+        "UseFixedSize": {
+          "type": "boolean",
+          "default": false,
+          "description": "부모 Flex 안 고정 크기."
+        },
+
+        "UseOpacity": {
+          "type": "boolean",
+          "default": false,
+          "description": "투명도 사용 여부. true 일 때 OpacityValue 활성."
+        },
+        "OpacityValue": {
+          "type": "string",
+          "$comment": "프로퍼티 SIZE_INPUT(unit=%) 으로 저장 — 문자열. 범위 0~100.",
+          "description": "투명도 값. 0~100 사이 정수 문자열, 단위 % 고정. UseOpacity=true 일 때만 의미."
+        },
+
+        "minWidth": {
+          "$ref": "../style-objects.schema.json#/$defs/sizeObject",
+          "description": "최소 너비. ★ AI 생성 시 미포함 (사용자 수동 설정 전용)."
+        },
+        "maxWidth": {
+          "$ref": "../style-objects.schema.json#/$defs/sizeObject",
+          "description": "최대 너비. ★ AI 생성 시 미포함 (사용자 수동 설정 전용)."
+        },
+        "minHeight": {
+          "$ref": "../style-objects.schema.json#/$defs/sizeObject",
+          "description": "최소 높이. ★ AI 생성 시 미포함 (사용자 수동 설정 전용)."
+        },
+        "maxHeight": {
+          "$ref": "../style-objects.schema.json#/$defs/sizeObject",
+          "description": "최대 높이. ★ AI 생성 시 미포함 (사용자 수동 설정 전용)."
+        },
+
+        "ConditionInfo": { "$ref": "#/$defs/conditionInfo" }
+      },
+      "allOf": [
+        {
+          "$comment": "UseCondition=true 면 ConditionInfo 5개 키가 한 번에 세팅됨. 문자열 'true' 변형도 함께 트리거.",
+          "if": {
+            "properties": { "UseCondition": { "enum": [true, "true"] } },
+            "required": ["UseCondition"]
+          },
+          "then": { "required": ["ConditionInfo"] }
+        }
+      ]
+    },
+
+    "inputBase": {
+      "type": "object",
+      "description": "Input 계열(InputText / InputNumber / InputMask / InputDate / MultiInputBox / Combo / Search) 공통 추가 필드. controlBase 위에 얹는다.",
+      "properties": {
+        "UseEvents": {
+          "type": "boolean",
+          "default": false,
+          "description": "이벤트 사용. Combo/Search/InputDate 의 경우 본체가 아니라 Dialog.Layouts[0].Controls[0] 안에 둔다."
+        },
+        "DisplayType": {
+          "type": "string",
+          "enum": ["CtrlDisplayCkey", "DisplayValue"],
+          "default": "CtrlDisplayCkey",
+          "description": "본체에 선택값을 어떻게 표시할지. ★ 미지정 시 기본 'CtrlDisplayCkey' — DisplayType 없으면 DisplayValue 가 truthy 면 'DisplayValue', 아니면 'CtrlDisplayCkey'. 'CtrlDisplayCkey' 모드 → 동명 키 'CtrlDisplayCkey' 에 표시 컬렉션 필드명 등록. 'DisplayValue' 모드 → 'DisplayValue' 에 `{=Field}` 또는 `{% JS %}` 표현식 등록. 두 키는 상호배타적 (스튜디오가 모드 전환 시 한쪽을 undefined 로 비움)."
+        },
+        "CtrlDisplayCkey": {
+          "type": "string",
+          "description": "DisplayType='CtrlDisplayCkey' 모드의 표시 컬렉션 필드명. 데이터소스를 연결한 본체에서 어떤 필드 값을 표시할지 — 컬렉션키 등록의 핵심. 예: Combo 본체 'DisplayName', Search 본체 'CompanyName'. 모드가 'DisplayValue' 면 두지 않는다."
+        },
+        "DisplayValue": {
+          "type": "string",
+          "description": "DisplayType='DisplayValue' 모드의 표시 표현식. `{=Field}` 정적 바인딩 또는 `{% return ... %}` JS 표현식. 빈 문자열 '' 은 런타임 기본 표시 (Combo: ComboList.SaveNameKey 자동 사용). 모드가 'CtrlDisplayCkey' 면 두지 않는다."
+        },
+        "UseValidate": {
+          "type": "boolean",
+          "default": false,
+          "description": "내장 검증 사용."
+        },
+        "UseCondition": {
+          "type": "boolean",
+          "default": false,
+          "description": "조건부 동작 사용. true=ConditionInfo 객체 필수 (controlBase allOf 강제). createUseConditionArea — 토글 시 ConditionInfo 5개 키 일괄 세팅."
+        }
+      }
+    },
+
+    "controlKeyValue": {
+      "type": "string",
+      "enum": [
+        "",
+        "Required",
+        "ReadOnly",
+        "Hide",
+        "Disabled",
+        "Show",
+        "Nos",
+        "Hid",
+        "Dis",
+        "nos",
+        "hid",
+        "dis"
+      ],
+      "description": "컨트롤 상태값. ★ 5종 상태: ''=정상(활성화) / Required(=Nos/nos)=필수입력 (연결된 ckey 값 존재 검증) / ReadOnly=수정 불가, 조회만 / Hide(=Hid/hid)=숨김 (DOM에서 안 보이지만 Required 검증은 작동) / Disabled(=Dis/dis)=비활성 (시각적으로 보이지만 동작 안 함). LoadScript 동적 변경 시 약어 (`'hid'`/`'dis'`/`'nos'`/`''`) 권장 — 런타임 toLocaleLowerCase 처리. 짧은 키 (Hid/Dis/Nos/Show) 는 conditionControlKey 가 반환하는 런타임 형식. ★ 컴포넌트별 지원 차이 — Label/DatePicker/Line/Calendar/Tab/Embed 등은 미지원, Button 은 Required 미지원, Tree 는 Hide/ReadOnly 만 지원."
+    },
+
+    "conditionInfo": {
+      "type": "object",
+      "description": "UseCondition=true 일 때 동반 저장되는 조건 분기 메타. ★ 효과: 조건 충족/불충족 결과로 컨트롤을 **Show/Hide 동적 전환** (정적 ControlKey 를 런타임에서 오버라이드). Required/ReadOnly/Disabled 는 이 메커니즘으로 제어 불가 — 그 상태들은 정적 ControlKey 또는 LoadScript 사용. ★ 런타임: engine `conditionControlKey()` 가 sector context 와 함께 평가 → CTRL_KEY.HID 또는 CTRL_KEY.SHOW 를 반환해 ControlKey 자리에 주입. ★ 스튜디오 미평가: `_generateType === 'studio'` 일 때 조건 검사 skip — 에디터 프리뷰에서는 항상 정적 상태 표시. ★ UseCondition=true 토글 시 5개 키가 일괄 세팅됨: ConditionType='Collection' (기본), Condition=활성 ckey 첫 값(getDefaultCondition), Operator/comparisonValue/ConditionOperator 는 literal undefined → 직렬화 시 'undefined' 문자열 또는 키 누락으로 보일 수 있음.",
+      "additionalProperties": true,
+      "properties": {
+        "ConditionType": {
+          "type": "string",
+          "enum": ["Collection", "User"],
+          "description": "조건 분기 모드. ★ 런타임에서 `toLocaleLowerCase()` 비교 → 'collection'/'COLLECTION'/'Collection' 모두 동일 처리. **Collection** = 현재 sector(섹터 컨텍스트) 의 특정 필드값으로 분기 — `Condition` 에 ckey 명, `Operator`+`comparisonValue` 로 비교. sector 가 없으면 평가 skip. **User** = 로그인 상태 분기 (`f.User.isLogin()` 호출) — `Condition` 만 사용, Operator/comparisonValue 무시. ★ 'AuthKey' 값은 schema 차단 — 권한키 분기는 사용자 수동 메타 편집 전용 (AI 생성 금지)."
+        },
+        "Condition": {
+          "type": "string",
+          "description": "조건 대상 식별자. ConditionType 별 의미 다름: **Collection** → 비교할 컬렉션 필드명 (ckey) — 런타임 `sector[Condition]` 으로 값 읽음. **User** → 정확히 'isLogin' 또는 'isLogout' 문자열 (다른 값이면 분기 모두 미일치 → 항상 inverse 적용). 초기 세팅값은 활성 ckey 첫 항목 (getDefaultCondition). 빈 문자열 '' 도 보일 수 있으나 의미 분기 없어 사실상 disable."
+        },
+        "Operator": {
+          "type": "string",
+          "enum": ["", "undefined", "Same", "Diff", "Exist", "Not_Exist"],
+          "description": "비교 연산자 (Collection 전용). **Same** = `sector[Condition] == replaceExpressions(comparisonValue, sector)` — comparisonValue 안의 `{=Field}` 표현식은 동일 sector 기준 치환 후 비교. **Diff** = `!=` 비교. **Exist** = `sector[Condition]` truthy 체크 — comparisonValue 무시. **Not_Exist** = falsy 체크 — comparisonValue 무시. ConditionType=User 일 때는 평가에 사용되지 않음 (UI 숨김). 초기값 literal undefined → 운영 메타에 'undefined' 문자열 또는 '' 로 보임."
+        },
+        "comparisonValue": {
+          "type": "string",
+          "description": "비교 대상 값 (Collection + Same/Diff 전용). 정적 문자열 또는 `{=Field}` 표현식 (동일 sector 의 다른 필드값 치환). Operator=Exist/Not_Exist 일 때 미사용 (UI 숨김). ConditionType=User 일 때 미사용. 초기값 literal undefined → 'undefined' 문자열 또는 '' 로 보임."
+        },
+        "ConditionOperator": {
+          "type": "string",
+          "enum": ["", "undefined", "Show", "Hide"],
+          "description": "★ 키명 함정: 이름은 'Operator' 지만 의미는 **조건 충족 시 적용할 액션**. ★ 진실값 표 (런타임 분기): 조건 충족 + 'Show' → 컨트롤 표시(CTRL_KEY.SHOW) / 조건 충족 + 'Hide' → 숨김(CTRL_KEY.HID) / **조건 불충족 + 'Show' → 숨김** (반전) / **조건 불충족 + 'Hide' → 표시** (반전). 즉 ConditionOperator 는 \"조건이 true 일 때\" 적용할 동작을 지정하고, false 일 때는 자동 반전. 초기값 literal undefined → 'undefined' 문자열 또는 '' 로 보임 — 이 경우 조건 자체가 사실상 disable (어느 분기도 매칭되지 않음)."
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "Collection 모드 + Same/Diff 면 comparisonValue 필요 (Exist/Not_Exist 은 불필요).",
+          "if": {
+            "properties": {
+              "ConditionType": { "const": "Collection" },
+              "Operator": { "enum": ["Same", "Diff"] }
+            },
+            "required": ["ConditionType", "Operator"]
+          },
+          "then": { "required": ["comparisonValue"] }
+        },
+        {
+          "$comment": "User 모드면 Condition 은 'isLogin' 또는 'isLogout' 만 의미.",
+          "if": {
+            "properties": { "ConditionType": { "const": "User" } },
+            "required": ["ConditionType"]
+          },
+          "then": {
+            "properties": {
+              "Condition": { "enum": ["isLogin", "isLogout"] }
+            },
+            "required": ["Condition"]
+          }
+        }
+      ]
+    },
+
+    "inputEventsFull": {
+      "type": "object",
+      "description": "InputText / MultiInputBox 의 Events. 4종 input 이벤트 지원. EventOrder 의 각 항목에 대해 동명 핸들러 필수 (if/then). 이벤트 명은 모두 소문자 (런타임 규약).",
+      "additionalProperties": true,
+      "properties": {
+        "InputEventOrder": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["change", "input", "focusin", "focusout"]
+          },
+          "description": "change=입력 완료(Enter 포함) / input=키 입력마다(실시간) / focusin/focusout=포커스 변경."
+        },
+        "change": { "type": "string" },
+        "input": { "type": "string" },
+        "focusin": { "type": "string" },
+        "focusout": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "InputEventOrder": {
+                "type": "array",
+                "contains": { "const": "change" }
+              }
+            },
+            "required": ["InputEventOrder"]
+          },
+          "then": { "required": ["change"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "InputEventOrder": {
+                "type": "array",
+                "contains": { "const": "input" }
+              }
+            },
+            "required": ["InputEventOrder"]
+          },
+          "then": { "required": ["input"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "InputEventOrder": {
+                "type": "array",
+                "contains": { "const": "focusin" }
+              }
+            },
+            "required": ["InputEventOrder"]
+          },
+          "then": { "required": ["focusin"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "InputEventOrder": {
+                "type": "array",
+                "contains": { "const": "focusout" }
+              }
+            },
+            "required": ["InputEventOrder"]
+          },
+          "then": { "required": ["focusout"] }
+        }
+      ]
+    },
+
+    "inputEventsChangeOnly": {
+      "type": "object",
+      "description": "InputNumber / InputMask 의 Events. 'change' 만 지원 (실 샘플 기준). EventOrder 에 'change' 있으면 'change' 핸들러 필수.",
+      "additionalProperties": true,
+      "properties": {
+        "InputEventOrder": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["change"] },
+          "description": "InputNumber / InputMask 는 change 만. (input/focusin/focusout 미지원.)"
+        },
+        "change": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "InputEventOrder": {
+                "type": "array",
+                "contains": { "const": "change" }
+              }
+            },
+            "required": ["InputEventOrder"]
+          },
+          "then": { "required": ["change"] }
+        }
+      ]
+    },
+
+    "dateEvents": {
+      "type": "object",
+      "description": "InputDate 의 자식 Calendar 안에 둔다. DateOrder 로 등록. DialogClose 만.",
+      "additionalProperties": true,
+      "properties": {
+        "DateOrder": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["DialogClose"] }
+        },
+        "DialogClose": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "DateOrder": {
+                "type": "array",
+                "contains": { "const": "DialogClose" }
+              }
+            },
+            "required": ["DateOrder"]
+          },
+          "then": { "required": ["DialogClose"] }
+        }
+      ]
+    },
+
+    "comboEvents": {
+      "type": "object",
+      "description": "Combo 의 자식 ComboList 안에 둔다. ComboOrder 로 등록. change / DialogClose 지원.",
+      "additionalProperties": true,
+      "properties": {
+        "ComboOrder": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["change", "DialogClose"] }
+        },
+        "change": { "type": "string" },
+        "DialogClose": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "ComboOrder": {
+                "type": "array",
+                "contains": { "const": "change" }
+              }
+            },
+            "required": ["ComboOrder"]
+          },
+          "then": { "required": ["change"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "ComboOrder": {
+                "type": "array",
+                "contains": { "const": "DialogClose" }
+              }
+            },
+            "required": ["ComboOrder"]
+          },
+          "then": { "required": ["DialogClose"] }
+        }
+      ]
+    },
+
+    "searchEvents": {
+      "type": "object",
+      "description": "Search 의 자식 List 안에 둔다. SearchOrder 로 등록. change / Delete / DialogClose 지원.",
+      "additionalProperties": true,
+      "properties": {
+        "SearchOrder": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["change", "Delete", "DialogClose"]
+          }
+        },
+        "change": { "type": "string" },
+        "Delete": { "type": "string" },
+        "DialogClose": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "SearchOrder": {
+                "type": "array",
+                "contains": { "const": "change" }
+              }
+            },
+            "required": ["SearchOrder"]
+          },
+          "then": { "required": ["change"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "SearchOrder": {
+                "type": "array",
+                "contains": { "const": "Delete" }
+              }
+            },
+            "required": ["SearchOrder"]
+          },
+          "then": { "required": ["Delete"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "SearchOrder": {
+                "type": "array",
+                "contains": { "const": "DialogClose" }
+              }
+            },
+            "required": ["SearchOrder"]
+          },
+          "then": { "required": ["DialogClose"] }
+        }
+      ]
+    },
+
+    "checkBoxEvents": {
+      "type": "object",
+      "description": "CheckBox 의 Events. Click 만. CheckBoxOrder 는 선택사항(실 샘플은 직접 Click).",
+      "additionalProperties": true,
+      "properties": {
+        "CheckBoxOrder": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["Click"] }
+        },
+        "Click": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "CheckBoxOrder": {
+                "type": "array",
+                "contains": { "const": "Click" }
+              }
+            },
+            "required": ["CheckBoxOrder"]
+          },
+          "then": { "required": ["Click"] }
+        }
+      ]
+    },
+
+    "directClickEvents": {
+      "type": "object",
+      "description": "RadioBox 등 EventOrder 가 없고 Click 핸들러를 직접 두는 컨트롤.",
+      "additionalProperties": true,
+      "properties": {
+        "Click": { "type": "string" }
+      }
+    },
+
+    "labelEvents": {
+      "type": "object",
+      "description": "Label 의 Events. UseClickEvent=true 일 때 Click 핸들러.",
+      "additionalProperties": true,
+      "properties": {
+        "Click": { "type": "string" }
+      }
+    },
+
+    "buttonEvents": {
+      "type": "object",
+      "description": "Button 의 Events. UseClickEvent=true 일 때 Click 핸들러.",
+      "additionalProperties": true,
+      "properties": {
+        "Click": { "type": "string" }
+      }
+    },
+
+    "groupEvents": {
+      "type": "object",
+      "description": "Group 의 Events. ContentEvent 로 등록. Click / ScrollEnd 지원.",
+      "additionalProperties": true,
+      "properties": {
+        "ContentEvent": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["Click", "ScrollEnd"] }
+        },
+        "Click": { "type": "string" },
+        "ScrollEnd": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "ContentEvent": {
+                "type": "array",
+                "contains": { "const": "Click" }
+              }
+            },
+            "required": ["ContentEvent"]
+          },
+          "then": { "required": ["Click"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "ContentEvent": {
+                "type": "array",
+                "contains": { "const": "ScrollEnd" }
+              }
+            },
+            "required": ["ContentEvent"]
+          },
+          "then": { "required": ["ScrollEnd"] }
+        }
+      ]
+    },
+
+    "treeEvents": {
+      "type": "object",
+      "description": "Tree 의 Events. TreeOrder 로 등록 (TreeEventOrder 아님 — 운영 메타 함정). 이벤트 명은 PascalCase (Selected/Checked). Click 핸들러는 빈 문자열 ''' 으로 반드시 포함.",
+      "additionalProperties": true,
+      "properties": {
+        "TreeOrder": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["Selected", "Checked"] },
+          "description": "Selected=노드 클릭 (단일/다중 모두) / Checked=체크박스 토글 (UseMultiData=true 전용)."
+        },
+        "Click": {
+          "type": "string",
+          "description": "반드시 포함 (빈 문자열 '' 가능). 운영 컨벤션."
+        },
+        "Selected": { "type": "string" },
+        "Checked": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "TreeOrder": {
+                "type": "array",
+                "contains": { "const": "Selected" }
+              }
+            },
+            "required": ["TreeOrder"]
+          },
+          "then": { "required": ["Selected"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "TreeOrder": {
+                "type": "array",
+                "contains": { "const": "Checked" }
+              }
+            },
+            "required": ["TreeOrder"]
+          },
+          "then": { "required": ["Checked"] }
+        }
+      ]
+    },
+
+    "imageBoxEvents": {
+      "type": "object",
+      "description": "ImageBox 의 Events. ImageEventOrder 로 등록. Click 만 지원.",
+      "additionalProperties": true,
+      "properties": {
+        "ImageEventOrder": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["Click"] }
+        },
+        "Click": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "ImageEventOrder": {
+                "type": "array",
+                "contains": { "const": "Click" }
+              }
+            },
+            "required": ["ImageEventOrder"]
+          },
+          "then": { "required": ["Click"] }
+        }
+      ]
+    },
+
+    "inputFileEvents": {
+      "type": "object",
+      "description": "InputFile 의 Events. InputFileOrder 로 등록. 3종: change(파일 추가/제거) / Click(컨트롤 클릭) / upload(업로드 완료). EVENT_CHANGE='change' / EVENT_CLICK='Click' / EVENT_UPLOAD='upload' (engine const).",
+      "additionalProperties": true,
+      "properties": {
+        "InputFileOrder": {
+          "type": "array",
+          "items": { "type": "string", "enum": ["change", "Click", "upload"] }
+        },
+        "change": { "type": "string" },
+        "Click": { "type": "string" },
+        "upload": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "InputFileOrder": {
+                "type": "array",
+                "contains": { "const": "change" }
+              }
+            },
+            "required": ["InputFileOrder"]
+          },
+          "then": { "required": ["change"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "InputFileOrder": {
+                "type": "array",
+                "contains": { "const": "Click" }
+              }
+            },
+            "required": ["InputFileOrder"]
+          },
+          "then": { "required": ["Click"] }
+        },
+        {
+          "if": {
+            "properties": {
+              "InputFileOrder": {
+                "type": "array",
+                "contains": { "const": "upload" }
+              }
+            },
+            "required": ["InputFileOrder"]
+          },
+          "then": { "required": ["upload"] }
+        }
+      ]
+    },
+
+    "imageBoxFlexKey": {
+      "oneOf": [
+        {
+          "type": "string",
+          "description": "View 모드: 컬렉션 필드명 직접 지정 (ckey 와 동일 값)."
+        },
+        {
+          "type": "object",
+          "description": "Edit 모드: { ckey, Name } 객체. ckey=저장 대상 필드명, Name=(선택) 표시명.",
+          "additionalProperties": true,
+          "required": ["ckey"],
+          "properties": {
+            "ckey": { "type": "string" },
+            "Name": { "type": "string" }
+          }
+        }
+      ],
+      "description": "FlexFile 파일키 식별. View 모드는 string, Edit 모드는 { ckey, Name } 객체."
+    },
+
+    "useDCLinkBlock": {
+      "type": "object",
+      "description": "데이터 연결고리(DC Link) 블록. ★ AI 생성 시 미포함 — 운영 메타 잔존 필드. 'UseMultiData=true' + 상위 Group 의 DataConnection 활성 + DataUsage='new' 조합에서 스튜디오 프로퍼티 패널에 표시되어 사용자가 수동 설정. 부모 카테고리의 필드와 자식 컬렉션의 필드를 묶어 새 섹터 생성 시 부모 키를 자동 매핑. UseDCLink=true 일 때 DCLinkCkey.DCLinkItems[]=[{DCParentKey, DCChildKey}, ...] 가 필수.",
+      "additionalProperties": true,
+      "properties": {
+        "UseDCLink": {
+          "type": "boolean",
+          "default": false,
+          "description": "데이터 연결고리 사용 여부. true 시 DCLinkCkey 필수. ★ 프로퍼티 EDITOR_CTRL.CHECKBOX 저장 — boolean strict. ★ AI 생성 시 미포함 (사용자 수동 설정 전용)."
+        },
+        "DCLinkCkey": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "연결고리 항목 정의. UseDCLink=true 일 때 필수. DCLinkItems 배열의 각 항목이 [부모 카테고리 필드 ↔ 자식 컬렉션 필드] 한 쌍.",
+          "properties": {
+            "DCLinkItems": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                  "DCParentKey": {
+                    "type": "string",
+                    "description": "상위 카테고리의 필드명 (부모 ckey)."
+                  },
+                  "DCChildKey": {
+                    "type": "string",
+                    "description": "현재 컨트롤이 속한 컬렉션의 필드명 (자식 ckey). 신규 섹터 생성 시 이 필드에 부모 값이 자동 채워짐."
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "UseDCLink=true 면 DCLinkCkey 필수.",
+          "if": {
+            "properties": { "UseDCLink": { "const": true } },
+            "required": ["UseDCLink"]
+          },
+          "then": { "required": ["DCLinkCkey"] }
+        }
+      ]
+    },
+
+    "imageBoxViewGroup": {
+      "type": "object",
+      "description": "ImageBox.ViewGroup — 표시 영역 정의. ImageSrcType 분기: FlexFile/Url/Base64/Upload(Edit 모드 placeholder).",
+      "additionalProperties": true,
+      "required": ["ImageSrcType"],
+      "properties": {
+        "ImageSrcType": {
+          "type": "string",
+          "enum": ["FlexFile", "Url", "Base64", "Upload"],
+          "description": "FlexFile=Edit 업로드 이미지 표시 / Url=외부 URL / Base64=인라인 인코딩 / Upload=Edit 모드 ViewGroup 의 업로드 placeholder."
+        },
+        "SharedTarget": {
+          "type": "string",
+          "enum": ["tenant", "user", "global"],
+          "description": "FlexFile 공유 범위. 일반적으로 'tenant'."
+        },
+        "FlexKey": { "$ref": "#/$defs/imageBoxFlexKey" },
+        "ckey": {
+          "type": "string",
+          "description": "ImageSrcType='FlexFile' 일 때 컬렉션 필드명. View 모드에서는 FlexKey 와 동일 값."
+        },
+        "ImageUrl": {
+          "type": "string",
+          "description": "ImageSrcType='Url' 또는 'Base64' 일 때 사용. {=Field} 바인딩 가능."
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "ImageSrcType='FlexFile' → FlexKey + ckey 필요.",
+          "if": {
+            "properties": { "ImageSrcType": { "const": "FlexFile" } },
+            "required": ["ImageSrcType"]
+          },
+          "then": { "required": ["FlexKey", "ckey"] }
+        },
+        {
+          "$comment": "ImageSrcType='Url'|'Base64' → ImageUrl 필요.",
+          "if": {
+            "properties": { "ImageSrcType": { "enum": ["Url", "Base64"] } },
+            "required": ["ImageSrcType"]
+          },
+          "then": { "required": ["ImageUrl"] }
+        }
+      ]
+    },
+
+    "imageBoxEditGroup": {
+      "type": "object",
+      "description": "ImageBox.EditGroup — 업로드 시 FlexFile 저장 정의 (ImageBoxType='Edit' 전용). ImageSrcType='FlexFile' + Module='FlexFile' 고정 패턴.",
+      "additionalProperties": true,
+      "required": ["ImageSrcType", "FlexKey"],
+      "properties": {
+        "ImageSrcType": {
+          "type": "string",
+          "const": "FlexFile",
+          "description": "Edit 모드 EditGroup 은 FlexFile 저장 고정."
+        },
+        "SharedTarget": {
+          "type": "string",
+          "enum": ["tenant", "user", "global"]
+        },
+        "FlexKey": { "$ref": "#/$defs/imageBoxFlexKey" },
+        "Module": {
+          "type": "string",
+          "const": "FlexFile",
+          "description": "고정 'FlexFile'."
+        }
+      }
+    },
+
+    "calendarControl": {
+      "type": "object",
+      "description": "InputDate.Dialog.Layouts[*].Controls[*] — 내부 Calendar 컨트롤. CalendarType / SelectType 은 InputDate 본체가 아니라 여기에 위치.",
+      "additionalProperties": true,
+      "required": ["ControlType"],
+      "properties": {
+        "ControlType": { "const": "Calendar" },
+        "CalendarType": {
+          "type": "string",
+          "enum": ["dayCalendar", "monthCalendar", "yearCalendar"],
+          "description": "dayCalendar=일 picker / monthCalendar=월 picker(YYYY-MM 권장) / yearCalendar=년 picker."
+        },
+        "SelectType": {
+          "type": "string",
+          "enum": ["SingleDate", "FromTo"],
+          "description": "SingleDate=단일 날짜 / FromTo=기간(시작~종료). FromTo 는 dayCalendar 에서만 의미있음."
+        },
+        "SingleDate": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "SelectType='SingleDate' 일 때 사용. Ckeys 로 바인딩.",
+          "properties": {
+            "Ckeys": {
+              "$ref": "../naming-objects.schema.json#/$defs/ckeysArray"
+            }
+          }
+        },
+        "StartDate": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "SelectType='FromTo' 일 때 시작 날짜 바인딩.",
+          "properties": {
+            "Ckeys": {
+              "$ref": "../naming-objects.schema.json#/$defs/ckeysArray"
+            }
+          }
+        },
+        "EndDate": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "SelectType='FromTo' 일 때 종료 날짜 바인딩.",
+          "properties": {
+            "Ckeys": {
+              "$ref": "../naming-objects.schema.json#/$defs/ckeysArray"
+            }
+          }
+        },
+        "UseEvents": { "type": "boolean", "default": false },
+        "Events": { "$ref": "#/$defs/dateEvents" },
+        "isColumnCtrl": {
+          "type": "boolean",
+          "const": false,
+          "default": false,
+          "$comment": "★ JS truthy 회피 — boolean false 만."
+        },
+        "UseMultiData": {
+          "type": "boolean",
+          "default": false,
+          "description": "다중 일자 선택 (대부분 false — 운영 메타에 있는 필드)."
+        },
+        "UseCategory": {
+          "type": "boolean",
+          "default": false,
+          "description": "카테고리 기반 데이터 연결 (대부분 false — 운영 메타에 있는 필드)."
+        },
+        "UseDlgSetting": {
+          "type": "boolean",
+          "default": false,
+          "description": "다이얼로그 세부 설정 사용 (대부분 false — 운영 메타에 있는 필드)."
+        },
+        "UseDCLink": {
+          "type": "boolean",
+          "default": false,
+          "description": "데이터 연결고리 사용. ★ AI 생성 시 미포함 — 운영 메타 잔존 필드 (UseMultiData=true + 상위 DataConnection + DataUsage='new' 조합에서만 스튜디오 UI 노출). useDCLinkBlock 정책 동일."
+        },
+        "DCLinkCkey": {
+          "$ref": "#/$defs/useDCLinkBlock/properties/DCLinkCkey"
+        },
+        "Id": { "type": "string", "pattern": "^f_[1-9][0-9]*$" }
+      },
+      "allOf": [
+        {
+          "$comment": "UseDCLink=true 면 DCLinkCkey 필수 (useDCLinkBlock 정책).",
+          "if": {
+            "properties": { "UseDCLink": { "const": true } },
+            "required": ["UseDCLink"]
+          },
+          "then": { "required": ["DCLinkCkey"] }
+        },
+        {
+          "$comment": "SelectType='SingleDate' 면 SingleDate 객체 페어. 데이터 연결 활성화 시: SingleDate.Ckeys (1개 이상) 필수 | 데이터 연결 없으면 빈 배열 (0개). 런타임이 dlgJson.SingleDate.Ckeys 로 직접 접근하므로 빈 객체 {} 는 TypeError.",
+          "if": {
+            "properties": { "SelectType": { "const": "SingleDate" } },
+            "required": ["SelectType"]
+          },
+          "then": {
+            "required": ["SingleDate"],
+            "properties": {
+              "SingleDate": {
+                "required": ["Ckeys"],
+                "properties": {
+                  "Ckeys": { "minItems": 0 }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "SelectType='FromTo' 면 StartDate + EndDate 모두 필수 페어. 데이터 연결 활성화 시: StartDate.Ckeys / EndDate.Ckeys (1개 이상) 필수 | 데이터 연결 없으면 빈 배열 (0개). 런타임이 dlgJson.StartDate.Ckeys / dlgJson.EndDate.Ckeys 로 직접 접근.",
+          "if": {
+            "properties": { "SelectType": { "const": "FromTo" } },
+            "required": ["SelectType"]
+          },
+          "then": {
+            "required": ["StartDate", "EndDate"],
+            "properties": {
+              "StartDate": {
+                "required": ["Ckeys"],
+                "properties": {
+                  "Ckeys": { "minItems": 0 }
+                }
+              },
+              "EndDate": {
+                "required": ["Ckeys"],
+                "properties": {
+                  "Ckeys": { "minItems": 0 }
+                }
+              }
+            }
+          }
+        },
+        {
+          "$comment": "FromTo 는 dayCalendar 에서만 사용. monthCalendar/yearCalendar 에서는 SingleDate 만.",
+          "if": {
+            "properties": {
+              "CalendarType": { "enum": ["monthCalendar", "yearCalendar"] }
+            },
+            "required": ["CalendarType"]
+          },
+          "then": {
+            "properties": { "SelectType": { "const": "SingleDate" } }
+          }
+        }
+      ]
+    },
+
+    "comboListControl": {
+      "type": "object",
+      "description": "Combo.Dialog.Layouts[*].Controls[*] — 내부 ComboList 컨트롤. 선택지 목록 + 매핑. UseDataSource 미지정 시 런타임 default=true — RadioBox(default=false) 와 비대칭이므로 Fixed 모드는 명시적 false 권장.",
+      "additionalProperties": true,
+      "required": ["ControlType"],
+      "properties": {
+        "ControlType": { "const": "ComboList" },
+        "DlgCtrlType": {
+          "const": "Common",
+          "description": "ComboList 는 항상 'Common'."
+        },
+        "Title": {
+          "type": "string",
+          "description": "선택지 목록에 표시할 원본 데이터 필드명. ★ DataSource 모드(UseDataSource:true)에서 누락 시 리스트에 명칭이 안 보인다 — DataSource 키 중 표시할 키를 반드시 연결 ([ds-key] cross-check). Fixed DataSource=FixedItems 키 (예: ItemName/ItemValue), Collection=원본Ckey, Service=서비스반환필드."
+        },
+        "Ckeys": {
+          "$ref": "../naming-objects.schema.json#/$defs/ckeysArray",
+          "description": "Combo 본체 Ckeys 와 동일해야 함. Fixed 모드에서는 빈 배열 허용. 시스템 게터 / JS 빌트인 차단."
+        },
+        "CollectionMapper": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "{ MapperOrder: [...], 대상Ckey: 원본필드, ... } 매핑. ★ additionalProperties 는 자유 매핑키(값=원본필드명, string)이므로 {type:string} — true 로 두면 strict 변환이 unevaluatedProperties:false 로 뒤집어 매핑키를 오탐 차단한다.",
+          "properties": {
+            "MapperOrder": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "SaveNameKey": {
+          "type": "string",
+          "description": "선택 후 Combo 에 표시할 필드명 (Ckeys 중 하나). Fixed 모드 기본 'ItemName'."
+        },
+        "SaveValueKey": {
+          "type": "string",
+          "description": "선택 후 저장할 주값 필드명 (Ckeys 중 하나). Fixed 모드 기본 'ItemValue'."
+        },
+        "Items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "ItemName": { "type": "string" },
+              "ItemValue": { "type": "string" }
+            }
+          },
+          "description": "Fixed DataSource 일 때 인라인 선택지. UseDataSource=false 와 짝."
+        },
+        "DataSourceName": {
+          "type": "string",
+          "description": "Service/Collection DataSource 일 때 데이터 소스 이름. UseDataSource=true 와 짝."
+        },
+        "UseDataSource": {
+          "type": "boolean",
+          "default": true,
+          "description": "true=Service/Collection DataSource / false=Fixed Items. 런타임 default=true — Fixed 모드에서는 명시적 false 권장 (누락 시 DataSource 모드로 인식되어 Items 가 무시될 수 있음). ★ 프로퍼티 EDITOR_CTRL.RADIOBOX 의 VAL: true/false (boolean) 으로 저장 — 진실원본 boolean."
+        },
+        "UseEmptyRow": {
+          "type": "boolean",
+          "default": false,
+          "description": "true=목록에 빈 행(선택없음) 추가. ★ 프로퍼티 EDITOR_CTRL.SWITCH 저장 — boolean 고정."
+        },
+        "EmptyRowName": {
+          "type": "string",
+          "description": "UseEmptyRow=true 일 때 빈 행 표시명."
+        },
+        "UseFirstRow": {
+          "type": "boolean",
+          "default": false,
+          "description": "true=첫 행 자동 선택. ★ DefaultItemSetting COMBOBOX 의 EMPTY/FIRST 분기 결과로 boolean 저장 (UseEmptyRow 와 상호배타) — 진실원본 boolean."
+        },
+        "UseEvents": { "type": "boolean", "default": false },
+        "Events": { "$ref": "#/$defs/comboEvents" },
+        "isColumnCtrl": {
+          "type": "boolean",
+          "const": false,
+          "default": false,
+          "$comment": "★ JS truthy 회피 — boolean false 만."
+        },
+        "Id": { "type": "string", "pattern": "^f_[1-9][0-9]*$" }
+      },
+      "allOf": [
+        {
+          "$comment": "UseDataSource=true 면 DataSourceName + CollectionMapper + Title 필수 — 콜렉션 ↔ DataSource 필드 매핑이 있어야 데이터 연결관계가 성립하고, Title 에 DataSource 표시 키가 연결되어야 리스트에 명칭이 보인다.",
+          "if": {
+            "properties": { "UseDataSource": { "const": true } },
+            "required": ["UseDataSource"]
+          },
+          "then": {
+            "required": ["DataSourceName", "CollectionMapper", "Title"],
+            "properties": {
+              "CollectionMapper": { "minProperties": 1 }
+            }
+          }
+        }
+      ]
+    },
+
+    "searchListControl": {
+      "type": "object",
+      "description": "Search.Dialog.Layouts[*].Controls[*] — 내부 List 컨트롤. 키워드 검색 + DataSource 기반 lookup. ★ Search 는 항상 DataSource 기반 — UseDataSource 키 자체는 통상 생략. 명시 시 true 만 의미가 있다.",
+      "additionalProperties": true,
+      "required": ["ControlType", "DataSourceName", "Title"],
+      "properties": {
+        "ControlType": { "const": "List" },
+        "Title": {
+          "type": "string",
+          "description": "선택지에 표시할 원본 데이터 필드명. ★ 누락 시 리스트에 명칭이 안 보인다 — DataSource 키 중 표시할 키를 반드시 연결 ([ds-key] cross-check)."
+        },
+        "SubTitle": {
+          "type": "string",
+          "description": "(선택) 보조 표시 필드명."
+        },
+        "DataSourceName": {
+          "type": "string",
+          "description": "선택지 데이터 소스 이름. Search 의 List 는 항상 DataSource 기반."
+        },
+        "UseDataSource": {
+          "type": "boolean",
+          "default": true,
+          "description": "Search 는 항상 DataSource 기반. 통상 생략 (DataSourceName 만 있으면 충분). 명시 시 true 권장. ★ 프로퍼티 EDITOR_CTRL.RADIOBOX boolean 저장 — 진실원본 boolean."
+        },
+        "UseKeywordSearch": {
+          "type": "boolean",
+          "default": false,
+          "description": "true=검색 입력 활성화. ★ 프로퍼티 EDITOR_CTRL.CHECKBOX 저장 — boolean 고정."
+        },
+        "KeywordSearchCkey": {
+          "type": "string",
+          "description": "UseKeywordSearch=true 일 때 검색 대상 필드명."
+        },
+        "CollectionMapper": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "{ MapperOrder: [...], 대상Ckey: 원본필드, ... } 매핑. ★ additionalProperties 는 자유 매핑키(값=원본필드명, string)이므로 {type:string} — true 로 두면 strict 변환이 unevaluatedProperties:false 로 뒤집어 매핑키를 오탐 차단한다.",
+          "properties": {
+            "MapperOrder": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "Ckeys": {
+          "$ref": "../naming-objects.schema.json#/$defs/ckeysArray",
+          "description": "Search 본체 Ckeys 와 동일. 시스템 게터 / JS 빌트인 차단."
+        },
+        "UseMultiData": {
+          "type": "boolean",
+          "default": false,
+          "description": "true=다중 선택 (대부분 false). ★ 프로퍼티 EDITOR_CTRL.CHECKBOX 저장 — boolean 고정."
+        },
+        "UseEvents": { "type": "boolean", "default": false },
+        "Events": { "$ref": "#/$defs/searchEvents" },
+        "isColumnCtrl": {
+          "type": "boolean",
+          "const": false,
+          "default": false,
+          "$comment": "★ JS truthy 회피 — boolean false 만."
+        },
+        "UseDCLink": {
+          "type": "boolean",
+          "default": false,
+          "description": "데이터 연결고리 사용. ★ AI 생성 시 미포함 — 운영 메타 잔존 필드 (UseMultiData=true + 상위 DataConnection + DataUsage='new' 조합에서만 스튜디오 UI 노출). useDCLinkBlock 정책 동일."
+        },
+        "DCLinkCkey": {
+          "$ref": "#/$defs/useDCLinkBlock/properties/DCLinkCkey"
+        },
+        "Id": { "type": "string", "pattern": "^f_[1-9][0-9]*$" }
+      },
+      "allOf": [
+        {
+          "$comment": "UseKeywordSearch=true 면 KeywordSearchCkey 필수.",
+          "if": {
+            "properties": { "UseKeywordSearch": { "const": true } },
+            "required": ["UseKeywordSearch"]
+          },
+          "then": { "required": ["KeywordSearchCkey"] }
+        },
+        {
+          "$comment": "UseDataSource=true 면 CollectionMapper 필수 — 콜렉션 ↔ DataSource 필드 매핑이 있어야 데이터 연결관계가 성립. (DataSourceName 은 위에서 이미 required.)",
+          "if": {
+            "properties": { "UseDataSource": { "const": true } },
+            "required": ["UseDataSource"]
+          },
+          "then": {
+            "required": ["CollectionMapper"],
+            "properties": {
+              "CollectionMapper": { "minProperties": 1 }
+            }
+          }
+        },
+        {
+          "$comment": "UseDCLink=true 면 DCLinkCkey 필수 (useDCLinkBlock 정책).",
+          "if": {
+            "properties": { "UseDCLink": { "const": true } },
+            "required": ["UseDCLink"]
+          },
+          "then": { "required": ["DCLinkCkey"] }
+        }
+      ]
+    },
+
+    "selectionItem": {
+      "type": "object",
+      "description": "CheckBox / RadioBox 의 Items[] 항목. ItemName=옆 텍스트, ItemValue=선택 값.",
+      "additionalProperties": true,
+      "properties": {
+        "ItemName": {
+          "type": "string",
+          "description": "체크박스/라디오 옆 텍스트. 빈 문자열이면 미표시."
+        },
+        "ItemValue": {
+          "type": "string",
+          "description": "선택 시 저장 값. 프로퍼티 INPUTBOX 가 string 저장."
+        },
+        "ItemValueDel": {
+          "type": "string",
+          "description": "(CheckBox) 해제 시 저장 값. 기본 빈 문자열."
+        },
+        "ItemBgStyle": { "type": "object" },
+        "ItemBorderStyle": { "type": "object" }
+      }
+    },
+
+    "calendarDialog": {
+      "type": "object",
+      "description": "InputDate 전용 Dialog. Layouts[*].Controls[*] 는 반드시 Calendar 만 허용 (다른 ControlType 차단).",
+      "required": ["Layouts"],
+      "additionalProperties": true,
+      "properties": {
+        "Layouts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["Controls"],
+            "properties": {
+              "ContentsType": { "type": "string", "examples": ["Layout"] },
+              "Controls": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "allOf": [
+                    { "$ref": "#/$defs/calendarControl" },
+                    {
+                      "properties": {
+                        "ControlType": { "const": "Calendar" }
+                      },
+                      "required": ["ControlType"]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "comboDialog": {
+      "type": "object",
+      "description": "Combo 전용 Dialog. Layouts[*].Controls[*] 는 반드시 ComboList 만 허용 (다른 ControlType 차단).",
+      "required": ["Layouts"],
+      "additionalProperties": true,
+      "properties": {
+        "Layouts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["Controls"],
+            "properties": {
+              "ContentsType": { "type": "string", "examples": ["Layout"] },
+              "Controls": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "allOf": [
+                    { "$ref": "#/$defs/comboListControl" },
+                    {
+                      "properties": {
+                        "ControlType": { "const": "ComboList" }
+                      },
+                      "required": ["ControlType"]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "searchDialog": {
+      "type": "object",
+      "description": "Search 전용 Dialog. Layouts[*].Controls[*] 는 반드시 List 만 허용 (다른 ControlType 차단).",
+      "required": ["Layouts"],
+      "additionalProperties": true,
+      "properties": {
+        "Layouts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["Controls"],
+            "properties": {
+              "ContentsType": { "type": "string", "examples": ["Layout"] },
+              "Controls": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "allOf": [
+                    { "$ref": "#/$defs/searchListControl" },
+                    {
+                      "properties": {
+                        "ControlType": { "const": "List" }
+                      },
+                      "required": ["ControlType"]
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

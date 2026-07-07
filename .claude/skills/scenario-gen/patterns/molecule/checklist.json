@@ -1,0 +1,107 @@
+{
+  "tier": "molecule",
+  "name": "checklist",
+  "path": "schema/v1/patterns/molecule/checklist.schema.json",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://flextudio.local/meta-contract/v1/patterns/molecule/checklist.schema.json",
+    "title": "pattern.molecule.checklist",
+    "description": "상단 라벨 + 체크박스 아이템 그리드 (molecule). 필터/다중선택 영역에 쓰는 '라벨 + 여러 체크박스' 묶음. 외부 Group(세로, rowGap 12)에 라벨 Label(SemiBold 15)이 위에 오고, 그 아래 체크박스 그리드 Group(wrap, columnGap 8 / rowGap 12)이 온다. 각 아이템은 styleSquare 단일 체크박스이며 체크 시 박스가 checkedColor 로 채워진다. lines=1 이면 한 줄에 하나(Width 100%), lines=2 이면 2열(각 Width calc(50% - 4px) + columnGap 8px 로 정확히 100% 정렬). Height 는 emit 하지 않고 엔진 자동에 맡긴다. 데이터 바인딩(Ckeys/SaveKey)이 필요하면 override.grid 또는 각 아이템에 직접 지정.",
+    "x-tier": "molecule",
+    "x-tags": [
+      "checklist",
+      "checkbox",
+      "filter",
+      "multi-select",
+      "label",
+      "form"
+    ],
+    "x-related": [
+      "atom/checkbox"
+    ],
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "label",
+      "items"
+    ],
+    "properties": {
+      "label": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 40,
+        "description": "그리드 상단에 표시할 라벨 텍스트 (SemiBold 15). 외부 Group 의 ContentsName 으로도 쓰인다. 다국어 토큰 `{{key}}` / 바인딩 `{=Field}` 가능."
+      },
+      "items": {
+        "type": "array",
+        "minItems": 1,
+        "maxItems": 20,
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 30,
+          "description": "체크박스 아이템 이름 (ItemName). ItemValue 는 빈 문자열로 둔다 (단순 토글)."
+        },
+        "description": "체크박스 아이템 이름 배열. 각 문자열이 styleSquare 단일 체크박스 하나가 된다. 1~20개."
+      },
+      "lines": {
+        "type": "integer",
+        "enum": [
+          1,
+          2
+        ],
+        "default": 1,
+        "description": "열 수. 1=한 줄에 체크박스 하나(Width 100%), 2=2열(각 Width calc(50% - 4px), 그리드 columnGap 8px 와 짝). 행 간격(rowGap)은 12px. 기본 1."
+      },
+      "checkedColor": {
+        "type": "string",
+        "default": "surface.brand",
+        "description": "체크 시 박스 채움색 → ItemBgStyle.ItemBgColor. _base.style 색 토큰 (예: surface.brand=Main, semantic.success=초록, semantic.failure=빨강, text.primary=Ink) 또는 raw var(--colorXxx). 기본 surface.brand(Main)."
+      },
+      "override": {
+        "type": "object",
+        "propertyNames": {
+          "enum": [
+            "root",
+            "label",
+            "grid"
+          ]
+        },
+        "additionalProperties": {
+          "type": "object"
+        },
+        "description": "(L1 escape hatch) 패턴이 노출하지 않는 raw 엔진 메타데이터를 materialized 트리의 특정 노드에 deep-merge 로 주입한다. anchor 로 위치 지정 — root=외부 Group, label=라벨 Label, grid=체크박스 그리드 Group. 값은 엔진 필드 패치 객체이며, 어떤 엔진 스키마에든 정의된 필드명만 검증을 통과한다(예: grid 에 UseDataConnection). 배열 필드는 deep-merge 가 아니라 통째 교체된다. props 로 충분한 일반 케이스엔 쓰지 않는다.",
+        "examples": [
+          {
+            "grid": {
+              "UseDataConnection": true
+            }
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "label": "오더상태",
+        "items": [
+          "전체",
+          "응대중",
+          "처리중",
+          "처리완료",
+          "취소"
+        ],
+        "lines": 2,
+        "checkedColor": "surface.brand"
+      },
+      {
+        "label": "알림 채널",
+        "items": [
+          "이메일",
+          "SMS",
+          "푸시"
+        ],
+        "lines": 1
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/service/GoogleSheet.schema.json",
+  "title": "GoogleSheet ServiceBinding",
+  "description": "Google Sheet 직접 연동. SystemID='GoogleSheet'. spreadsheetId + Sheet 명 + 기준 컬럼명 (보통 _SUID) 으로 동작. ModuleID 4종 (Query / Append / Update / Clear).",
+  "type": "object",
+  "required": ["SystemID", "ModuleID"],
+  "additionalProperties": true,
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/commonBase" },
+    {
+      "properties": {
+        "SystemID": { "const": "GoogleSheet" },
+        "ModuleID": {
+          "type": "string",
+          "enum": ["Query", "Append", "Update", "Clear"],
+          "description": "GoogleSheet 작업 종류. Firestore 와 다름 — Save→Append, Delete→Clear (행 삭제 X, 값만 비움)."
+        },
+        "SpreadsheetId": {
+          "type": "string",
+          "description": "Google Spreadsheet ID — URL `/spreadsheets/d/{spreadsheetId}/edit` 의 부분."
+        },
+        "SheetName":     { "type": "string", "description": "시트 명 (탭 이름)." },
+        "BaseColumn":    { "type": "string", "description": "기준 컬럼명. 보통 `_SUID` — 빈 컬럼이면 자동 생성. Update/Clear 시 _rowIndex 와 함께 행 식별 키." },
+        "UsePKey":       { "type": "boolean" },
+        "UseParamBlock": { "type": "boolean" },
+        "UseResultBlock":{ "type": "boolean" }
+      }
+    }
+  ]
+}

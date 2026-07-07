@@ -1,0 +1,2521 @@
+{
+  "Steps": {
+    "Step3": {
+      "Padding": {
+        "Right": "0",
+        "Btm": "0",
+        "UseAuto": true,
+        "Left": "0",
+        "Top": "0",
+        "All": "",
+        "UseEach": true
+      },
+      "StepName": "",
+      "Contents": [
+        {
+          "Contents": [
+            {
+              "UseDataConnection": false,
+              "Padding": {},
+              "Height": {
+                "MatchText": true,
+                "SizeValue": "",
+                "SizeUnit": "text"
+              },
+              "BgStyle": {},
+              "Id": "f_1520",
+              "Width": {
+                "MatchText": false,
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "ContentsName": "Contents",
+              "ContentStyle": "None",
+              "ContentsType": "Group",
+              "Margin": {},
+              "Contents": [
+                {
+                  "ControlStyle": "None",
+                  "ControlName": "createDate",
+                  "FontStyle": {
+                    "FontColor": "var(--colorGray3)",
+                    "UseFont": true,
+                    "FontAlign": "flex-start",
+                    "UseBold": true,
+                    "FontSize": "12"
+                  },
+                  "labeltext": "2023-09-01 13:01:55",
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": ""
+                  },
+                  "Id": "f_9979",
+                  "Caption": "Label1",
+                  "Margin": {},
+                  "isColumnCtrl": false,
+                  "ControlName2": "2023-09-01 13:01:55_copy"
+                },
+                {
+                  "ControlStyle": "None",
+                  "ControlName": "txtTitle",
+                  "FontStyle": {
+                    "UseFont": true,
+                    "FontAlign": "flex-start",
+                    "UseBold": true,
+                    "FontSize": "18"
+                  },
+                  "labeltext": "현장 개선을 위한 아이디어",
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "text"
+                  },
+                  "Id": "f_9980",
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": "100",
+                    "SizeUnit": "%"
+                  },
+                  "Caption": "Label1",
+                  "isColumnCtrl": false
+                },
+                {
+                  "ControlStyle": "None",
+                  "ControlName": "txtUserName",
+                  "FontStyle": {
+                    "FontColor": "var(--colorBlack)",
+                    "UseFont": true,
+                    "FontAlign": "flex-start",
+                    "UseBold": false,
+                    "FontSize": "12"
+                  },
+                  "labeltext": "홍길동 ㅣ 경영기획팀",
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": ""
+                  },
+                  "Id": "f_9981",
+                  "Caption": "Label1",
+                  "Margin": {},
+                  "isColumnCtrl": false
+                },
+                {
+                  "ControlName": "txtType",
+                  "FontStyle": {
+                    "FontColor": "var(--colorGray1)",
+                    "UseFont": true,
+                    "FontAlign": "center",
+                    "FontSize": "13",
+                    "FontWeight": "Regular"
+                  },
+                  "UseAbsoluteLayout": false,
+                  "BorderStyle": {
+                    "BorderRadius": "42",
+                    "Useborder": true,
+                    "RadiusSet": "All"
+                  },
+                  "BgStyle": {
+                    "BgColor": "var(--colorMain)",
+                    "UseBackground": true
+                  },
+                  "Caption": "Label1",
+                  "ControlStyle": "None",
+                  "labeltext": "장애개선",
+                  "LabelType": "labeltext",
+                  "Padding": {
+                    "Right": "8",
+                    "Btm": "",
+                    "UseAuto": true,
+                    "Left": "8",
+                    "SizeUnit": "px",
+                    "Top": "",
+                    "All": "",
+                    "UseEach": true
+                  },
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "24"
+                  },
+                  "Id": "f_9982",
+                  "Width": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "text"
+                  },
+                  "Margin": {},
+                  "isColumnCtrl": false
+                },
+                {
+                  "EditGroup": {},
+                  "ControlName": "ImageBox2",
+                  "ViewGroup": {
+                    "ImageSrcType": "Upload"
+                  },
+                  "ImageBoxType": "View",
+                  "ControlType": "ImageBox",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "220",
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_9710",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "Caption": "addImg",
+                  "Margin": {},
+                  "isColumnCtrl": false,
+                  "ControlName2": "Image"
+                },
+                {
+                  "ControlStyle": "None",
+                  "ControlName": "txtcontents",
+                  "FontStyle": {
+                    "UseFont": true,
+                    "FontSize": "13"
+                  },
+                  "labeltext": "현장개선에 대한 내용이 들어갑니다.",
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": ""
+                  },
+                  "Id": "f_9711",
+                  "Caption": "Label1",
+                  "Margin": {},
+                  "isColumnCtrl": false
+                }
+              ],
+              "DisplayStyle": {
+                "UseDisplay": true,
+                "DisplayType": "Flex",
+                "FlexDirection": "column",
+                "DisplayAlign": "Left",
+                "DisplayVerticalAlign": "Top",
+                "flexBoxType": "align",
+                "rowGapValue": "15",
+                "rowGapUnit": "px"
+              }
+            },
+            {
+              "ContentsName": "Info",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "UseDataConnection": false,
+              "Id": "f_10544",
+              "Contents": [
+                {
+                  "UseDataConnection": false,
+                  "DisplayStyle": {
+                    "FlexWrap": false,
+                    "DisplayVerticalAlign": "Center",
+                    "DisplayAlign": "Left",
+                    "DisplayType": "Flex",
+                    "UseDisplay": true
+                  },
+                  "Padding": {
+                    "Right": "15",
+                    "Btm": "10",
+                    "UseAuto": true,
+                    "Left": "15",
+                    "SizeUnit": "px",
+                    "Top": "10",
+                    "All": "",
+                    "UseEach": true
+                  },
+                  "Id": "f_1538",
+                  "ContentsName": "Location",
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentStyle": "None",
+                  "ContentsType": "Group",
+                  "Margin": {},
+                  "Contents": [
+                    {
+                      "ControlStyle": "None",
+                      "FontStyle": {
+                        "UseFont": true,
+                        "FontSize": "13"
+                      },
+                      "ControlName": "Label1",
+                      "labeltext": "개선위치",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Id": "f_1540",
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Caption": "Label1",
+                      "UseFixedSize": true,
+                      "isColumnCtrl": false
+                    },
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "txtLocation",
+                      "FontStyle": {
+                        "UseFont": true,
+                        "FontAlign": "flex-end",
+                        "UseBold": true,
+                        "FontSize": "13"
+                      },
+                      "labeltext": "본사 ㅣ 1층 정문",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_1542",
+                      "UseTriming": false,
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "100"
+                      },
+                      "Caption": "Label1",
+                      "Margin": {},
+                      "UseFixedSize": false,
+                      "isColumnCtrl": false
+                    }
+                  ],
+                  "BorderStyle": {
+                    "Useborder": true,
+                    "BorderColor": "var(--colorGray9)",
+                    "BorderSize": 1,
+                    "BorderType": "solid",
+                    "SizeSet": "All",
+                    "BorderRadius": "4",
+                    "RadiusSet": "All"
+                  },
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "44"
+                  },
+                  "BgStyle": {
+                    "UseBackground": true,
+                    "BgColor": "var(--colorGray10)"
+                  }
+                },
+                {
+                  "UseDataConnection": false,
+                  "DisplayStyle": {
+                    "FlexWrap": false,
+                    "DisplayVerticalAlign": "Center",
+                    "DisplayAlign": "Left",
+                    "DisplayType": "Flex",
+                    "UseDisplay": true
+                  },
+                  "Padding": {
+                    "Right": "15",
+                    "Btm": "10",
+                    "UseAuto": true,
+                    "Left": "15",
+                    "SizeUnit": "px",
+                    "Top": "10",
+                    "All": "",
+                    "UseEach": true
+                  },
+                  "Id": "f_1544",
+                  "ContentsName": "Manager",
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentStyle": "None",
+                  "ContentsType": "Group",
+                  "Margin": {},
+                  "Contents": [
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "Label1",
+                      "FontStyle": {
+                        "UseFont": true,
+                        "FontSize": "13"
+                      },
+                      "labeltext": "담당부서",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Id": "f_1546",
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Caption": "Label1",
+                      "UseFixedSize": true
+                    },
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "txtReplyUserName",
+                      "FontStyle": {
+                        "UseFont": true,
+                        "FontAlign": "flex-end",
+                        "UseBold": true,
+                        "FontSize": "13"
+                      },
+                      "labeltext": "시설안전관리팀ㅣ김담당",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_1548",
+                      "UseTriming": false,
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "100"
+                      },
+                      "Caption": "Label1",
+                      "Margin": {},
+                      "UseFixedSize": false,
+                      "isColumnCtrl": false
+                    }
+                  ],
+                  "BorderStyle": {
+                    "Useborder": true,
+                    "BorderColor": "var(--colorGray9)",
+                    "BorderSize": 1,
+                    "BorderType": "solid",
+                    "SizeSet": "All",
+                    "BorderRadius": "4",
+                    "RadiusSet": "All"
+                  },
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "44"
+                  },
+                  "BgStyle": {
+                    "UseBackground": true,
+                    "BgColor": "var(--colorGray10)"
+                  }
+                }
+              ],
+              "DisplayStyle": {
+                "UseDisplay": true,
+                "DisplayType": "Flex",
+                "FlexDirection": "column",
+                "DisplayAlign": "Left",
+                "DisplayVerticalAlign": "Top",
+                "flexBoxType": "align",
+                "rowGapValue": "8",
+                "rowGapUnit": "px"
+              }
+            }
+          ],
+          "UseDataConnection": false,
+          "Padding": {
+            "UseAuto": true,
+            "SizeUnit": "px",
+            "All": "20",
+            "UseEach": false
+          },
+          "Id": "f_1518",
+          "ContentsName": "DetailViewWrap",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "DisplayStyle": {
+            "UseDisplay": true,
+            "DisplayType": "Flex",
+            "FlexDirection": "column",
+            "DisplayAlign": "Left",
+            "DisplayVerticalAlign": "Top",
+            "flexBoxType": "align",
+            "rowGapValue": "15",
+            "rowGapUnit": "px"
+          }
+        },
+        {
+          "UseDataConnection": false,
+          "BorderStyle": {
+            "Useborder": true,
+            "Left": "0",
+            "Top": "5",
+            "BorderColor": "@colorGrayLight",
+            "Right": "0",
+            "SizeSet": "Each",
+            "Bottom": "0",
+            "BorderType": "solid",
+            "BorderSize": ""
+          },
+          "Height": {
+            "MatchText": true,
+            "SizeValue": "",
+            "SizeUnit": "px"
+          },
+          "Id": "f_1552",
+          "Width": {
+            "MatchText": false,
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsName": "ManagerInputWrap",
+          "ContentStyle": "None",
+          "ContentsType": "Group",
+          "Contents": [
+            {
+              "ControlStyle": "None",
+              "ControlName": "txtReplyDept",
+              "FontStyle": {
+                "FontColor": "var(--colorBlack)",
+                "UseFont": true,
+                "UseBold": true,
+                "FontSize": "15"
+              },
+              "labeltext": "시설안전관리팀",
+              "LabelType": "labeltext",
+              "ControlType": "Label",
+              "Height": {
+                "MatchText": true,
+                "SizeValue": ""
+              },
+              "Id": "f_1554",
+              "Width": {
+                "MatchText": true,
+                "SizeValue": "",
+                "SizeUnit": "text"
+              },
+              "Caption": "Label2",
+              "Margin": {},
+              "UseFixedSize": true,
+              "isColumnCtrl": false
+            },
+            {
+              "ControlStyle": "stylePeriod",
+              "UseItemDesign": true,
+              "ItemDesign": {
+                "FontStyle": {
+                  "UseFont": true,
+                  "FontAlign": "center"
+                },
+                "BgStyle": {}
+              },
+              "ControlName": "improvementsStatus",
+              "ControlType": "RadioBox",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "35",
+                "SizeUnit": "px"
+              },
+              "Items": [
+                {
+                  "ItemName": "대기",
+                  "ItemValue": "대기"
+                },
+                {
+                  "ItemName": "진행중",
+                  "ItemValue": "진행중"
+                },
+                {
+                  "ItemName": "완료",
+                  "ItemValue": "완료"
+                }
+              ],
+              "Id": "f_1558",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "Caption": "",
+              "Margin": {},
+              "isColumnCtrl": false,
+              "ControlName2": "Status",
+              "ItemBgStyle": {
+                "UseItemBackground": true,
+                "ItemBgColor": "var(--colorGray6)"
+              }
+            },
+            {
+              "ControlStyle": "None",
+              "Placeholder": "처리내용을 입력해주세요",
+              "ControlName": "txtReply",
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              },
+              "BorderStyle": {
+                "BorderRadius": "8",
+                "Useborder": true,
+                "RadiusSet": "All",
+                "BorderColor": "var(--colorGray4)",
+                "BorderType": "solid",
+                "BorderSize": "1",
+                "SizeSet": "All"
+              },
+              "ControlType": "MultiInputBox",
+              "Height": {
+                "SizeValue": 120,
+                "SizeUnit": "px"
+              },
+              "Id": "f_1560",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "Caption": "",
+              "isColumnCtrl": false,
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13",
+                "FontAlign": "flex-start"
+              }
+            }
+          ],
+          "Padding": {
+            "Right": "20",
+            "Btm": "20",
+            "UseAuto": true,
+            "Left": "20",
+            "SizeUnit": "px",
+            "Top": "20",
+            "All": "",
+            "UseEach": true
+          },
+          "DisplayStyle": {
+            "UseDisplay": true,
+            "DisplayType": "Flex",
+            "FlexDirection": "column",
+            "DisplayAlign": "Left",
+            "DisplayVerticalAlign": "Top",
+            "flexBoxType": "align",
+            "rowGapValue": "12",
+            "rowGapUnit": "px"
+          }
+        }
+      ],
+      "StepType": "StepView",
+      "UseBottomButton": true,
+      "StepButton": {},
+      "BottomButtons": [
+        {
+          "ButtonName": "처리결과 저장",
+          "MoveTo": "Prev_ReStart",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "Id": "f_10055",
+          "BgStyle": {
+            "UseBackground": true,
+            "BgColor": "var(--colorMain)"
+          },
+          "BorderStyle": {
+            "Useborder": true,
+            "BorderRadius": "8",
+            "RadiusSet": "All"
+          },
+          "IsRestored": "",
+          "Prev": {
+            "MoveStepOrder": []
+          },
+          "ContentsName": "undefined_copy",
+          "ControlKey": "Disabled",
+          "FontStyle": {
+            "UseFont": true,
+            "FontColor": "var(--colorGray1)"
+          }
+        }
+      ],
+      "StepRow": 0,
+      "StepCol": 2
+    },
+    "Step2": {
+      "Contents": [
+        {
+          "UseDataConnection": false,
+          "Padding": {
+            "Right": "20",
+            "Btm": "0",
+            "UseAuto": true,
+            "Left": "20",
+            "SizeUnit": "px",
+            "Top": "20",
+            "All": "",
+            "UseEach": true
+          },
+          "BgStyle": {},
+          "Height": {
+            "MatchText": true,
+            "SizeValue": "",
+            "SizeUnit": "text"
+          },
+          "Id": "f_1023",
+          "Width": {
+            "MatchText": false,
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsName": "TitleWrap",
+          "ContentStyle": "None",
+          "ContentsType": "Group",
+          "Margin": {},
+          "Contents": [
+            {
+              "ControlStyle": "None",
+              "ControlName": "Label1",
+              "FontStyle": {
+                "FontColor": "@colorBlack",
+                "UseFont": true,
+                "FontAlign": "flex-start",
+                "UseBold": true,
+                "FontSize": "12"
+              },
+              "labeltext": "경영기획팀-홍길동님!",
+              "ControlType": "Label",
+              "Height": {
+                "MatchText": true,
+                "SizeValue": ""
+              },
+              "Id": "f_1025",
+              "Caption": "Label1",
+              "Margin": {
+                "Btm": "15",
+                "UseMargin": true,
+                "SizeUnit": "px",
+                "Top": "10",
+                "All": "",
+                "UseEach": true
+              },
+              "isColumnCtrl": false
+            },
+            {
+              "ControlStyle": "None",
+              "ControlName": "Label1",
+              "FontStyle": {
+                "UseFont": true,
+                "FontAlign": "flex-start",
+                "UseBold": true,
+                "FontSize": "24"
+              },
+              "labeltext": "현장 개선을 위한 \n아이디어가 있나요?",
+              "ControlType": "Label",
+              "Height": {
+                "MatchText": true,
+                "SizeValue": "",
+                "SizeUnit": "text"
+              },
+              "Id": "f_1027",
+              "Width": {
+                "MatchText": false,
+                "SizeValue": "100",
+                "SizeUnit": "%"
+              },
+              "Caption": "Label1",
+              "isColumnCtrl": false
+            }
+          ]
+        },
+        {
+          "ScrollType": "",
+          "UseDataConnection": false,
+          "BorderStyle": {},
+          "ContentsName": "inputWrap",
+          "ContentStyle": "None",
+          "Padding": {
+            "Right": "20",
+            "Btm": "0",
+            "UseAuto": true,
+            "Left": "20",
+            "SizeUnit": "px",
+            "Top": "20",
+            "All": "",
+            "UseEach": true
+          },
+          "Height": {
+            "MatchText": true,
+            "SizeValue": "",
+            "SizeUnit": "text"
+          },
+          "Id": "f_1031",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsType": "Group",
+          "DisplayStyle": {
+            "UseDisplay": true,
+            "DisplayType": "Flex",
+            "FlexDirection": "column",
+            "DisplayAlign": "Left",
+            "DisplayVerticalAlign": "Top",
+            "flexBoxType": "align",
+            "rowGapValue": "25",
+            "rowGapUnit": "px"
+          },
+          "Contents": [
+            {
+              "ContentsName": "Contents",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "UseDataConnection": false,
+              "Id": "f_3479",
+              "Contents": [
+                {
+                  "ControlStyle": "stylePeriod",
+                  "UseItemDesign": true,
+                  "ControlName": "improvementsType",
+                  "ControlType": "RadioBox",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "35",
+                    "SizeUnit": "px"
+                  },
+                  "Items": [
+                    {
+                      "ItemName": "장애개선",
+                      "ItemValue": "장애개선"
+                    },
+                    {
+                      "ItemName": "기능개선",
+                      "ItemValue": "기능개선"
+                    },
+                    {
+                      "ItemName": "기타",
+                      "ItemValue": "기타"
+                    }
+                  ],
+                  "Id": "f_3552",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "Caption": "",
+                  "Margin": {},
+                  "isColumnCtrl": false,
+                  "ControlName2": "ReqType",
+                  "ItemDesign": {
+                    "FontStyle": {
+                      "UseFont": true,
+                      "FontAlign": "center"
+                    }
+                  },
+                  "UseTriming": false
+                },
+                {
+                  "Placeholder": "제목을 입력해주세요",
+                  "ControlName": "title",
+                  "FontStyle": {
+                    "UseFont": true,
+                    "FontSize": "14"
+                  },
+                  "BorderStyle": {
+                    "BorderRadius": "8",
+                    "Useborder": true,
+                    "RadiusSet": "All",
+                    "BorderColor": "var(--colorGray4)",
+                    "BorderType": "solid",
+                    "BorderSize": "1",
+                    "SizeSet": "All"
+                  },
+                  "ControlKey": "",
+                  "Caption": "",
+                  "ControlStyle": "None",
+                  "InputType": "text",
+                  "ControlType": "InputText",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "48",
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_3553",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "isColumnCtrl": false,
+                  "ControlName2": "Title",
+                  "CaptionStyle": {
+                    "UseDesign": true,
+                    "FontWeight": "SemiBold",
+                    "CaptionPosition": "",
+                    "FontSize": "13",
+                    "FontAlign": "flex-start"
+                  }
+                },
+                {
+                  "Placeholder": "내용을 입력해주세요",
+                  "ControlName": "contents",
+                  "FontStyle": {
+                    "UseFont": true,
+                    "FontSize": "14"
+                  },
+                  "BorderStyle": {
+                    "BorderRadius": "8",
+                    "Useborder": true,
+                    "RadiusSet": "All",
+                    "BorderColor": "var(--colorGray4)",
+                    "BorderType": "solid",
+                    "BorderSize": "1",
+                    "SizeSet": "All"
+                  },
+                  "ControlKey": "",
+                  "Caption": "",
+                  "ControlStyle": "None",
+                  "ControlType": "MultiInputBox",
+                  "Height": {
+                    "SizeValue": 120,
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_3554",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "isColumnCtrl": false,
+                  "ControlName2": "Content",
+                  "CaptionStyle": {
+                    "UseDesign": true,
+                    "FontWeight": "SemiBold",
+                    "CaptionPosition": "",
+                    "FontSize": "13",
+                    "FontAlign": "flex-start"
+                  }
+                },
+                {
+                  "ControlStyle": "None",
+                  "ControlName": "Label2",
+                  "FontStyle": {
+                    "FontColor": "@colorGray",
+                    "UseFont": true,
+                    "UseBold": true,
+                    "FontSize": "13"
+                  },
+                  "labeltext": "이미지추가\n",
+                  "LabelType": "labeltext",
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": ""
+                  },
+                  "Id": "f_3555",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "Caption": "Label2",
+                  "Margin": {},
+                  "isColumnCtrl": false
+                },
+                {
+                  "EditGroup": {
+                    "SharedTarget": "tenant",
+                    "ImageSrcType": "FlexFile",
+                    "Directory": "imgImprovementsStatus",
+                    "FlexKey": {}
+                  },
+                  "ControlName": "ImageBox2",
+                  "ViewGroup": {
+                    "ImageSrcType": "Upload"
+                  },
+                  "UseMultiData": false,
+                  "ImageBoxType": "Edit",
+                  "ControlType": "ImageBox",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "100",
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_3556",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "px"
+                  },
+                  "Caption": "addImg",
+                  "isColumnCtrl": false,
+                  "ControlName2": "Image"
+                }
+              ],
+              "isColumnCtrl": false,
+              "DisplayStyle": {
+                "UseDisplay": true,
+                "DisplayType": "Flex",
+                "FlexDirection": "column",
+                "DisplayAlign": "Left",
+                "DisplayVerticalAlign": "Top",
+                "flexBoxType": "align",
+                "rowGapValue": "20",
+                "rowGapUnit": "px"
+              }
+            },
+            {
+              "ContentsName": "Location",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "UseDataConnection": false,
+              "Id": "f_2938",
+              "Contents": [
+                {
+                  "ControlStyle": "None",
+                  "ControlName": "Label2",
+                  "FontStyle": {
+                    "FontColor": "var(--colorBlack)",
+                    "UseFont": true,
+                    "UseBold": true,
+                    "FontSize": "15"
+                  },
+                  "labeltext": "위치 선택\n",
+                  "LabelType": "labeltext",
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": ""
+                  },
+                  "Id": "f_3038",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "Caption": "Label2",
+                  "Margin": {},
+                  "isColumnCtrl": false
+                },
+                {
+                  "ControlStyle": "None",
+                  "ControlName": "location1",
+                  "FontStyle": {
+                    "UseFont": true,
+                    "FontSize": "14"
+                  },
+                  "Dialog": {
+                    "Layouts": [
+                      {
+                        "Controls": [
+                          {
+                            "ControlType": "ComboList",
+                            "Items": [
+                              {
+                                "ItemName": "본사",
+                                "ItemValue": "본사"
+                              },
+                              {
+                                "ItemName": "1공장",
+                                "ItemValue": "1공장"
+                              },
+                              {
+                                "ItemName": "2공장",
+                                "ItemValue": "2공장"
+                              }
+                            ],
+                            "UseDataSource": false,
+                            "isColumnCtrl": false
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  "ControlType": "Combo",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "48",
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_8615",
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": "100",
+                    "SizeUnit": "%"
+                  },
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "ControlName2": "location1",
+                  "CaptionStyle": {
+                    "UseDesign": true,
+                    "FontWeight": "SemiBold",
+                    "CaptionPosition": "",
+                    "FontSize": "13",
+                    "FontAlign": "flex-start"
+                  },
+                  "BorderStyle": {
+                    "Useborder": true,
+                    "BorderColor": "var(--colorGray4)",
+                    "BorderType": "solid",
+                    "BorderSize": "1",
+                    "SizeSet": "All",
+                    "RadiusSet": "All",
+                    "BorderRadius": "8"
+                  }
+                },
+                {
+                  "Placeholder": "상세 위치를 입력해주세요",
+                  "ControlName": "location2",
+                  "BorderStyle": {
+                    "BorderRadius": "8",
+                    "Useborder": true,
+                    "RadiusSet": "All",
+                    "BorderColor": "var(--colorGray4)",
+                    "BorderType": "solid",
+                    "BorderSize": "1",
+                    "SizeSet": "All"
+                  },
+                  "Caption": "",
+                  "InputType": "text",
+                  "ControlType": "InputText",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "48",
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_8616",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "isColumnCtrl": false,
+                  "ControlName2": "location2",
+                  "FontStyle": {
+                    "UseFont": true,
+                    "FontSize": "14"
+                  },
+                  "ControlStyle": "None",
+                  "CaptionStyle": {
+                    "UseDesign": true,
+                    "FontWeight": "SemiBold",
+                    "CaptionPosition": "",
+                    "FontSize": "13",
+                    "FontAlign": "flex-start"
+                  }
+                }
+              ],
+              "isColumnCtrl": false,
+              "DisplayStyle": {
+                "UseDisplay": true,
+                "DisplayType": "Flex",
+                "FlexDirection": "column",
+                "DisplayAlign": "Left",
+                "DisplayVerticalAlign": "Top",
+                "flexBoxType": "align",
+                "rowGapValue": "16",
+                "rowGapUnit": "px"
+              }
+            },
+            {
+              "ContentsName": "Manager",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "UseDataConnection": false,
+              "Id": "f_2549",
+              "Contents": [
+                {
+                  "ControlStyle": "None",
+                  "ControlName": "Label2",
+                  "FontStyle": {
+                    "FontColor": "var(--colorBlack)",
+                    "UseFont": true,
+                    "UseBold": true,
+                    "FontSize": "15"
+                  },
+                  "labeltext": "담당 선택",
+                  "LabelType": "labeltext",
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": ""
+                  },
+                  "Id": "f_2669",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "Caption": "Label2",
+                  "Margin": {},
+                  "isColumnCtrl": false
+                },
+                {
+                  "ContentsName": "Group1",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "UseDataConnection": false,
+                  "Id": "f_7206",
+                  "Contents": [
+                    {
+                      "ControlName": "replyDept",
+                      "Dialog": {
+                        "Layouts": [
+                          {
+                            "Controls": [
+                              {
+                                "ControlType": "ComboList",
+                                "UseDataSource": false,
+                                "isColumnCtrl": false,
+                                "Items": [
+                                  {
+                                    "ItemName": "경영기획팀",
+                                    "ItemValue": "경영기획팀"
+                                  },
+                                  {
+                                    "ItemName": "IT전략팀",
+                                    "ItemValue": "IT전략팀"
+                                  },
+                                  {
+                                    "ItemName": "시설안전관리팀",
+                                    "ItemValue": "시설안전관리팀"
+                                  },
+                                  {
+                                    "ItemName": "영업팀",
+                                    "ItemValue": "영업팀"
+                                  },
+                                  {
+                                    "ItemName": "생산팀",
+                                    "ItemValue": "생산팀"
+                                  },
+                                  {
+                                    "ItemName": "공정개선팀",
+                                    "ItemValue": "공정개선팀"
+                                  },
+                                  {
+                                    "ItemName": "제조팀",
+                                    "ItemValue": "제조팀"
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "ControlType": "Combo",
+                      "Height": {
+                        "MatchText": false,
+                        "SizeValue": "68",
+                        "SizeUnit": "px"
+                      },
+                      "Id": "f_7264",
+                      "Caption": "부서선택",
+                      "isColumnCtrl": false,
+                      "Width": {
+                        "MatchText": false,
+                        "SizeUnit": "%",
+                        "SizeValue": "50"
+                      },
+                      "ControlStyle": "None",
+                      "FontStyle": {
+                        "UseFont": true,
+                        "FontSize": "14"
+                      },
+                      "CaptionStyle": {
+                        "UseDesign": true,
+                        "FontWeight": "SemiBold",
+                        "CaptionPosition": "",
+                        "FontSize": "13",
+                        "FontAlign": "flex-start"
+                      },
+                      "BorderStyle": {
+                        "Useborder": true,
+                        "BorderColor": "var(--colorGray4)",
+                        "BorderType": "solid",
+                        "BorderSize": "1",
+                        "SizeSet": "All",
+                        "RadiusSet": "All",
+                        "BorderRadius": "8"
+                      }
+                    },
+                    {
+                      "ControlName": "replyUser",
+                      "Dialog": {
+                        "Layouts": [
+                          {
+                            "Controls": [
+                              {
+                                "Title": "",
+                                "ControlType": "List",
+                                "isColumnCtrl": false
+                              }
+                            ],
+                            "ContentsType": "Layout"
+                          }
+                        ]
+                      },
+                      "ControlType": "Search",
+                      "Height": {
+                        "MatchText": false,
+                        "SizeValue": "68",
+                        "SizeUnit": "px"
+                      },
+                      "Id": "f_7265",
+                      "Caption": "담당자명",
+                      "isColumnCtrl": false,
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "50",
+                        "SizeUnit": "%"
+                      },
+                      "ControlStyle": "None",
+                      "FontStyle": {
+                        "UseFont": true,
+                        "FontSize": "14",
+                        "UseBold": true
+                      },
+                      "CaptionStyle": {
+                        "UseDesign": true,
+                        "FontWeight": "SemiBold",
+                        "CaptionPosition": "",
+                        "FontSize": "13",
+                        "FontAlign": "flex-start"
+                      },
+                      "BorderStyle": {
+                        "Useborder": true,
+                        "BorderColor": "var(--colorGray4)",
+                        "BorderType": "solid",
+                        "BorderSize": "1",
+                        "SizeSet": "All",
+                        "RadiusSet": "All",
+                        "BorderRadius": "8"
+                      }
+                    }
+                  ],
+                  "isColumnCtrl": false,
+                  "DisplayStyle": {
+                    "UseDisplay": true,
+                    "DisplayType": "Flex",
+                    "FlexDirection": "row",
+                    "DisplayAlign": "Left",
+                    "DisplayVerticalAlign": "Top",
+                    "flexBoxType": "align",
+                    "columnGapValue": "16",
+                    "columnGapUnit": "px"
+                  }
+                }
+              ],
+              "isColumnCtrl": false,
+              "DisplayStyle": {
+                "UseDisplay": true,
+                "DisplayType": "Flex",
+                "FlexDirection": "column",
+                "DisplayAlign": "Left",
+                "DisplayVerticalAlign": "Top",
+                "flexBoxType": "align",
+                "rowGapValue": "20",
+                "rowGapUnit": "px"
+              }
+            }
+          ],
+          "BgStyle": {},
+          "RepeatStyle": "view"
+        }
+      ],
+      "StepType": "StepView",
+      "Next": [
+        "Step3"
+      ],
+      "Padding": {
+        "Right": "0",
+        "Btm": "0",
+        "UseAuto": true,
+        "Left": "0",
+        "Top": "0",
+        "All": "",
+        "UseEach": true
+      },
+      "StepName": "",
+      "UseBottomButton": true,
+      "StepButton": {},
+      "BottomButtons": [
+        {
+          "ButtonName": "취소",
+          "MoveTo": "Prev",
+          "Width": {
+            "SizeValue": "50",
+            "SizeUnit": "%",
+            "MatchText": false
+          },
+          "Id": "f_4289",
+          "BgStyle": {
+            "BgColor": "var(--colorWhite)",
+            "UseBackground": true
+          },
+          "FontStyle": {
+            "FontColor": "var(--colorBlack)",
+            "UseFont": true
+          },
+          "BorderStyle": {
+            "BorderColor": "var(--colorBlack)",
+            "SizeSet": "All",
+            "Useborder": true,
+            "BorderSize": 1,
+            "BorderType": "solid",
+            "BorderRadius": "8",
+            "RadiusSet": "All"
+          },
+          "IsRestored": true,
+          "Prev": {
+            "MoveStepOrder": []
+          },
+          "Padding": {}
+        },
+        {
+          "ButtonName": "저장",
+          "MoveTo": "Prev",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "Id": "f_4336",
+          "BgStyle": {},
+          "BorderStyle": {
+            "Useborder": true,
+            "BorderRadius": "8",
+            "RadiusSet": "All"
+          },
+          "IsRestored": "",
+          "Prev": {
+            "MoveStepOrder": []
+          }
+        }
+      ],
+      "StepRow": 0,
+      "StepCol": 1
+    },
+    "Step1": {
+      "StepType": "StepView",
+      "Next": [
+        "Step2"
+      ],
+      "Padding": {
+        "Right": "0",
+        "Btm": "0",
+        "UseAuto": true,
+        "Left": "0",
+        "Top": "0",
+        "All": "",
+        "UseEach": true
+      },
+      "BgStyle": {
+        "BgColor": "var(--colorSub10)",
+        "UseBackground": true
+      },
+      "UseBackButton": false,
+      "UseBottomButton": true,
+      "StepButton": {},
+      "BottomButtons": [
+        {
+          "ButtonName": "등록",
+          "MoveTo": "Next",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "Id": "f_5223",
+          "BgStyle": {},
+          "BorderStyle": {
+            "Useborder": true,
+            "BorderRadius": "8",
+            "RadiusSet": "All"
+          },
+          "Direction": "",
+          "Next": {
+            "MoveStepOrder": [
+              "Step2"
+            ],
+            "Step2": ""
+          }
+        }
+      ],
+      "Contents": [
+        {
+          "UseDataConnection": false,
+          "Padding": {
+            "Right": "20",
+            "Btm": "0",
+            "UseAuto": true,
+            "Left": "20",
+            "SizeUnit": "px",
+            "Top": "20",
+            "All": "",
+            "UseEach": true
+          },
+          "Height": {
+            "MatchText": true,
+            "SizeValue": "",
+            "SizeUnit": "text"
+          },
+          "Id": "f_469",
+          "Width": {
+            "MatchText": false,
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsName": "TitleWrap",
+          "ContentStyle": "None",
+          "ContentsType": "Group",
+          "Margin": {},
+          "Contents": [
+            {
+              "ControlStyle": "None",
+              "ControlName": "Label1",
+              "FontStyle": {
+                "UseFont": true,
+                "FontAlign": "flex-start",
+                "UseBold": true,
+                "FontSize": "24"
+              },
+              "labeltext": "현장 개선을 위한 \n아이디어",
+              "ControlType": "Label",
+              "Height": {
+                "MatchText": true,
+                "SizeValue": "",
+                "SizeUnit": "text"
+              },
+              "Id": "f_473",
+              "Width": {
+                "MatchText": false,
+                "SizeValue": "100",
+                "SizeUnit": "%"
+              },
+              "Caption": "Label1",
+              "isColumnCtrl": false
+            },
+            {
+              "ControlStyle": "None",
+              "ControlName": "Label1",
+              "FontStyle": {
+                "FontColor": "@colorBlack",
+                "UseFont": true,
+                "FontAlign": "flex-start",
+                "UseBold": false,
+                "FontSize": "12"
+              },
+              "UseOpacity": true,
+              "labeltext": "우리가 회사를 더 좋은 회사로 만들 수 있어요!",
+              "ControlType": "Label",
+              "Height": {
+                "MatchText": true,
+                "SizeValue": ""
+              },
+              "OpacityValue": "70",
+              "Id": "f_475",
+              "Caption": "Label1",
+              "Margin": {
+                "Btm": "10",
+                "UseMargin": true,
+                "SizeUnit": "px",
+                "Top": "10"
+              },
+              "isColumnCtrl": false
+            }
+          ],
+          "BgStyle": {}
+        },
+        {
+          "ScrollType": "ScrollY",
+          "UseDataConnection": false,
+          "BorderStyle": {},
+          "Padding": {
+            "Right": "20",
+            "Btm": "0",
+            "UseAuto": true,
+            "Left": "20",
+            "SizeUnit": "px",
+            "Top": "20",
+            "All": "",
+            "UseEach": true
+          },
+          "Height": {
+            "MatchText": true,
+            "SizeValue": "",
+            "SizeUnit": "text"
+          },
+          "BgStyle": {},
+          "Id": "f_479",
+          "ContentsName": "ListWrap",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "Contents": [
+            {
+              "Contents": [
+                {
+                  "UseDataConnection": false,
+                  "BorderStyle": {},
+                  "Padding": {},
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "px"
+                  },
+                  "BgStyle": {},
+                  "Id": "f_483",
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentsName": "Title",
+                  "ContentStyle": "None",
+                  "ContentsType": "Group",
+                  "Contents": [
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "createDate",
+                      "FontStyle": {
+                        "FontColor": "@colorGray",
+                        "UseFont": true,
+                        "UseBold": false,
+                        "FontSize": "12"
+                      },
+                      "labeltext": "2023-09-01 13:01:55",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_485",
+                      "Width": {
+                        "SizeValue": 100,
+                        "SizeUnit": "%"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {
+                        "Right": "",
+                        "Btm": "8",
+                        "UseAuto": true,
+                        "Left": "",
+                        "SizeUnit": "px",
+                        "Top": ""
+                      }
+                    },
+                    {
+                      "ControlName": "improvementsStatus",
+                      "FontStyle": {
+                        "FontColor": "@colorRed",
+                        "UseFont": true,
+                        "FontAlign": "center",
+                        "FontSize": "13",
+                        "FontWeight": "Regular"
+                      },
+                      "AbsolutePosition": {
+                        "Top": "0",
+                        "Right": "0",
+                        "SizeUnit": "px"
+                      },
+                      "UseAbsoluteLayout": true,
+                      "BorderStyle": {
+                        "BorderRadius": "42",
+                        "Useborder": true,
+                        "RadiusSet": "All"
+                      },
+                      "BgStyle": {
+                        "BgColor": "@colorRedLight",
+                        "UseBackground": true
+                      },
+                      "Caption": "Label1",
+                      "ControlStyle": "None",
+                      "labeltext": "대기",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": false,
+                        "SizeValue": "24"
+                      },
+                      "Id": "f_487",
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "45",
+                        "SizeUnit": "px"
+                      },
+                      "Margin": {},
+                      "isColumnCtrl": false
+                    },
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "txtTitle",
+                      "FontStyle": {
+                        "UseFont": true,
+                        "UseBold": true
+                      },
+                      "labeltext": "현장 개선을 위한 아이디어",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_489",
+                      "Width": {
+                        "SizeValue": 100,
+                        "SizeUnit": "%"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {
+                        "Right": "",
+                        "Btm": "15",
+                        "UseAuto": true,
+                        "Left": "",
+                        "SizeUnit": "px",
+                        "Top": "",
+                        "All": "",
+                        "UseEach": true
+                      },
+                      "isColumnCtrl": false
+                    }
+                  ]
+                },
+                {
+                  "UseDataConnection": false,
+                  "BorderStyle": {
+                    "BorderRadius": "4",
+                    "Useborder": true,
+                    "RadiusSet": "All"
+                  },
+                  "DisplayStyle": {
+                    "FlexWrap": false,
+                    "DisplayVerticalAlign": "Center",
+                    "DisplayAlign": "Left",
+                    "DisplayType": "Flex",
+                    "UseDisplay": true
+                  },
+                  "Padding": {
+                    "Right": "8",
+                    "Btm": "4",
+                    "UseAuto": true,
+                    "Left": "8",
+                    "SizeUnit": "px",
+                    "Top": "4",
+                    "All": "",
+                    "UseEach": true
+                  },
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "px"
+                  },
+                  "BgStyle": {
+                    "BgColor": "rgba(0, 0, 0, 0.05)",
+                    "UseBackground": true
+                  },
+                  "Id": "f_491",
+                  "Width": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "text"
+                  },
+                  "ContentsName": "Detail",
+                  "ContentStyle": "None",
+                  "ContentsType": "Group",
+                  "Contents": [
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "Label2",
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray3)",
+                        "UseFont": true,
+                        "UseBold": false,
+                        "FontSize": "12"
+                      },
+                      "labeltext": "홍길동ㅣ경영기획팀",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_11096",
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {},
+                      "UseFixedSize": true,
+                      "isColumnCtrl": false
+                    },
+                    {
+                      "ControlName": "Label2",
+                      "FontStyle": {},
+                      "Caption": "Label2",
+                      "ControlStyle": "None",
+                      "labeltext": "",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_495",
+                      "ImageStyle": {
+                        "IsLineIcon": true,
+                        "Img": "B_024_010",
+                        "UseImage": true,
+                        "ImageSize": "20",
+                        "ImageColor": "@colorGrayMiddle"
+                      },
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "px"
+                      },
+                      "Margin": {},
+                      "UseFixedSize": true,
+                      "isColumnCtrl": false,
+                      "ControlName2": "icon"
+                    },
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "txtReplyDept",
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray3)",
+                        "UseFont": true,
+                        "UseBold": true,
+                        "FontSize": "12"
+                      },
+                      "labeltext": "시설안전관리팀",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_497",
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {},
+                      "UseFixedSize": true,
+                      "isColumnCtrl": false
+                    }
+                  ]
+                }
+              ],
+              "UseDataConnection": false,
+              "BorderStyle": {
+                "BorderRadius": "10",
+                "Useborder": true,
+                "RadiusSet": "All"
+              },
+              "Padding": {
+                "Right": "20",
+                "Btm": "20",
+                "UseAuto": true,
+                "Left": "20",
+                "SizeUnit": "px",
+                "Top": "20",
+                "All": "",
+                "UseEach": true
+              },
+              "BgStyle": {
+                "BgColor": "@colorWhite",
+                "UseBackground": true
+              },
+              "Id": "f_481",
+              "ContentsName": "item",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "Margin": {
+                "Right": "",
+                "Btm": "20",
+                "UseAuto": true,
+                "Left": "",
+                "SizeUnit": "px",
+                "Top": "",
+                "All": "",
+                "UseEach": true
+              },
+              "UseMove": true,
+              "MoveSteps": {
+                "MoveStepOrder": [
+                  "Step3"
+                ],
+                "Step3": {
+                  "Condition": "",
+                  "MoveTo": "Next"
+                }
+              }
+            },
+            {
+              "Contents": [
+                {
+                  "UseDataConnection": false,
+                  "BorderStyle": {},
+                  "Padding": {},
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "px"
+                  },
+                  "BgStyle": {},
+                  "Id": "f_501",
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentsName": "Title",
+                  "ContentStyle": "None",
+                  "ContentsType": "Group",
+                  "Contents": [
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "Label2",
+                      "FontStyle": {
+                        "FontColor": "@colorGray",
+                        "UseFont": true,
+                        "UseBold": false,
+                        "FontSize": "12"
+                      },
+                      "labeltext": "2023-09-01 13:01:55",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_503",
+                      "Width": {
+                        "SizeValue": 100,
+                        "SizeUnit": "%"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {
+                        "Right": "",
+                        "Btm": "8",
+                        "UseAuto": true,
+                        "Left": "",
+                        "SizeUnit": "px",
+                        "Top": "",
+                        "All": "",
+                        "UseEach": true
+                      },
+                      "isColumnCtrl": false
+                    },
+                    {
+                      "ControlName": "improvementsStatus",
+                      "FontStyle": {
+                        "FontColor": "@colorBlue",
+                        "UseFont": true,
+                        "FontAlign": "center",
+                        "FontSize": "13",
+                        "FontWeight": "Regular"
+                      },
+                      "AbsolutePosition": {
+                        "Top": "0",
+                        "Right": "0",
+                        "SizeUnit": "px"
+                      },
+                      "UseAbsoluteLayout": true,
+                      "BorderStyle": {
+                        "BorderRadius": "42",
+                        "Useborder": true,
+                        "RadiusSet": "All"
+                      },
+                      "BgStyle": {
+                        "BgColor": "@colorBlueLight",
+                        "UseBackground": true
+                      },
+                      "Caption": "Label1",
+                      "ControlStyle": "None",
+                      "labeltext": "진행중",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": false,
+                        "SizeValue": "24"
+                      },
+                      "Id": "f_505",
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "45",
+                        "SizeUnit": "px"
+                      },
+                      "Margin": {},
+                      "isColumnCtrl": false
+                    },
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "Label2",
+                      "FontStyle": {
+                        "UseFont": true,
+                        "UseBold": true
+                      },
+                      "labeltext": "현장 개선을 위한 아이디어",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_507",
+                      "Width": {
+                        "SizeValue": 100,
+                        "SizeUnit": "%"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {
+                        "Right": "",
+                        "Btm": "15",
+                        "UseAuto": true,
+                        "Left": "",
+                        "SizeUnit": "px",
+                        "Top": "",
+                        "All": "",
+                        "UseEach": true
+                      },
+                      "isColumnCtrl": false
+                    }
+                  ]
+                },
+                {
+                  "UseDataConnection": false,
+                  "BorderStyle": {
+                    "BorderRadius": "4",
+                    "Useborder": true,
+                    "RadiusSet": "All"
+                  },
+                  "DisplayStyle": {
+                    "FlexWrap": false,
+                    "DisplayVerticalAlign": "Center",
+                    "DisplayAlign": "Left",
+                    "DisplayType": "Flex",
+                    "UseDisplay": true
+                  },
+                  "Padding": {
+                    "Right": "8",
+                    "Btm": "4",
+                    "UseAuto": true,
+                    "Left": "8",
+                    "SizeUnit": "px",
+                    "Top": "4",
+                    "All": "",
+                    "UseEach": true
+                  },
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "px"
+                  },
+                  "BgStyle": {
+                    "BgColor": "rgba(0, 0, 0, 0.05)",
+                    "UseBackground": true
+                  },
+                  "Id": "f_509",
+                  "Width": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "text"
+                  },
+                  "ContentsName": "Detail",
+                  "ContentStyle": "None",
+                  "ContentsType": "Group",
+                  "Contents": [
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "Label2",
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray3)",
+                        "UseFont": true,
+                        "UseBold": false,
+                        "FontSize": "12"
+                      },
+                      "labeltext": "홍길동ㅣ경영기획팀",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_10965",
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {},
+                      "UseFixedSize": true,
+                      "isColumnCtrl": false
+                    },
+                    {
+                      "ControlName": "Label2",
+                      "Caption": "Label2",
+                      "ControlStyle": "None",
+                      "labeltext": "",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_513",
+                      "ImageStyle": {
+                        "IsLineIcon": true,
+                        "Img": "B_024_010",
+                        "UseImage": true,
+                        "ImageSize": "20",
+                        "ImageColor": "@colorGrayMiddle"
+                      },
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "px"
+                      },
+                      "Margin": {},
+                      "UseFixedSize": true,
+                      "isColumnCtrl": false,
+                      "ControlName2": "icon",
+                      "FontStyle": {}
+                    },
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "Label2",
+                      "labeltext": "시설안전관리팀",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_515",
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {},
+                      "UseFixedSize": true,
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray3)",
+                        "UseFont": true,
+                        "UseBold": true,
+                        "FontSize": "12"
+                      },
+                      "isColumnCtrl": false
+                    }
+                  ]
+                }
+              ],
+              "UseDataConnection": false,
+              "BorderStyle": {
+                "BorderRadius": "10",
+                "Useborder": true,
+                "RadiusSet": "All"
+              },
+              "Padding": {
+                "Right": "20",
+                "Btm": "20",
+                "UseAuto": true,
+                "Left": "20",
+                "SizeUnit": "px",
+                "Top": "20",
+                "All": "",
+                "UseEach": true
+              },
+              "BgStyle": {
+                "BgColor": "@colorWhite",
+                "UseBackground": true
+              },
+              "Id": "f_499",
+              "ContentsName": "item-1",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "Margin": {
+                "Right": "",
+                "Btm": "20",
+                "UseAuto": true,
+                "Left": "",
+                "SizeUnit": "px",
+                "Top": "",
+                "All": "",
+                "UseEach": true
+              },
+              "UseMove": true,
+              "MoveSteps": {
+                "MoveStepOrder": [
+                  "Step3"
+                ],
+                "Step3": {
+                  "Condition": "",
+                  "MoveTo": "Next"
+                }
+              }
+            },
+            {
+              "Contents": [
+                {
+                  "UseDataConnection": false,
+                  "BorderStyle": {},
+                  "Padding": {},
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "px"
+                  },
+                  "BgStyle": {},
+                  "Id": "f_519",
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentsName": "Title",
+                  "ContentStyle": "None",
+                  "ContentsType": "Group",
+                  "Contents": [
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "Label2",
+                      "FontStyle": {
+                        "FontColor": "@colorGray",
+                        "UseFont": true,
+                        "UseBold": false,
+                        "FontSize": "12"
+                      },
+                      "labeltext": "2023-09-01 13:01:55",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_521",
+                      "Width": {
+                        "SizeValue": 100,
+                        "SizeUnit": "%"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {
+                        "Right": "",
+                        "Btm": "8",
+                        "UseAuto": true,
+                        "Left": "",
+                        "SizeUnit": "px",
+                        "Top": ""
+                      }
+                    },
+                    {
+                      "ControlName": "Label1",
+                      "FontStyle": {
+                        "FontColor": "var(--colorMain)",
+                        "UseFont": true,
+                        "FontAlign": "center",
+                        "FontSize": "13",
+                        "FontWeight": "Regular"
+                      },
+                      "AbsolutePosition": {
+                        "Top": "0",
+                        "Right": "0",
+                        "SizeUnit": "px"
+                      },
+                      "UseAbsoluteLayout": true,
+                      "BorderStyle": {
+                        "BorderRadius": "42",
+                        "Useborder": true,
+                        "RadiusSet": "All"
+                      },
+                      "BgStyle": {
+                        "BgColor": "var(--colorMainLight)",
+                        "UseBackground": true
+                      },
+                      "Caption": "Label1",
+                      "ControlStyle": "None",
+                      "labeltext": "완료",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": false,
+                        "SizeValue": "24"
+                      },
+                      "Id": "f_523",
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "45",
+                        "SizeUnit": "px"
+                      },
+                      "Margin": {},
+                      "isColumnCtrl": false
+                    },
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "Label2",
+                      "FontStyle": {
+                        "FontColor": "@colorGray",
+                        "UseFont": true,
+                        "UseBold": true
+                      },
+                      "labeltext": "현장 개선을 위한 아이디어",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_525",
+                      "Width": {
+                        "SizeValue": 100,
+                        "SizeUnit": "%"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {
+                        "Right": "",
+                        "Btm": "15",
+                        "UseAuto": true,
+                        "Left": "",
+                        "SizeUnit": "px",
+                        "Top": ""
+                      }
+                    }
+                  ]
+                },
+                {
+                  "UseDataConnection": false,
+                  "BorderStyle": {
+                    "BorderRadius": "4",
+                    "Useborder": true,
+                    "RadiusSet": "All"
+                  },
+                  "DisplayStyle": {
+                    "FlexWrap": false,
+                    "DisplayVerticalAlign": "Center",
+                    "DisplayAlign": "Left",
+                    "DisplayType": "Flex",
+                    "UseDisplay": true
+                  },
+                  "Padding": {
+                    "Right": "8",
+                    "Btm": "4",
+                    "UseAuto": true,
+                    "Left": "8",
+                    "SizeUnit": "px",
+                    "Top": "4",
+                    "All": "",
+                    "UseEach": true
+                  },
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "px"
+                  },
+                  "BgStyle": {
+                    "BgColor": "rgba(0, 0, 0, 0.05)",
+                    "UseBackground": true
+                  },
+                  "Id": "f_527",
+                  "Width": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "text"
+                  },
+                  "ContentsName": "Detail",
+                  "ContentStyle": "None",
+                  "ContentsType": "Group",
+                  "Contents": [
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "Label2",
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray3)",
+                        "UseFont": true,
+                        "UseBold": false,
+                        "FontSize": "12"
+                      },
+                      "labeltext": "홍길동ㅣ경영기획팀",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_529",
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {},
+                      "UseFixedSize": true,
+                      "isColumnCtrl": false
+                    },
+                    {
+                      "ControlName": "Label2",
+                      "FontStyle": {},
+                      "Caption": "Label2",
+                      "ControlStyle": "None",
+                      "labeltext": "",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_531",
+                      "ImageStyle": {
+                        "IsLineIcon": true,
+                        "Img": "B_024_010",
+                        "UseImage": true,
+                        "ImageSize": "20",
+                        "ImageColor": "@colorGrayMiddle"
+                      },
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "px"
+                      },
+                      "Margin": {},
+                      "UseFixedSize": true,
+                      "isColumnCtrl": false,
+                      "ControlName2": "icon"
+                    },
+                    {
+                      "ControlStyle": "None",
+                      "ControlName": "Label2",
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray3)",
+                        "UseFont": true,
+                        "UseBold": true,
+                        "FontSize": "12"
+                      },
+                      "labeltext": "시설안전관리팀",
+                      "LabelType": "labeltext",
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_533",
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Caption": "Label2",
+                      "Margin": {},
+                      "UseFixedSize": true,
+                      "isColumnCtrl": false
+                    }
+                  ]
+                }
+              ],
+              "UseDataConnection": false,
+              "BorderStyle": {
+                "BorderRadius": "10",
+                "Useborder": true,
+                "RadiusSet": "All"
+              },
+              "Padding": {
+                "Right": "20",
+                "Btm": "20",
+                "UseAuto": true,
+                "Left": "20",
+                "SizeUnit": "px",
+                "Top": "20",
+                "All": "",
+                "UseEach": true
+              },
+              "BgStyle": {
+                "BgColor": "var(--colorWhite)",
+                "UseBackground": true
+              },
+              "Id": "f_517",
+              "ContentsName": "item-2",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "Margin": {
+                "Right": "",
+                "Btm": "20",
+                "UseAuto": true,
+                "Left": "",
+                "SizeUnit": "px",
+                "Top": "",
+                "All": "",
+                "UseEach": true
+              },
+              "UseMove": true,
+              "MoveSteps": {
+                "MoveStepOrder": [
+                  "Step3"
+                ],
+                "Step3": {
+                  "Condition": "",
+                  "MoveTo": "Next"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "StepRow": 0,
+      "StepCol": 0
+    }
+  },
+  "StartSteps": [
+    "Step1"
+  ],
+  "Panel": {
+    "Collection": {},
+    "Category": {},
+    "Table": [],
+    "CategoryOrder": [],
+    "ExternalTable": [],
+    "AuthKey": []
+  },
+  "ServiceBinding": {},
+  "LastSavedTime": 1777508750907,
+  "Language": {},
+  "Events": {},
+  "fScenarioName": "기본형태-0단계 (List → Input → Detail)",
+  "htmlkey": "stephtml",
+  "ScenarioTitle": "",
+  "Collections": {},
+  "modules": {},
+  "fConverterVersion": 1
+}

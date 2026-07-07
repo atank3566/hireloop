@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/naming-objects.schema.json",
+  "title": "Naming Objects",
+  "description": "컬렉션 식별자 (Ckey / CategoryName) 의 명명 제약 카탈로그. AI 메타 생성 시 시스템 예약어 / JS 예약어 / JS 빌트인 충돌을 schema 레벨에서 강제 차단. 상세 규칙은 runtime/v1/collection/naming.md, runtime/v1/collection/sector.md §6 참조.",
+
+  "$defs": {
+    "categoryReservedKeys": {
+      "$comment": "isInvalidCategoryName() 의 차단 키 목록. 런타임이 categoryBridge 생성을 거부함. ckey 측에서도 Sector prototype 메서드(activate/select/unSelect/setStatus) 와 충돌하므로 동일 enum 을 ckey 차단에도 합친다.",
+      "enum": [
+        "outerSector", "outerBlock", "collection", "status", "category",
+        "suids", "keys", "active", "activeSector", "last", "lastSectors",
+        "displayed", "added", "updated", "selected", "deleted",
+        "isPrototypeOf", "propertyIsEnumerable", "toLocaleString",
+        "activate", "unActivate", "select", "unSelect"
+      ]
+    },
+
+    "sectorReservedKeys": {
+      "$comment": "Sector 인스턴스의 시스템 게터 이름 (public/engine/common/collection.js / const.js). 컬렉션키로 사용 시 setter 가 debug 모드에서 에러 출력 + 정상 모드에서도 값이 반영되지 않는다 (COLLECTION_ESCAPE). _SUID 는 시스템 등록 키 — Sector 인스턴스 속성으로 직접 두면 동작 깨지지만, Panel.Collection.Ckeys 의 시스템 등록 슬롯에는 반드시 포함되어야 하므로 ckeyWithSuid 변형에서만 허용.",
+      "enum": [
+        "_SUID",
+        "_mSUID",
+        "block",
+        "collection",
+        "innerBlocks",
+        "keys",
+        "status",
+        "isAdded",
+        "isUpdated",
+        "isDeleted",
+        "isSelected",
+        "isActive",
+        "isLast",
+        "outerSector",
+        "outerBlock"
+      ]
+    },
+
+    "jsReservedWords": {
+      "$comment": "JS 예약어 + 자주 쓰이는 빌트인 / 글로벌. Sector 가 점 표기법 (`_c.카테고리[n].키`) 으로 접근되므로 충돌 시 sector.length / sector.toString 등 JS 빌트인이 우선되어 동작이 깨진다. naming.md §3-5 카탈로그 기준.",
+      "enum": [
+        "break", "case", "catch", "class", "const", "continue", "debugger", "default", "delete", "do",
+        "else", "export", "extends", "finally", "for", "function", "if", "import", "in", "instanceof",
+        "new", "return", "super", "switch", "this", "throw", "try", "typeof", "var", "void", "while", "with", "yield",
+        "let", "static", "enum", "await", "async",
+        "null", "true", "false",
+        "constructor", "prototype", "length", "toString", "hasOwnProperty", "valueOf", "__proto__",
+        "Object", "Array", "String", "Number", "Boolean", "Date", "Math", "JSON", "Function", "Symbol", "RegExp"
+      ]
+    },
+
+    "ckey": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+      "description": "컬렉션키 (Sector 인스턴스 속성명). JS 식별자 규칙 + 시스템 게터 / JS 빌트인 충돌 차단. 컨벤션은 `f` 접두 + camelCase (`fName`, `fStatus`) — schema 강제 X. 운영 메타 호환을 위해 `_` 접두 변종은 별도 규칙으로 차단하지 않음 (단 시스템 게터 `_SUID`/`_mSUID` 는 차단).",
+      "not": {
+        "anyOf": [
+          { "$ref": "#/$defs/categoryReservedKeys" },
+          { "$ref": "#/$defs/sectorReservedKeys" },
+          { "$ref": "#/$defs/jsReservedWords" }
+        ]
+      }
+    },
+
+    "ckeyWithSuid": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+      "description": "Panel.Collection.Ckeys 전용 변형. `_SUID` 는 시스템 필수 등록 키이므로 허용. 그 외 시스템 게터 / JS 빌트인은 `ckey` 와 동일하게 차단.",
+      "not": {
+        "anyOf": [
+          { "$ref": "#/$defs/categoryReservedKeys" },
+          {
+            "enum": [
+              "_mSUID",
+              "block",
+              "collection",
+              "innerBlocks",
+              "keys",
+              "status",
+              "isAdded",
+              "isUpdated",
+              "isDeleted",
+              "isSelected",
+              "isActive",
+              "isLast",
+              "outerSector",
+              "outerBlock"
+            ]
+          },
+          { "$ref": "#/$defs/jsReservedWords" }
+        ]
+      }
+    },
+
+    "ckeysArray": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ckey" },
+      "description": "컨트롤 / 자식 ComboList / 자식 List / Tab / Calendar 등의 데이터 바인딩 키 배열. 시스템 게터 / JS 빌트인 충돌 시 런타임 동작 깨짐 — schema 레벨 차단."
+    },
+
+    "ckeysArrayWithSuid": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/ckeyWithSuid" },
+      "description": "Panel.Collection.Ckeys 전용 — `_SUID` 시스템 키 허용."
+    },
+
+    "categoryName": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+      "description": "Panel.Category 의 카테고리 이름. JS 식별자 규칙 + JS 빌트인 충돌 차단 (점 표기법 `_c.카테고리.*` 로 접근). 권장 컨벤션 = `Ctg` 접두 + PascalCase (예: `CtgItemList`) — 컨벤션 자체는 schema 강제 X (validator 경고). 안티패턴 (`CtgNew*`/`CtgEdit*`/`CtgAdd*`/`CtgInsert*`) 도 schema 강제 X — 별도 카테고리 정당화 케이스 (저장 전 변환/검증) 가 있으므로 validator 경고로만.",
+      "not": {
+        "anyOf": [
+          { "$ref": "#/$defs/categoryReservedKeys" },
+          { "$ref": "#/$defs/sectorReservedKeys" },
+          { "$ref": "#/$defs/jsReservedWords" }
+        ]
+      }
+    },
+
+    "categoryNameOrEmpty": {
+      "$comment": "ParamBlock.CategoryName 등 빈 문자열 (= 컬렉션 루트 / 기본 컨텍스트) 이 의미를 갖는 위치 전용. UserData 만 사용하는 ParamBlock 등에서 빈 문자열 허용.",
+      "type": "string",
+      "anyOf": [
+        { "const": "" },
+        { "$ref": "#/$defs/categoryName" }
+      ]
+    }
+  }
+}

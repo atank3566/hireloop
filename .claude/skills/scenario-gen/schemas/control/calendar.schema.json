@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/calendar.schema.json",
+  "title": "Calendar",
+  "description": "캘린더 (날짜 선택). 일반적으로 InputDate.Dialog.Layouts[*].Controls[*] 위치에 자식으로 배치되며, 단독 컨트롤로도 사용 가능. CalendarType / SelectType 으로 일·월·년 picker 와 단일·기간 모드를 분기. 정의 본체는 _base.schema.json#/$defs/calendarControl 을 그대로 차용한다.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    { "$ref": "_base.schema.json#/$defs/calendarControl" },
+    {
+      "properties": {
+        "ControlType": { "const": "Calendar" }
+      }
+    }
+  ]
+}

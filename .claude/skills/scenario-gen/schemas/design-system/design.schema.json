@@ -1,0 +1,496 @@
+{
+  "$id": "https://flextudio.local/meta-contract/v1/design-system/design.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "design",
+  "description": "Short stylesheet for raw controls — materializer expands to FontStyle / Width / Height / Padding / Margin / BgStyle / BorderStyle / DisplayStyle / ContentStyle / UseFixedSize / CaptionStyle / UseAbsoluteLayout+AbsolutePosition / UseOpacity+OpacityValue before validation. Full guide: DESIGN.md (get_design_rules). enum slots sync with tokens.json (verified by design.schema.test.mjs).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "font": {
+      "type": "string",
+      "enum": [
+        "display-large",
+        "display-medium",
+        "display-small",
+        "title-large",
+        "title-medium",
+        "body-large",
+        "body-medium",
+        "body-small",
+        "caption",
+        "micro"
+      ],
+      "description": "typography role slot — FontSize + FontWeight 짝. FontWeight 단독 override 불가 (역할에 없는 size/weight 조합이 필요하면 raw FontStyle 사용)."
+    },
+    "color": {
+      "$ref": "#/$defs/colorSlot",
+      "description": "text color slot — FontStyle.FontColor 채움."
+    },
+    "align": {
+      "type": "string",
+      "enum": ["start", "center", "end"],
+      "description": "FontAlign — flex-start / center / flex-end 로 변환."
+    },
+    "w": {
+      "$ref": "#/$defs/sizeValue",
+      "description": "Width — 'full' (100%) / 'text' (MatchText) / '<num>px' / '<num>%' / '<num>vh' / '<num>vw'."
+    },
+    "h": {
+      "$ref": "#/$defs/sizeValue",
+      "description": "Height — 같은 형식 (w 참조)."
+    },
+    "p": {
+      "$ref": "#/$defs/spacingValue",
+      "description": "Padding — CSS shorthand string ('16' / '16 20' / '16 20 8' / '16 20 8 4') 또는 { t, r, b, l } 객체."
+    },
+    "m": {
+      "$ref": "#/$defs/spacingValue",
+      "description": "Margin — 같은 형식 (p 참조)."
+    },
+    "bg": {
+      "$ref": "#/$defs/colorSlot",
+      "description": "surface color slot — BgStyle.BgColor 채움 (자동으로 UseBackground:true)."
+    },
+    "border": {
+      "oneOf": [
+        { "type": "boolean", "const": false },
+        {
+          "type": "string",
+          "enum": [
+            "none",
+            "main",
+            "main-light",
+            "sub",
+            "sub-light",
+            "canvas",
+            "card",
+            "subtle",
+            "surface-strong",
+            "dark",
+            "hairline",
+            "hairline-soft",
+            "hairline-strong",
+            "ink",
+            "body",
+            "body-soft",
+            "muted",
+            "on-brand",
+            "warning",
+            "preview",
+            "success",
+            "error"
+          ]
+        },
+        { "$ref": "#/$defs/borderObject" }
+      ],
+      "description": "border — (1) color slot shorthand, (2) false/'none' (Useborder:false), (3) 객체 form { color, type?, size? | sides? } — size 와 sides 는 동시 사용 불가."
+    },
+    "radius": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^\\d+$"
+        },
+        { "$ref": "#/$defs/radiusObject" }
+      ],
+      "description": "border-radius — (1) shorthand 정수 문자열 ('0' / '8' / '16' / '9999'; '9999'⇒RadiusSet:'None'), (2) 객체 form { tl?, tr?, br?, bl? } per-corner."
+    },
+    "elevation": {
+      "type": "string",
+      "enum": ["rect-shadow", "radius-shadow"],
+      "description": "shadow preset slot — ContentStyle 채움."
+    },
+    "flex": {
+      "$ref": "#/$defs/flexObject",
+      "description": "DisplayStyle (Group 전용 의도) — { dir, gap?, align?, valign? }. dir 필수."
+    },
+    "caption": {
+      "$ref": "#/$defs/captionObject",
+      "description": "CaptionStyle (+ 루트 Caption 내용) — { text?, font?, color?, pos?, align? }. text 는 캡션 내용(루트 Caption 필드, CaptionStyle 와 별개) — design 키 중 유일하게 content 를 담는 슬롯. font 는 body-large/body-medium/body-small/caption/micro 5개만 지원. 나머지는 스타일."
+    },
+    "abs": {
+      "$ref": "#/$defs/absObject",
+      "description": "absolute position — { t?, r?, b?, l? }. UseAbsoluteLayout:true + AbsolutePosition emit."
+    },
+    "opacity": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100,
+      "description": "투명도 — 0~100 정수. UseOpacity:true + OpacityValue:'<n>' emit (단위 % 고정)."
+    },
+    "itemBg": {
+      "$ref": "#/$defs/colorSlot",
+      "description": "CheckBox/RadioBox 항목 기본 배경 — ItemBgStyle.{UseBackground:true, BgColor:<slot>} emit. 컨트롤 외의 곳에서는 raw 스키마가 거부."
+    },
+    "tabHeader": {
+      "$ref": "#/$defs/tabHeaderObject",
+      "description": "Tab 컨트롤 4중 헤더 스타일 — { container?, selectedContainer?, item?, selectedItem? }. 각 sub-block 은 design 슬롯 부분집합 사용. container 류는 arrange 추가 사용 가능."
+    },
+    "fixed": {
+      "type": "boolean",
+      "description": "controlBase.UseFixedSize — flex 안 content-sized 자식의 stretch 방지."
+    },
+    "surface": {
+      "type": "string",
+      "enum": ["flat", "outlined", "elevated"],
+      "description": "Group 전용 surface 프리셋 (MUI Paper 영감) — bg/border/radius/elevation 묶음으로 확장. flat=card 채움(테두리·그림자 없음) / outlined=card+hairline 테두리 / elevated=card+radius-shadow 그림자. 명시한 bg/border/radius/elevation 키가 프리셋을 override. Group(ContentsType:'Group') 외에서는 거부. tokens.json#/surface 와 sync (design.schema.test.mjs 가 검증)."
+    }
+  },
+  "$defs": {
+    "colorSlot": {
+      "type": "string",
+      "enum": [
+        "main",
+        "main-light",
+        "sub",
+        "sub-light",
+        "canvas",
+        "card",
+        "subtle",
+        "surface-strong",
+        "dark",
+        "hairline",
+        "hairline-soft",
+        "hairline-strong",
+        "ink",
+        "body",
+        "body-soft",
+        "muted",
+        "on-brand",
+        "warning",
+        "preview",
+        "success",
+        "error"
+      ],
+      "description": "tokens.json#/color 의 모든 슬롯 (sync — design.schema.test.mjs 가 검증)."
+    },
+    "sizeValue": {
+      "oneOf": [
+        { "type": "string", "const": "full" },
+        { "type": "string", "const": "text" },
+        {
+          "type": "string",
+          "pattern": "^\\d+(?:\\.\\d+)?(px|%|vh|vw)$"
+        }
+      ]
+    },
+    "spacingValue": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^\\d+(\\s+\\d+){0,3}$",
+          "description": "CSS shorthand — 1~4개 non-negative integer 를 공백으로 구분. (1: all, 2: vertical horizontal, 3: top horizontal bottom, 4: TRBL)."
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "t": { "$ref": "#/$defs/spacingPart" },
+            "r": { "$ref": "#/$defs/spacingPart" },
+            "b": { "$ref": "#/$defs/spacingPart" },
+            "l": { "$ref": "#/$defs/spacingPart" }
+          }
+        }
+      ]
+    },
+    "spacingPart": {
+      "oneOf": [
+        { "type": "integer", "minimum": 0 },
+        { "type": "string", "pattern": "^\\d+$" }
+      ]
+    },
+    "borderObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["color"],
+      "properties": {
+        "color": { "$ref": "#/$defs/colorSlot" },
+        "type": {
+          "type": "string",
+          "enum": ["solid", "dashed", "dotted"]
+        },
+        "size": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "string", "pattern": "^\\d+$" }
+          ],
+          "description": "uniform border width. SizeSet:'All'."
+        },
+        "sides": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "t": { "$ref": "#/$defs/spacingPart" },
+            "r": { "$ref": "#/$defs/spacingPart" },
+            "b": { "$ref": "#/$defs/spacingPart" },
+            "l": { "$ref": "#/$defs/spacingPart" }
+          },
+          "description": "per-side border width — SizeSet:'Each', BorderSize:'', Top/Right/Bottom/Left 채움."
+        }
+      },
+      "not": { "required": ["size", "sides"] },
+      "description": "border object form — size 와 sides 는 동시 사용 불가 (not.required 로 강제)."
+    },
+    "radiusObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "tl": { "$ref": "#/$defs/spacingPart" },
+        "tr": { "$ref": "#/$defs/spacingPart" },
+        "br": { "$ref": "#/$defs/spacingPart" },
+        "bl": { "$ref": "#/$defs/spacingPart" }
+      },
+      "description": "per-corner radius — RadiusSet:'Each', BorderRadius:'', RadiusTopLeft/RadiusTopRight/RadiusBottomLeft/RadiusBottomRight 채움. 누락된 코너는 ''."
+    },
+    "flexObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dir"],
+      "properties": {
+        "dir": {
+          "type": "string",
+          "enum": ["row", "column", "wrap"],
+          "description": "FlexDirection — 메인 축 방향. wrap 은 엔진 quirk (실제 flex-wrap 아님)."
+        },
+        "gap": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0 },
+            { "type": "string", "pattern": "^\\d+$" },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "row": { "$ref": "#/$defs/spacingPart" },
+                "col": { "$ref": "#/$defs/spacingPart" }
+              }
+            }
+          ],
+          "description": "gap — 정수=양축 동일, { row, col } 객체=각각. rowGapValue + columnGapValue 채움 (단위 px 고정)."
+        },
+        "align": {
+          "type": "string",
+          "enum": ["left", "center", "right", "between"],
+          "description": "DisplayAlign (메인 축 정렬). 'between'⇒flexBoxType:'space', 그 외 'align'."
+        },
+        "valign": {
+          "type": "string",
+          "enum": ["top", "center", "bottom"],
+          "description": "DisplayVerticalAlign (크로스 축 정렬)."
+        }
+      }
+    },
+    "captionObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "type": "string",
+          "description": "캡션 내용 (사용자 보이는 라벨) — 루트 Caption 필드 emit (CaptionStyle 와 별개). design 키 중 유일하게 content 를 담는 슬롯. Input 계열에서 라벨로 렌더 (Label 의 Caption 은 내부명이라 화면 미표시). 게이트 없음."
+        },
+        "font": {
+          "type": "string",
+          "enum": [
+            "body-large",
+            "body-medium",
+            "body-small",
+            "caption",
+            "micro"
+          ],
+          "description": "caption 전용 typography role — small text 5종만 지원."
+        },
+        "color": {
+          "$ref": "#/$defs/colorSlot",
+          "description": "CaptionStyle.FontColor."
+        },
+        "pos": {
+          "type": "string",
+          "enum": ["left", "top"],
+          "description": "CaptionStyle.CaptionPosition — 'left' (Caption 좌측) / 'top' (Caption 상단)."
+        },
+        "align": {
+          "type": "string",
+          "enum": ["start", "center", "end"],
+          "description": "CaptionStyle.FontAlign — flex-start / center / flex-end."
+        }
+      }
+    },
+    "absObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "t": { "$ref": "#/$defs/spacingPart" },
+        "r": { "$ref": "#/$defs/spacingPart" },
+        "b": { "$ref": "#/$defs/spacingPart" },
+        "l": { "$ref": "#/$defs/spacingPart" }
+      }
+    },
+    "arrangeObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["match", "equal", "fixed"],
+          "description": "ArrangeItemsType — match=MatchText(텍스트 크기 맞춤) / equal=EqualDistribution(균등) / fixed=Fixed(고정)."
+        },
+        "align": {
+          "type": "string",
+          "enum": ["left", "center", "right", "between"],
+          "description": "ArrangeItemsAlign — 헤더 영역 안 정렬. 'between'⇒between."
+        }
+      },
+      "description": "arrange 슬롯 — UseArrangeItems:true 자동. Tab 헤더 컨테이너 내부에서만 사용."
+    },
+    "tabHeaderContainerBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "arrange": { "$ref": "#/$defs/arrangeObject" },
+        "p": { "$ref": "#/$defs/spacingValue" },
+        "m": { "$ref": "#/$defs/spacingValue" },
+        "border": { "$ref": "#/$defs/borderObjectOrShorthand" },
+        "radius": { "$ref": "#/$defs/radiusOrShorthand" },
+        "bg": { "$ref": "#/$defs/colorSlot" }
+      },
+      "description": "TabHeader / SelectTabHeader 의 design 슬롯 — 텍스트 키 미지원 (컨테이너 단)."
+    },
+    "tabHeaderItemBlock": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "font": {
+          "type": "string",
+          "enum": [
+            "display-large",
+            "display-medium",
+            "display-small",
+            "title-large",
+            "title-medium",
+            "body-large",
+            "body-medium",
+            "body-small",
+            "caption",
+            "micro"
+          ]
+        },
+        "color": { "$ref": "#/$defs/colorSlot" },
+        "align": {
+          "type": "string",
+          "enum": ["start", "center", "end"]
+        },
+        "p": { "$ref": "#/$defs/spacingValue" },
+        "m": { "$ref": "#/$defs/spacingValue" },
+        "border": { "$ref": "#/$defs/borderObjectOrShorthand" },
+        "radius": { "$ref": "#/$defs/radiusOrShorthand" },
+        "bg": { "$ref": "#/$defs/colorSlot" }
+      },
+      "description": "TabHeaderItem / SelectTabHeaderItem 의 design 슬롯 — font/color/align + 컨테이너 슬롯."
+    },
+    "tabHeaderObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "container":         { "$ref": "#/$defs/tabHeaderContainerBlock" },
+        "selectedContainer": { "$ref": "#/$defs/tabHeaderContainerBlock" },
+        "item":              { "$ref": "#/$defs/tabHeaderItemBlock" },
+        "selectedItem":      { "$ref": "#/$defs/tabHeaderItemBlock" }
+      },
+      "description": "Tab 4중 헤더 — container/selectedContainer/item/selectedItem 각각 design 슬롯 부분집합 사용."
+    },
+    "borderObjectOrShorthand": {
+      "oneOf": [
+        { "type": "boolean", "const": false },
+        {
+          "type": "string",
+          "enum": [
+            "none",
+            "main",
+            "main-light",
+            "sub",
+            "sub-light",
+            "canvas",
+            "card",
+            "subtle",
+            "surface-strong",
+            "dark",
+            "hairline",
+            "hairline-soft",
+            "hairline-strong",
+            "ink",
+            "body",
+            "body-soft",
+            "muted",
+            "on-brand",
+            "warning",
+            "preview",
+            "success",
+            "error"
+          ]
+        },
+        { "$ref": "#/$defs/borderObject" }
+      ]
+    },
+    "radiusOrShorthand": {
+      "oneOf": [
+        { "type": "string", "pattern": "^\\d+$" },
+        { "$ref": "#/$defs/radiusObject" }
+      ]
+    }
+  },
+  "examples": [
+    {
+      "font": "body-large",
+      "color": "body",
+      "w": "full",
+      "h": "text"
+    },
+    {
+      "p": "16",
+      "bg": "card",
+      "border": "hairline",
+      "radius": "16"
+    },
+    {
+      "surface": "elevated",
+      "p": "16",
+      "flex": { "dir": "column", "gap": 12 }
+    },
+    {
+      "flex": { "dir": "row", "align": "between", "valign": "center", "gap": 8 },
+      "p": "12 16"
+    },
+    {
+      "radius": "9999",
+      "bg": "subtle",
+      "p": "4 8"
+    },
+    {
+      "border": {
+        "color": "hairline-strong",
+        "type": "dashed",
+        "sides": { "t": "2", "b": "2" }
+      },
+      "radius": { "tl": "12", "tr": "12", "br": "0", "bl": "0" }
+    },
+    {
+      "caption": { "text": "이름", "font": "body-small", "color": "body-soft" }
+    },
+    {
+      "abs": { "b": "20", "r": "20" },
+      "opacity": 80
+    },
+    {
+      "caption": { "font": "body-small", "color": "body-soft", "pos": "top", "align": "start" }
+    },
+    {
+      "itemBg": "card"
+    },
+    {
+      "tabHeader": {
+        "container": { "arrange": { "type": "equal" }, "bg": "card", "p": "0 16" },
+        "item": { "font": "body-medium", "color": "body-soft", "align": "center", "p": "12 0" },
+        "selectedItem": { "color": "main", "border": { "color": "main", "sides": { "b": "2" } } }
+      }
+    }
+  ]
+}

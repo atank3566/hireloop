@@ -1,0 +1,40 @@
+{
+  "count": 6,
+  "guides": [
+    {
+      "id": "control-options",
+      "path": "control-options.md",
+      "title": "Control Options — 컨트롤별 옵션 매트릭스",
+      "summary": "어떤 컨트롤에 어떤 옵션 키가 허용되는가."
+    },
+    {
+      "id": "events",
+      "path": "events.md",
+      "title": "이벤트(Events) 가이드",
+      "summary": "핸들러가 어떻게 정의·연결·실행되는지, 그리고 더 깔끔하게 구성하는 법."
+    },
+    {
+      "id": "failure-discipline",
+      "path": "failure-discipline.md",
+      "title": "Failure Discipline"
+    },
+    {
+      "id": "prompt-interview",
+      "path": "prompt-interview.md",
+      "title": "Prompt Interview — 비대화형 5질문 자기-답변",
+      "summary": "CLI 파이프(`flex-scenario gen`) 는 사용자에게 되묻는 통로가 없다. 모호 입력(L1~L2) 에서도 산출물은 **JSON 한 덩어리** 로 떨어진다. 그 결과 모델이 어떤 가정으로 시나리오를 만들었는지 외부에서 보이지 않아 사용자가 redirect 할 수 없는 게 병목 6."
+    },
+    {
+      "id": "scripts",
+      "path": "scripts.md",
+      "title": "Script 본문 가이드",
+      "summary": "이벤트 핸들러의 `Action:'Script'` 본문은 **intent short-form 을 1순위로 사용**한다. raw JS 본문은 intent 가 표현 못 하는 분기/조건이 있을 때만 escape hatch."
+    },
+    {
+      "id": "step-navigation",
+      "path": "step-navigation.md",
+      "title": "Step 이동 가이드",
+      "summary": "헤더 뒤로가기·하단 버튼·리스트 카드 클릭 등 Step 간 이동을 메타 채널로 표현하는 법."
+    }
+  ]
+}

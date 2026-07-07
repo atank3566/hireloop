@@ -1,0 +1,57 @@
+{
+  "tier": "atom",
+  "name": "switch",
+  "path": "schema/v1/patterns/atom/switch.schema.json",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://flextudio.local/meta-contract/v1/patterns/atom/switch.schema.json",
+    "title": "pattern.atom.switch",
+    "description": "토글 스위치 아톰. CheckBox 컨트롤 기반 (`CheckBoxType:\"CheckBoxSwitch\"` + `ControlStyle:\"styleSwitchSmall\"`). 이진 on/off 상태 전환에 사용 — 다중 선택지는 segmented-radio, 동의 체크는 checkbox 아톰. label 은 optional: 있으면 스위치 + 라벨 한 줄(Width 100%), 없으면 스위치만 fit. on 상태 색은 Expo Ink (`var(--colorBlack)`) — checkbox / segmented-radio 아톰과 동일한 primary 선택 색.",
+    "x-tier": "atom",
+    "x-tags": [
+      "switch",
+      "toggle",
+      "boolean",
+      "form"
+    ],
+    "x-related": [],
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "label": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100,
+        "description": "스위치 옆 라벨 텍스트 (선택). 다국어 토큰 `{{key}}` 가능. 미지정 시 스위치만 fit 너비로 표시."
+      },
+      "override": {
+        "type": "object",
+        "propertyNames": {
+          "enum": [
+            "root"
+          ]
+        },
+        "additionalProperties": {
+          "type": "object"
+        },
+        "description": "(L1 escape hatch) 패턴이 노출하지 않는 raw 엔진 메타데이터를 materialized 결과 노드에 deep-merge 로 주입한다. 이 패턴은 단일 컨트롤이라 anchor 는 'root'(결과 노드 자체) 하나. 값은 해당 ControlType 에 유효한 control 레벨 필드 패치이며, 어떤 엔진 스키마에든 정의된 필드명만 검증을 통과한다(예: ControlKey, DefaultValue, 이벤트 바인딩). ★ UseMove/MoveSteps 같은 Step 이동(Group 레벨) 기능은 atom 컨트롤이 아니라 Group(molecule 의 root anchor / raw Group)에 주입한다. 배열 필드는 deep-merge 가 아니라 통째 교체된다. props 로 충분한 일반 케이스엔 쓰지 않는다.",
+        "examples": [
+          {
+            "root": {
+              "DefaultValue": true
+            }
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "label": "알림 받기"
+      },
+      {
+        "label": "{{자동저장}}"
+      },
+      {}
+    ]
+  }
+}

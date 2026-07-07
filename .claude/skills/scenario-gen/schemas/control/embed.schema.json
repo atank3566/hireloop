@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/embed.schema.json",
+  "title": "Embed",
+  "description": "HTML 태그를 직접 화면에 삽입하는 컨트롤. Embed 속성에 raw HTML 문자열을 두면 그대로 렌더된다. 외부 라이브러리(Chart/지도/QR 등) 연동 시 유니크한 id 의 <div>/<canvas> 를 두고 외부 라이브러리 URL 은 Scenario.StyleURLs 배열에 등록(권장 — 진입 시 자동 로드; 동적 URL 등 부득이한 경우만 f.Script.load() 사용). ★ 로드 ≠ 렌더([embed-render]): 라이브러리 로드만으로는 안 그려진다 — canvas/빈 컨테이너 Embed 는 반드시 host Step 의 Loaded 핸들러에서 document.getElementById() 로 DOM 을 잡아 new Chart()/new naver.maps.Map() 등 렌더 코드를 직접 실행해야 한다. ★ Tab 컨트롤 내부 LinkedStep 에는 Embed 금지([tab-embed]) — 탭 내부 Step 은 Step 이벤트가 미실행이라 초기화 시점을 못 잡음. ★ Caption 은 반드시 빈 문자열 (Embed 본체에 표시되므로 ControlDefaultName 같은 내부명을 두면 그대로 출력됨).",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType", "Embed"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "Embed" },
+        "Caption": {
+          "type": "string",
+          "const": "",
+          "description": "★ 반드시 빈 문자열 — Embed 는 화면에 직접 그려지므로 Caption 값이 그대로 노출된다."
+        },
+        "Embed": {
+          "type": "string",
+          "description": "삽입할 raw HTML 문자열. <video>/<iframe>/<canvas>/<div>/<style> 등. ★ <script></script> 직접 삽입 불가 — 외부 라이브러리 URL 은 Scenario.StyleURLs 배열에 등록(권장). ★ 섹터 값 바인딩은 {%return Load.sector.Field; %} (LoadScript 토큰) — {=Field} 는 Embed 안에서 치환되지 않고 그대로 노출됨([embed-bind] 차단). Load.sector 는 조상 DC 그룹(UseDataConnection:true) 아래에서만 그 행의 섹터를 가리킴 — DC 밖이면 조용히 빈 문자열([embed-bind] 차단). 외부 라이브러리 연동 시 div/canvas 에 유니크한 id 부여 → Step Loaded 에서 document.getElementById() 로 DOM 잡고 라이브러리 호출."
+        },
+        "LoadScript": {
+          "type": "string",
+          "description": "(선택) 컴포넌트 로드 직전 스크립트. DOM 접근은 Step Loaded 에서 처리하는 게 일반적이라 통상 미사용."
+        }
+      }
+    }
+  ]
+}

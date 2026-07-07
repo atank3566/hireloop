@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/combo.schema.json",
+  "title": "Combo",
+  "description": "드롭다운 선택. 자식 트리 보유 (Dialog.Layouts[*].Controls[*] = ComboList). 8개 이하 고정 목록 전용 — 그 외는 Search 사용.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    { "$ref": "_base.schema.json#/$defs/inputBase" },
+    {
+      "properties": {
+        "ControlType":    { "const": "Combo" },
+        "DataSourceName": {
+          "type": "string",
+          "description": "Service/Collection DataSource 사용 시 데이터 소스 이름. Combo 본체와 ComboList 양쪽에 동일하게 둘 수 있음."
+        },
+        "Dialog": { "$ref": "_base.schema.json#/$defs/comboDialog" }
+      }
+    }
+  ]
+}

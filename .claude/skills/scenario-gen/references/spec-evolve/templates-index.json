@@ -1,0 +1,26 @@
+{
+  "description": "spec-evolve 번들 템플릿 — Phase 1 본문 작성 시 참고. 배포에 동봉되는 자기완결 예시(레포 전용 경로 미참조).",
+  "templates": [
+    {
+      "file": "templates/master-detail.spec.md",
+      "route": "B",
+      "screenKind": "mixed",
+      "demonstrates": "부모-자식 데이터연결(부모 query + 자식 query Parent필터 + 조인키) + detail 상세 + 두 카테고리 mock",
+      "useWhen": "마스터-디테일(1:N) 구조가 제공되거나 목록↔상세가 필요한 경우"
+    },
+    {
+      "file": "templates/query-screen.spec.md",
+      "route": "B",
+      "screenKind": "query",
+      "demonstrates": "조회조건 다수(≥5) → 조회조건 별도 Step 분리, 결과 리스트 query, InputDate 기간 기본값, 상세 detail",
+      "useWhen": "조회/검색 화면이고 조회조건이 많은 경우"
+    },
+    {
+      "file": "templates/static-prototype.spec.md",
+      "route": "A",
+      "screenKind": "input",
+      "demonstrates": "정적 표시(Label.labeltext), 데이터연결 미사용, provisional/assumptions 기록",
+      "useWhen": "구조 미제공 + 단건 표시성 화면, 또는 반복/선택 데이터가 없는 경우"
+    }
+  ]
+}

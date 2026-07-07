@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/patterns/atom/badge.schema.json",
+  "title": "pattern.atom.badge",
+  "description": "상태/카테고리 라벨용 pill 형 뱃지. Label + pill BorderRadius(999) + 라이트 배경(`var(--colorSub10)`) + Bold 텍스트. 너비는 텍스트에 맞춰 자동 fit, 높이도 텍스트 + Padding 으로 결정. color 는 의미적 5종(green/black/red/blue/gray) — FontColor 만 바뀌고 배경은 5종 모두 동일한 라이트 톤이라 인접 정보 위에 얹어도 충돌 없음. size 는 md/lg 두 단계.",
+  "x-tier": "atom",
+  "x-tags": ["badge", "tag", "status", "label", "chip"],
+  "x-related": [],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["label", "color", "size"],
+  "properties": {
+    "label": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 20,
+      "description": "뱃지에 표시할 짧은 텍스트. 다국어 토큰 `{{key}}` / 정적 바인딩 `{=Field}` 가능."
+    },
+    "color": {
+      "type": "string",
+      "enum": ["green", "black", "red", "blue", "gray"],
+      "description": "의미 색상 (FontColor 만 매핑, 배경은 모두 동일 라이트 톤). green=긍정/완료 / black=중립 강조 / red=경고/실패 / blue=정보 / gray=비활성/보조."
+    },
+    "size": {
+      "type": "string",
+      "enum": ["md", "lg"],
+      "description": "크기. md=폰트13/패딩 4·8 / lg=폰트16/패딩 6·10."
+    },
+    "override": {
+      "type": "object",
+      "propertyNames": { "enum": ["root"] },
+      "additionalProperties": { "type": "object" },
+      "description": "(L1 escape hatch) 패턴이 노출하지 않는 raw 엔진 메타데이터를 materialized 결과 노드에 deep-merge 로 주입한다. 이 패턴은 단일 컨트롤이라 anchor 는 'root'(결과 노드 자체) 하나. 값은 해당 ControlType 에 유효한 control 레벨 필드 패치이며, 어떤 엔진 스키마에든 정의된 필드명만 검증을 통과한다(예: ControlKey, DefaultValue, 이벤트 바인딩). ★ UseMove/MoveSteps 같은 Step 이동(Group 레벨) 기능은 atom 컨트롤이 아니라 Group(molecule 의 root anchor / raw Group)에 주입한다. 배열 필드는 deep-merge 가 아니라 통째 교체된다. props 로 충분한 일반 케이스엔 쓰지 않는다.",
+      "examples": [{ "root": { "UseClickEvent": true, "Events": { "Click": "openDetail" } } }]
+    }
+  },
+  "examples": [
+    { "label": "승인", "color": "green", "size": "md" },
+    { "label": "반려", "color": "red", "size": "md" },
+    { "label": "대기", "color": "gray", "size": "md" },
+    { "label": "NEW", "color": "blue", "size": "lg" },
+    { "label": "{{공지}}", "color": "black", "size": "md" }
+  ]
+}

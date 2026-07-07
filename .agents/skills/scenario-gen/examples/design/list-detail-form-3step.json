@@ -1,0 +1,1516 @@
+{
+  "modules": {},
+  "htmlkey": "stephtml",
+  "ScenarioTitle": "",
+  "fConverterVersion": 1,
+  "fScenarioName": "리스트→상세→입력 (3-step)",
+  "Collections": {},
+  "FlexSQLService": {},
+  "ServiceBinding": {},
+  "StartSteps": [
+    "Step1"
+  ],
+  "Language": {},
+  "Events": {},
+  "Panel": {
+    "Collection": {
+      "Ckeys": []
+    },
+    "Category": {},
+    "CategoryOrder": [],
+    "Table": [],
+    "ExternalTable": [],
+    "AuthKey": []
+  },
+  "Steps": {
+    "Step1": {
+      "StepName": "[스텝명]",
+      "StepType": "StepView",
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": [],
+      "Next": [
+        "Step2"
+      ],
+      "Padding": {
+        "Right": "0",
+        "Btm": "0",
+        "UseAuto": true,
+        "Left": "0",
+        "Top": "0",
+        "All": "",
+        "UseEach": true,
+        "SizeUnit": "px"
+      },
+      "BgStyle": {
+        "UseBackground": true,
+        "BgColor": "var(--colorGray9)"
+      },
+      "Contents": [
+        {
+          "Id": "f_1001",
+          "ContentsName": "HeaderWrap",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "w": "full",
+            "h": "text",
+            "bg": "card",
+            "p": "20 20 16 20"
+          },
+          "Contents": [
+            {
+              "Id": "f_1002",
+              "ControlType": "Label",
+              "ControlName": "lblPageTitle",
+              "labeltext": "[제목]",
+              "ControlStyle": "None",
+              "Caption": "Label1",
+              "isColumnCtrl": false,
+              "design": {
+                "font": "display-medium",
+                "color": "body",
+                "w": "full",
+                "h": "text"
+              }
+            }
+          ]
+        },
+        {
+          "Id": "f_1010",
+          "ContentsName": "FilterWrap",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "w": "full",
+            "h": "text",
+            "bg": "card",
+            "p": "12 20 16 20",
+            "flex": {
+              "dir": "column",
+              "gap": 12
+            }
+          },
+          "Contents": [
+            {
+              "ContentsType": "Group",
+              "ContentsName": "InputAction",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "Id": "f_3105",
+              "design": {
+                "w": "full"
+              },
+              "Contents": [
+                {
+                  "ControlType": "InputText",
+                  "ControlDefaultName": "InputText",
+                  "ControlName": "FieldText",
+                  "ControlName2": "FieldText",
+                  "ControlStyle": "None",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "UseEvents": false,
+                  "DisplayType": "CtrlDisplayCkey",
+                  "InputType": "text",
+                  "Id": "f_3102",
+                  "Placeholder": "[입력 안내]",
+                  "design": {
+                    "w": "full",
+                    "h": "48px",
+                    "font": "body-medium",
+                    "border": "hairline-strong",
+                    "radius": "8",
+                    "caption": {
+                      "font": "body-small",
+                      "align": "start"
+                    }
+                  }
+                },
+                {
+                  "ContentsType": "Group",
+                  "ContentsName": "TrailingAction",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "Id": "f_3104",
+                  "design": {
+                    "w": "44px",
+                    "h": "45px",
+                    "bg": "card",
+                    "flex": {
+                      "dir": "row",
+                      "align": "center",
+                      "valign": "center"
+                    },
+                    "abs": {
+                      "t": 1,
+                      "r": 1
+                    }
+                  },
+                  "Contents": [
+                    {
+                      "ControlType": "Label",
+                      "ControlDefaultName": "Label",
+                      "ControlName": "IconButton",
+                      "ControlName2": "IconButton",
+                      "ControlStyle": "styleLineNone",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "LabelType": "labeltext",
+                      "labeltext": "",
+                      "Id": "f_3103",
+                      "UseClickEvent": false,
+                      "design": {
+                        "w": "28px",
+                        "h": "28px"
+                      },
+                      "ImageStyle": {
+                        "IsLineIcon": true,
+                        "Img": "B_000_001",
+                        "UseImage": true,
+                        "ImageSize": "24",
+                        "ImageColor": "var(--colorGray2)"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "ControlType": "RadioBox",
+              "ControlDefaultName": "RadioBox",
+              "ControlName": "SegmentedRadio",
+              "ControlName2": "SegmentedRadio",
+              "ControlStyle": "stylePeriod",
+              "Caption": "",
+              "isColumnCtrl": false,
+              "Items": [
+                {
+                  "ItemName": "[옵션 1]",
+                  "ItemValue": "[옵션 1]"
+                },
+                {
+                  "ItemName": "[옵션 2]",
+                  "ItemValue": "[옵션 2]"
+                },
+                {
+                  "ItemName": "[옵션 3]",
+                  "ItemValue": "[옵션 3]"
+                },
+                {
+                  "ItemName": "[옵션 4]",
+                  "ItemValue": "[옵션 4]"
+                }
+              ],
+              "Id": "f_3106",
+              "UseItemDesign": true,
+              "ItemDesign": {
+                "FontStyle": {
+                  "UseFont": true,
+                  "FontAlign": "center"
+                },
+                "BgStyle": {}
+              },
+              "design": {
+                "w": "full",
+                "h": "35px",
+                "itemBg": "ink"
+              }
+            }
+          ]
+        },
+        {
+          "Id": "f_1020",
+          "ContentsName": "ListWrap",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "ScrollType": "ScrollY",
+          "design": {
+            "w": "full",
+            "h": "text",
+            "p": "16 20 20 20",
+            "flex": {
+              "dir": "column",
+              "gap": 12
+            }
+          },
+          "Contents": [
+            {
+              "Id": "f_1030",
+              "ContentsName": "Card1",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "UseMove": true,
+              "MoveSteps": {
+                "MoveStepOrder": [
+                  "Step2"
+                ],
+                "Step2": {
+                  "Condition": "",
+                  "MoveTo": "Next"
+                }
+              },
+              "design": {
+                "w": "full",
+                "h": "text",
+                "bg": "card",
+                "p": "16",
+                "elevation": "radius-shadow",
+                "flex": {
+                  "dir": "column",
+                  "gap": 8
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_1031",
+                  "ContentsName": "Row1",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "w": "full",
+                    "h": "text",
+                    "flex": {
+                      "dir": "row",
+                      "align": "between",
+                      "valign": "center"
+                    }
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1032",
+                      "ControlType": "Label",
+                      "ControlName": "lblWONo1",
+                      "labeltext": "[제목]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "title-medium",
+                        "color": "body",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "ControlType": "Label",
+                      "ControlDefaultName": "Label",
+                      "ControlName": "Badge",
+                      "ControlName2": "Badge",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "LabelType": "labeltext",
+                      "labeltext": "[상태]",
+                      "Id": "f_3107",
+                      "design": {
+                        "font": "body-small",
+                        "color": "preview",
+                        "bg": "subtle",
+                        "radius": "9999",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Id": "f_1033",
+                  "ControlType": "Label",
+                  "ControlName": "lblItemProcess1",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body-soft",
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_1034",
+                  "ContentsName": "QtyRow1",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "w": "full",
+                    "h": "text",
+                    "flex": {
+                      "dir": "row",
+                      "valign": "center",
+                      "gap": 8
+                    }
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1035",
+                      "ControlType": "Label",
+                      "ControlName": "lblQtyLabel1",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "caption",
+                        "color": "muted",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1036",
+                      "ControlType": "Label",
+                      "ControlName": "lblQtyVal1",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "caption",
+                        "color": "body",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Id": "f_1040",
+              "ContentsName": "Card2",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "UseMove": true,
+              "MoveSteps": {
+                "MoveStepOrder": [
+                  "Step2"
+                ],
+                "Step2": {
+                  "Condition": "",
+                  "MoveTo": "Next"
+                }
+              },
+              "design": {
+                "w": "full",
+                "h": "text",
+                "bg": "card",
+                "p": "16",
+                "elevation": "radius-shadow",
+                "flex": {
+                  "dir": "column",
+                  "gap": 8
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_1041",
+                  "ContentsName": "Row2",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "w": "full",
+                    "h": "text",
+                    "flex": {
+                      "dir": "row",
+                      "align": "between",
+                      "valign": "center"
+                    }
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1042",
+                      "ControlType": "Label",
+                      "ControlName": "lblWONo2",
+                      "labeltext": "[제목]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "title-medium",
+                        "color": "body",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "ControlType": "Label",
+                      "ControlDefaultName": "Label",
+                      "ControlName": "Badge",
+                      "ControlName2": "Badge",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "LabelType": "labeltext",
+                      "labeltext": "[상태]",
+                      "Id": "f_3108",
+                      "design": {
+                        "font": "body-small",
+                        "color": "warning",
+                        "bg": "subtle",
+                        "radius": "9999",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Id": "f_1043",
+                  "ControlType": "Label",
+                  "ControlName": "lblItemProcess2",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body-soft",
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_1044",
+                  "ContentsName": "QtyRow2",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "w": "full",
+                    "h": "text",
+                    "flex": {
+                      "dir": "row",
+                      "valign": "center",
+                      "gap": 8
+                    }
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1045",
+                      "ControlType": "Label",
+                      "ControlName": "lblQtyLabel2",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "caption",
+                        "color": "muted",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1046",
+                      "ControlType": "Label",
+                      "ControlName": "lblQtyVal2",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "caption",
+                        "color": "body",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Id": "f_1050",
+              "ContentsName": "Card3",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "UseMove": true,
+              "MoveSteps": {
+                "MoveStepOrder": [
+                  "Step2"
+                ],
+                "Step2": {
+                  "Condition": "",
+                  "MoveTo": "Next"
+                }
+              },
+              "design": {
+                "w": "full",
+                "h": "text",
+                "bg": "card",
+                "p": "16",
+                "elevation": "radius-shadow",
+                "flex": {
+                  "dir": "column",
+                  "gap": 8
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_1051",
+                  "ContentsName": "Row3",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "w": "full",
+                    "h": "text",
+                    "flex": {
+                      "dir": "row",
+                      "align": "between",
+                      "valign": "center"
+                    }
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1052",
+                      "ControlType": "Label",
+                      "ControlName": "lblWONo3",
+                      "labeltext": "[제목]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "title-medium",
+                        "color": "body",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "ControlType": "Label",
+                      "ControlDefaultName": "Label",
+                      "ControlName": "Badge",
+                      "ControlName2": "Badge",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "LabelType": "labeltext",
+                      "labeltext": "[상태]",
+                      "Id": "f_3109",
+                      "design": {
+                        "font": "body-small",
+                        "color": "success",
+                        "bg": "subtle",
+                        "radius": "9999",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Id": "f_1053",
+                  "ControlType": "Label",
+                  "ControlName": "lblItemProcess3",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body-soft",
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_1054",
+                  "ContentsName": "QtyRow3",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "w": "full",
+                    "h": "text",
+                    "flex": {
+                      "dir": "row",
+                      "valign": "center",
+                      "gap": 8
+                    }
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1055",
+                      "ControlType": "Label",
+                      "ControlName": "lblQtyLabel3",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "caption",
+                        "color": "muted",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1056",
+                      "ControlType": "Label",
+                      "ControlName": "lblQtyVal3",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "caption",
+                        "color": "body",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "StepRow": 0,
+      "StepCol": 0
+    },
+    "Step2": {
+      "StepName": "[스텝명]",
+      "StepType": "StepView",
+      "UseBackButton": false,
+      "UseBottomButton": true,
+      "UseEvents": false,
+      "Events": [],
+      "Next": [
+        "Step3"
+      ],
+      "Padding": {
+        "Right": "0",
+        "Btm": "0",
+        "UseAuto": true,
+        "Left": "0",
+        "Top": "0",
+        "All": "",
+        "UseEach": true,
+        "SizeUnit": "px"
+      },
+      "Contents": [
+        {
+          "Id": "f_2001",
+          "ContentsName": "DetailHeader",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "w": "full",
+            "h": "text",
+            "bg": "card",
+            "p": "20",
+            "flex": {
+              "dir": "column",
+              "gap": 8
+            }
+          },
+          "Contents": [
+            {
+              "Id": "f_2002",
+              "ControlType": "Label",
+              "ControlName": "lblWONoSub",
+              "labeltext": "[텍스트]",
+              "ControlStyle": "None",
+              "Caption": "Label1",
+              "isColumnCtrl": false,
+              "design": {
+                "font": "caption",
+                "color": "body-soft",
+                "w": "full",
+                "h": "text"
+              }
+            },
+            {
+              "Id": "f_2003",
+              "ControlType": "Label",
+              "ControlName": "lblItemName",
+              "labeltext": "[제목]",
+              "ControlStyle": "None",
+              "Caption": "Label1",
+              "isColumnCtrl": false,
+              "design": {
+                "font": "display-medium",
+                "color": "body",
+                "w": "full",
+                "h": "text"
+              }
+            },
+            {
+              "ControlType": "Label",
+              "ControlDefaultName": "Label",
+              "ControlName": "Badge",
+              "ControlName2": "Badge",
+              "ControlStyle": "None",
+              "Caption": "",
+              "isColumnCtrl": false,
+              "LabelType": "labeltext",
+              "labeltext": "[상태]",
+              "Id": "f_3110",
+              "design": {
+                "font": "body-small",
+                "color": "preview",
+                "bg": "subtle",
+                "radius": "9999",
+                "p": "4 8",
+                "w": "text",
+                "h": "text"
+              }
+            }
+          ]
+        },
+        {
+          "Id": "f_2010",
+          "ContentsName": "DetailInfo",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "w": "full",
+            "h": "text",
+            "p": "20",
+            "flex": {
+              "dir": "column",
+              "gap": 8
+            }
+          },
+          "Contents": [
+            {
+              "Id": "f_2011",
+              "ContentsName": "InfoRow1",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "w": "full",
+                "h": "44px",
+                "bg": "surface-strong",
+                "border": "hairline-soft",
+                "radius": "8",
+                "p": "10 16",
+                "flex": {
+                  "dir": "row",
+                  "valign": "center"
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_2012",
+                  "ControlType": "Label",
+                  "ControlName": "lblLabel1",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body-soft",
+                    "w": "text",
+                    "h": "text",
+                    "fixed": true
+                  }
+                },
+                {
+                  "Id": "f_2013",
+                  "ControlType": "Label",
+                  "ControlName": "lblValue1",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body",
+                    "align": "end",
+                    "w": "full",
+                    "h": "text"
+                  }
+                }
+              ]
+            },
+            {
+              "Id": "f_2021",
+              "ContentsName": "InfoRow2",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "w": "full",
+                "h": "44px",
+                "bg": "surface-strong",
+                "border": "hairline-soft",
+                "radius": "8",
+                "p": "10 16",
+                "flex": {
+                  "dir": "row",
+                  "valign": "center"
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_2022",
+                  "ControlType": "Label",
+                  "ControlName": "lblLabel2",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body-soft",
+                    "w": "text",
+                    "h": "text",
+                    "fixed": true
+                  }
+                },
+                {
+                  "Id": "f_2023",
+                  "ControlType": "Label",
+                  "ControlName": "lblValue2",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body",
+                    "align": "end",
+                    "w": "full",
+                    "h": "text"
+                  }
+                }
+              ]
+            },
+            {
+              "Id": "f_2031",
+              "ContentsName": "InfoRow3",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "w": "full",
+                "h": "44px",
+                "bg": "surface-strong",
+                "border": "hairline-soft",
+                "radius": "8",
+                "p": "10 16",
+                "flex": {
+                  "dir": "row",
+                  "valign": "center"
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_2032",
+                  "ControlType": "Label",
+                  "ControlName": "lblLabel3",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body-soft",
+                    "w": "text",
+                    "h": "text",
+                    "fixed": true
+                  }
+                },
+                {
+                  "Id": "f_2033",
+                  "ControlType": "Label",
+                  "ControlName": "lblValue3",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body",
+                    "align": "end",
+                    "w": "full",
+                    "h": "text"
+                  }
+                }
+              ]
+            },
+            {
+              "Id": "f_2041",
+              "ContentsName": "InfoRow4",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "w": "full",
+                "h": "44px",
+                "bg": "surface-strong",
+                "border": "hairline-soft",
+                "radius": "8",
+                "p": "10 16",
+                "flex": {
+                  "dir": "row",
+                  "valign": "center"
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_2042",
+                  "ControlType": "Label",
+                  "ControlName": "lblLabel4",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body-soft",
+                    "w": "text",
+                    "h": "text",
+                    "fixed": true
+                  }
+                },
+                {
+                  "Id": "f_2043",
+                  "ControlType": "Label",
+                  "ControlName": "lblValue4",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body",
+                    "align": "end",
+                    "w": "full",
+                    "h": "text"
+                  }
+                }
+              ]
+            },
+            {
+              "Id": "f_2051",
+              "ContentsName": "InfoRow5",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "w": "full",
+                "h": "44px",
+                "bg": "surface-strong",
+                "border": "hairline-soft",
+                "radius": "8",
+                "p": "10 16",
+                "flex": {
+                  "dir": "row",
+                  "valign": "center"
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_2052",
+                  "ControlType": "Label",
+                  "ControlName": "lblLabel5",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body-soft",
+                    "w": "text",
+                    "h": "text",
+                    "fixed": true
+                  }
+                },
+                {
+                  "Id": "f_2053",
+                  "ControlType": "Label",
+                  "ControlName": "lblValue5",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body",
+                    "align": "end",
+                    "w": "full",
+                    "h": "text"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "BottomButtons": [
+        {
+          "Id": "f_2100",
+          "ButtonName": "[버튼]",
+          "MoveTo": "Next",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "BgStyle": {},
+          "BorderStyle": {
+            "Useborder": true,
+            "BorderRadius": "8",
+            "RadiusSet": "All"
+          },
+          "Next": {
+            "MoveStepOrder": [
+              "Step3"
+            ],
+            "Step3": ""
+          }
+        }
+      ],
+      "StepRow": 0,
+      "StepCol": 1
+    },
+    "Step3": {
+      "StepName": "[스텝명]",
+      "StepType": "StepView",
+      "UseBackButton": false,
+      "UseBottomButton": true,
+      "UseEvents": false,
+      "Events": [],
+      "Next": [],
+      "Padding": {
+        "Right": "0",
+        "Btm": "0",
+        "UseAuto": true,
+        "Left": "0",
+        "Top": "0",
+        "All": "",
+        "UseEach": true,
+        "SizeUnit": "px"
+      },
+      "Contents": [
+        {
+          "Id": "f_3001",
+          "ContentsName": "FormHeader",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "w": "full",
+            "h": "text",
+            "bg": "card",
+            "p": "20 20 16 20",
+            "flex": {
+              "dir": "column",
+              "gap": 4
+            }
+          },
+          "Contents": [
+            {
+              "Id": "f_3002",
+              "ControlType": "Label",
+              "ControlName": "lblFormTitle",
+              "labeltext": "[제목]",
+              "ControlStyle": "None",
+              "Caption": "Label1",
+              "isColumnCtrl": false,
+              "design": {
+                "font": "display-medium",
+                "color": "body",
+                "w": "full",
+                "h": "text"
+              }
+            },
+            {
+              "Id": "f_3003",
+              "ControlType": "Label",
+              "ControlName": "lblWORef",
+              "labeltext": "[텍스트]",
+              "ControlStyle": "None",
+              "Caption": "Label1",
+              "isColumnCtrl": false,
+              "design": {
+                "font": "body-small",
+                "color": "body-soft",
+                "w": "full",
+                "h": "text"
+              }
+            }
+          ]
+        },
+        {
+          "Id": "f_3010",
+          "ContentsName": "FormFields",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "w": "full",
+            "h": "text",
+            "p": "20",
+            "flex": {
+              "dir": "column",
+              "gap": 20
+            }
+          },
+          "Contents": [
+            {
+              "Id": "f_3020",
+              "ContentsName": "QtyPairRow",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "w": "full",
+                "h": "text",
+                "flex": {
+                  "dir": "row",
+                  "gap": 12
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_3021",
+                  "ContentsName": "ProdQtyWrap",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "w": "50%",
+                    "h": "text",
+                    "flex": {
+                      "dir": "column",
+                      "gap": 8
+                    }
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_3022",
+                      "ControlType": "Label",
+                      "ControlName": "lblProdQtyCaption",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "body",
+                        "w": "full",
+                        "h": "text"
+                      }
+                    },
+                    {
+                      "Id": "f_3023",
+                      "ControlType": "InputNumber",
+                      "ControlName": "inputProdQty",
+                      "InputType": "number",
+                      "ControlStyle": "None",
+                      "Placeholder": "[입력 안내]",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "w": "full",
+                        "h": "48px",
+                        "font": "body-medium",
+                        "border": "hairline-strong",
+                        "radius": "8"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Id": "f_3031",
+                  "ContentsName": "DefectQtyWrap",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "w": "50%",
+                    "h": "text",
+                    "flex": {
+                      "dir": "column",
+                      "gap": 8
+                    }
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_3032",
+                      "ControlType": "Label",
+                      "ControlName": "lblDefectQtyCaption",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "Label1",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "body",
+                        "w": "full",
+                        "h": "text"
+                      }
+                    },
+                    {
+                      "Id": "f_3033",
+                      "ControlType": "InputNumber",
+                      "ControlName": "inputDefectQty",
+                      "InputType": "number",
+                      "ControlStyle": "None",
+                      "Placeholder": "[입력 안내]",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "w": "full",
+                        "h": "48px",
+                        "font": "body-medium",
+                        "border": "hairline-strong",
+                        "radius": "8"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Id": "f_3040",
+              "ContentsName": "WorkTimeWrap",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "w": "full",
+                "h": "text",
+                "flex": {
+                  "dir": "column",
+                  "gap": 8
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_3041",
+                  "ControlType": "Label",
+                  "ControlName": "lblWorkTimeCaption",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body",
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_3042",
+                  "ControlType": "InputNumber",
+                  "ControlName": "inputWorkTime",
+                  "InputType": "number",
+                  "ControlStyle": "None",
+                  "Placeholder": "[입력 안내]",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "w": "full",
+                    "h": "48px",
+                    "font": "body-medium",
+                    "border": "hairline-strong",
+                    "radius": "8"
+                  }
+                }
+              ]
+            },
+            {
+              "Id": "f_3050",
+              "ContentsName": "StatusWrap",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "w": "full",
+                "h": "text",
+                "flex": {
+                  "dir": "column",
+                  "gap": 8
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_3051",
+                  "ControlType": "Label",
+                  "ControlName": "lblStatusCaption",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body",
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "ControlType": "RadioBox",
+                  "ControlDefaultName": "RadioBox",
+                  "ControlName": "SegmentedRadio",
+                  "ControlName2": "SegmentedRadio",
+                  "ControlStyle": "stylePeriod",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "Items": [
+                    {
+                      "ItemName": "[옵션 1]",
+                      "ItemValue": "[옵션 1]"
+                    },
+                    {
+                      "ItemName": "[옵션 2]",
+                      "ItemValue": "[옵션 2]"
+                    }
+                  ],
+                  "Id": "f_3111",
+                  "UseItemDesign": true,
+                  "ItemDesign": {
+                    "FontStyle": {
+                      "UseFont": true,
+                      "FontAlign": "center"
+                    },
+                    "BgStyle": {}
+                  },
+                  "design": {
+                    "w": "full",
+                    "h": "35px",
+                    "itemBg": "ink"
+                  }
+                }
+              ]
+            },
+            {
+              "Id": "f_3060",
+              "ContentsName": "RemarkWrap",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "w": "full",
+                "h": "text",
+                "flex": {
+                  "dir": "column",
+                  "gap": 8
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_3061",
+                  "ControlType": "Label",
+                  "ControlName": "lblRemarkCaption",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "Label1",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body",
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_3062",
+                  "ControlType": "MultiInputBox",
+                  "ControlName": "inputRemark",
+                  "ControlStyle": "None",
+                  "Placeholder": "[입력 안내]",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "w": "full",
+                    "h": "100px",
+                    "font": "body-medium",
+                    "border": "hairline-strong",
+                    "radius": "8"
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "BottomButtons": [
+        {
+          "Id": "f_3100",
+          "ButtonName": "취소",
+          "MoveTo": "Prev",
+          "Width": {
+            "SizeValue": "50",
+            "SizeUnit": "%",
+            "MatchText": false
+          },
+          "BgStyle": {
+            "UseBackground": true,
+            "BgColor": "var(--colorWhite)"
+          },
+          "FontStyle": {
+            "UseFont": true,
+            "FontColor": "var(--colorBlack)"
+          },
+          "BorderStyle": {
+            "Useborder": true,
+            "BorderColor": "var(--colorGray4)",
+            "BorderSize": 1,
+            "BorderType": "solid",
+            "BorderRadius": "8",
+            "RadiusSet": "All"
+          },
+          "Prev": {
+            "MoveStepOrder": []
+          }
+        },
+        {
+          "Id": "f_3101",
+          "ButtonName": "저장",
+          "MoveTo": "Prev_ReStart",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "BgStyle": {},
+          "BorderStyle": {
+            "Useborder": true,
+            "BorderRadius": "8",
+            "RadiusSet": "All"
+          },
+          "Prev": {
+            "MoveStepOrder": []
+          }
+        }
+      ],
+      "StepRow": 0,
+      "StepCol": 2
+    }
+  }
+}

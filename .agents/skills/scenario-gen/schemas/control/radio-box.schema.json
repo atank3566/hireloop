@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/radio-box.schema.json",
+  "title": "RadioBox",
+  "description": "라디오 그룹. Fixed Items 또는 DataSource 두 가지 데이터 소스. styleTab 으로 탭 형태 UI 도 가능. UseDataSource 미지정 시 런타임 default=false (Fixed 모드).",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "RadioBox" },
+        "ControlStyle": {
+          "type": "string",
+          "enum": ["", "None", "styleRectangle", "styleTab", "stylePeriod", "styleRadius"],
+          "description": "'None'=기본 라디오 / 'styleRectangle'=사각 카드 (UseItemDesign 과 함께) / 'styleTab'=탭 형태 / 'stylePeriod'=기간 선택형 / 'styleRadius'=라운드."
+        },
+        "Items": {
+          "type": "array",
+          "items": { "$ref": "_base.schema.json#/$defs/selectionItem" },
+          "description": "Fixed 모드 (UseDataSource=false 또는 생략) 일 때 인라인 선택지."
+        },
+        "SaveNameKey":     { "type": "string", "description": "Ckeys 중 표시명 저장 필드. **Fixed 모드(UseDataSource=false 또는 생략) 전용** — DataSource 모드에서는 CollectionMapper 로 매핑하므로 본 키를 사용하지 않는다 (if/then 으로 차단)." },
+        "SaveNameName":    { "type": "string", "description": "표시명 저장 시 사용할 별칭. **Fixed 모드 전용** (UseDataSource=true 시 사용 금지)." },
+        "SaveValueKey":    { "type": "string", "description": "Ckeys 중 값 저장 필드." },
+        "DefaultValue":    { "type": "string", "description": "초기 선택값 — **표시명(RadioBoxItem명) 기준** 문자열. Fixed 모드면 Items[*].ItemName 과 매칭, DataSource 모드면 CollectionMapper 의 ItemName 매핑 대상 필드 값과 매칭. ItemValue 가 아님에 유의. 빈 문자열 \"\" 도 가능." },
+        "UseDefaultValue": false,
+        "Direction":       { "type": "string", "examples": ["horizontal", "vertical", "row", "column"], "description": "선택지 배치 방향." },
+        "UseDataSource": {
+          "type": "boolean",
+          "default": false,
+          "description": "true=DataSource 사용 (DataSourceName 필수), false=Fixed Items. 런타임 default=false. ★ 프로퍼티 EDITOR_CTRL.RADIOBOX boolean 저장 — 진실원본 boolean."
+        },
+        "DataSourceName":  { "type": "string", "description": "UseDataSource=true 일 때 데이터 소스 이름." },
+        "CollectionMapper": {
+          "type": "object",
+          "additionalProperties": { "type": "string" },
+          "description": "DataSource 사용 시 { 대상Ckey: 원본필드, ItemName: ..., ItemValue: ... } 매핑."
+        },
+        "UseCategory":     { "type": "boolean", "default": false },
+        "CategoryName":    { "type": "string" },
+        "UseItemDesign":   { "type": "boolean", "default": false, "description": "true=ItemDesign 으로 항목별 커스텀 디자인 적용 (styleRectangle 과 함께)." },
+        "ItemDesign":      { "type": "object", "additionalProperties": true },
+        "ItemBgStyle":     { "type": "object", "additionalProperties": true },
+        "UseAlignRight":   { "type": "boolean", "default": false },
+        "AfterScript":     { "type": "string" },
+        "UniqueKey":       { "type": "string" },
+        "Events":          { "$ref": "_base.schema.json#/$defs/directClickEvents" }
+      }
+    },
+    {
+      "$comment": "UseDataSource=true 면 DataSourceName + CollectionMapper 필수 — 콜렉션 ↔ DataSource 필드 매핑이 있어야 데이터 연결관계가 성립.",
+      "if": {
+        "properties": { "UseDataSource": { "const": true } },
+        "required": ["UseDataSource"]
+      },
+      "then": {
+        "required": ["DataSourceName", "CollectionMapper"],
+        "properties": {
+          "CollectionMapper": { "minProperties": 1 }
+        }
+      }
+    },
+    {
+      "$comment": "UseItemDesign=true 면 ItemDesign 필수.",
+      "if": {
+        "properties": { "UseItemDesign": { "const": true } },
+        "required": ["UseItemDesign"]
+      },
+      "then": { "required": ["ItemDesign"] }
+    },
+    {
+      "$comment": "UseDataSource=true (DataSource 모드) 일 때 SaveNameKey / SaveNameName 사용 금지 — Fixed 모드 전용 키. DataSource 모드의 표시명은 CollectionMapper 로 매핑.",
+      "if": {
+        "properties": { "UseDataSource": { "const": true } },
+        "required": ["UseDataSource"]
+      },
+      "then": {
+        "properties": {
+          "SaveNameKey": false,
+          "SaveNameName": false
+        }
+      }
+    }
+  ]
+}

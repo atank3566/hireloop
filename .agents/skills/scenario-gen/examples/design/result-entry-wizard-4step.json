@@ -1,0 +1,1861 @@
+{
+  "modules": {},
+  "htmlkey": "stephtml",
+  "ScenarioTitle": "",
+  "fConverterVersion": 1,
+  "fScenarioName": "결과 입력 위저드 (4-step)",
+  "Collections": {},
+  "FlexSQLService": {},
+  "ServiceBinding": {},
+  "StartSteps": [
+    "Step1"
+  ],
+  "Language": {},
+  "Events": {},
+  "DataSources": {},
+  "Panel": {
+    "Collection": {
+      "Ckeys": []
+    },
+    "Category": {},
+    "CategoryOrder": [],
+    "Table": [],
+    "ExternalTable": [],
+    "AuthKey": []
+  },
+  "Steps": {
+    "Step1": {
+      "StepName": "[스텝명]",
+      "StepType": "StepView",
+      "StepRow": 0,
+      "StepCol": 0,
+      "Padding": {
+        "All": "0",
+        "SizeUnit": "px",
+        "UseEach": false,
+        "UseAuto": true
+      },
+      "Contents": [
+        {
+          "Id": "f_1025",
+          "ContentsName": "DetailCard",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "flex": {
+              "dir": "column",
+              "gap": 20
+            },
+            "w": "full",
+            "bg": "card",
+            "p": "16"
+          },
+          "Contents": [
+            {
+              "Id": "f_1011",
+              "ContentsName": "DetailHead",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "flex": {
+                  "dir": "column",
+                  "gap": 4
+                },
+                "w": "full",
+                "p": "0 0 16 0",
+                "border": {
+                  "color": "hairline-strong",
+                  "sides": {
+                    "b": "1"
+                  }
+                }
+              },
+              "Contents": [
+                {
+                  "Id": "f_1004",
+                  "ContentsName": "ChipRow",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "row",
+                      "gap": 4
+                    },
+                    "w": "full"
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1001",
+                      "ControlType": "Label",
+                      "ControlName": "Chip",
+                      "labeltext": "[상태]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "body-soft",
+                        "border": "hairline-strong",
+                        "radius": "9999",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1002",
+                      "ControlType": "Label",
+                      "ControlName": "Chip",
+                      "labeltext": "[상태]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "sub",
+                        "border": "sub",
+                        "radius": "9999",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1003",
+                      "ControlType": "Label",
+                      "ControlName": "Chip",
+                      "labeltext": "[상태]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "error",
+                        "border": "error",
+                        "radius": "9999",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Id": "f_1005",
+                  "ControlType": "Label",
+                  "ControlName": "Product",
+                  "labeltext": "[제목]",
+                  "ControlStyle": "None",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "title-large",
+                    "w": "text",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_1006",
+                  "ControlType": "Label",
+                  "ControlName": "Code",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "color": "body-soft",
+                    "w": "text",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_1010",
+                  "ContentsName": "MetaWrap",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "wrap",
+                      "gap": 8
+                    },
+                    "w": "full"
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1007",
+                      "ControlType": "Label",
+                      "ControlName": "Client",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "body-soft",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1008",
+                      "ControlType": "Label",
+                      "ControlName": "Dest",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "body-soft",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1009",
+                      "ControlType": "Label",
+                      "ControlName": "Due",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "body-soft",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Id": "f_1021",
+              "ContentsName": "StatRow",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "flex": {
+                  "dir": "row"
+                },
+                "w": "full"
+              },
+              "Contents": [
+                {
+                  "Id": "f_1014",
+                  "ContentsName": "StatBox",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "column",
+                      "align": "center",
+                      "valign": "center",
+                      "gap": 4
+                    },
+                    "w": "full"
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1012",
+                      "ControlType": "Label",
+                      "ControlName": "Chip",
+                      "labeltext": "[상태]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "on-brand",
+                        "bg": "muted",
+                        "radius": "8",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1013",
+                      "ControlType": "Label",
+                      "ControlName": "Count",
+                      "labeltext": "[제목]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "title-large",
+                        "w": "text",
+                        "h": "text"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Id": "f_1017",
+                  "ContentsName": "StatBox",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "column",
+                      "align": "center",
+                      "valign": "center",
+                      "gap": 4
+                    },
+                    "w": "full",
+                    "border": {
+                      "color": "hairline",
+                      "sides": {
+                        "l": "1",
+                        "r": "1"
+                      }
+                    }
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1015",
+                      "ControlType": "Label",
+                      "ControlName": "Chip",
+                      "labeltext": "[상태]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "on-brand",
+                        "bg": "success",
+                        "radius": "8",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1016",
+                      "ControlType": "Label",
+                      "ControlName": "Count",
+                      "labeltext": "[제목]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "title-large",
+                        "w": "text",
+                        "h": "text"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Id": "f_1020",
+                  "ContentsName": "StatBox",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "column",
+                      "align": "center",
+                      "valign": "center",
+                      "gap": 4
+                    },
+                    "w": "full"
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1018",
+                      "ControlType": "Label",
+                      "ControlName": "Chip",
+                      "labeltext": "[상태]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "on-brand",
+                        "bg": "error",
+                        "radius": "8",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1019",
+                      "ControlType": "Label",
+                      "ControlName": "Count",
+                      "labeltext": "[제목]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "title-large",
+                        "w": "text",
+                        "h": "text"
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Id": "f_1024",
+              "ContentsName": "ScanSection",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "flex": {
+                  "dir": "column",
+                  "gap": 16
+                },
+                "w": "full"
+              },
+              "Contents": [
+                {
+                  "button": {
+                    "label": "[버튼]",
+                    "variant": "primary",
+                    "width": "full",
+                    "moveStep": "Step6"
+                  }
+                },
+                {
+                  "Id": "f_1023",
+                  "ContentsName": "HintRow",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "row",
+                      "align": "center",
+                      "valign": "center"
+                    },
+                    "w": "full"
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1022",
+                      "ControlType": "Label",
+                      "ControlName": "ScanHint",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "body",
+                        "align": "center",
+                        "w": "text",
+                        "h": "text"
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "Id": "f_1049",
+          "ContentsName": "ListWrap",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "w": "full",
+            "p": "12 8 8 8"
+          },
+          "Contents": [
+            {
+              "Id": "f_1048",
+              "ContentsName": "ListCard",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "flex": {
+                  "dir": "column",
+                  "gap": 12
+                },
+                "w": "full",
+                "bg": "card",
+                "radius": "12",
+                "p": "16"
+              },
+              "Contents": [
+                {
+                  "Id": "f_1028",
+                  "ContentsName": "ListHead",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "row",
+                      "valign": "center",
+                      "gap": 4
+                    },
+                    "w": "full"
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1026",
+                      "ControlType": "Label",
+                      "ControlName": "ListTitle",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-medium",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1027",
+                      "ControlType": "Label",
+                      "ControlName": "ListCount",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-medium",
+                        "color": "success",
+                        "w": "full",
+                        "h": "text"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Id": "f_1047",
+                  "ContentsName": "CheckList",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "column",
+                      "gap": 16
+                    },
+                    "w": "full"
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1034",
+                      "ContentsName": "CheckRow",
+                      "ContentsType": "Group",
+                      "ContentStyle": "None",
+                      "UseDataConnection": false,
+                      "design": {
+                        "flex": {
+                          "dir": "row",
+                          "gap": 4
+                        },
+                        "w": "full",
+                        "h": "text"
+                      },
+                      "Contents": [
+                        {
+                          "ControlType": "CheckBox",
+                          "ControlDefaultName": "CheckBox",
+                          "ControlName": "InspectCheck",
+                          "ControlName2": "InspectCheck",
+                          "ControlStyle": "styleSquare",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "Items": [
+                            {
+                              "ItemName": "",
+                              "ItemValue": ""
+                            }
+                          ],
+                          "Id": "f_1029",
+                          "design": {
+                            "w": "28px",
+                            "h": "text",
+                            "itemBg": "ink"
+                          }
+                        },
+                        {
+                          "Id": "f_1032",
+                          "ContentsName": "ItemCol",
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseDataConnection": false,
+                          "design": {
+                            "flex": {
+                              "dir": "column"
+                            },
+                            "w": "full"
+                          },
+                          "Contents": [
+                            {
+                              "Id": "f_1030",
+                              "ControlType": "Label",
+                              "ControlName": "Code",
+                              "labeltext": "[텍스트]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "body-medium",
+                                "w": "full",
+                                "h": "text"
+                              }
+                            },
+                            {
+                              "Id": "f_1031",
+                              "ControlType": "Label",
+                              "ControlName": "Weight",
+                              "labeltext": "[텍스트]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "body-medium",
+                                "w": "text",
+                                "h": "text",
+                                "fixed": true
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "Id": "f_1033",
+                          "ControlType": "Label",
+                          "ControlName": "Status",
+                          "labeltext": "[상태]",
+                          "ControlStyle": "None",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "design": {
+                            "font": "body-small",
+                            "color": "body-soft",
+                            "bg": "subtle",
+                            "radius": "9999",
+                            "p": "4 8",
+                            "w": "text",
+                            "h": "text",
+                            "fixed": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "Id": "f_1040",
+                      "ContentsName": "CheckRow",
+                      "ContentsType": "Group",
+                      "ContentStyle": "None",
+                      "UseDataConnection": false,
+                      "design": {
+                        "flex": {
+                          "dir": "row",
+                          "gap": 4
+                        },
+                        "w": "full",
+                        "h": "text"
+                      },
+                      "Contents": [
+                        {
+                          "ControlType": "CheckBox",
+                          "ControlDefaultName": "CheckBox",
+                          "ControlName": "InspectCheck",
+                          "ControlName2": "InspectCheck",
+                          "ControlStyle": "styleSquare",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "Items": [
+                            {
+                              "ItemName": "",
+                              "ItemValue": ""
+                            }
+                          ],
+                          "Id": "f_1035",
+                          "design": {
+                            "w": "28px",
+                            "h": "text",
+                            "itemBg": "ink"
+                          }
+                        },
+                        {
+                          "Id": "f_1038",
+                          "ContentsName": "ItemCol",
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseDataConnection": false,
+                          "design": {
+                            "flex": {
+                              "dir": "column"
+                            },
+                            "w": "full"
+                          },
+                          "Contents": [
+                            {
+                              "Id": "f_1036",
+                              "ControlType": "Label",
+                              "ControlName": "Code",
+                              "labeltext": "[텍스트]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "body-medium",
+                                "w": "full",
+                                "h": "text"
+                              }
+                            },
+                            {
+                              "Id": "f_1037",
+                              "ControlType": "Label",
+                              "ControlName": "Weight",
+                              "labeltext": "[텍스트]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "body-medium",
+                                "w": "text",
+                                "h": "text",
+                                "fixed": true
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "Id": "f_1039",
+                          "ControlType": "Label",
+                          "ControlName": "Status",
+                          "labeltext": "[상태]",
+                          "ControlStyle": "None",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "design": {
+                            "font": "body-small",
+                            "color": "success",
+                            "bg": "subtle",
+                            "radius": "9999",
+                            "p": "4 8",
+                            "w": "text",
+                            "h": "text",
+                            "fixed": true
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "Id": "f_1046",
+                      "ContentsName": "CheckRow",
+                      "ContentsType": "Group",
+                      "ContentStyle": "None",
+                      "UseDataConnection": false,
+                      "design": {
+                        "flex": {
+                          "dir": "row",
+                          "gap": 4
+                        },
+                        "w": "full",
+                        "h": "text"
+                      },
+                      "Contents": [
+                        {
+                          "ControlType": "CheckBox",
+                          "ControlDefaultName": "CheckBox",
+                          "ControlName": "InspectCheck",
+                          "ControlName2": "InspectCheck",
+                          "ControlStyle": "styleSquare",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "Items": [
+                            {
+                              "ItemName": "",
+                              "ItemValue": ""
+                            }
+                          ],
+                          "Id": "f_1041",
+                          "design": {
+                            "w": "28px",
+                            "h": "text",
+                            "itemBg": "ink"
+                          }
+                        },
+                        {
+                          "Id": "f_1044",
+                          "ContentsName": "ItemCol",
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseDataConnection": false,
+                          "design": {
+                            "flex": {
+                              "dir": "column"
+                            },
+                            "w": "full"
+                          },
+                          "Contents": [
+                            {
+                              "Id": "f_1042",
+                              "ControlType": "Label",
+                              "ControlName": "Code",
+                              "labeltext": "[텍스트]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "body-medium",
+                                "w": "full",
+                                "h": "text"
+                              }
+                            },
+                            {
+                              "Id": "f_1043",
+                              "ControlType": "Label",
+                              "ControlName": "Weight",
+                              "labeltext": "[텍스트]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "body-medium",
+                                "w": "text",
+                                "h": "text",
+                                "fixed": true
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "Id": "f_1045",
+                          "ControlType": "Label",
+                          "ControlName": "Status",
+                          "labeltext": "[상태]",
+                          "ControlStyle": "None",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "design": {
+                            "font": "body-small",
+                            "color": "error",
+                            "bg": "subtle",
+                            "radius": "9999",
+                            "p": "4 8",
+                            "w": "text",
+                            "h": "text",
+                            "fixed": true
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "FixedContentsBottom": [
+        {
+          "Id": "f_1050",
+          "ContentsName": "BottomBar",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "flex": {
+              "dir": "row",
+              "gap": 8,
+              "valign": "center"
+            },
+            "w": "full",
+            "p": "8 20",
+            "bg": "card"
+          },
+          "Contents": [
+            {
+              "button": {
+                "label": "취소",
+                "variant": "secondary",
+                "width": "fit",
+                "override": {
+                  "root": {
+                    "UseFixedSize": true
+                  }
+                }
+              }
+            },
+            {
+              "button": {
+                "label": "[버튼]",
+                "variant": "primary",
+                "width": "full",
+                "moveStep": "Step6"
+              }
+            }
+          ]
+        }
+      ],
+      "Next": [
+        "Step6"
+      ],
+      "UseStepHeader": false,
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": []
+    },
+    "Step6": {
+      "StepName": "[스텝명]",
+      "StepType": "StepView",
+      "StepRow": 0,
+      "StepCol": 0,
+      "Padding": {
+        "All": "0",
+        "SizeUnit": "px",
+        "UseEach": false,
+        "UseAuto": true
+      },
+      "Contents": [
+        {
+          "Id": "f_1063",
+          "ContentsName": "ConfirmBody",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "flex": {
+              "dir": "column",
+              "gap": 16
+            },
+            "w": "full",
+            "p": "16 20"
+          },
+          "Contents": [
+            {
+              "Id": "f_1053",
+              "ContentsName": "Head",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "flex": {
+                  "dir": "column",
+                  "gap": 4
+                },
+                "w": "full"
+              },
+              "Contents": [
+                {
+                  "Id": "f_1051",
+                  "ControlType": "Label",
+                  "ControlName": "Title",
+                  "labeltext": "[제목]",
+                  "ControlStyle": "None",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "title-large",
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_1052",
+                  "ControlType": "Label",
+                  "ControlName": "Sub",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-medium",
+                    "color": "body",
+                    "w": "full",
+                    "h": "text"
+                  }
+                }
+              ]
+            },
+            {
+              "Id": "f_1061",
+              "ContentsName": "ResultCard",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "flex": {
+                  "dir": "wrap",
+                  "gap": {
+                    "row": 8,
+                    "col": 20
+                  }
+                },
+                "w": "full",
+                "bg": "subtle",
+                "border": "hairline",
+                "radius": "12",
+                "p": "16"
+              },
+              "Contents": [
+                {
+                  "Id": "f_1054",
+                  "ControlType": "Label",
+                  "ControlName": "ResultTitle",
+                  "labeltext": "[제목]",
+                  "ControlStyle": "None",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "title-large",
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_1057",
+                  "ContentsName": "PassWrap",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "row",
+                      "valign": "center",
+                      "gap": 4
+                    },
+                    "w": "text",
+                    "fixed": true
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1055",
+                      "ControlType": "Label",
+                      "ControlName": "Chip",
+                      "labeltext": "[상태]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "on-brand",
+                        "bg": "success",
+                        "radius": "8",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1056",
+                      "ControlType": "Label",
+                      "ControlName": "Pass",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-medium",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    }
+                  ]
+                },
+                {
+                  "Id": "f_1060",
+                  "ContentsName": "FailWrap",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "row",
+                      "valign": "center",
+                      "gap": 4
+                    },
+                    "w": "text",
+                    "fixed": true
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1058",
+                      "ControlType": "Label",
+                      "ControlName": "Chip",
+                      "labeltext": "[상태]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-small",
+                        "color": "on-brand",
+                        "bg": "error",
+                        "radius": "8",
+                        "p": "4 8",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    },
+                    {
+                      "Id": "f_1059",
+                      "ControlType": "Label",
+                      "ControlName": "Fail",
+                      "labeltext": "[텍스트]",
+                      "ControlStyle": "None",
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "design": {
+                        "font": "body-medium",
+                        "w": "text",
+                        "h": "text",
+                        "fixed": true
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "ControlType": "RadioBox",
+              "ControlDefaultName": "RadioBox",
+              "ControlName": "DefectRadio",
+              "ControlName2": "DefectRadio",
+              "ControlStyle": "styleRadius",
+              "Caption": "",
+              "isColumnCtrl": false,
+              "Items": [
+                {
+                  "ItemName": "[옵션 1]",
+                  "ItemValue": "[옵션 1]"
+                },
+                {
+                  "ItemName": "[옵션 2]",
+                  "ItemValue": "[옵션 2]"
+                },
+                {
+                  "ItemName": "[옵션 3]",
+                  "ItemValue": "[옵션 3]"
+                }
+              ],
+              "Id": "f_1062",
+              "design": {
+                "w": "full",
+                "h": "text",
+                "caption": {
+                  "text": "[필드명]",
+                  "font": "body-small",
+                  "pos": "top"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "FixedContentsBottom": [
+        {
+          "Id": "f_1064",
+          "ContentsName": "BottomBar",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "flex": {
+              "dir": "row",
+              "gap": 8,
+              "valign": "center"
+            },
+            "w": "full",
+            "p": "8 20",
+            "bg": "card"
+          },
+          "Contents": [
+            {
+              "button": {
+                "label": "취소",
+                "variant": "secondary",
+                "width": "fit",
+                "override": {
+                  "root": {
+                    "UseFixedSize": true
+                  }
+                }
+              }
+            },
+            {
+              "button": {
+                "label": "[버튼]",
+                "variant": "primary",
+                "width": "full",
+                "moveStep": "Step7"
+              }
+            }
+          ]
+        }
+      ],
+      "Next": [
+        "Step7"
+      ],
+      "UseStepHeader": false,
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": []
+    },
+    "Step7": {
+      "StepName": "[스텝명]",
+      "StepType": "StepView",
+      "StepRow": 0,
+      "StepCol": 0,
+      "Padding": {
+        "All": "0",
+        "SizeUnit": "px",
+        "UseEach": false,
+        "UseAuto": true
+      },
+      "Contents": [
+        {
+          "Id": "f_1084",
+          "ContentsName": "DoneBody",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "flex": {
+              "dir": "column",
+              "gap": 16
+            },
+            "w": "full",
+            "p": "0 16 16 16"
+          },
+          "Contents": [
+            {
+              "Id": "f_1067",
+              "ContentsName": "DoneHead",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "flex": {
+                  "dir": "column",
+                  "align": "center",
+                  "valign": "center"
+                },
+                "w": "full"
+              },
+              "Contents": [
+                {
+                  "Id": "f_1065",
+                  "ControlType": "Label",
+                  "ControlName": "Spacer",
+                  "labeltext": "",
+                  "ControlStyle": "None",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_1066",
+                  "ControlType": "Label",
+                  "ControlName": "Done",
+                  "labeltext": "[제목]",
+                  "ControlStyle": "None",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "title-large",
+                    "align": "center",
+                    "w": "text",
+                    "h": "text"
+                  }
+                }
+              ]
+            },
+            {
+              "Id": "f_1083",
+              "ContentsName": "DoneSection",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "flex": {
+                  "dir": "column",
+                  "gap": 8
+                },
+                "w": "full"
+              },
+              "Contents": [
+                {
+                  "Id": "f_1068",
+                  "ControlType": "Label",
+                  "ControlName": "DoneLabel",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-medium",
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_1082",
+                  "ContentsName": "DoneCard",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "column",
+                      "gap": 8
+                    },
+                    "w": "full",
+                    "bg": "card",
+                    "border": "hairline",
+                    "radius": "12",
+                    "p": "16"
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1073",
+                      "ContentsName": "DoneCardHead",
+                      "ContentsType": "Group",
+                      "ContentStyle": "None",
+                      "UseDataConnection": false,
+                      "design": {
+                        "flex": {
+                          "dir": "wrap",
+                          "gap": 4
+                        },
+                        "w": "full"
+                      },
+                      "Contents": [
+                        {
+                          "Id": "f_1069",
+                          "ControlType": "Label",
+                          "ControlName": "Chip",
+                          "labeltext": "[상태]",
+                          "ControlStyle": "None",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "design": {
+                            "font": "body-small",
+                            "color": "body-soft",
+                            "border": "hairline-strong",
+                            "radius": "9999",
+                            "p": "4 8",
+                            "w": "text",
+                            "h": "text",
+                            "fixed": true
+                          }
+                        },
+                        {
+                          "Id": "f_1070",
+                          "ControlType": "Label",
+                          "ControlName": "Status",
+                          "labeltext": "[상태]",
+                          "ControlStyle": "None",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "design": {
+                            "font": "body-small",
+                            "color": "warning",
+                            "bg": "subtle",
+                            "radius": "9999",
+                            "p": "4 8",
+                            "w": "text",
+                            "h": "text",
+                            "fixed": true
+                          }
+                        },
+                        {
+                          "Id": "f_1072",
+                          "ContentsName": "NameRow",
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseDataConnection": false,
+                          "design": {
+                            "flex": {
+                              "dir": "row",
+                              "valign": "center",
+                              "gap": 4
+                            },
+                            "w": "full"
+                          },
+                          "Contents": [
+                            {
+                              "Id": "f_1071",
+                              "ControlType": "Label",
+                              "ControlName": "Company",
+                              "labeltext": "[제목]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "title-medium",
+                                "w": "text",
+                                "h": "text",
+                                "fixed": true
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "Id": "f_1081",
+                      "ContentsName": "DoneCardBody",
+                      "ContentsType": "Group",
+                      "ContentStyle": "None",
+                      "UseDataConnection": false,
+                      "design": {
+                        "flex": {
+                          "dir": "wrap",
+                          "gap": {
+                            "row": 8,
+                            "col": 20
+                          }
+                        },
+                        "w": "full"
+                      },
+                      "Contents": [
+                        {
+                          "Id": "f_1074",
+                          "ControlType": "Label",
+                          "ControlName": "Product",
+                          "labeltext": "[텍스트]",
+                          "ControlStyle": "None",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "design": {
+                            "font": "body-medium",
+                            "w": "full",
+                            "h": "text"
+                          }
+                        },
+                        {
+                          "Id": "f_1077",
+                          "ContentsName": "PW",
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseDataConnection": false,
+                          "design": {
+                            "flex": {
+                              "dir": "row",
+                              "valign": "center",
+                              "gap": 4
+                            },
+                            "w": "text",
+                            "fixed": true
+                          },
+                          "Contents": [
+                            {
+                              "Id": "f_1075",
+                              "ControlType": "Label",
+                              "ControlName": "Chip",
+                              "labeltext": "[상태]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "body-small",
+                                "color": "on-brand",
+                                "bg": "success",
+                                "radius": "8",
+                                "p": "4 8",
+                                "w": "text",
+                                "h": "text",
+                                "fixed": true
+                              }
+                            },
+                            {
+                              "Id": "f_1076",
+                              "ControlType": "Label",
+                              "ControlName": "P",
+                              "labeltext": "[텍스트]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "body-medium",
+                                "w": "text",
+                                "h": "text",
+                                "fixed": true
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "Id": "f_1080",
+                          "ContentsName": "FW",
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseDataConnection": false,
+                          "design": {
+                            "flex": {
+                              "dir": "row",
+                              "valign": "center",
+                              "gap": 4
+                            },
+                            "w": "text",
+                            "fixed": true
+                          },
+                          "Contents": [
+                            {
+                              "Id": "f_1078",
+                              "ControlType": "Label",
+                              "ControlName": "Chip",
+                              "labeltext": "[상태]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "body-small",
+                                "color": "on-brand",
+                                "bg": "error",
+                                "radius": "8",
+                                "p": "4 8",
+                                "w": "text",
+                                "h": "text",
+                                "fixed": true
+                              }
+                            },
+                            {
+                              "Id": "f_1079",
+                              "ControlType": "Label",
+                              "ControlName": "F",
+                              "labeltext": "[텍스트]",
+                              "ControlStyle": "None",
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "design": {
+                                "font": "body-medium",
+                                "w": "text",
+                                "h": "text",
+                                "fixed": true
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "FixedContentsBottom": [
+        {
+          "Id": "f_1085",
+          "ContentsName": "BottomBar",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "flex": {
+              "dir": "column",
+              "gap": 8
+            },
+            "w": "full",
+            "p": "12 20",
+            "bg": "card"
+          },
+          "Contents": [
+            {
+              "button": {
+                "label": "확인",
+                "variant": "primary",
+                "width": "full",
+                "moveStep": "Step2"
+              }
+            },
+            {
+              "button": {
+                "label": "[버튼]",
+                "variant": "secondary",
+                "width": "full"
+              }
+            }
+          ]
+        }
+      ],
+      "Next": [
+        "Step2"
+      ],
+      "UseStepHeader": false,
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": []
+    },
+    "Step2": {
+      "StepName": "[스텝명]",
+      "StepType": "StepView",
+      "StepRow": 0,
+      "StepCol": 0,
+      "Padding": {
+        "All": "0",
+        "SizeUnit": "px",
+        "UseEach": false,
+        "UseAuto": true
+      },
+      "Contents": [
+        {
+          "Id": "f_1095",
+          "ContentsName": "SelectBody",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "flex": {
+              "dir": "column",
+              "gap": 16
+            },
+            "w": "full",
+            "p": "16 20"
+          },
+          "Contents": [
+            {
+              "Id": "f_1086",
+              "ControlType": "Label",
+              "ControlName": "Title",
+              "labeltext": "[제목]",
+              "ControlStyle": "None",
+              "Caption": "",
+              "isColumnCtrl": false,
+              "design": {
+                "font": "title-large",
+                "w": "full",
+                "h": "text"
+              }
+            },
+            {
+              "Id": "f_1093",
+              "ContentsName": "SelectSection",
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false,
+              "design": {
+                "flex": {
+                  "dir": "column",
+                  "gap": 4
+                },
+                "w": "full"
+              },
+              "Contents": [
+                {
+                  "Id": "f_1087",
+                  "ControlType": "Label",
+                  "ControlName": "SubLabel",
+                  "labeltext": "[텍스트]",
+                  "ControlStyle": "None",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "design": {
+                    "font": "body-small",
+                    "w": "full",
+                    "h": "text"
+                  }
+                },
+                {
+                  "Id": "f_1092",
+                  "ContentsName": "SelectRow",
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false,
+                  "design": {
+                    "flex": {
+                      "dir": "row",
+                      "gap": 8
+                    },
+                    "w": "full"
+                  },
+                  "Contents": [
+                    {
+                      "Id": "f_1089",
+                      "ContentsName": "SelectCard",
+                      "ContentsType": "Group",
+                      "ContentStyle": "None",
+                      "UseDataConnection": false,
+                      "design": {
+                        "flex": {
+                          "dir": "column",
+                          "align": "center",
+                          "valign": "center"
+                        },
+                        "w": "full",
+                        "bg": "subtle",
+                        "border": "success",
+                        "radius": "12",
+                        "p": "16"
+                      },
+                      "Contents": [
+                        {
+                          "Id": "f_1088",
+                          "ControlType": "Label",
+                          "ControlName": "SelLabel",
+                          "labeltext": "[텍스트]",
+                          "ControlStyle": "None",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "design": {
+                            "font": "body-medium",
+                            "color": "success",
+                            "w": "text",
+                            "h": "text"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "Id": "f_1091",
+                      "ContentsName": "SelectCard",
+                      "ContentsType": "Group",
+                      "ContentStyle": "None",
+                      "UseDataConnection": false,
+                      "design": {
+                        "flex": {
+                          "dir": "column",
+                          "align": "center",
+                          "valign": "center"
+                        },
+                        "w": "full",
+                        "bg": "subtle",
+                        "border": "error",
+                        "radius": "12",
+                        "p": "16"
+                      },
+                      "Contents": [
+                        {
+                          "Id": "f_1090",
+                          "ControlType": "Label",
+                          "ControlName": "SelLabel",
+                          "labeltext": "[텍스트]",
+                          "ControlStyle": "None",
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "design": {
+                            "font": "body-medium",
+                            "color": "error",
+                            "w": "text",
+                            "h": "text"
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "ControlType": "RadioBox",
+              "ControlDefaultName": "RadioBox",
+              "ControlName": "DefectRadio2",
+              "ControlName2": "DefectRadio2",
+              "ControlStyle": "styleRadius",
+              "Caption": "",
+              "isColumnCtrl": false,
+              "Items": [
+                {
+                  "ItemName": "[옵션 1]",
+                  "ItemValue": "[옵션 1]"
+                },
+                {
+                  "ItemName": "[옵션 2]",
+                  "ItemValue": "[옵션 2]"
+                },
+                {
+                  "ItemName": "[옵션 3]",
+                  "ItemValue": "[옵션 3]"
+                }
+              ],
+              "Id": "f_1094",
+              "design": {
+                "w": "full",
+                "h": "text",
+                "caption": {
+                  "text": "[필드명]",
+                  "font": "body-small",
+                  "pos": "top"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "FixedContentsBottom": [
+        {
+          "Id": "f_1096",
+          "ContentsName": "BottomBar",
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseDataConnection": false,
+          "design": {
+            "flex": {
+              "dir": "row",
+              "gap": 8,
+              "valign": "center"
+            },
+            "w": "full",
+            "p": "8 20",
+            "bg": "card"
+          },
+          "Contents": [
+            {
+              "button": {
+                "label": "취소",
+                "variant": "secondary",
+                "width": "fit",
+                "override": {
+                  "root": {
+                    "UseFixedSize": true
+                  }
+                }
+              }
+            },
+            {
+              "button": {
+                "label": "확인",
+                "variant": "primary",
+                "width": "full"
+              }
+            }
+          ]
+        }
+      ],
+      "Next": [],
+      "UseStepHeader": false,
+      "UseBackButton": false,
+      "UseBottomButton": false,
+      "UseEvents": false,
+      "Events": []
+    }
+  }
+}

@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/patterns/molecule/input-action.schema.json",
+  "title": "pattern.molecule.input-action",
+  "description": "입력 컨트롤 + 트레일링 아이콘 버튼 페어 (molecule). 검색 / 필터 / 장바구니 / 알림 등 'field + 우상단 액션' 패턴. 외부 Group 안에 입력 본체(InputText/InputNumber/InputMask/Search/InputDate) 가 Width 100% 로 깔리고, 그 위 우상단 모서리에 28×28 아이콘 버튼이 절대 위치(UseAbsoluteLayout) 로 떠 있다. 버튼 우상단에는 옵션으로 작은 카운터 뱃지(absolute) 가 얹힌다. molecule 의 작은 뱃지는 atom/badge 와 별도 구현 — 크기/위치 규격이 다르고 절댓값 좌표가 필요하기 때문. 입력 본체는 Caption 비활성 (molecule 가 시각적 라벨을 노출하지 않음) — 라벨이 필요한 폼 필드라면 별도 라벨 + input 조합을 사용. inputType=inputSearch / inputDate 는 Dialog 합성을 포함한다.",
+  "x-tier": "molecule",
+  "x-tags": [
+    "input",
+    "search",
+    "filter",
+    "cart",
+    "icon-button",
+    "field-action",
+    "badge",
+    "absolute"
+  ],
+  "x-related": ["atom/button", "atom/badge"],
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["inputType", "icon"],
+  "properties": {
+    "inputType": {
+      "type": "string",
+      "enum": [
+        "inputText",
+        "inputNumber",
+        "inputMask",
+        "inputSearch",
+        "inputDate"
+      ],
+      "description": "입력 컨트롤 종류. inputText=InputText(text/password/number/email/tel), inputNumber=InputNumber(decimal/integer), inputMask=InputMask(hhmm/money), inputSearch=Search(DataSource 기반 Lookup, Dialog 자동 합성), inputDate=InputDate(Calendar Dialog 자동 합성)."
+    },
+    "inputOptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "입력 컨트롤별 옵션. Caption 은 항상 빈 문자열로 고정 (molecule 가 라벨을 노출하지 않음). placeholder 는 모든 inputType 공통. 그 외 옵션은 inputType 별로 schema 가 다르며 미지정 시 합리적 기본값 적용.",
+      "properties": {
+        "placeholder": {
+          "type": "string",
+          "maxLength": 80,
+          "description": "Placeholder 텍스트. 모든 inputType 공통. 다국어 토큰 `{{key}}` 가능."
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40,
+          "description": "ControlName / ControlName2 (스튜디오 explorer 식별자). 미지정 시 inputType 기반 기본값 (FieldText / FieldNumber / FieldMask / FieldSearch / FieldDate)."
+        },
+        "textInputType": {
+          "type": "string",
+          "enum": ["text", "password", "number", "email", "tel"],
+          "description": "inputType=inputText 일 때만. 기본 'text'."
+        },
+        "numberInputType": {
+          "type": "string",
+          "enum": ["decimal", "integer", "number"],
+          "description": "inputType=inputNumber 일 때만. 기본 'decimal'."
+        },
+        "format": {
+          "type": "string",
+          "description": "inputType=inputNumber 일 때 표시 포맷 (예: '#,###', '#,###.##'). 미지정 시 엔진 기본."
+        },
+        "maskInputType": {
+          "type": "string",
+          "enum": ["hhmm", "money"],
+          "description": "inputType=inputMask 일 때 필수. hhmm=시간 / money=천단위 콤마."
+        },
+        "dateFormat": {
+          "type": "string",
+          "enum": ["YYYY-MM-DD", "YYYY.MM.DD", "YYYY/MM/DD", "YYYY-MM"],
+          "description": "inputType=inputDate 일 때. 기본 'YYYY-MM-DD'. YYYY-MM 은 monthCalendar 정합 (현재 molecule 는 dayCalendar 만 합성하므로 사용 시 monthCalendar 별도 확장 필요)."
+        },
+        "dateSelectType": {
+          "type": "string",
+          "enum": ["SingleDate", "FromTo"],
+          "description": "inputType=inputDate 일 때 캘린더 선택 모드. 기본 'SingleDate'."
+        },
+        "searchDataSourceName": {
+          "type": "string",
+          "minLength": 1,
+          "description": "inputType=inputSearch 일 때 필수. Dialog 내 List 의 DataSourceName."
+        },
+        "searchTitle": {
+          "type": "string",
+          "minLength": 1,
+          "description": "inputType=inputSearch 일 때 필수. List 의 항목 Title 필드 (보통 검색 결과의 표시 컬럼명)."
+        },
+        "searchSubTitle": {
+          "type": "string",
+          "description": "inputType=inputSearch 일 때 선택. List 의 SubTitle 필드."
+        },
+        "searchKeywordCkey": {
+          "type": "string",
+          "description": "inputType=inputSearch 일 때 선택. 키워드 검색 컬럼키. 지정 시 UseKeywordSearch=true 활성."
+        }
+      }
+    },
+    "icon": {
+      "type": "string",
+      "enum": [
+        "chevron-left",
+        "chevron-right",
+        "chevron-up",
+        "chevron-down",
+        "close",
+        "arrow-back",
+        "check",
+        "check-circle",
+        "alert",
+        "info",
+        "error",
+        "edit",
+        "delete",
+        "plus",
+        "search",
+        "more-horizontal",
+        "filter",
+        "qr-code",
+        "heart",
+        "star",
+        "bookmark",
+        "bell",
+        "mail",
+        "message",
+        "cart",
+        "calendar",
+        "user",
+        "settings",
+        "logout"
+      ],
+      "description": "트레일링 아이콘 버튼에 표시할 아이콘. `_base.icon.mjs` iconMap 키. 검색=search, 필터=filter, 장바구니=cart, 알림=bell 등."
+    },
+    "color": {
+      "type": "string",
+      "enum": ["green", "black", "red", "blue"],
+      "description": "아이콘 stroke 색. atom/badge 의 의미색 가족 (gray 제외 4종). 미지정 시 기본 var(--colorGray2) — 중립 회색 아이콘 (filter/cart 등 일반 액션 표준). green=긍정/완료, black=중립 강조, red=경고/긴급, blue=정보."
+    },
+    "badge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["label", "color"],
+      "description": "아이콘 버튼 우상단의 작은 절대위치 카운터 / 상태 뱃지. atom/badge 와 별도 구현 — 더 작고(12×12) 절댓값 위치(Right:7 / Top:10) 필요. label 은 보통 카운터 숫자 또는 짧은 데이터 값 (다국어 / 바인딩 토큰 가능).",
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 10,
+          "description": "뱃지에 표시할 짧은 텍스트. 보통 카운터(예: '2', '99+') 또는 짧은 상태 코드. 바인딩 `{=Field}` / 다국어 `{{key}}` 가능."
+        },
+        "color": {
+          "type": "string",
+          "enum": ["green", "black", "red", "blue"],
+          "description": "뱃지 배경색. icon color 와 같은 의미색 가족. 카운터 강조는 red 가 표준."
+        }
+      }
+    },
+    "buttonEvent": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100,
+      "description": "아이콘 버튼 클릭 시 실행할 이벤트 핸들러 이름 (scenario.Events 등록 키). 예: 'openFilter', 'searchProduct', 'goCart'. 미지정 시 시각적 버튼만 (UseClickEvent:false)."
+    },
+    "moveStep": {
+      "type": "string",
+      "pattern": "^Step[1-9][0-9]*$",
+      "description": "(선택) 아이콘 버튼 클릭 시 이동할 대상 Step ID (예: 'Step3'). 지정 시 아이콘 버튼에 UseMove:true + MoveSteps 자동 생성 (해당 Step 으로 MoveTo:Next, Direction:toRight 단순 이동). buttonEvent 와 함께 쓰면 엔진이 UseMove 를 먼저 처리. 더 복잡한 조건/방향은 override 의 iconButton anchor 로 MoveSteps 직접 지정."
+    },
+    "override": {
+      "type": "object",
+      "propertyNames": { "enum": ["root", "input", "iconButton", "badge"] },
+      "additionalProperties": { "type": "object" },
+      "description": "(L1 escape hatch) 패턴이 노출하지 않는 raw 엔진 메타데이터를 materialized 트리의 특정 노드에 deep-merge 로 주입한다. anchor 로 위치 지정 — root=외부 Group, input=입력 본체, iconButton=트레일링 아이콘 버튼, badge=카운터 뱃지(badge prop 이 있을 때만 존재). 값은 엔진 필드 패치 객체이며, 어떤 엔진 스키마에든 정의된 필드명만 검증을 통과한다(예: UseDataConnection, UseMove). 배열 필드는 deep-merge 가 아니라 통째 교체된다. 일반 케이스는 props 로 충분하므로 props 로 표현 못 하는 필드가 필요할 때만 사용.",
+      "examples": [
+        { "input": { "UseDataConnection": true } },
+        { "root": { "Margin": { "Top": "8", "SizeUnit": "px", "UseEach": true } } }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "$comment": "inputMask 는 maskInputType 필수.",
+      "if": {
+        "properties": { "inputType": { "const": "inputMask" } },
+        "required": ["inputType"]
+      },
+      "then": {
+        "required": ["inputOptions"],
+        "properties": { "inputOptions": { "required": ["maskInputType"] } }
+      }
+    },
+    {
+      "$comment": "inputSearch 는 DataSourceName + Title 필수.",
+      "if": {
+        "properties": { "inputType": { "const": "inputSearch" } },
+        "required": ["inputType"]
+      },
+      "then": {
+        "required": ["inputOptions"],
+        "properties": {
+          "inputOptions": {
+            "required": ["searchDataSourceName", "searchTitle"]
+          }
+        }
+      }
+    }
+  ],
+  "examples": [
+    {
+      "inputType": "inputDate",
+      "inputOptions": {
+        "placeholder": "조회 기간을 선택해주세요.",
+        "dateFormat": "YYYY.MM.DD",
+        "dateSelectType": "FromTo"
+      },
+      "icon": "filter",
+      "badge": { "label": "2", "color": "red" },
+      "buttonEvent": "openFilter"
+    },
+    {
+      "inputType": "inputText",
+      "inputOptions": { "placeholder": "상품명 검색" },
+      "icon": "search",
+      "color": "black",
+      "buttonEvent": "searchProduct"
+    },
+    {
+      "inputType": "inputSearch",
+      "inputOptions": {
+        "placeholder": "고객명",
+        "searchDataSourceName": "CustomerQuery",
+        "searchTitle": "CustomerName",
+        "searchKeywordCkey": "CustomerName"
+      },
+      "icon": "search",
+      "buttonEvent": "lookupCustomer"
+    },
+    {
+      "inputType": "inputNumber",
+      "inputOptions": { "placeholder": "수량", "numberInputType": "integer" },
+      "icon": "cart",
+      "badge": { "label": "3", "color": "red" },
+      "buttonEvent": "openCart"
+    },
+    {
+      "inputType": "inputText",
+      "inputOptions": { "placeholder": "검색어" },
+      "icon": "chevron-right",
+      "moveStep": "Step3"
+    }
+  ]
+}

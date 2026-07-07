@@ -1,0 +1,111 @@
+{
+  "tier": "atom",
+  "name": "button",
+  "path": "schema/v1/patterns/atom/button.schema.json",
+  "schema": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://flextudio.local/meta-contract/v1/patterns/atom/button.schema.json",
+    "title": "pattern.atom.button",
+    "description": "버튼 액션 아톰. v1 엔진에 'Button' ControlType 이 없으므로 Label + UseClickEvent 패턴으로 materialize. 시각적 강조 수준(variant) 3종 — primary 는 화면당 1개 CTA 권장(`Step.FixedContentsBottom` 자리), secondary 는 보조 액션, tertiary 는 인라인 텍스트 액션. 너비는 full(100%) 또는 fit(content + padding) 두 가지. 라운드/타이포/색은 DESIGN.md §Buttons + §Do's 기준이라 prop 으로 노출하지 않는다.",
+    "x-tier": "atom",
+    "x-tags": [
+      "button",
+      "action",
+      "cta"
+    ],
+    "x-related": [],
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "label",
+      "variant",
+      "width"
+    ],
+    "properties": {
+      "label": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 40,
+        "description": "버튼에 표시할 텍스트. 다국어 토큰 `{{key}}` 또는 데이터 바인딩 `{=Field}` 사용 가능."
+      },
+      "variant": {
+        "type": "string",
+        "enum": [
+          "primary",
+          "secondary",
+          "tertiary"
+        ],
+        "description": "시각적 강조 수준. primary=Main 채움 + 흰 글자(CTA 표준) / secondary=흰 배경 + 1px Gray4 hairline + 검정 글자(보조 액션) / tertiary=투명 배경 + Main 글자(인라인 텍스트 액션)."
+      },
+      "width": {
+        "type": "string",
+        "enum": [
+          "full",
+          "fit"
+        ],
+        "description": "full=부모 너비 100% (CTA 표준 — Bottom 바, 폼 제출) / fit=내용 + padding 만큼(인라인 액션, 카드 내부 보조 버튼). fit 은 Width 메타를 MatchText 로 두어 엔진이 자동 측정."
+      },
+      "onClick": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 100,
+        "description": "(선택) 클릭 핸들러 이름. `scenario.Events` 에 정의된 핸들러 키 — [event-ref] 룰로 정합 검증. 미지정 시 UseClickEvent:false (시각적 버튼만)."
+      },
+      "moveStep": {
+        "type": "string",
+        "pattern": "^Step[1-9][0-9]*$",
+        "description": "(선택) 클릭 시 이동할 대상 Step ID (예: 'Step3'). 지정 시 UseMove:true + MoveSteps 자동 생성 (해당 Step 으로 MoveTo:Next, Direction:toRight 단순 이동). onClick 과 함께 쓰면 엔진이 UseMove 를 먼저 처리. 더 복잡한 조건/방향은 override 로 MoveSteps 를 직접 지정."
+      },
+      "override": {
+        "type": "object",
+        "propertyNames": {
+          "enum": [
+            "root"
+          ]
+        },
+        "additionalProperties": {
+          "type": "object"
+        },
+        "description": "(L1 escape hatch) 패턴이 노출하지 않는 raw 엔진 메타데이터를 materialized 결과 노드에 deep-merge 로 주입한다. 이 패턴은 단일 컨트롤이라 anchor 는 'root'(결과 노드 자체) 하나. 값은 해당 ControlType 에 유효한 control 레벨 필드 패치이며, 어떤 엔진 스키마에든 정의된 필드명만 검증을 통과한다(예: ControlKey, DefaultValue, 이벤트 바인딩). ★ UseMove/MoveSteps 같은 Step 이동(Group 레벨) 기능은 atom 컨트롤이 아니라 Group(molecule 의 root anchor / raw Group)에 주입한다. 배열 필드는 deep-merge 가 아니라 통째 교체된다. props 로 충분한 일반 케이스엔 쓰지 않는다.",
+        "examples": [
+          {
+            "root": {
+              "ControlKey": "ReadOnly"
+            }
+          }
+        ]
+      }
+    },
+    "examples": [
+      {
+        "label": "로그인",
+        "variant": "primary",
+        "width": "full",
+        "onClick": "submitLogin"
+      },
+      {
+        "label": "{{취소}}",
+        "variant": "secondary",
+        "width": "fit"
+      },
+      {
+        "label": "건너뛰기",
+        "variant": "tertiary",
+        "width": "fit",
+        "onClick": "skipStep"
+      },
+      {
+        "label": "조회",
+        "variant": "primary",
+        "width": "full",
+        "onClick": "runQuery"
+      },
+      {
+        "label": "다음",
+        "variant": "primary",
+        "width": "full",
+        "moveStep": "Step3"
+      }
+    ]
+  }
+}

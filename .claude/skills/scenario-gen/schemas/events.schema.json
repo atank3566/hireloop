@@ -1,0 +1,272 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/events.schema.json",
+  "title": "Scenario Events",
+  "description": "scenarioMeta.Events — 시나리오 레벨 이벤트 핸들러 맵. 키 패턴 `^[A-Za-z_][A-Za-z0-9_.]*$` (영문/숫자/언더스코어/점, 첫 글자는 영문/언더스코어). 값은 Action 객체 배열. Step / Group / Control / BottomButton 의 Events 안에서 핸들러 이름으로 참조한다 (validator.ts checkEventReferences 와 정합). 실 샘플 예: `Init`, `Loaded`, `Click`, `userCheck`, `getList`, `STEP1_Query_E`, `Step6Init`, `Chart.js`, `loadMapScript`. Event-Service 흐름 (Event 호출 → Service 호출 → DB 조회 → 결과를 컬렉션 카테고리에 저장 → Step 재로드) 을 코드로 표현.",
+
+  "type": "object",
+  "patternProperties": {
+    "^[A-Za-z_][A-Za-z0-9_.]*$": {
+      "type": "array",
+      "description": "Action 배열 — 위에서 아래로 순차 실행. IsSkip:true 면 그 항목 건너뜀 (디버깅 토글).",
+      "items": { "$ref": "#/$defs/eventAction" }
+    }
+  },
+  "additionalProperties": false,
+
+  "$defs": {
+    "eventAction": {
+      "title": "EventAction",
+      "description": "이벤트 한 단계의 동작 정의. `Action` discriminator 로 4분기 (Script / LinkedEvent / Service / API). 스킬 생성에서는 Script / LinkedEvent 만 허용 (Service / API 는 [no-service] 후검증으로 차단; 운영 메타 호환은 strict_no_service:false 로 비활성).",
+      "type": "object",
+      "required": ["Action"],
+      "oneOf": [
+        { "$ref": "#/$defs/scriptAction" },
+        { "$ref": "#/$defs/linkedEventAction" },
+        { "$ref": "#/$defs/serviceAction" },
+        { "$ref": "#/$defs/apiAction" }
+      ]
+    },
+
+    "scriptAction": {
+      "title": "Script Action",
+      "description": "JavaScript 한 줄/블록 실행. 가장 흔히 사용되는 액션 유형 (실 샘플 624 회). 생성 허용. 스크립트 안에서 Current.step / f.Content / Load.* / f.Date / f.Setting 등 런타임 API 호출 가능.",
+      "type": "object",
+      "required": ["Action", "Script"],
+      "additionalProperties": false,
+      "properties": {
+        "Action":        { "const": "Script" },
+        "Script":        { "type": "string", "description": "실행할 JavaScript 코드. 빈 문자열 금지 (의미 없음)." },
+        "EventName":     { "type": "string", "description": "(선택) 디버그/표시용 메모성 이름. 동작에 영향 없음." },
+        "IsSkip":        { "type": "boolean", "description": "true 면 이 단계 건너뜀 (디버깅 토글)." },
+        "isMethodClose": { "type": "boolean", "description": "(선택) 메서드 마무리 표시 — 런타임 내부용." },
+        "ResultBlocks":  { "type": "array", "description": "(선택) 결과 블록 정의 — 거의 사용 안 함. 일반 Script 에서는 비움." }
+      }
+    },
+
+    "linkedEventAction": {
+      "title": "LinkedEvent Action",
+      "description": "다른 이벤트 핸들러를 호출. EventName 은 scenarioMeta.Events 의 키 중 하나여야 함 ([event-ref] 검증). 실 샘플 239 회. 생성 허용.",
+      "type": "object",
+      "required": ["Action", "EventName"],
+      "additionalProperties": false,
+      "properties": {
+        "Action":            { "const": "LinkedEvent" },
+        "EventName":         { "type": "string", "minLength": 1, "description": "호출할 이벤트 핸들러 이름. scenarioMeta.Events 키 중 하나." },
+        "IsSkip":            { "type": "boolean" },
+        "isMethodClose":     { "type": "boolean" },
+        "Script":            { "type": "string", "description": "(선택) 호출 전 실행할 보조 스크립트. 보통 비움." },
+        "UseResultOptions":  { "type": "boolean" }
+      }
+    },
+
+    "serviceAction": {
+      "title": "Service Action",
+      "description": "ServiceBinding 항목 호출 (DB / 외부 시스템). 스킬 생성 시에는 사용 금지 — `[no-service]` 후검증이 strict (`strict_no_service:true`). 운영 메타 호환을 위해 형식만 정의. 실 샘플 116 회. ServiceBinding 필드는 string (scenario.ServiceBinding 키 참조) 또는 inline object (실 FlexSQL 패턴) 둘 다 가능.",
+      "type": "object",
+      "required": ["Action"],
+      "additionalProperties": true,
+      "properties": {
+        "Action":              { "const": "Service" },
+        "ServiceBinding":      {
+          "description": "scenarioMeta.ServiceBinding 의 키 문자열, 또는 인라인 ServiceBinding 정의 객체. 인라인 형태는 FlexSQL SQLServiceName 직접 명시 시 흔함.",
+          "oneOf": [
+            { "type": "string" },
+            { "$ref": "service-binding.schema.json#/$defs/serviceBindingEntry" }
+          ]
+        },
+        "ServiceName":         { "type": "string", "description": "(string ServiceBinding 사용 시) 서비스 이름. 인라인 ServiceBinding 사용 시 SQLServiceName 으로 식별." },
+        "SystemID":            { "type": "string", "description": "Flextudio / Other / FlexSQL / New_<ID> 등." },
+        "Version":             { "type": "number", "minimum": 1, "const": 2, "description": "프로퍼티가 숫자 저장. 고정값 2" },
+        "SetCategory":         { "type": "boolean", "description": "결과 반영 대상 카테고리 토글." },
+        "UseCategory":         { "type": "boolean" },
+        "UseInnerBlock":       { "type": "boolean" },
+        "UseParamOptions":     { "type": "boolean" },
+        "UseResultOptions":    { "type": "boolean" },
+        "ParamBlock":          {
+          "description": "(레거시) 단일 파라미터 블록. UserData / Filters 등을 직접 둠. 신 버전은 ParamBlocks 배열 사용.",
+          "$ref": "#/$defs/legacyParamBlock"
+        },
+        "ParamBlocks":         {
+          "type": "array",
+          "description": "보내는 데이터 블록 배열 — 카테고리별로 1개씩. 각 블록은 어느 카테고리의 어떤 섹터를 어떤 필터로 보낼지 정의. flextudio-guide §6.6 '서비스 보내는 데이터'.",
+          "items": { "$ref": "#/$defs/paramBlock" }
+        },
+        "ResultBlock":         {
+          "description": "(레거시) 단일 결과 블록. IsNotDelete 등.",
+          "$ref": "#/$defs/legacyResultBlock"
+        },
+        "ResultBlocks":        {
+          "type": "array",
+          "description": "받은 데이터 블록 배열 — 결과를 어느 카테고리에 어떻게 반영할지 정의 (replace/add/merge). flextudio-guide §6.6 '서비스 받은 데이터'.",
+          "items": { "$ref": "#/$defs/resultBlock" }
+        },
+        "InnerBlocks":         {
+          "type": "array",
+          "description": "받은 데이터의 중첩 배열 필드 정의 (예: 부모 row 안의 자식 list). InnerBlockKey 로 결과 객체 안의 어떤 필드가 반복 배열인지 식별.",
+          "items": { "$ref": "#/$defs/innerBlock" }
+        },
+        "Script":              { "type": "string", "description": "(선택) 서비스 호출 전/후 보조 스크립트." },
+        "IsSkip":              { "type": "boolean" },
+        "isMethodClose":       { "type": "boolean" },
+        "isResultBlocksClose": { "type": "boolean" },
+        "isBreakPoint":        { "type": "boolean" },
+        "useReflectContent":   { "type": "boolean", "description": "결과 반영 후 자동 reload 여부." }
+      }
+    },
+
+    "apiAction": {
+      "title": "API Action",
+      "description": "외부 API 호출 (FlexAutoQuery / 사용자 정의 시스템). 스킬 생성 시 사용 금지 — `[no-service]` 가 차단. 실 샘플 28 회. fEventKey + fEvent 로 외부 시스템 라우팅 정의.",
+      "type": "object",
+      "required": ["Action", "ModuleID"],
+      "additionalProperties": true,
+      "properties": {
+        "Action":              { "const": "API" },
+        "ModuleID":            { "type": "string", "description": "모듈 식별자 (FlexAutoQuery 의 경우 GUID 형태일 수 있음)." },
+        "ServiceName":         { "type": "string" },
+        "SystemID":            { "type": "string", "description": "Flextudio / Other / New_<ID> 등." },
+        "SystemType":          { "type": "string", "description": "FlexAutoQuery / CustomSystem 등." },
+        "fEvent":              {
+          "type": "object",
+          "description": "fEventKey 에 나열된 키들의 실제 값 매핑. 값은 보통 `{%_base.X.Y%}` / `{%_c.Cat[0].field%}` 등 템플릿 표현식.",
+          "additionalProperties": { "type": "string" }
+        },
+        "fEventKey":           {
+          "type": "array",
+          "description": "fEvent 객체에서 사용할 키 이름 배열. 예: ['fBaseCompanyID', 'fBaseUserNo', 'url', 'mapping'].",
+          "items": { "type": "string" }
+        },
+        "UseCategory":         { "type": "boolean" },
+        "UseParamBlock":       { "type": "boolean" },
+        "UseResultBlock":      { "type": "boolean" },
+        "UsePKey":             { "type": "boolean" },
+        "SetCategory":         { "type": "boolean", "description": "결과 반영 대상 카테고리 토글." },
+        "ParamBlocks":         { "type": "array", "items": { "$ref": "#/$defs/paramBlock" } },
+        "ResultBlocks":        { "type": "array", "items": { "$ref": "#/$defs/resultBlock" } },
+        "NotSeperateInnerBlock":{ "type": "boolean" },
+        "useReflectContent":   { "type": "boolean" }
+      }
+    },
+
+    "paramBlock": {
+      "title": "ParamBlock — 보내는 데이터 블록",
+      "description": "Service / API 호출 시 어느 카테고리의 데이터를 어떤 필터로 서버로 보낼지 정의. flextudio-guide §6.6 '서비스 보내는 데이터'. 'Event 가 Service 호출 → Service 가 DB 조회' 흐름의 Service 호출 입력.",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "CategoryName": {
+          "$ref": "naming-objects.schema.json#/$defs/categoryNameOrEmpty",
+          "description": "보낼 카테고리 이름. 빈 문자열 `''` 이면 컬렉션 루트/기본 컨텍스트. UserData 만 사용할 때는 비움. JS 빌트인 충돌 키는 schema 차단."
+        },
+        "UseFilter": {
+          "type": "boolean",
+          "description": "true 면 Filters 배열로 섹터 필터링. false 면 카테고리 전체 섹터 전송."
+        },
+        "Filters": {
+          "type": "array",
+          "description": "섹터 필터링 규칙 (UseFilter:true 일 때). FilterType 별 분기는 data-objects sectorFilter 와 동일 (Status / Condition / Custom / Parent 4종).",
+          "items": { "$ref": "data-objects.schema.json#/$defs/sectorFilter" }
+        },
+        "UserData": {
+          "type": "array",
+          "description": "사용자/시스템 컨텍스트에서 직접 전송할 키 이름 배열. 예: `['CompanySeq', 'EmpSeq', 'BaseDate']` — `_base.User.<key>` / `_base.Company.<key>` 등에서 자동 매핑.",
+          "items": { "type": "string" }
+        },
+        "UserFilterOption": {
+          "type": "boolean",
+          "description": "사용자 필터 옵션 토글 (실 샘플은 모두 false). 보통 UseFilter 와 같이 쓰지 않음."
+        },
+        "ParamItems": {
+          "type": "array",
+          "description": "(레거시 / 일부 외부 시스템) 명시적 키-값 매핑 배열. 신 버전은 보통 UserData 또는 카테고리 데이터 자체 사용.",
+          "items": { "type": "object" }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "UseFilter": { "const": true } },
+            "required": ["UseFilter"]
+          },
+          "then": { "required": ["Filters"] }
+        }
+      ]
+    },
+
+    "legacyParamBlock": {
+      "title": "ParamBlock (레거시 단수형)",
+      "description": "(구버전) Service.ParamBlock — 단일 객체. 신 버전은 ParamBlocks 배열 사용. 일부 운영 메타에 잔존.",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "UserData": { "type": "array", "items": { "type": "string" } },
+        "Filters":  { "type": "array", "items": { "$ref": "data-objects.schema.json#/$defs/sectorFilter" } }
+      }
+    },
+
+    "resultBlock": {
+      "title": "ResultBlock — 받은 데이터 블록",
+      "description": "Service / API 결과를 어느 카테고리에 어떻게 반영할지 정의. flextudio-guide §6.6 '서비스 받은 데이터' (화면 반영 = replace, 추가 = add, 덮어쓰기 = replace, 병합 = merge).",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "TargetType": {
+          "type": "string",
+          "enum": ["category", "replace", "add", "merge"],
+          "description": "결과 반영 방식. category=카테고리 자체 교체 / replace=섹터 전체 교체(덮어쓰기) / add=섹터 추가 / merge=PKeys 기준 병합."
+        },
+        "CategoryName": {
+          "$ref": "naming-objects.schema.json#/$defs/categoryName",
+          "description": "결과를 반영할 카테고리 이름 (예: `userInfo`, `questionList`, `pageInfo`). JS 빌트인 충돌 키는 schema 차단."
+        },
+        "PKeys": {
+          "$ref": "naming-objects.schema.json#/$defs/ckeysArray",
+          "description": "merge 모드에서 병합 키로 사용할 컬렉션 키 배열. 같은 PKey 값을 가진 섹터는 갱신, 없으면 추가. 시스템 게터 / JS 빌트인 차단."
+        },
+        "IsNotDelete": {
+          "type": "boolean",
+          "description": "true 면 기존 섹터 삭제 안 함 (replace 모드에서 누락 섹터 보존)."
+        },
+        "ResultItems": {
+          "type": "array",
+          "description": "(레거시) 명시적 결과 매핑. 보통 비움.",
+          "items": { "type": "object" }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "TargetType": { "const": "merge" } },
+            "required": ["TargetType"]
+          },
+          "then": { "required": ["PKeys"] }
+        }
+      ]
+    },
+
+    "legacyResultBlock": {
+      "title": "ResultBlock (레거시 단수형)",
+      "description": "(구버전) Service.ResultBlock — 단일 객체. 신 버전은 ResultBlocks 배열 사용.",
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "IsNotDelete": { "type": "boolean" }
+      }
+    },
+
+    "innerBlock": {
+      "title": "InnerBlock — 중첩 결과 배열 키",
+      "description": "결과 객체 안의 특정 필드가 자식 배열 (반복 데이터) 임을 명시. 예: 부모 schedule row 안의 dayData 배열. InnerBlockKey 로 그 필드 이름을 지정. **메타 트리의 UseInnerBlock (Group 의 자식 반복) 과는 별개 개념** — 이쪽은 Service 결과 데이터의 구조 매핑.",
+      "type": "object",
+      "required": ["InnerBlockKey"],
+      "additionalProperties": true,
+      "properties": {
+        "InnerBlockKey": {
+          "type": "string",
+          "description": "결과 객체 안의 자식 배열 필드 이름. 실 샘플: `dayData`, `scheduleData`, `WkDateList`."
+        }
+      }
+    }
+  }
+}

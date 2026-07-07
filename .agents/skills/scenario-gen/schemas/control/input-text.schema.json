@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/input-text.schema.json",
+  "title": "InputText",
+  "description": "한 줄 텍스트 입력. text/password 모드.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    { "$ref": "_base.schema.json#/$defs/inputBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "InputText" },
+        "InputType": {
+          "type": "string",
+          "enum": ["text", "password"],
+          "description": "text=일반 텍스트 / password=마스킹 입력. (숫자/이메일/전화 등은 InputNumber 또는 InputMask 사용.)"
+        },
+        "Events": { "$ref": "_base.schema.json#/$defs/inputEventsFull" }
+      }
+    }
+  ]
+}

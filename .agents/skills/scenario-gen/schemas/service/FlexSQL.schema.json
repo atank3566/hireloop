@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/service/FlexSQL.schema.json",
+  "title": "FlexSQL ServiceBinding",
+  "description": "FlexSQL 서비스 호출 정의. 워크스페이스 콘솔에 등록된 SQL 쿼리를 시나리오 명:서비스 명 형식으로 호출. flextudio-guide §6.7. SystemID 'FlexSQL' 고정.",
+  "type": "object",
+  "required": ["SystemID", "SQLServiceName"],
+  "additionalProperties": true,
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/commonBase" },
+    {
+      "properties": {
+        "SystemID":         { "const": "FlexSQL", "description": "FlexSQL 호출 시 'FlexSQL' 고정." },
+        "ModuleID":         { "type": "string", "description": "보통 'Default'. 다중 모듈 환경에서만 다른 값." },
+        "ServiceName":      { "type": "string", "description": "FlexSQL 표기 이름 (보통 'FlexSQL' 고정)." },
+        "SQLServiceName":   {
+          "type": "string",
+          "minLength": 1,
+          "pattern": ".+:.+",
+          "description": "FlexSQL 서비스 식별자. 형식: `<시나리오/그룹명>:<서비스명>` (예: `메인화면:showReceiveWho`, `Ideation:getDetail`). 콜론 1 개 필수."
+        },
+        "MajorVersion":     { "type": "integer", "minimum": 1, "description": "FlexSQL 메이저 버전 (정수, 보통 1 또는 2)." },
+        "ExternalDB":       { "type": "boolean", "description": "외부 DB 연결 사용 여부. 프로퍼티 SWITCH 가 boolean 저장." },
+        "UsePKey":          { "type": "boolean" },
+        "UseParamBlock":    { "type": "boolean" },
+        "UseResultBlock":   { "type": "boolean" },
+        "UseInnerBlock":    { "type": "boolean" },
+        "BeforeScript":     { "type": "string", "description": "Before Script — SQL 호출 전 전처리 (param 가공 등)." },
+        "ResultScript":     { "type": "string", "description": "After Script — SQL 결과 후처리 (반환 데이터 가공)." }
+      }
+    }
+  ]
+}

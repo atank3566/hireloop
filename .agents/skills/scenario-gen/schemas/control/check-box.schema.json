@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/check-box.schema.json",
+  "title": "CheckBox",
+  "description": "체크박스. Items[] 로 다중 항목 / 단일 toggle 모두 지원. 옆 텍스트는 Items[].ItemName.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "CheckBox" },
+        "ControlStyle": {
+          "type": "string",
+          "enum": ["", "None", "styleSquare", "styleCircle", "styleCircleGray", "styleSwitch", "styleSwitchSmall", "styleIconHeart", "styleRadius"],
+          "description": "권장 스타일. 빈 문자열/'None'=기본 사각, 'styleSquare'/'styleCircle'/'styleCircleGray'=모양 변종, 'styleSwitch'=토글 스위치, 'styleSwitchSmall'=소형 토글 스위치 (switch atom 의 표준), 'styleIconHeart'=아이콘 하트."
+        },
+        "Items": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "_base.schema.json#/$defs/selectionItem" },
+          "description": "체크박스 항목 배열. ItemName=옆 텍스트, ItemValue=체크 시 값, ItemValueDel=해제 시 값(기본 '')."
+        },
+        "DefaultValue": {
+          "type": "boolean",
+          "default": false,
+          "description": "체크 상태 초기값. **boolean strict** — true=체크됨, false=해제됨. **기본값 false**. ★ 문자열 \"true\"/\"false\" 금지 — JS truthy 함정으로 런타임 오동작 (isColumnCtrl 과 동일). controlBase.DefaultValue 의 any 타입을 boolean 으로 제약."
+        },
+        "SaveValueKey": { "type": "string", "description": "Ckeys 중 저장 대상 필드명." },
+        "CheckBoxType": { "type": "string", "examples": ["Default", "Single", "Multi"] },
+        "UseAlignRight":{ "type": "boolean", "default": false, "description": "true=텍스트 우측 정렬 (체크박스가 좌측)." },
+        "UseTriming":   { "type": "boolean", "default": false },
+        "UseCondition": { "type": "boolean", "default": false },
+        "ItemBgStyle":  { "type": "object", "additionalProperties": true },
+        "Events":       { "$ref": "_base.schema.json#/$defs/checkBoxEvents" }
+      },
+      "required": ["Items"]
+    }
+  ]
+}

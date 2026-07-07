@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/service/ksystem.schema.json",
+  "title": "ksystem ServiceBinding",
+  "description": "ksystem 서비스 호출 정의. const.js 의 SYSTEM_ID.KSYSTEM='ksystem' 에 매핑. 영림원소프트랩 ksystem 사내 모듈 (FlexAPI / OpenAPI / Codehelp / Ksystem / Filehelp). 자동생성 BIZ 테이블에 대한 SP 호출 형태가 가장 흔함.",
+  "type": "object",
+  "required": ["SystemID", "ModuleID"],
+  "additionalProperties": true,
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/commonBase" },
+    {
+      "properties": {
+        "SystemID": { "const": "ksystem", "description": "ksystem 호출 시 'ksystem' 고정 (소문자)." },
+        "ModuleID": {
+          "type": "string",
+          "enum": ["FlexAPI", "OpenAPI", "Codehelp", "Ksystem", "Filehelp"],
+          "description": "ksystem 모듈. FlexAPI=BIZ 테이블 SP 호출 / OpenAPI=공개 API / Codehelp=코드 매핑 / Ksystem=ksystem 본체 / Filehelp=파일 헬퍼."
+        },
+        "UseTable":      { "type": "string", "examples": ["BIZ", "FLEX"], "description": "테이블 유형 코드. 보통 'BIZ' (비즈니스 테이블) / 'FLEX'." },
+        "SelectTable":   { "type": "string", "description": "대상 테이블 이름." },
+        "SPList":        {
+          "type": "array",
+          "description": "스토어드 프로시저 목록. 자동생성된 SP 이름 (예: '_SWFlexARUsualCostAppListQuery'). FlexAPI 모듈에서 흔히 사용.",
+          "items": { "type": "string" }
+        },
+        "UseBundle":     { "type": "boolean", "description": "번들 호출 — 여러 SP 묶음 실행." },
+        "UseSearch":     { "type": "boolean" },
+        "UsePKey":       { "type": "boolean" },
+        "UseParamBlock": { "type": "boolean" },
+        "UseResultBlock":{ "type": "boolean" },
+        "UseInnerBlock": { "type": "boolean" },
+        "BeforeScript":  { "type": "string" }
+      }
+    }
+  ]
+}

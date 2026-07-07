@@ -1,0 +1,96 @@
+{
+  "ScenarioTitle": "intent.script 5 kind 종합 데모 — 장바구니 흐름",
+  "StartSteps": ["Step1"],
+  "Steps": {
+    "Step1": {
+      "StepType": "StepView",
+      "UseBackButton": true,
+      "Question": "장바구니",
+      "Events": {
+        "Init": [
+          {
+            "Action": "Script",
+            "intent": {
+              "mock": {
+                "CtgCart": [
+                  { "fItem": "아메리카노", "fQty": 1, "fStatus": "대기" },
+                  { "fItem": "라떼", "fQty": 2, "fStatus": "대기" }
+                ]
+              }
+            }
+          }
+        ],
+        "ConfirmEvent": [
+          {
+            "Action": "Script",
+            "intent": {
+              "script": {
+                "kind": "updateActive",
+                "cat": "CtgCart",
+                "set": { "fStatus": "확정", "fConfirmedAt": "2024-01-01" },
+                "reload": "f_1"
+              }
+            }
+          }
+        ],
+        "DeleteEvent": [
+          {
+            "Action": "Script",
+            "intent": {
+              "script": {
+                "kind": "deleteActive",
+                "cat": "CtgCart",
+                "reload": "f_1"
+              }
+            }
+          }
+        ],
+        "ClearAllEvent": [
+          {
+            "Action": "Script",
+            "intent": {
+              "script": {
+                "kind": "dialog",
+                "type": "Alert",
+                "title": "전체 삭제",
+                "body": "장바구니를 모두 비우시겠습니까?",
+                "buttons": [
+                  { "label": "비우기", "event": "DoClearEvent" },
+                  { "label": "취소", "color": "sub" }
+                ]
+              }
+            }
+          }
+        ],
+        "DoClearEvent": [
+          {
+            "Action": "Script",
+            "intent": {
+              "script": { "kind": "clearCategory", "cat": "CtgCart", "reload": "f_1" }
+            }
+          }
+        ],
+        "RefreshEvent": [
+          {
+            "Action": "Script",
+            "intent": {
+              "script": { "kind": "reloadGroup", "fid": "f_1" }
+            }
+          }
+        ]
+      },
+      "Contents": [
+        {
+          "ContentsType": "Group",
+          "Id": "f_1",
+          "UseDataConnection": true,
+          "DataConnection": { "TargetType": "category", "CategoryName": "CtgCart", "DataUsage": "query" },
+          "Contents": []
+        }
+      ]
+    }
+  },
+  "Events": {},
+  "ServiceBinding": {},
+  "Collections": {}
+}

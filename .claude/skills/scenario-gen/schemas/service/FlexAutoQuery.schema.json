@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/service/FlexAutoQuery.schema.json",
+  "title": "FlexAutoQuery ServiceBinding",
+  "description": "FlexAutoQuery 서비스 호출 정의. const.js 의 SYSTEM_ID.FLEXAUTOQUERY='FlexAutoQuery' 에 매핑. FlexSQL 없이 FlexDB '자동생성 테이블 (AI로 DB연결하기)' 에 대한 CRUD 자동 구성. flextudio-guide §6.8 / FlexAutoQuery. Business+ 플랜.",
+  "type": "object",
+  "required": ["SystemID", "ModuleID"],
+  "additionalProperties": true,
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/commonBase" },
+    {
+      "properties": {
+        "SystemID": { "const": "FlexAutoQuery", "description": "FlexAutoQuery 호출 시 'FlexAutoQuery' 고정." },
+        "ModuleID": {
+          "type": "string",
+          "enum": ["Default"],
+          "description": "FlexAutoQuery 모듈 — const.js 상 'Default' 단일."
+        },
+        "ServiceType": {
+          "type": "string",
+          "enum": ["Query", "Save", "Update", "Delete"],
+          "description": "FlexAutoQuery 서비스 유형 4종 (조회/저장/업데이트/삭제)."
+        },
+        "TargetTable":      { "type": "string", "description": "자동생성 테이블 이름." },
+        "OrderBy":          { "type": "string", "description": "정렬 기준 컬럼명 (Query 전용)." },
+        "OrderDirection":   { "type": "string", "enum": ["ASC", "DESC", ""], "description": "정렬 순서." },
+        "UsePKey":          { "type": "boolean" },
+        "UseParamBlock":    { "type": "boolean" },
+        "UseResultBlock":   { "type": "boolean" },
+        "UseInnerBlock":    { "type": "boolean" },
+        "BeforeScript":     { "type": "string" }
+      }
+    }
+  ]
+}

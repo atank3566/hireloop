@@ -1594,15 +1594,20 @@ h1,h2,h3,p,span,div,button{overflow-wrap:anywhere;}
               <div style="display:grid; grid-template-columns:auto 1fr; gap:24px; margin-top:18px; align-items:start;">
                 <div>
                   <div style="font-size:12px; font-weight:700; color:var(--label-secondary); margin-bottom:8px;">최종 결과</div>
-                  <div style="display:flex; gap:8px;">
-                    <sc-for list="{{ a.resultBtns }}" as="b" hint-placeholder-count="3">
-                      <button style="{{ b.style }}" onclick="{{ b.onClick }}">{{ b.label }}</button>
-                    </sc-for>
-                  </div>
+                  <sc-if value="{{ a.resultEditable }}" hint-placeholder-val="{{ true }}">
+                    <div style="display:flex; gap:8px;">
+                      <sc-for list="{{ a.resultBtns }}" as="b" hint-placeholder-count="3">
+                        <button style="{{ b.style }}" onclick="{{ b.onClick }}">{{ b.label }}</button>
+                      </sc-for>
+                    </div>
+                  </sc-if>
+                  <sc-if value="{{ a.resultLocked }}" hint-placeholder-val="{{ false }}">
+                    <div style="height:36px; display:flex; align-items:center; padding:0 12px; border-radius:9px; background:var(--ios-gray6); color:var(--label-secondary); font-size:13px; font-weight:700;">{{ a.lockedText }}</div>
+                  </sc-if>
                 </div>
                 <div>
                   <div style="font-size:12px; font-weight:700; color:var(--label-secondary); margin-bottom:8px;">최종 판정 사유 · 수기 입력</div>
-                  <textarea value="{{ a.reason }}" oninput="{{ a.onReason }}" placeholder="예) 현장 프로젝트 경험과 문제 해결력이 우수해 최종 합격 / 협업 사례 부족으로 보류" style="width:100%; height:52px; padding:11px 14px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); font-size:13px; resize:none; outline:none;"></textarea>
+                  <textarea value="{{ a.reason }}" oninput="{{ a.onReason }}" placeholder="예) 현장 프로젝트 경험과 문제 해결력이 우수해 최종 합격 / 협업 사례 부족으로 보류" style="{{ a.reasonStyle }}"></textarea>
                   <button style="{{ a.saveStyle }}" onclick="{{ a.save }}">{{ a.saveLabel }}</button>
                 </div>
               </div>
@@ -1883,15 +1888,16 @@ h1,h2,h3,p,span,div,button{overflow-wrap:anywhere;}
         </div>
 
         <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; box-shadow:0 1px 2px rgba(0,0,0,0.04); overflow:hidden;">
-          <div style="display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,.8fr) minmax(0,.9fr) minmax(0,.65fr) repeat(2,minmax(0,.75fr)) minmax(0,.65fr) minmax(0,1.2fr); padding:13px 22px; border-bottom:1px solid rgba(60,60,67,0.08); font-size:12px; font-weight:700; color:var(--label-secondary); background:var(--ios-gray6);">
-            <span>이름</span><span>부서</span><span>직무</span><span>직급</span><span>입사일</span><span>재직 기간</span><span style="text-align:right;">성과</span><span style="text-align:right;">최근 프로젝트</span>
+          <div style="display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,.75fr) minmax(0,.85fr) minmax(0,.6fr) minmax(0,.5fr) repeat(2,minmax(0,.7fr)) minmax(0,.6fr) minmax(0,1.1fr); padding:13px 22px; border-bottom:1px solid rgba(60,60,67,0.08); font-size:12px; font-weight:700; color:var(--label-secondary); background:var(--ios-gray6);">
+            <span>이름</span><span>부서</span><span>직무</span><span>직급</span><span>성별</span><span>입사일</span><span>재직 기간</span><span style="text-align:right;">성과</span><span style="text-align:right;">최근 프로젝트</span>
           </div>
           <sc-for list="{{ wfRows }}" as="e" hint-placeholder-count="8">
-            <div style="display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,.8fr) minmax(0,.9fr) minmax(0,.65fr) repeat(2,minmax(0,.75fr)) minmax(0,.65fr) minmax(0,1.2fr); padding:14px 22px; border-bottom:1px solid rgba(60,60,67,0.06); align-items:center; font-size:13px; cursor:pointer;" onclick="{{ e.open }}">
+            <div style="display:grid; grid-template-columns:minmax(0,.85fr) minmax(0,.75fr) minmax(0,.85fr) minmax(0,.6fr) minmax(0,.5fr) repeat(2,minmax(0,.7fr)) minmax(0,.6fr) minmax(0,1.1fr); padding:14px 22px; border-bottom:1px solid rgba(60,60,67,0.06); align-items:center; font-size:13px; cursor:pointer;" onclick="{{ e.open }}">
               <span style="font-size:14px; font-weight:700;">{{ e.name }}</span>
               <span style="color:var(--label-secondary);">{{ e.dept }}</span>
               <span style="color:var(--label-secondary);">{{ e.role }}</span>
               <span style="color:var(--label-secondary);">{{ e.level }}</span>
+              <span style="color:var(--label-secondary);">{{ e.gender }}</span>
               <span style="color:var(--label-secondary); font-variant-numeric:tabular-nums;">{{ e.join }}</span>
               <span style="color:var(--label-secondary); font-variant-numeric:tabular-nums;">{{ e.tenure }}</span>
               <span style="text-align:right; font-weight:700; color:{{ e.perfColor }};">{{ e.perf }}</span>
@@ -1908,22 +1914,7 @@ h1,h2,h3,p,span,div,button{overflow-wrap:anywhere;}
         <h1 style="font-size:30px; font-weight:800; letter-spacing:-0.6px; margin:0;">재직자 성과</h1>
         
 
-        <div style="display:flex; gap:12px; margin:22px 0 18px; flex-wrap:wrap; align-items:center;">
-          <div class="dd">
-            <button style="height:38px; padding:0 16px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px;">부서 · <b style="color:var(--ios-blue);">{{ perfDeptDD.value }}</b> <span style="color:var(--label-tertiary);">▾</span></button>
-            <div class="ddm">
-              <sc-for list="{{ perfDeptDD.options }}" as="o" hint-placeholder-count="7"><button style="{{ o.style }}" onclick="{{ o.onClick }}">{{ o.label }}</button></sc-for>
-            </div>
-          </div>
-          <div class="dd">
-            <button style="height:38px; padding:0 16px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); background:#fff; font-size:13px; font-weight:600; cursor:pointer; display:flex; align-items:center; gap:8px;">성별 · <b style="color:var(--ios-blue);">{{ perfGenderDD.value }}</b> <span style="color:var(--label-tertiary);">▾</span></button>
-            <div class="ddm">
-              <sc-for list="{{ perfGenderDD.options }}" as="o" hint-placeholder-count="3"><button style="{{ o.style }}" onclick="{{ o.onClick }}">{{ o.label }}</button></sc-for>
-            </div>
-          </div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(11rem,100%),1fr)); gap:14px; margin-bottom:18px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(min(11rem,100%),1fr)); gap:14px; margin:22px 0 18px;">
           <sc-for list="{{ perfKpis }}" as="k" hint-placeholder-count="4">
             <div style="background:#fff; border:1px solid rgba(60,60,67,0.10); border-radius:16px; padding:20px;">
               <div style="font-size:12px; color:var(--label-secondary); font-weight:600;">{{ k.label }}</div>
@@ -2115,12 +2106,11 @@ class Component extends DCLogic {
 
   CRIT = ['직무 전문성', '문제 해결력', '협업·커뮤니케이션', '조직 적합성', '성장 가능성'];
   REQ = [80, 75, 70, 70, 65];
-
   jobsData() {
     return [
-      { id: 'j1', title: '2026 상반기 생산기술 직무 채용', role: '생산기술', applicants: '1,284명', priority: 86, addCheck: 143, deadline: '2026-08-15' },
-      { id: 'j2', title: '품질관리 경력 채용', role: '품질관리', applicants: '342명', priority: 31, addCheck: 52, deadline: '2026-08-02' },
-      { id: 'j3', title: '연구개발 신입 채용', role: '연구개발', applicants: '768명', priority: 64, addCheck: 91, deadline: '2026-09-01' },
+      { id: 'j1', title: '2026 상반기 생산기술 직무 채용', role: '생산기술', applicants: '6명', priority: 2, addCheck: 2, deadline: '2026-08-15' },
+      { id: 'j2', title: '품질관리 경력 채용', role: '품질관리', applicants: '4명', priority: 2, addCheck: 1, deadline: '2026-08-02' },
+      { id: 'j3', title: '연구개발 신입 채용', role: '연구개발', applicants: '4명', priority: 2, addCheck: 1, deadline: '2026-09-01' },
     ];
   }
 
@@ -2241,6 +2231,12 @@ class Component extends DCLogic {
     return { height: '36px', padding: '0 15px', borderRadius: '10px', cursor: 'pointer', fontFamily: 'var(--font-sans)', fontSize: '13px', fontWeight: active ? 700 : 500, whiteSpace: 'nowrap', border: active ? 'none' : '1px solid rgba(60,60,67,0.16)', background: active ? (activeBg || '#1c1c1e') : '#fff', color: active ? '#fff' : '#1c1c1e' };
   }
   fit(a) { return Math.round(a.cs.reduce((x, y) => x + y, 0) / a.cs.length); }
+  freshEvalScores() {
+    return { '직무지식': 0, '문제 해결 능력': 0, '성과 지향성': 0, '협업/커뮤니케이션': 0, '리더십': 0, '성장 가능성': 0, '조직 적합성': 0, '직무 적합성': 0 };
+  }
+  interviewStartState(id) {
+    return { screen: 'interview', interviewId: id, ivNote: '', evalScores: this.freshEvalScores(), evalNotes: {}, checks: {}, recommend: null };
+  }
 
   mockApi(nextState, delay) {
     this.setState({ ...nextState, dataReady: false });
@@ -2272,11 +2268,10 @@ class Component extends DCLogic {
     // ---- dashboard ----
     const dashKpis = [
       { label: '채용 진행중', value: '3건', color: '#1c1c1e' },
-      { label: '전체 지원자', value: '2,394명', color: '#1c1c1e' },
-      { label: '우선 검토 대상', value: '181명', color: 'var(--ios-blue)' },
-      { label: '추가 확인 필요', value: '286명', color: 'var(--ios-orange)' },
-      { label: 'ERP 추적 재직자', value: '214명', color: '#1c1c1e' },
-      { label: '최근 입사자', value: '6명', color: '#1c1c1e' },
+      { label: '전체 지원자', value: '14명', color: '#1c1c1e' },
+      { label: '우선 검토 대상', value: '6명', color: 'var(--ios-blue)' },
+      { label: '추가 확인 필요', value: '4명', color: 'var(--ios-orange)' },
+      { label: 'ERP 추적 재직자', value: '10명', color: '#1c1c1e' },
     ];
     const jobRows = jobs.map(j => ({ ...j, open: () => this.mockApi({ screen: 'review', jobId: j.id, reviewFilter: '전체' }) }));
 
@@ -2289,7 +2284,7 @@ class Component extends DCLogic {
     const rf = s.reviewFilter;
 
     // stage split: 서류 심사 → 면접 심사 → 최종 심사
-    const docApps = jobApps.filter(a => !advanced.includes(a.id));
+    const docApps = jobApps.filter(a => !advanced.includes(a.id) && !finalized[a.id]);
     const intApps = jobApps.filter(a => advanced.includes(a.id) && !finalized[a.id]);
     const finApps = jobApps.filter(a => finalized[a.id]);
     const stageApps = stage === 'doc' ? docApps : (stage === 'interview' ? intApps : finApps);
@@ -2347,12 +2342,12 @@ class Component extends DCLogic {
         open: () => this.mockApi({ screen: 'detail', detailId: a.id, ai: 'idle' }),
         rowClick: stage === 'doc'
           ? () => this.mockApi({ screen: 'detail', detailId: a.id, ai: 'idle' })
-          : () => this.mockApi({ screen: 'interview', interviewId: a.id }),
+          : () => this.mockApi(this.interviewStartState(a.id)),
         actionLabel: stage === 'doc' ? '면접 심사로 →' : '면접 진행',
         actionStyle: stage === 'doc' ? docActionStyle : intActionStyle,
         action: stage === 'doc'
-          ? () => { this.setState({ advanced: [...(this.state.advanced || []), a.id] }); showToast(a.name + ' 님을 면접 심사로 이동했습니다'); }
-          : () => this.mockApi({ screen: 'interview', interviewId: a.id }),
+          ? () => { const adv = this.state.advanced || []; this.mockApi({ advanced: adv.includes(a.id) ? adv : [...adv, a.id], screen: 'interviewList', reviewFilter: '전체' }); showToast(a.name + ' 님을 면접 심사로 이동했습니다'); }
+          : () => this.mockApi(this.interviewStartState(a.id)),
       };
     });
     const reviewEmpty = stage !== 'final' && filtered.length === 0;
@@ -2370,19 +2365,26 @@ class Component extends DCLogic {
     const finalDraft = s.finalDraft || {};
     const finalRows = filtered.map(a => {
       const f = this.fit(a), fin = finalized[a.id] || {}, dr = finalDraft[a.id] || {};
+      const locked = !!fin.result && fin.result !== '보류';
+      const reasonOnly = fin.result === '서류 불합격' || fin.result === '면접 불합격';
       const curResult = dr.result !== undefined ? dr.result : fin.result;
       const curReason = dr.reason !== undefined ? dr.reason : (fin.reason || '');
       const [rc, rb] = resultColor[fin.result] || ['var(--label-secondary)', 'var(--ios-gray6)'];
-      const dirty = (dr.result !== undefined && dr.result !== fin.result) || (dr.reason !== undefined && dr.reason !== (fin.reason || ''));
+      const dirty = reasonOnly ? (dr.reason !== undefined && dr.reason !== (fin.reason || '')) : (!locked && ((dr.result !== undefined && dr.result !== fin.result) || (dr.reason !== undefined && dr.reason !== (fin.reason || ''))));
       return {
         id: a.id, name: a.name, role: a.role, exp: a.exp, fit: f, fitColor: this.fitColor(f),
         result: fin.result || '미정', resultChip: `display:inline-block; white-space:nowrap; font-size:13px; font-weight:800; padding:5px 14px; border-radius:8px; color:${rc}; background:${rb};`,
         reason: curReason,
         evalSummary: fin.savedEval ? `면접 종합 ${fin.savedEval} / 5` + (fin.recommend ? ` · 추천 ${fin.recommend}` : '') : '면접 평가 미저장',
-        onReason: (e) => setDraftReason(a.id, e),
-        saveStyle: `height:38px; margin-top:10px; padding:0 18px; border-radius:9px; border:none; font-size:13px; font-weight:700; cursor:pointer; color:#fff; background:${dirty ? 'var(--ios-blue)' : 'var(--ios-gray3)'};`,
-        saveLabel: dirty ? '최종 판정 저장' : '저장됨',
+        resultEditable: !locked,
+        resultLocked: locked,
+        lockedText: locked ? (reasonOnly ? '결과 결정 완료 · 사유만 입력 가능' : '결과 결정 완료 · 변경 비활성화') : '',
+        reasonStyle: `width:100%; height:52px; padding:11px 14px; border-radius:10px; border:1px solid rgba(60,60,67,0.16); font-size:13px; resize:none; outline:none; background:${locked && !reasonOnly ? 'var(--ios-gray6)' : '#fff'}; color:${locked && !reasonOnly ? 'var(--label-secondary)' : '#1c1c1e'}; pointer-events:${locked && !reasonOnly ? 'none' : 'auto'};`,
+        onReason: (e) => { if (!locked || reasonOnly) setDraftReason(a.id, e); },
+        saveStyle: `height:38px; margin-top:10px; padding:0 18px; border-radius:9px; border:none; font-size:13px; font-weight:700; cursor:${locked && !reasonOnly ? 'default' : 'pointer'}; color:#fff; background:${dirty ? 'var(--ios-blue)' : 'var(--ios-gray3)'};`,
+        saveLabel: reasonOnly ? (dirty ? '판정 사유 저장' : '판정 완료') : (locked ? '판정 완료' : (dirty ? '최종 판정 저장' : '저장됨')),
         save: () => {
+          if (locked && !reasonOnly) return;
           const d = this.state.finalDraft || {}; const cur = d[a.id];
           if (!cur) { showToast(a.name + ' 님 변경 사항이 없습니다'); return; }
           const fz = this.state.finalized || {};
@@ -2390,7 +2392,7 @@ class Component extends DCLogic {
           showToast(a.name + ' 님의 최종 판정이 업데이트되었습니다');
         },
         open: () => this.mockApi({ screen: 'detail', detailId: a.id, ai: 'idle' }),
-        resultBtns: ['최종 합격', '보류', '면접 불합격'].map(r => {
+        resultBtns: locked ? [] : ['최종 합격', '보류', '면접 불합격'].map(r => {
           const active = curResult === r;
           const bg = r === '최종 합격' ? 'var(--ios-green)' : (r === '면접 불합격' ? 'var(--ios-red)' : 'var(--ios-orange)');
           return { label: r, onClick: () => setDraftResult(a.id, r), style: this.pillBtn(active, bg) };
@@ -2423,8 +2425,8 @@ class Component extends DCLogic {
       successSignals: da.successSignals || ['-'], riskSignals: da.riskSignals || ['-'],
       questions: (da.questions || []).map((text, i) => ({ n: i + 1, text })),
       aiText: da.aiText || '',
-      interview: () => this.mockApi({ screen: 'interview', interviewId: da.id }),
-      reject: () => { this.setState({ finalized: { ...(this.state.finalized || {}), [da.id]: { ...(this.state.finalized || {})[da.id], result: '서류 불합격' } }, screen: 'final', stageTab: 'final' }); showToast(da.name + ' 님을 서류 불합격 처리했습니다'); },
+      interview: () => { const adv = this.state.advanced || []; this.mockApi({ ...this.interviewStartState(da.id), advanced: adv.includes(da.id) ? adv : [...adv, da.id] }); },
+      reject: () => { this.setState({ finalized: { ...(this.state.finalized || {}), [da.id]: { ...(this.state.finalized || {})[da.id], result: '서류 불합격' } }, screen: 'final', stageTab: 'final', reviewFilter: '전체' }); showToast(da.name + ' 님을 서류 불합격 처리했습니다'); },
     };
 
     const coverProject = (da.summary && da.summary[2] && da.summary[2][1]) || '직무 관련 프로젝트';
@@ -2504,7 +2506,7 @@ class Component extends DCLogic {
       const st = this.state; const fin = st.finalized || {}; const cur = fin[ia.id] || {};
       const sv = Object.values(st.evalScores).filter(v => v > 0);
       const avgN = sv.length ? (sv.reduce((a, b) => a + b, 0) / sv.length).toFixed(1) : null;
-      this.setState({ finalized: { ...fin, [ia.id]: { ...cur, savedEval: avgN, recommend: st.recommend, note: st.ivNote } }, screen: 'review', stageTab: 'final', reviewFilter: '전체' });
+      this.setState({ finalized: { ...fin, [ia.id]: { ...cur, savedEval: avgN, recommend: st.recommend, note: st.ivNote, reason: st.ivNote || cur.reason || '' } }, screen: 'final', stageTab: 'final', reviewFilter: '전체' });
       showToast(ia.name + ' 님 면접 평가를 저장하고 최종 심사로 이동했습니다');
     };
     const checkDefs = ['직무 이해도 확인', '현장 적응 가능성 확인', '반복 업무 수용도 확인', '협업 경험 확인', '장기 근속 의향 확인'];
@@ -2560,7 +2562,7 @@ class Component extends DCLogic {
       { label: '평균 성과', value: Math.round(wfFiltered.reduce((x, e) => x + e.perf, 0) / (wfFiltered.length || 1)) + '점', color: 'var(--ios-blue)' },
       { label: '최근 1년 입사', value: emps.filter(e => e.tenureM <= 24).length + '명', color: '#1c1c1e' },
     ];
-    const wfRows = wfFiltered.map(e => ({ name: e.name, dept: e.dept, role: e.role, level: e.level, join: e.join, tenure: e.tenureM + '개월', perf: e.perf + '점', perfColor: this.perfColor(e.perf), proj: e.proj, open: () => this.setState({ wfId: e.id }) }));
+    const wfRows = wfFiltered.map(e => ({ name: e.name, dept: e.dept, role: e.role, level: e.level, gender: e.gender, join: e.join, tenure: e.tenureM + '개월', perf: e.perf + '점', perfColor: this.perfColor(e.perf), proj: e.proj, open: () => this.setState({ wfId: e.id }) }));
     const wfe = emps.find(e => e.id === s.wfId);
     const tmax = 100;
     const wfd = wfe ? {
@@ -2571,12 +2573,7 @@ class Component extends DCLogic {
     } : { stats: [], trend: [] };
 
     // ---- performance ----
-    const pFiltered = emps.filter(e => (s.perfDept === '전체' || e.dept === s.perfDept) && (s.perfGender === '전체' || e.gender === s.perfGender));
-    const perfDeptFilters = depts.map(d => ({ label: d, onClick: () => this.setState({ perfDept: d }), style: this.pillBtn(s.perfDept === d) }));
-    const perfGenderFilters = genders.map(g => ({ label: g, onClick: () => this.setState({ perfGender: g }), style: this.pillBtn(s.perfGender === g) }));
-    const ddOpts = (list, cur, set) => list.map(o => ({ label: o, active: cur === o, onClick: () => this.setState(set(o)), style: `display:block; width:100%; text-align:left; padding:9px 12px; border-radius:8px; font-size:13px; border:none; cursor:pointer; font-family:var(--font-sans); white-space:nowrap; font-weight:${cur === o ? 700 : 500}; color:${cur === o ? 'var(--ios-blue)' : '#1c1c1e'}; background:${cur === o ? 'rgba(0,122,255,0.10)' : 'transparent'};` }));
-    const perfDeptDD = { value: s.perfDept, options: ddOpts(depts, s.perfDept, v => ({ perfDept: v })) };
-    const perfGenderDD = { value: s.perfGender, options: ddOpts(genders, s.perfGender, v => ({ perfGender: v })) };
+    const pFiltered = emps;
     const avg = arr => arr.length ? Math.round(arr.reduce((a, b) => a + b, 0) / arr.length) : 0;
     const perfKpis = [
       { label: '평균 성과 점수', value: avg(pFiltered.map(e => e.perf)) + '점', sub: 'performance_review', color: 'var(--ios-blue)' },
@@ -2626,7 +2623,7 @@ class Component extends DCLogic {
     const ivView = maskObj(iv, ['name', 'role', 'exp', 'fit', 'gaugeOffset', 'verdict', 'introSummary']);
     ivView.criteria = (iv.criteria || []).map(x => maskObj(x, ['tag', 'scorePct']));
     ivView.summary = (iv.summary || []).map(x => maskObj(x, ['v']));
-    const wfRowsView = wfRows.map(x => maskObj(x, ['name', 'dept', 'role', 'level', 'join', 'tenure', 'perf', 'sat', 'eng', 'proj']));
+    const wfRowsView = wfRows.map(x => maskObj(x, ['name', 'dept', 'role', 'level', 'gender', 'join', 'tenure', 'perf', 'sat', 'eng', 'proj']));
     const wfKpisView = wfKpis.map(x => maskObj(x, ['value']));
     const perfRowsView = perfRows.map(x => maskObj(x, ['name', 'dept', 'role', 'level', 'perf', 'goal', 'sat', 'eng', 'proj']));
     const perfKpisView = perfKpis.map(x => maskObj(x, ['value']));
@@ -2674,7 +2671,7 @@ class Component extends DCLogic {
       wfDetailOpen: !!wfe, wfd, closeWfDetail: () => this.setState({ wfId: null }),
       toast: s.toast,
 
-      perfDeptFilters, perfGenderFilters, perfDeptDD, perfGenderDD, perfKpis, perfTrend, perfByDept, perfRows: perfRowsView, perfCount: pFiltered.length,
+      perfKpis, perfTrend, perfByDept, perfRows: perfRowsView, perfCount: pFiltered.length,
       perfDetailOpen: !!pfe, pd: pdView, closePerfDetail: () => this.setState({ perfId: null }),
     };
   }

@@ -1,0 +1,61 @@
+{
+  "ScenarioTitle": "intent.script.dialog 데모 — 삭제 확인",
+  "StartSteps": ["Step1"],
+  "Steps": {
+    "Step1": {
+      "StepType": "StepView",
+      "UseBackButton": true,
+      "Question": "주문 내역",
+      "Events": {
+        "Init": [
+          {
+            "Action": "Script",
+            "intent": {
+              "mock": {
+                "CtgOrder": [
+                  { "fOrderId": "O-001", "fItemName": "아메리카노", "fAmount": 4500 },
+                  { "fOrderId": "O-002", "fItemName": "라떼", "fAmount": 5000 }
+                ]
+              }
+            }
+          }
+        ],
+        "RequestDeleteEvent": [
+          {
+            "Action": "Script",
+            "intent": {
+              "script": {
+                "kind": "dialog",
+                "type": "Alert",
+                "title": "주문 삭제",
+                "body": "선택한 주문을 삭제하시겠습니까?",
+                "buttons": [
+                  { "label": "삭제", "event": "DeleteConfirmEvent" },
+                  { "label": "취소", "color": "sub" }
+                ]
+              }
+            }
+          }
+        ],
+        "DeleteConfirmEvent": [
+          {
+            "Action": "Script",
+            "Script": "_c.CtgOrder.activeSector.release()\nf.Content('f_listGroup').reload()"
+          }
+        ]
+      },
+      "Contents": [
+        {
+          "ContentsType": "Group",
+          "Id": "f_1",
+          "UseDataConnection": true,
+          "DataConnection": { "TargetType": "category", "CategoryName": "CtgOrder", "DataUsage": "query" },
+          "Contents": []
+        }
+      ]
+    }
+  },
+  "Events": {},
+  "ServiceBinding": {},
+  "Collections": {}
+}

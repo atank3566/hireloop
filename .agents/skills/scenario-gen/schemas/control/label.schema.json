@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/label.schema.json",
+  "title": "Label",
+  "description": "텍스트/아이콘 표시 전용. 입력 없음. labeltext / LabelCKey 두 모드. UseMove / UseClickEvent 로 Group / Button 과 동일한 클릭 패턴 지원.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "Label" },
+        "LabelType": {
+          "type": "string",
+          "enum": ["labeltext", "LabelCKey"],
+          "description": "labeltext=정적 텍스트(+바인딩) / LabelCKey=카테고리 필드값 직접 표시."
+        },
+        "labeltext": {
+          "type": "string",
+          "description": "LabelType='labeltext' 일 때 표시 텍스트. {{i18n}} / {=Field} / {=$Field}(콤마) / {% JS %} 사용 가능. Load.sector 사용 불가."
+        },
+        "LabelCKey": {
+          "type": "string",
+          "description": "LabelType='LabelCKey' 일 때 표시할 컬렉션 필드명."
+        },
+        "ImageStyle": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "아이콘 라벨용 이미지 스타일."
+        },
+        "UseFullShape": { "type": "boolean", "default": false, "description": "라벨 전체 영역 사용 (engine const K.USE_FULLSHAPE='UseFullShape'). ★ AI 생성 시 미포함 (사용자 수동 설정 전용)." },
+        "UseTriming":   { "type": "boolean", "default": false, "description": "텍스트 말줄임 (...) 처리. ★ 오타 'Triming' 운영 키 그대로 — 'Trimming' 아님 (engine const K.USE_TRIMMING='UseTriming'). ★ AI 생성 시 미포함 (사용자 수동 설정 전용)." },
+        "TooltipType": { "type": "string", "description": "툴팁 모드 키 (정적 텍스트 / 카테고리 필드값 등 운영 키 기준). ★ PC 전용 — 모바일 시나리오 생성 시 미포함 (AI 생성 금지, 키 자체를 두지 말 것)." },
+        "TooltipText": { "type": "string", "description": "TooltipType 이 정적 텍스트 모드일 때 표시할 툴팁 문자열. ★ PC 전용 — 모바일 시나리오 생성 시 미포함 (AI 생성 금지, 키 자체를 두지 말 것)." },
+        "TooltipCKey": { "type": "string", "description": "TooltipType 이 카테고리 필드 모드일 때 표시할 컬렉션 필드명. ★ PC 전용 — 모바일 시나리오 생성 시 미포함 (AI 생성 금지, 키 자체를 두지 말 것)." },
+        "UseClickEvent": {
+          "type": "boolean",
+          "default": false,
+          "description": "클릭 이벤트 사용. Events.Click 핸들러 명과 함께. UseMove 와 같이 쓰면 UseMove 가 먼저 동작."
+        },
+        "UseMove": {
+          "type": "boolean",
+          "default": false,
+          "description": "클릭 시 Step 이동. MoveSteps 와 함께."
+        },
+        "MoveSteps": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "이동 대상 Step 정의. UseMove=true 일 때. MoveStepOrder 배열의 각 StepId 마다 동일 레벨에 옵션 객체(MoveTo/Direction 등) 슬롯이 함께 존재해야 한다.",
+          "properties": {
+            "MoveStepOrder": {
+              "type": "array",
+              "minItems": 1,
+              "items": { "type": "string", "pattern": "^Step[1-9][0-9]*$" }
+            }
+          },
+          "patternProperties": {
+            "^Step[1-9][0-9]*$": {
+              "type": "object",
+              "additionalProperties": true,
+              "description": "StepId 별 이동 설정. 신규 생성 시 { MoveTo: 'Next', Direction: 'toRight' } 로 초기화.",
+              "properties": {
+                "Condition": { "type": "string", "description": "이동 조건식 (빈 문자열=무조건)." },
+                "MoveTo": {
+                  "type": "string",
+                  "enum": ["Next", "Prev", "Prev_ReStart", "Init"],
+                  "description": "이동 동작. const.js MOVETYPE 참조."
+                },
+                "Direction": { "type": "string", "description": "MoveTo='Next' 일 때 네비게이션 방향 (예: toBottom, toRight)." }
+              }
+            }
+          }
+        },
+        "Events": { "$ref": "_base.schema.json#/$defs/labelEvents" }
+      }
+    },
+    {
+      "$comment": "LabelType='labeltext' 면 labeltext 필요.",
+      "if": {
+        "properties": { "LabelType": { "const": "labeltext" } },
+        "required": ["LabelType"]
+      },
+      "then": { "required": ["labeltext"] }
+    },
+    {
+      "$comment": "LabelType='LabelCKey' 면 LabelCKey 필요.",
+      "if": {
+        "properties": { "LabelType": { "const": "LabelCKey" } },
+        "required": ["LabelType"]
+      },
+      "then": { "required": ["LabelCKey"] }
+    },
+    {
+      "$comment": "UseMove=true 면 MoveSteps 필요.",
+      "if": {
+        "properties": { "UseMove": { "const": true } },
+        "required": ["UseMove"]
+      },
+      "then": { "required": ["MoveSteps"] }
+    },
+    {
+      "$comment": "PC 전용 툴팁 키는 모바일 시나리오 메타에 등장 금지 — 키 존재 자체 차단 (명세는 properties 에 유지하되 옵션 차원 강제).",
+      "not": {
+        "anyOf": [
+          { "required": ["TooltipType"] },
+          { "required": ["TooltipText"] },
+          { "required": ["TooltipCKey"] }
+        ]
+      }
+    }
+  ]
+}

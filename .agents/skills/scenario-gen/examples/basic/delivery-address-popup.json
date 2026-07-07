@@ -1,0 +1,2175 @@
+{
+  "Steps": {
+    "Step2": {
+      "StepDialogType": "PopUp",
+      "hideDlgHeader": false,
+      "UseStepHeader": true,
+      "StepType": "StepView",
+      "BottomButtons": [
+        {
+          "FontStyle": {
+            "FontColor": "var(--colorSub9)",
+            "UseFont": true
+          },
+          "BgStyle": {
+            "BgColor": "var(--colorWhite)",
+            "UseBackground": true
+          },
+          "Id": "f_172",
+          "ButtonName": "취소",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "BorderStyle": {
+            "BorderColor": "var(--colorGray4)",
+            "SizeSet": "All",
+            "Useborder": true,
+            "BorderSize": 1,
+            "BorderType": "solid"
+          }
+        },
+        {
+          "ButtonName": "저장",
+          "MoveTo": "Next",
+          "Next": {
+            "Step1": "",
+            "MoveStepOrder": [
+              "Step1"
+            ]
+          },
+          "BgStyle": {
+            "BgColor": "var(--colorBlack)",
+            "UseBackground": true
+          },
+          "Id": "f_173",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "Direction": ""
+        }
+      ],
+      "StepName": "",
+      "StepTitle": "배송지 신규입력",
+      "Contents": [
+        {
+          "Contents": [
+            {
+              "ControlDefaultName": "InputText1",
+              "Placeholder": "받는 분의 이름 입력",
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              },
+              "minWidth": {
+                "MatchText": false,
+                "SizeValue": "150",
+                "SizeUnit": "px"
+              },
+              "Caption": "받는 분",
+              "isColumnCtrl": false,
+              "ControlStyle": "styleInputValueLine",
+              "InputType": "text",
+              "ControlType": "InputText",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "70",
+                "SizeUnit": "px"
+              },
+              "Id": "f_180",
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13"
+              },
+              "Width": {
+                "MatchText": false,
+                "SizeValue": "100",
+                "SizeUnit": "%"
+              },
+              "maxWidth": {
+                "MatchText": false,
+                "SizeValue": "500",
+                "SizeUnit": "px"
+              },
+              "ControlName2": "InputText1"
+            },
+            {
+              "ControlDefaultName": "InputText1",
+              "Placeholder": "상호명 입력",
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              },
+              "minWidth": {
+                "MatchText": false,
+                "SizeValue": "150",
+                "SizeUnit": "px"
+              },
+              "Caption": "상호명",
+              "isColumnCtrl": false,
+              "ControlStyle": "styleInputValueLine",
+              "InputType": "text",
+              "ControlType": "InputText",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "70",
+                "SizeUnit": "px"
+              },
+              "Id": "f_3808",
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13"
+              },
+              "Width": {
+                "MatchText": false,
+                "SizeValue": "100",
+                "SizeUnit": "%"
+              },
+              "maxWidth": {
+                "MatchText": false,
+                "SizeValue": "500",
+                "SizeUnit": "px"
+              },
+              "ControlName2": "InputText1"
+            },
+            {
+              "ControlDefaultName": "InputText1",
+              "Placeholder": "연락처1 입력",
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              },
+              "minWidth": {
+                "MatchText": false,
+                "SizeValue": "150",
+                "SizeUnit": "px"
+              },
+              "Caption": "연락처1",
+              "isColumnCtrl": false,
+              "ControlStyle": "styleInputValueLine",
+              "InputType": "text",
+              "ControlType": "InputText",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "70",
+                "SizeUnit": "px"
+              },
+              "Id": "f_4012",
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13"
+              },
+              "Width": {
+                "MatchText": false,
+                "SizeValue": "100",
+                "SizeUnit": "%"
+              },
+              "maxWidth": {
+                "MatchText": false,
+                "SizeValue": "500",
+                "SizeUnit": "px"
+              },
+              "ControlName2": "InputText1"
+            },
+            {
+              "ControlDefaultName": "InputText1",
+              "Placeholder": "연락처2 입력",
+              "FontStyle": {
+                "UseFont": true,
+                "FontSize": "14"
+              },
+              "minWidth": {
+                "MatchText": false,
+                "SizeValue": "150",
+                "SizeUnit": "px"
+              },
+              "Caption": "연락처2 (선택)",
+              "isColumnCtrl": false,
+              "ControlStyle": "styleInputValueLine",
+              "InputType": "text",
+              "ControlType": "InputText",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "70",
+                "SizeUnit": "px"
+              },
+              "Id": "f_4322",
+              "CaptionStyle": {
+                "UseDesign": true,
+                "FontWeight": "SemiBold",
+                "CaptionPosition": "",
+                "FontSize": "13"
+              },
+              "Width": {
+                "MatchText": false,
+                "SizeValue": "100",
+                "SizeUnit": "%"
+              },
+              "maxWidth": {
+                "MatchText": false,
+                "SizeValue": "500",
+                "SizeUnit": "px"
+              },
+              "ControlName2": "InputText1"
+            },
+            {
+              "Contents": [
+                {
+                  "Contents": [
+                    {
+                      "ControlDefaultName": "InputText1",
+                      "Placeholder": "우편번호",
+                      "FontStyle": {
+                        "UseFont": true,
+                        "FontSize": "14"
+                      },
+                      "minWidth": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "ControlKey": "ReadOnly",
+                      "Caption": "주소",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "styleInputValueLine",
+                      "InputType": "text",
+                      "ControlType": "InputText",
+                      "Height": {
+                        "MatchText": false,
+                        "SizeValue": "70",
+                        "SizeUnit": "px"
+                      },
+                      "Id": "f_193",
+                      "CaptionStyle": {
+                        "UseDesign": true,
+                        "FontWeight": "SemiBold",
+                        "CaptionPosition": "",
+                        "FontSize": "13"
+                      },
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "100",
+                        "SizeUnit": "%"
+                      },
+                      "maxWidth": {
+                        "MatchText": false,
+                        "SizeValue": "500",
+                        "SizeUnit": "px"
+                      },
+                      "ControlName2": "InputText1"
+                    },
+                    {
+                      "ControlDefaultName": "Button1",
+                      "FontStyle": {
+                        "UseFont": true,
+                        "FontSize": "13"
+                      },
+                      "BorderStyle": {},
+                      "UseClickEvent": true,
+                      "Caption": "Button1",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "styleBtnRadiusFillBlack",
+                      "ButtonName": "우편번호 검색",
+                      "Padding": {},
+                      "ControlType": "Button",
+                      "Height": {
+                        "MatchText": false,
+                        "SizeValue": "44",
+                        "SizeUnit": "px"
+                      },
+                      "Id": "f_194",
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "100",
+                        "SizeUnit": "px"
+                      },
+                      "Margin": {},
+                      "UseFixedSize": true,
+                      "ControlName2": "Button1"
+                    }
+                  ],
+                  "DisplayStyle": {
+                    "columnGapValue": "4",
+                    "columnGapUnit": "px",
+                    "DisplayType": "Flex",
+                    "FlexDirection": "row",
+                    "DisplayVerticalAlign": "Bottom",
+                    "DisplayAlign": "Left",
+                    "flexBoxType": "align",
+                    "UseDisplay": true
+                  },
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "text"
+                  },
+                  "Id": "f_191",
+                  "ContentsName": "inputWrap",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "isColumnCtrl": false,
+                  "UseDataConnection": false
+                },
+                {
+                  "ControlDefaultName": "InputText1",
+                  "Placeholder": "",
+                  "FontStyle": {
+                    "UseFont": true,
+                    "FontSize": "15"
+                  },
+                  "minWidth": {
+                    "MatchText": false,
+                    "SizeValue": "150",
+                    "SizeUnit": "px"
+                  },
+                  "ControlKey": "Disabled",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "ControlStyle": "styleInputValueLine",
+                  "InputType": "text",
+                  "ControlType": "InputText",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "44",
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_5451",
+                  "ControlName2": "InputText1",
+                  "CaptionStyle": {
+                    "UseDesign": false
+                  },
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": "100",
+                    "SizeUnit": "%"
+                  },
+                  "maxWidth": {
+                    "MatchText": false,
+                    "SizeValue": "500",
+                    "SizeUnit": "px"
+                  }
+                },
+                {
+                  "ControlDefaultName": "InputText1",
+                  "Placeholder": "",
+                  "FontStyle": {
+                    "UseFont": true,
+                    "FontSize": "15"
+                  },
+                  "minWidth": {
+                    "MatchText": false,
+                    "SizeValue": "150",
+                    "SizeUnit": "px"
+                  },
+                  "ControlKey": "Disabled",
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "ControlStyle": "styleInputValueLine",
+                  "InputType": "text",
+                  "ControlType": "InputText",
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "44",
+                    "SizeUnit": "px"
+                  },
+                  "Id": "f_5488",
+                  "ControlName2": "InputText1",
+                  "CaptionStyle": {
+                    "UseDesign": false
+                  },
+                  "Width": {
+                    "MatchText": false,
+                    "SizeValue": "100",
+                    "SizeUnit": "%"
+                  },
+                  "maxWidth": {
+                    "MatchText": false,
+                    "SizeValue": "500",
+                    "SizeUnit": "px"
+                  }
+                }
+              ],
+              "DisplayStyle": {
+                "rowGapValue": "8",
+                "DisplayType": "Flex",
+                "FlexDirection": "column",
+                "DisplayVerticalAlign": "Top",
+                "DisplayAlign": "Left",
+                "flexBoxType": "align",
+                "UseDisplay": true,
+                "rowGapUnit": "px"
+              },
+              "Padding": {},
+              "Id": "f_5124",
+              "ContentsName": "주소",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseFixedSize": true,
+              "isColumnCtrl": false,
+              "UseDataConnection": false
+            },
+            {
+              "ControlDefaultName": "CheckBox1",
+              "FontStyle": {
+                "FontColor": "var(--colorGray3)",
+                "UseFont": true,
+                "FontAlign": "flex-end",
+                "FontSize": "14"
+              },
+              "UseAlignRight": false,
+              "Caption": "CheckBox1",
+              "isColumnCtrl": false,
+              "ControlStyle": "styleCircle",
+              "Padding": {},
+              "ControlType": "CheckBox",
+              "Items": [
+                {
+                  "ItemName": "기본 배송지로 설정",
+                  "ItemValue": ""
+                }
+              ],
+              "Height": {
+                "MatchText": true,
+                "SizeValue": ""
+              },
+              "Id": "f_6526",
+              "UseTriming": false,
+              "Width": {
+                "MatchText": true,
+                "SizeValue": "",
+                "SizeUnit": "text"
+              },
+              "UseFixedSize": false,
+              "ControlName2": "CheckBox1"
+            }
+          ],
+          "DisplayStyle": {
+            "rowGapValue": "12",
+            "DisplayType": "Flex",
+            "FlexDirection": "column",
+            "DisplayVerticalAlign": "Top",
+            "DisplayAlign": "Left",
+            "flexBoxType": "align",
+            "UseDisplay": true,
+            "rowGapUnit": "px"
+          },
+          "Id": "f_177",
+          "ContentsName": "contentsWrap",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "isColumnCtrl": false,
+          "UseDataConnection": false
+        }
+      ],
+      "FixedContentsTop": [],
+      "StepButton": {
+        "Height": {
+          "SizeValue": 56,
+          "SizeUnit": "px"
+        }
+      },
+      "Next": [],
+      "UseBottomButton": true,
+      "Padding": {},
+      "Height": {
+        "MatchText": false,
+        "SizeValue": "630"
+      },
+      "UseBackButton": false,
+      "Width": {
+        "MatchText": false,
+        "SizeValue": "90",
+        "SizeUnit": "%"
+      },
+      "StepRow": 0,
+      "StepCol": 1,
+      "ContentsType": "Group"
+    },
+    "Step1": {
+      "StepDialogType": "PopUp",
+      "hideDlgHeader": false,
+      "UseStepHeader": true,
+      "StepType": "StepView",
+      "BottomButtons": [
+        {
+          "FontStyle": {
+            "FontColor": "var(--colorSub9)",
+            "UseFont": true
+          },
+          "BgStyle": {
+            "BgColor": "var(--colorWhite)",
+            "UseBackground": true
+          },
+          "Id": "f_4",
+          "ButtonName": "취소",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "BorderStyle": {
+            "BorderColor": "var(--colorGray4)",
+            "SizeSet": "All",
+            "Useborder": true,
+            "BorderSize": 1,
+            "BorderType": "solid"
+          }
+        },
+        {
+          "BgStyle": {
+            "BgColor": "var(--colorBlack)",
+            "UseBackground": true
+          },
+          "Id": "f_5",
+          "ButtonName": "확인",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          }
+        }
+      ],
+      "StepName": "",
+      "StepTitle": "배송지 변경하기",
+      "Contents": [
+        {
+          "Contents": [
+            {
+              "Contents": [
+                {
+                  "Contents": [
+                    {
+                      "ControlDefaultName": "Label2",
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray1)",
+                        "UseFont": true,
+                        "UseBold": true,
+                        "FontAlign": "flex-start",
+                        "FontSize": "15"
+                      },
+                      "BorderStyle": {},
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "styleFontMin",
+                      "labeltext": "커피스테이션",
+                      "LabelType": "labeltext",
+                      "Padding": {},
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_15",
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "UseFixedSize": true,
+                      "Margin": {},
+                      "ControlName2": "Label2"
+                    },
+                    {
+                      "ControlDefaultName": "Label2",
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray3)",
+                        "UseFont": true,
+                        "UseBold": false,
+                        "FontAlign": "flex-start",
+                        "FontSize": "13"
+                      },
+                      "BorderStyle": {},
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "StyleRadiusLightFill",
+                      "labeltext": "기본 배송지",
+                      "LabelType": "labeltext",
+                      "Padding": {},
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_16",
+                      "Width": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "UseFixedSize": true,
+                      "Margin": {},
+                      "ControlName2": "Label2"
+                    }
+                  ],
+                  "DisplayStyle": {
+                    "columnGapValue": "8",
+                    "columnGapUnit": "px",
+                    "DisplayType": "Flex",
+                    "FlexDirection": "row",
+                    "DisplayVerticalAlign": "Top",
+                    "DisplayAlign": "Left",
+                    "flexBoxType": "align",
+                    "UseDisplay": true
+                  },
+                  "Id": "f_14",
+                  "ContentsName": "Group2",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false
+                },
+                {
+                  "ControlDefaultName": "Label2",
+                  "FontStyle": {
+                    "FontColor": "var(--colorGray3)",
+                    "UseFont": true,
+                    "UseBold": false,
+                    "FontAlign": "flex-start",
+                    "FontSize": ""
+                  },
+                  "BorderStyle": {},
+                  "Caption": "",
+                  "isColumnCtrl": false,
+                  "ControlStyle": "styleFontMin",
+                  "labeltext": "[12345] 서울특별시 강남구 우아동 커피대로 341 (우연동 123-1)",
+                  "LabelType": "labeltext",
+                  "Padding": {},
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": ""
+                  },
+                  "Id": "f_17",
+                  "Width": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "text"
+                  },
+                  "UseFixedSize": true,
+                  "Margin": {},
+                  "ControlName2": "Label2"
+                },
+                {
+                  "ControlDefaultName": "Label2",
+                  "FontStyle": {
+                    "FontColor": "var(--colorGray3)",
+                    "UseFont": true,
+                    "UseBold": false,
+                    "FontAlign": "flex-start",
+                    "FontSize": ""
+                  },
+                  "BorderStyle": {},
+                  "Caption": "Label2",
+                  "isColumnCtrl": false,
+                  "ControlStyle": "styleFontMin",
+                  "labeltext": "박사장 010-1234-1234 / 02-1234-1234",
+                  "LabelType": "labeltext",
+                  "Padding": {},
+                  "ControlType": "Label",
+                  "Height": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "text"
+                  },
+                  "Id": "f_3465",
+                  "UseTriming": false,
+                  "ControlName2": "박사장 010-1234-1234 / 02-1234-1234_copy_copy",
+                  "Width": {
+                    "MatchText": true,
+                    "SizeValue": "",
+                    "SizeUnit": "text"
+                  },
+                  "UseFixedSize": true,
+                  "Margin": {}
+                }
+              ],
+              "DisplayStyle": {
+                "rowGapValue": "8",
+                "DisplayType": "Flex",
+                "FlexDirection": "column",
+                "DisplayVerticalAlign": "Center",
+                "DisplayAlign": "Left",
+                "flexBoxType": "align",
+                "UseDisplay": true,
+                "rowGapUnit": "px"
+              },
+              "BorderStyle": {
+                "Useborder": true,
+                "BorderColor": "var(--colorGray4)",
+                "BorderRadius": "12",
+                "SizeSet": "All",
+                "BorderSize": 1,
+                "BorderType": "solid",
+                "RadiusSet": "All"
+              },
+              "Padding": {
+                "All": "20",
+                "UseAuto": true,
+                "SizeUnit": "px"
+              },
+              "Id": "f_9",
+              "ContentsName": "infoWrap",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseFixedSize": true,
+              "isColumnCtrl": false,
+              "UseDataConnection": false
+            },
+            {
+              "Contents": [
+                {
+                  "Contents": [
+                    {
+                      "ControlDefaultName": "Label2",
+                      "FontStyle": {
+                        "FontColor": "var(--colorGray1)",
+                        "UseFont": true,
+                        "UseBold": true,
+                        "FontAlign": "flex-start",
+                        "FontSize": "13"
+                      },
+                      "BorderStyle": {},
+                      "Caption": "",
+                      "isColumnCtrl": false,
+                      "ControlStyle": "styleFontMin",
+                      "labeltext": "추가 배송지",
+                      "LabelType": "labeltext",
+                      "Padding": {},
+                      "ControlType": "Label",
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": ""
+                      },
+                      "Id": "f_20",
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "100",
+                        "SizeUnit": "px"
+                      },
+                      "UseFixedSize": true,
+                      "Margin": {},
+                      "ControlName2": "Label2"
+                    }
+                  ],
+                  "Id": "f_19",
+                  "ContentsName": "titleWrap",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseFixedSize": true,
+                  "UseDataConnection": false
+                },
+                {
+                  "ScrollType": "ScrollY",
+                  "Contents": [
+                    {
+                      "BorderStyle": {
+                        "Useborder": true,
+                        "BorderColor": "var(--colorGray4)",
+                        "BorderRadius": "8",
+                        "SizeSet": "All",
+                        "BorderSize": "1",
+                        "BorderType": "solid",
+                        "RadiusSet": "All"
+                      },
+                      "DisplayStyle": {
+                        "FlexDirection": "column",
+                        "DisplayVerticalAlign": "Center",
+                        "DisplayAlign": "Left",
+                        "DisplayType": "Flex",
+                        "flexBoxType": "align",
+                        "UseDisplay": true
+                      },
+                      "BgStyle": {},
+                      "ContentsName": "repeatRow",
+                      "ContentStyle": "None",
+                      "Contents": [
+                        {
+                          "Contents": [
+                            {
+                              "ControlDefaultName": "CheckBox1",
+                              "CheckBoxType": "",
+                              "FontStyle": {
+                                "UseFont": true,
+                                "FontAlign": "center",
+                                "UseBold": false,
+                                "FontSize": "13"
+                              },
+                              "BorderStyle": {},
+                              "Caption": "CheckBox1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleSquare",
+                              "Padding": {},
+                              "ControlType": "CheckBox",
+                              "Items": [
+                                {
+                                  "ItemName": "",
+                                  "ItemValue": ""
+                                }
+                              ],
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Id": "f_751",
+                              "ControlName2": "CheckBox1_copy",
+                              "Width": {
+                                "MatchText": false,
+                                "SizeValue": "20",
+                                "SizeUnit": "px"
+                              },
+                              "UseFixedSize": true
+                            },
+                            {
+                              "ControlDefaultName": "Label2",
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray1)",
+                                "UseFont": true,
+                                "UseBold": true,
+                                "FontAlign": "flex-start",
+                                "FontSize": "15"
+                              },
+                              "BorderStyle": {},
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleFontMin",
+                              "labeltext": "어반빈즈",
+                              "LabelType": "labeltext",
+                              "Padding": {},
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_34",
+                              "UseTriming": false,
+                              "Width": {
+                                "MatchText": false,
+                                "SizeValue": "100",
+                                "SizeUnit": "%"
+                              },
+                              "UseFixedSize": false,
+                              "Margin": {},
+                              "ControlName2": "Label2"
+                            },
+                            {
+                              "ControlDefaultName": "Button1",
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray3)",
+                                "UseFont": true,
+                                "UseBold": false,
+                                "FontAlign": "flex-start",
+                                "FontSize": "13"
+                              },
+                              "BorderStyle": {
+                                "BorderColor": "var(--colorGray5)",
+                                "SizeSet": "All",
+                                "Useborder": true,
+                                "BorderSize": 1,
+                                "BorderType": "solid"
+                              },
+                              "UseClickEvent": true,
+                              "Caption": "Button1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleBtnRadiusLineGrey",
+                              "ButtonName": "삭제",
+                              "Padding": {},
+                              "ControlType": "Button",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Id": "f_2089",
+                              "ControlName2": "삭제_copy",
+                              "Width": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Margin": {},
+                              "UseFixedSize": true
+                            }
+                          ],
+                          "DisplayStyle": {
+                            "columnGapValue": "8",
+                            "columnGapUnit": "px",
+                            "DisplayType": "Flex",
+                            "FlexDirection": "row",
+                            "DisplayVerticalAlign": "Center",
+                            "DisplayAlign": "Left",
+                            "flexBoxType": "align",
+                            "UseDisplay": true
+                          },
+                          "Id": "f_33",
+                          "ContentsName": "Group2",
+                          "Width": {
+                            "SizeValue": 100,
+                            "SizeUnit": "%"
+                          },
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseFixedSize": true,
+                          "UseDataConnection": false
+                        },
+                        {
+                          "ControlDefaultName": "Label2",
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "UseBold": false,
+                            "FontAlign": "flex-start",
+                            "FontSize": ""
+                          },
+                          "BorderStyle": {},
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "styleFontMin",
+                          "labeltext": "[12345] 서울특별시 강남구 우아동 커피대로 341 (우연동 123-1)",
+                          "LabelType": "labeltext",
+                          "Padding": {},
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": ""
+                          },
+                          "Id": "f_35",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true,
+                          "Margin": {},
+                          "ControlName2": "Label2"
+                        },
+                        {
+                          "ControlDefaultName": "Label2",
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "UseBold": false,
+                            "FontAlign": "flex-start",
+                            "FontSize": ""
+                          },
+                          "BorderStyle": {},
+                          "Caption": "Label2",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "styleFontMin",
+                          "labeltext": "박사장 010-1234-1234 / 02-1234-1234",
+                          "LabelType": "labeltext",
+                          "Padding": {},
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "Id": "f_1842",
+                          "UseTriming": false,
+                          "ControlName2": "박사장 010-1234-1234 / 02-1234-1234_copy",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true,
+                          "Margin": {}
+                        }
+                      ],
+                      "Padding": {
+                        "All": "16",
+                        "UseAuto": true,
+                        "SizeUnit": "px"
+                      },
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Id": "f_27",
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "100",
+                        "SizeUnit": "%"
+                      },
+                      "ContentsType": "Group",
+                      "UseFixedSize": true,
+                      "UseDataConnection": false
+                    },
+                    {
+                      "BorderStyle": {
+                        "Useborder": true,
+                        "BorderColor": "var(--colorGray4)",
+                        "BorderRadius": "8",
+                        "SizeSet": "All",
+                        "BorderSize": "1",
+                        "BorderType": "solid",
+                        "RadiusSet": "All"
+                      },
+                      "DisplayStyle": {
+                        "FlexDirection": "column",
+                        "DisplayVerticalAlign": "Center",
+                        "DisplayAlign": "Left",
+                        "DisplayType": "Flex",
+                        "flexBoxType": "align",
+                        "UseDisplay": true
+                      },
+                      "BgStyle": {},
+                      "ContentsName": "repeatRow_copy",
+                      "ContentStyle": "None",
+                      "Contents": [
+                        {
+                          "Contents": [
+                            {
+                              "ControlDefaultName": "CheckBox1",
+                              "CheckBoxType": "",
+                              "FontStyle": {
+                                "UseFont": true,
+                                "FontAlign": "center",
+                                "UseBold": false,
+                                "FontSize": "13"
+                              },
+                              "BorderStyle": {},
+                              "Caption": "CheckBox1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleSquare",
+                              "Padding": {},
+                              "ControlType": "CheckBox",
+                              "Items": [
+                                {
+                                  "ItemName": "",
+                                  "ItemValue": ""
+                                }
+                              ],
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Id": "f_2963",
+                              "ControlName2": "CheckBox1_copy",
+                              "Width": {
+                                "MatchText": false,
+                                "SizeValue": "20",
+                                "SizeUnit": "px"
+                              },
+                              "UseFixedSize": true
+                            },
+                            {
+                              "ControlDefaultName": "Label2",
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray1)",
+                                "UseFont": true,
+                                "UseBold": true,
+                                "FontAlign": "flex-start",
+                                "FontSize": "15"
+                              },
+                              "BorderStyle": {},
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleFontMin",
+                              "labeltext": "어반빈즈 2호점",
+                              "LabelType": "labeltext",
+                              "Padding": {},
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_2964",
+                              "UseTriming": false,
+                              "Width": {
+                                "MatchText": false,
+                                "SizeValue": "100",
+                                "SizeUnit": "%"
+                              },
+                              "UseFixedSize": false,
+                              "Margin": {},
+                              "ControlName2": "Label2"
+                            },
+                            {
+                              "ControlDefaultName": "Button1",
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray3)",
+                                "UseFont": true,
+                                "UseBold": false,
+                                "FontAlign": "flex-start",
+                                "FontSize": "13"
+                              },
+                              "BorderStyle": {
+                                "BorderColor": "var(--colorGray5)",
+                                "SizeSet": "All",
+                                "Useborder": true,
+                                "BorderSize": 1,
+                                "BorderType": "solid"
+                              },
+                              "UseClickEvent": true,
+                              "Caption": "Button1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleBtnRadiusLineGrey",
+                              "ButtonName": "삭제",
+                              "Padding": {},
+                              "ControlType": "Button",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Id": "f_2965",
+                              "ControlName2": "삭제_copy",
+                              "Width": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Margin": {},
+                              "UseFixedSize": true
+                            }
+                          ],
+                          "DisplayStyle": {
+                            "columnGapValue": "8",
+                            "columnGapUnit": "px",
+                            "DisplayType": "Flex",
+                            "FlexDirection": "row",
+                            "DisplayVerticalAlign": "Center",
+                            "DisplayAlign": "Left",
+                            "flexBoxType": "align",
+                            "UseDisplay": true
+                          },
+                          "Id": "f_2962",
+                          "ContentsName": "Group2",
+                          "Width": {
+                            "SizeValue": 100,
+                            "SizeUnit": "%"
+                          },
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseFixedSize": true,
+                          "UseDataConnection": false
+                        },
+                        {
+                          "ControlDefaultName": "Label2",
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "UseBold": false,
+                            "FontAlign": "flex-start",
+                            "FontSize": ""
+                          },
+                          "BorderStyle": {},
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "styleFontMin",
+                          "labeltext": "[12345] 서울특별시 강남구 우아동 커피대로 341 (우연동 123-1)",
+                          "LabelType": "labeltext",
+                          "Padding": {},
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": ""
+                          },
+                          "Id": "f_2966",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true,
+                          "Margin": {},
+                          "ControlName2": "Label2"
+                        },
+                        {
+                          "ControlDefaultName": "Label2",
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "UseBold": false,
+                            "FontAlign": "flex-start",
+                            "FontSize": ""
+                          },
+                          "BorderStyle": {},
+                          "Caption": "Label2",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "styleFontMin",
+                          "labeltext": "박사장 010-1234-1234 / 02-1234-1234",
+                          "LabelType": "labeltext",
+                          "Padding": {},
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "Id": "f_2967",
+                          "UseTriming": false,
+                          "ControlName2": "박사장 010-1234-1234 / 02-1234-1234_copy",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true,
+                          "Margin": {}
+                        }
+                      ],
+                      "Padding": {
+                        "All": "16",
+                        "UseAuto": true,
+                        "SizeUnit": "px"
+                      },
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Id": "f_2961",
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "100",
+                        "SizeUnit": "%"
+                      },
+                      "ContentsType": "Group",
+                      "UseFixedSize": true,
+                      "UseDataConnection": false
+                    },
+                    {
+                      "BorderStyle": {
+                        "Useborder": true,
+                        "BorderColor": "var(--colorGray4)",
+                        "BorderRadius": "8",
+                        "SizeSet": "All",
+                        "BorderSize": "1",
+                        "BorderType": "solid",
+                        "RadiusSet": "All"
+                      },
+                      "DisplayStyle": {
+                        "FlexDirection": "column",
+                        "DisplayVerticalAlign": "Center",
+                        "DisplayAlign": "Left",
+                        "DisplayType": "Flex",
+                        "flexBoxType": "align",
+                        "UseDisplay": true
+                      },
+                      "BgStyle": {},
+                      "ContentsName": "repeatRow_copy",
+                      "ContentStyle": "None",
+                      "Contents": [
+                        {
+                          "Contents": [
+                            {
+                              "ControlDefaultName": "CheckBox1",
+                              "CheckBoxType": "",
+                              "FontStyle": {
+                                "UseFont": true,
+                                "FontAlign": "center",
+                                "UseBold": false,
+                                "FontSize": "13"
+                              },
+                              "BorderStyle": {},
+                              "Caption": "CheckBox1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleSquare",
+                              "Padding": {},
+                              "ControlType": "CheckBox",
+                              "Items": [
+                                {
+                                  "ItemName": "",
+                                  "ItemValue": ""
+                                }
+                              ],
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Id": "f_3036",
+                              "ControlName2": "CheckBox1_copy",
+                              "Width": {
+                                "MatchText": false,
+                                "SizeValue": "20",
+                                "SizeUnit": "px"
+                              },
+                              "UseFixedSize": true
+                            },
+                            {
+                              "ControlDefaultName": "Label2",
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray1)",
+                                "UseFont": true,
+                                "UseBold": true,
+                                "FontAlign": "flex-start",
+                                "FontSize": "15"
+                              },
+                              "BorderStyle": {},
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleFontMin",
+                              "labeltext": "빈스퀘어",
+                              "LabelType": "labeltext",
+                              "Padding": {},
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_3037",
+                              "UseTriming": false,
+                              "Width": {
+                                "MatchText": false,
+                                "SizeValue": "100",
+                                "SizeUnit": "%"
+                              },
+                              "UseFixedSize": false,
+                              "Margin": {},
+                              "ControlName2": "Label2"
+                            },
+                            {
+                              "ControlDefaultName": "Button1",
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray3)",
+                                "UseFont": true,
+                                "UseBold": false,
+                                "FontAlign": "flex-start",
+                                "FontSize": "13"
+                              },
+                              "BorderStyle": {
+                                "BorderColor": "var(--colorGray5)",
+                                "SizeSet": "All",
+                                "Useborder": true,
+                                "BorderSize": 1,
+                                "BorderType": "solid"
+                              },
+                              "UseClickEvent": true,
+                              "Caption": "Button1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleBtnRadiusLineGrey",
+                              "ButtonName": "삭제",
+                              "Padding": {},
+                              "ControlType": "Button",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Id": "f_3038",
+                              "ControlName2": "삭제_copy",
+                              "Width": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Margin": {},
+                              "UseFixedSize": true
+                            }
+                          ],
+                          "DisplayStyle": {
+                            "columnGapValue": "8",
+                            "columnGapUnit": "px",
+                            "DisplayType": "Flex",
+                            "FlexDirection": "row",
+                            "DisplayVerticalAlign": "Center",
+                            "DisplayAlign": "Left",
+                            "flexBoxType": "align",
+                            "UseDisplay": true
+                          },
+                          "Id": "f_3035",
+                          "ContentsName": "Group2",
+                          "Width": {
+                            "SizeValue": 100,
+                            "SizeUnit": "%"
+                          },
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseFixedSize": true,
+                          "UseDataConnection": false
+                        },
+                        {
+                          "ControlDefaultName": "Label2",
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "UseBold": false,
+                            "FontAlign": "flex-start",
+                            "FontSize": ""
+                          },
+                          "BorderStyle": {},
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "styleFontMin",
+                          "labeltext": "[12345] 서울특별시 강남구 우아동 커피대로 341 (우연동 123-1)",
+                          "LabelType": "labeltext",
+                          "Padding": {},
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": ""
+                          },
+                          "Id": "f_3039",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true,
+                          "Margin": {},
+                          "ControlName2": "Label2"
+                        },
+                        {
+                          "ControlDefaultName": "Label2",
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "UseBold": false,
+                            "FontAlign": "flex-start",
+                            "FontSize": ""
+                          },
+                          "BorderStyle": {},
+                          "Caption": "Label2",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "styleFontMin",
+                          "labeltext": "박사장 010-1234-1234 / 02-1234-1234",
+                          "LabelType": "labeltext",
+                          "Padding": {},
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "Id": "f_3040",
+                          "UseTriming": false,
+                          "ControlName2": "박사장 010-1234-1234 / 02-1234-1234_copy",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true,
+                          "Margin": {}
+                        }
+                      ],
+                      "Padding": {
+                        "All": "16",
+                        "UseAuto": true,
+                        "SizeUnit": "px"
+                      },
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Id": "f_3034",
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "100",
+                        "SizeUnit": "%"
+                      },
+                      "ContentsType": "Group",
+                      "UseFixedSize": true,
+                      "UseDataConnection": false
+                    },
+                    {
+                      "BorderStyle": {
+                        "Useborder": true,
+                        "BorderColor": "var(--colorGray4)",
+                        "BorderRadius": "8",
+                        "SizeSet": "All",
+                        "BorderSize": "1",
+                        "BorderType": "solid",
+                        "RadiusSet": "All"
+                      },
+                      "DisplayStyle": {
+                        "FlexDirection": "column",
+                        "DisplayVerticalAlign": "Center",
+                        "DisplayAlign": "Left",
+                        "DisplayType": "Flex",
+                        "flexBoxType": "align",
+                        "UseDisplay": true
+                      },
+                      "BgStyle": {},
+                      "ContentsName": "repeatRow_copy",
+                      "ContentStyle": "None",
+                      "Contents": [
+                        {
+                          "Contents": [
+                            {
+                              "ControlDefaultName": "CheckBox1",
+                              "CheckBoxType": "",
+                              "FontStyle": {
+                                "UseFont": true,
+                                "FontAlign": "center",
+                                "UseBold": false,
+                                "FontSize": "13"
+                              },
+                              "BorderStyle": {},
+                              "Caption": "CheckBox1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleSquare",
+                              "Padding": {},
+                              "ControlType": "CheckBox",
+                              "Items": [
+                                {
+                                  "ItemName": "",
+                                  "ItemValue": ""
+                                }
+                              ],
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Id": "f_3125",
+                              "ControlName2": "CheckBox1_copy",
+                              "Width": {
+                                "MatchText": false,
+                                "SizeValue": "20",
+                                "SizeUnit": "px"
+                              },
+                              "UseFixedSize": true
+                            },
+                            {
+                              "ControlDefaultName": "Label2",
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray1)",
+                                "UseFont": true,
+                                "UseBold": true,
+                                "FontAlign": "flex-start",
+                                "FontSize": "15"
+                              },
+                              "BorderStyle": {},
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleFontMin",
+                              "labeltext": "어반빈즈 3호점",
+                              "LabelType": "labeltext",
+                              "Padding": {},
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_3126",
+                              "UseTriming": false,
+                              "Width": {
+                                "MatchText": false,
+                                "SizeValue": "100",
+                                "SizeUnit": "%"
+                              },
+                              "UseFixedSize": false,
+                              "Margin": {},
+                              "ControlName2": "Label2"
+                            },
+                            {
+                              "ControlDefaultName": "Button1",
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray3)",
+                                "UseFont": true,
+                                "UseBold": false,
+                                "FontAlign": "flex-start",
+                                "FontSize": "13"
+                              },
+                              "BorderStyle": {
+                                "BorderColor": "var(--colorGray5)",
+                                "SizeSet": "All",
+                                "Useborder": true,
+                                "BorderSize": 1,
+                                "BorderType": "solid"
+                              },
+                              "UseClickEvent": true,
+                              "Caption": "Button1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleBtnRadiusLineGrey",
+                              "ButtonName": "삭제",
+                              "Padding": {},
+                              "ControlType": "Button",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Id": "f_3127",
+                              "ControlName2": "삭제_copy",
+                              "Width": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Margin": {},
+                              "UseFixedSize": true
+                            }
+                          ],
+                          "DisplayStyle": {
+                            "columnGapValue": "8",
+                            "columnGapUnit": "px",
+                            "DisplayType": "Flex",
+                            "FlexDirection": "row",
+                            "DisplayVerticalAlign": "Center",
+                            "DisplayAlign": "Left",
+                            "flexBoxType": "align",
+                            "UseDisplay": true
+                          },
+                          "Id": "f_3124",
+                          "ContentsName": "Group2",
+                          "Width": {
+                            "SizeValue": 100,
+                            "SizeUnit": "%"
+                          },
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseFixedSize": true,
+                          "UseDataConnection": false
+                        },
+                        {
+                          "ControlDefaultName": "Label2",
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "UseBold": false,
+                            "FontAlign": "flex-start",
+                            "FontSize": ""
+                          },
+                          "BorderStyle": {},
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "styleFontMin",
+                          "labeltext": "[12345] 서울특별시 강남구 우아동 커피대로 341 (우연동 123-1)",
+                          "LabelType": "labeltext",
+                          "Padding": {},
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": ""
+                          },
+                          "Id": "f_3128",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true,
+                          "Margin": {},
+                          "ControlName2": "Label2"
+                        },
+                        {
+                          "ControlDefaultName": "Label2",
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "UseBold": false,
+                            "FontAlign": "flex-start",
+                            "FontSize": ""
+                          },
+                          "BorderStyle": {},
+                          "Caption": "Label2",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "styleFontMin",
+                          "labeltext": "박사장 010-1234-1234 / 02-1234-1234",
+                          "LabelType": "labeltext",
+                          "Padding": {},
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "Id": "f_3129",
+                          "UseTriming": false,
+                          "ControlName2": "박사장 010-1234-1234 / 02-1234-1234_copy",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true,
+                          "Margin": {}
+                        }
+                      ],
+                      "Padding": {
+                        "All": "16",
+                        "UseAuto": true,
+                        "SizeUnit": "px"
+                      },
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Id": "f_3123",
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "100",
+                        "SizeUnit": "%"
+                      },
+                      "ContentsType": "Group",
+                      "UseFixedSize": true,
+                      "UseDataConnection": false
+                    },
+                    {
+                      "BorderStyle": {
+                        "Useborder": true,
+                        "BorderColor": "var(--colorGray4)",
+                        "BorderRadius": "8",
+                        "SizeSet": "All",
+                        "BorderSize": "1",
+                        "BorderType": "solid",
+                        "RadiusSet": "All"
+                      },
+                      "DisplayStyle": {
+                        "FlexDirection": "column",
+                        "DisplayVerticalAlign": "Center",
+                        "DisplayAlign": "Left",
+                        "DisplayType": "Flex",
+                        "flexBoxType": "align",
+                        "UseDisplay": true
+                      },
+                      "BgStyle": {},
+                      "ContentsName": "repeatRow_copy",
+                      "ContentStyle": "None",
+                      "Contents": [
+                        {
+                          "Contents": [
+                            {
+                              "ControlDefaultName": "CheckBox1",
+                              "CheckBoxType": "",
+                              "FontStyle": {
+                                "UseFont": true,
+                                "FontAlign": "center",
+                                "UseBold": false,
+                                "FontSize": "13"
+                              },
+                              "BorderStyle": {},
+                              "Caption": "CheckBox1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleSquare",
+                              "Padding": {},
+                              "ControlType": "CheckBox",
+                              "Items": [
+                                {
+                                  "ItemName": "",
+                                  "ItemValue": ""
+                                }
+                              ],
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Id": "f_3230",
+                              "ControlName2": "CheckBox1_copy",
+                              "Width": {
+                                "MatchText": false,
+                                "SizeValue": "20",
+                                "SizeUnit": "px"
+                              },
+                              "UseFixedSize": true
+                            },
+                            {
+                              "ControlDefaultName": "Label2",
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray1)",
+                                "UseFont": true,
+                                "UseBold": true,
+                                "FontAlign": "flex-start",
+                                "FontSize": "15"
+                              },
+                              "BorderStyle": {},
+                              "Caption": "",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleFontMin",
+                              "labeltext": "카페 포레스트",
+                              "LabelType": "labeltext",
+                              "Padding": {},
+                              "ControlType": "Label",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": ""
+                              },
+                              "Id": "f_3231",
+                              "UseTriming": false,
+                              "Width": {
+                                "MatchText": false,
+                                "SizeValue": "100",
+                                "SizeUnit": "%"
+                              },
+                              "UseFixedSize": false,
+                              "Margin": {},
+                              "ControlName2": "Label2"
+                            },
+                            {
+                              "ControlDefaultName": "Button1",
+                              "FontStyle": {
+                                "FontColor": "var(--colorGray3)",
+                                "UseFont": true,
+                                "UseBold": false,
+                                "FontAlign": "flex-start",
+                                "FontSize": "13"
+                              },
+                              "BorderStyle": {
+                                "BorderColor": "var(--colorGray5)",
+                                "SizeSet": "All",
+                                "Useborder": true,
+                                "BorderSize": 1,
+                                "BorderType": "solid"
+                              },
+                              "UseClickEvent": true,
+                              "Caption": "Button1",
+                              "isColumnCtrl": false,
+                              "ControlStyle": "styleBtnRadiusLineGrey",
+                              "ButtonName": "삭제",
+                              "Padding": {},
+                              "ControlType": "Button",
+                              "Height": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Id": "f_3232",
+                              "ControlName2": "삭제_copy",
+                              "Width": {
+                                "MatchText": true,
+                                "SizeValue": "",
+                                "SizeUnit": "text"
+                              },
+                              "Margin": {},
+                              "UseFixedSize": true
+                            }
+                          ],
+                          "DisplayStyle": {
+                            "columnGapValue": "8",
+                            "columnGapUnit": "px",
+                            "DisplayType": "Flex",
+                            "FlexDirection": "row",
+                            "DisplayVerticalAlign": "Center",
+                            "DisplayAlign": "Left",
+                            "flexBoxType": "align",
+                            "UseDisplay": true
+                          },
+                          "Id": "f_3229",
+                          "ContentsName": "Group2",
+                          "Width": {
+                            "SizeValue": 100,
+                            "SizeUnit": "%"
+                          },
+                          "ContentsType": "Group",
+                          "ContentStyle": "None",
+                          "UseFixedSize": true,
+                          "UseDataConnection": false
+                        },
+                        {
+                          "ControlDefaultName": "Label2",
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "UseBold": false,
+                            "FontAlign": "flex-start",
+                            "FontSize": ""
+                          },
+                          "BorderStyle": {},
+                          "Caption": "",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "styleFontMin",
+                          "labeltext": "[21360] 인천광역시 남동구 함박뫼로 341 (남촌동 621-8)",
+                          "LabelType": "labeltext",
+                          "Padding": {},
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": ""
+                          },
+                          "Id": "f_3233",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true,
+                          "Margin": {},
+                          "ControlName2": "Label2"
+                        },
+                        {
+                          "ControlDefaultName": "Label2",
+                          "FontStyle": {
+                            "FontColor": "var(--colorGray3)",
+                            "UseFont": true,
+                            "UseBold": false,
+                            "FontAlign": "flex-start",
+                            "FontSize": ""
+                          },
+                          "BorderStyle": {},
+                          "Caption": "Label2",
+                          "isColumnCtrl": false,
+                          "ControlStyle": "styleFontMin",
+                          "labeltext": "박사장 010-1234-1234 / 02-1234-1234",
+                          "LabelType": "labeltext",
+                          "Padding": {},
+                          "ControlType": "Label",
+                          "Height": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "Id": "f_3234",
+                          "UseTriming": false,
+                          "ControlName2": "박사장 010-1234-1234 / 02-1234-1234_copy",
+                          "Width": {
+                            "MatchText": true,
+                            "SizeValue": "",
+                            "SizeUnit": "text"
+                          },
+                          "UseFixedSize": true,
+                          "Margin": {}
+                        }
+                      ],
+                      "Padding": {
+                        "All": "16",
+                        "UseAuto": true,
+                        "SizeUnit": "px"
+                      },
+                      "Height": {
+                        "MatchText": true,
+                        "SizeValue": "",
+                        "SizeUnit": "text"
+                      },
+                      "Id": "f_3228",
+                      "Width": {
+                        "MatchText": false,
+                        "SizeValue": "100",
+                        "SizeUnit": "%"
+                      },
+                      "ContentsType": "Group",
+                      "UseFixedSize": true,
+                      "UseDataConnection": false
+                    }
+                  ],
+                  "DisplayStyle": {
+                    "rowGapValue": "16",
+                    "DisplayType": "Flex",
+                    "FlexDirection": "column",
+                    "DisplayVerticalAlign": "Top",
+                    "DisplayAlign": "Left",
+                    "flexBoxType": "align",
+                    "UseDisplay": true,
+                    "rowGapUnit": "px"
+                  },
+                  "Height": {
+                    "MatchText": false,
+                    "SizeValue": "100",
+                    "SizeUnit": "%"
+                  },
+                  "Id": "f_26",
+                  "ContentsName": "listWrap",
+                  "Width": {
+                    "SizeValue": 100,
+                    "SizeUnit": "%"
+                  },
+                  "ContentsType": "Group",
+                  "ContentStyle": "None",
+                  "UseDataConnection": false
+                }
+              ],
+              "DisplayStyle": {
+                "rowGapValue": "12",
+                "DisplayType": "Flex",
+                "FlexDirection": "column",
+                "DisplayVerticalAlign": "Top",
+                "DisplayAlign": "Left",
+                "flexBoxType": "align",
+                "UseDisplay": true,
+                "rowGapUnit": "px"
+              },
+              "Id": "f_18",
+              "ContentsName": "sheetWrap",
+              "Width": {
+                "SizeValue": 100,
+                "SizeUnit": "%"
+              },
+              "ContentsType": "Group",
+              "ContentStyle": "None",
+              "UseDataConnection": false
+            },
+            {
+              "ControlDefaultName": "Button1",
+              "FontStyle": {
+                "FontColor": "var(--colorSub9)",
+                "UseFont": true,
+                "UseBold": false,
+                "FontAlign": "center",
+                "FontSize": "13"
+              },
+              "BorderStyle": {
+                "BorderColor": "var(--colorGray4)",
+                "SizeSet": "All",
+                "Useborder": true,
+                "BorderSize": 1,
+                "BorderType": "solid"
+              },
+              "UseClickEvent": true,
+              "Caption": "Button1",
+              "MoveSteps": {
+                "Step2": {
+                  "Condition": "",
+                  "MoveTo": "Next"
+                },
+                "MoveStepOrder": [
+                  "Step2"
+                ]
+              },
+              "isColumnCtrl": false,
+              "ControlStyle": "styleBtnRadiusLineGrey",
+              "ButtonName": "배송지 신규입력",
+              "Padding": {},
+              "ControlType": "Button",
+              "Height": {
+                "MatchText": false,
+                "SizeValue": "44",
+                "SizeUnit": "text"
+              },
+              "UseMove": true,
+              "Id": "f_57",
+              "ImageStyle": {
+                "IsLineIcon": true,
+                "Img": "B_025_005",
+                "UseImage": true,
+                "ImageSize": "20",
+                "ImageColor": "var(--colorSub9)"
+              },
+              "Width": {
+                "MatchText": false,
+                "SizeValue": "100",
+                "SizeUnit": "%"
+              },
+              "Margin": {},
+              "UseFixedSize": true,
+              "ControlName2": "Button1"
+            }
+          ],
+          "DisplayStyle": {
+            "rowGapValue": "20",
+            "DisplayType": "Flex",
+            "FlexDirection": "column",
+            "DisplayVerticalAlign": "Top",
+            "DisplayAlign": "Center",
+            "flexBoxType": "align",
+            "UseDisplay": true,
+            "rowGapUnit": "px"
+          },
+          "Padding": {
+            "All": "20",
+            "UseAuto": true,
+            "SizeUnit": "px"
+          },
+          "Height": {
+            "MatchText": false,
+            "SizeValue": "100",
+            "SizeUnit": "%"
+          },
+          "Id": "f_6",
+          "ContentsName": "wrap",
+          "Width": {
+            "SizeValue": 100,
+            "SizeUnit": "%"
+          },
+          "ContentsType": "Group",
+          "ContentStyle": "None",
+          "UseFixedLayout": false,
+          "UseDataConnection": false
+        }
+      ],
+      "FixedContentsTop": [],
+      "StepButton": {
+        "Height": {
+          "SizeValue": 56,
+          "SizeUnit": "px"
+        }
+      },
+      "Next": [
+        "Step2"
+      ],
+      "UseBottomButton": true,
+      "Padding": {
+        "All": "",
+        "Left": "0",
+        "Top": "0",
+        "UseEach": true,
+        "Right": "0",
+        "Btm": "0",
+        "UseAuto": true
+      },
+      "Height": {
+        "MatchText": false,
+        "SizeValue": "720"
+      },
+      "UseBackButton": false,
+      "Width": {
+        "MatchText": false,
+        "SizeValue": "640",
+        "SizeUnit": "px"
+      },
+      "StepRow": 0,
+      "StepCol": 0,
+      "PopupPosition": "Centered",
+      "ContentsType": "Group"
+    }
+  },
+  "StartSteps": [
+    "Step1"
+  ],
+  "ServiceBinding": {},
+  "LastSavedTime": 1772626346273,
+  "fConverterVersion": 1,
+  "fScenarioName": "배송지 변경 팝업",
+  "modules": {},
+  "Scenario": {
+    "StyleURLs": [
+      ""
+    ]
+  },
+  "Panel": {
+    "AuthKey": [],
+    "Collection": {
+      "Ckeys": [
+        "_SUID"
+      ]
+    },
+    "Category": {},
+    "Table": [],
+    "ExternalTable": [],
+    "CategoryOrder": []
+  },
+  "Language": {},
+  "Events": {},
+  "htmlkey": "stephtml",
+  "ScenarioTitle": "",
+  "Collections": {},
+  "FlexSQLService": {},
+  "DataSources": {}
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/other.schema.json",
+  "title": "OtherControl",
+  "description": "v1 명시 외 ControlType (InputBox, Sheet, TimeTable, Approval, Scheduler, Image, ComboList 단독, List 단독, Signature, Line 등) — 검증 통과시키는 fallback. 상세 schema 는 v2 에서 정의. Button/Calendar/CalendarNavigator/Tab/Tree/Embed 는 자체 schema 분기로 빠짐.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "properties": {
+    "Id": { "type": "string", "pattern": "^f_[1-9][0-9]*$" },
+    "ControlType": {
+      "type": "string",
+      "not": {
+        "enum": [
+          "InputText", "InputNumber", "InputMask", "InputDate",
+          "MultiInputBox", "Combo", "Search", "CheckBox", "RadioBox",
+          "Label", "ImageBox", "InputFile", "Button",
+          "Calendar", "CalendarNavigator", "Tab",
+          "Tree", "Embed"
+        ]
+      }
+    }
+  }
+}

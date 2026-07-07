@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/input-number.schema.json",
+  "title": "InputNumber",
+  "description": "숫자 입력. number/decimal/password. 천단위 콤마 (money) 는 InputMask 컨트롤 사용.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    { "$ref": "_base.schema.json#/$defs/inputBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "InputNumber" },
+        "InputType": {
+          "type": "string",
+          "enum": ["number", "decimal", "password"],
+          "description": "number=정수 (콤마 없음, 순수 숫자) / decimal=소수점 허용 (콤마 없음) / password=마스킹된 숫자 입력. 1000단위 콤마는 InputMask + InputType:'money' 사용."
+        },
+        "Events":   { "$ref": "_base.schema.json#/$defs/inputEventsChangeOnly" }
+      }
+    }
+  ]
+}

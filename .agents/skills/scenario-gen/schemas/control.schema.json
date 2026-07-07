@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control.schema.json",
+  "title": "Control (dispatcher)",
+  "description": "Control 디스패처. ControlType discriminator 로 control/<name>.schema.json 분기. v1 명시 본체 17종(입력류 12 + Calendar/CalendarNavigator/Tab/Tree/Embed) + Dialog 자식 ComboList/List + OtherControl fallback. 진실원본: catalog.controlTypes.",
+  "type": "object",
+  "required": ["Id", "ControlType"],
+  "additionalProperties": true,
+  "oneOf": [
+    { "$ref": "control/input-text.schema.json" },
+    { "$ref": "control/input-number.schema.json" },
+    { "$ref": "control/input-mask.schema.json" },
+    { "$ref": "control/input-date.schema.json" },
+    { "$ref": "control/multi-input-box.schema.json" },
+    { "$ref": "control/combo.schema.json" },
+    { "$ref": "control/search.schema.json" },
+    { "$ref": "control/check-box.schema.json" },
+    { "$ref": "control/radio-box.schema.json" },
+    { "$ref": "control/label.schema.json" },
+    { "$ref": "control/image-box.schema.json" },
+    { "$ref": "control/input-file.schema.json" },
+    { "$ref": "control/button.schema.json" },
+    { "$ref": "control/calendar.schema.json" },
+    { "$ref": "control/calendar-navigator.schema.json" },
+    { "$ref": "control/tab.schema.json" },
+    { "$ref": "control/tree.schema.json" },
+    { "$ref": "control/embed.schema.json" },
+    { "$ref": "control/other.schema.json" }
+  ]
+}

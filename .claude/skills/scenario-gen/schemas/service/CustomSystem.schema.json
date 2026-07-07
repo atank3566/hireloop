@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/service/CustomSystem.schema.json",
+  "title": "CustomSystem ServiceBinding",
+  "description": "API 연동 사용자 정의 시스템 호출 (외부 마이크로서비스 / 인증 시스템 등). SystemType='CustomSystem' 고정. SystemID 문자열. fEventKey + fEvent 로 외부 라우팅 정의.",
+  "type": "object",
+  "required": ["SystemID", "SystemType", "ModuleID", "fEventKey", "fEvent"],
+  "additionalProperties": true,
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/commonBase" },
+    {
+      "properties": {
+        "SystemID":   {
+          "type": "string",
+          "description": "CustomSystem 식별자. (실 샘플: New_01, New_02, New_05, GUID v4 형식 식별자)."
+        },
+        "SystemType": { "const": "CustomSystem" },
+        "ModuleID":   {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$",
+          "description": "GUID v4 형식의 모듈 식별자."
+        },
+        "fEventKey": {
+          "type": "array",
+          "minItems": 1,
+          "description": "fEvent 객체에서 사용할 키 이름 배열. 호출 시 이 키들이 실제 외부 시스템 파라미터로 전달.",
+          "items": { "type": "string", "pattern": "^[A-Za-z_][A-Za-z0-9_]*$" }
+        },
+        "fEvent": {
+          "type": "object",
+          "description": "fEventKey 의 각 키에 대응하는 실제 값. 값은 정적 문자열 또는 `{%_base.X.Y%}` / `{%_c.Cat[0].field%}` 템플릿 표현식.",
+          "additionalProperties": { "type": "string" }
+        },
+        "UsePKey":      { "type": "boolean" },
+        "UseParamBlock":{ "type": "boolean" },
+        "UseResultBlock":{ "type": "boolean" }
+      },
+      "$comment": "fEventKey 와 fEvent.keys() 가 일치해야 함은 후검증으로 처리 (TODO: [service-fevent] 추가 가능)."
+    }
+  ]
+}

@@ -1,0 +1,471 @@
+{
+  "count": 9,
+  "patterns": [
+    {
+      "tier": "atom",
+      "name": "badge",
+      "path": "atom/badge.json",
+      "title": "pattern.atom.badge",
+      "description": "상태/카테고리 라벨용 pill 형 뱃지. Label + pill BorderRadius(999) + 라이트 배경(`var(--colorSub10)`) + Bold 텍스트. 너비는 텍스트에 맞춰 자동 fit, 높이도 텍스트 + Padding 으로 결정. color 는 의미적 5종(green/black/red/blue/gray) — FontColor 만 바뀌고 배경은 5종 모두 동일한 라이트 톤이라 인접 정보 위에 얹어도 충돌 없음. size 는 md/lg 두 단계.",
+      "tags": [
+        "badge",
+        "tag",
+        "status",
+        "label",
+        "chip"
+      ],
+      "related": [],
+      "propsSummary": {
+        "required": [
+          "label",
+          "color",
+          "size"
+        ],
+        "optional": [
+          "override"
+        ],
+        "props": {
+          "label": {
+            "type": "string"
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "green",
+              "black",
+              "red",
+              "blue",
+              "gray"
+            ]
+          },
+          "size": {
+            "type": "string",
+            "enum": [
+              "md",
+              "lg"
+            ]
+          },
+          "override": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "tier": "atom",
+      "name": "button",
+      "path": "atom/button.json",
+      "title": "pattern.atom.button",
+      "description": "버튼 액션 아톰. v1 엔진에 'Button' ControlType 이 없으므로 Label + UseClickEvent 패턴으로 materialize. 시각적 강조 수준(variant) 3종 — primary 는 화면당 1개 CTA 권장(`Step.FixedContentsBottom` 자리), secondary 는 보조 액션, tertiary 는 인라인 텍스트 액션. 너비는 full(100%) 또는 fit(content + padding) 두 가지. 라운드/타이포/색은 DESIGN.md §Butt...",
+      "tags": [
+        "button",
+        "action",
+        "cta"
+      ],
+      "related": [],
+      "propsSummary": {
+        "required": [
+          "label",
+          "variant",
+          "width"
+        ],
+        "optional": [
+          "onClick",
+          "moveStep",
+          "override"
+        ],
+        "props": {
+          "label": {
+            "type": "string"
+          },
+          "variant": {
+            "type": "string",
+            "enum": [
+              "primary",
+              "secondary",
+              "tertiary"
+            ]
+          },
+          "width": {
+            "type": "string",
+            "enum": [
+              "full",
+              "fit"
+            ]
+          },
+          "onClick": {
+            "type": "string"
+          },
+          "moveStep": {
+            "type": "string"
+          },
+          "override": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "tier": "atom",
+      "name": "checkbox",
+      "path": "atom/checkbox.json",
+      "title": "pattern.atom.checkbox",
+      "description": "단일 체크박스 아톰. label 옆에 사각 체크박스를 표시한다. Expo 디자인 언어 — 체크 시 박스 내부가 Ink(검정) 으로 채워진다(`ItemBgStyle.ItemBgColor: var(--colorBlack)`). 폼 동의 / 토글 / 선택지 1개에 사용. 다중 선택 그룹은 RadioBox 또는 다중 체크박스 패턴(별도) 사용.",
+      "tags": [
+        "checkbox",
+        "toggle",
+        "form"
+      ],
+      "related": [],
+      "propsSummary": {
+        "required": [
+          "label"
+        ],
+        "optional": [
+          "size",
+          "override"
+        ],
+        "props": {
+          "label": {
+            "type": "string"
+          },
+          "size": {
+            "type": "integer",
+            "default": 16
+          },
+          "override": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "tier": "atom",
+      "name": "segmented-radio",
+      "path": "atom/segmented-radio.json",
+      "title": "pattern.atom.segmented-radio",
+      "description": "세그먼티드 라디오 아톰. RadioBox + `ControlStyle:\"stylePeriod\"` 로 동등 분할된 탭형 단일 선택. 같은 리스트의 필터/뷰 전환 등 화면 전체가 바뀌지 않는 옵션 토글에 사용 (탭 전환이 필요하면 Tab 컨트롤). items 는 string 배열 — 각 항목의 표시 텍스트와 저장 값이 동일하게 매핑된다. 너비 100% / 높이 35px 고정(단 stylePeriod 항목 높이는 엔진 CSS `.stylePeriod label{min-height:2em}` 가 우선이라...",
+      "tags": [
+        "radio",
+        "segmented",
+        "toggle",
+        "tabs",
+        "filter"
+      ],
+      "related": [],
+      "propsSummary": {
+        "required": [
+          "items"
+        ],
+        "optional": [
+          "saveValueKey",
+          "saveNameKey",
+          "override"
+        ],
+        "props": {
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 5,
+            "items": "string"
+          },
+          "saveValueKey": {
+            "type": "string"
+          },
+          "saveNameKey": {
+            "type": "string"
+          },
+          "override": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "tier": "atom",
+      "name": "switch",
+      "path": "atom/switch.json",
+      "title": "pattern.atom.switch",
+      "description": "토글 스위치 아톰. CheckBox 컨트롤 기반 (`CheckBoxType:\"CheckBoxSwitch\"` + `ControlStyle:\"styleSwitchSmall\"`). 이진 on/off 상태 전환에 사용 — 다중 선택지는 segmented-radio, 동의 체크는 checkbox 아톰. label 은 optional: 있으면 스위치 + 라벨 한 줄(Width 100%), 없으면 스위치만 fit. on 상태 색은 Expo Ink (`var(--colorBlack)`) — checkbox /...",
+      "tags": [
+        "switch",
+        "toggle",
+        "boolean",
+        "form"
+      ],
+      "related": [],
+      "propsSummary": {
+        "required": [],
+        "optional": [
+          "label",
+          "override"
+        ],
+        "props": {
+          "label": {
+            "type": "string"
+          },
+          "override": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "tier": "molecule",
+      "name": "checklist",
+      "path": "molecule/checklist.json",
+      "title": "pattern.molecule.checklist",
+      "description": "상단 라벨 + 체크박스 아이템 그리드 (molecule). 필터/다중선택 영역에 쓰는 '라벨 + 여러 체크박스' 묶음. 외부 Group(세로, rowGap 12)에 라벨 Label(SemiBold 15)이 위에 오고, 그 아래 체크박스 그리드 Group(wrap, columnGap 8 / rowGap 12)이 온다. 각 아이템은 styleSquare 단일 체크박스이며 체크 시 박스가 checkedColor 로 채워진다. lines=1 이면 한 줄에 하나(Width 100%), lines=2 이면...",
+      "tags": [
+        "checklist",
+        "checkbox",
+        "filter",
+        "multi-select",
+        "label",
+        "form"
+      ],
+      "related": [
+        "atom/checkbox"
+      ],
+      "propsSummary": {
+        "required": [
+          "label",
+          "items"
+        ],
+        "optional": [
+          "lines",
+          "checkedColor",
+          "override"
+        ],
+        "props": {
+          "label": {
+            "type": "string"
+          },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 20,
+            "items": "string"
+          },
+          "lines": {
+            "type": "integer",
+            "enum": [
+              1,
+              2
+            ],
+            "default": 1
+          },
+          "checkedColor": {
+            "type": "string",
+            "default": "surface.brand"
+          },
+          "override": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "tier": "molecule",
+      "name": "input-action",
+      "path": "molecule/input-action.json",
+      "title": "pattern.molecule.input-action",
+      "description": "입력 컨트롤 + 트레일링 아이콘 버튼 페어 (molecule). 검색 / 필터 / 장바구니 / 알림 등 'field + 우상단 액션' 패턴. 외부 Group 안에 입력 본체(InputText/InputNumber/InputMask/Search/InputDate) 가 Width 100% 로 깔리고, 그 위 우상단 모서리에 28×28 아이콘 버튼이 절대 위치(UseAbsoluteLayout) 로 떠 있다. 버튼 우상단에는 옵션으로 작은 카운터 뱃지(absolute) 가 얹힌다. molecule 의 작...",
+      "tags": [
+        "input",
+        "search",
+        "filter",
+        "cart",
+        "icon-button",
+        "field-action",
+        "badge",
+        "absolute"
+      ],
+      "related": [
+        "atom/button",
+        "atom/badge"
+      ],
+      "propsSummary": {
+        "required": [
+          "inputType",
+          "icon"
+        ],
+        "optional": [
+          "inputOptions",
+          "color",
+          "badge",
+          "buttonEvent",
+          "moveStep",
+          "override"
+        ],
+        "props": {
+          "inputType": {
+            "type": "string",
+            "enum": [
+              "inputText",
+              "inputNumber",
+              "inputMask",
+              "inputSearch",
+              "inputDate"
+            ]
+          },
+          "inputOptions": {
+            "type": "object"
+          },
+          "icon": {
+            "type": "string",
+            "enum": [
+              "chevron-left",
+              "chevron-right",
+              "chevron-up",
+              "chevron-down",
+              "close",
+              "arrow-back",
+              "check",
+              "check-circle",
+              "alert",
+              "info",
+              "error",
+              "edit",
+              "delete",
+              "plus",
+              "search",
+              "more-horizontal",
+              "filter",
+              "qr-code",
+              "heart",
+              "star",
+              "bookmark",
+              "bell",
+              "mail",
+              "message",
+              "cart",
+              "calendar",
+              "user",
+              "settings",
+              "logout"
+            ]
+          },
+          "color": {
+            "type": "string",
+            "enum": [
+              "green",
+              "black",
+              "red",
+              "blue"
+            ]
+          },
+          "badge": {
+            "type": "object"
+          },
+          "buttonEvent": {
+            "type": "string"
+          },
+          "moveStep": {
+            "type": "string"
+          },
+          "override": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "tier": "molecule",
+      "name": "input-button",
+      "path": "molecule/input-button.json",
+      "title": "pattern.molecule.input-button",
+      "description": "입력 컨트롤 + 짧은 액션 버튼 페어 (molecule). 왼쪽에 단말 입력 (InputText / InputNumber / InputMask), 오른쪽에 atom/button 표준 CTA 가 fit 너비로 붙는 가로 페어. 대표 use case: 주소 + '우편번호 검색', 휴대폰 + '인증', 쿠폰 코드 + '적용', 사번 + '직원 검색' — 버튼이 입력값을 외부 lookup 으로 채우거나 값에 대한 액션을 수행하는 패턴.\n\n입력은 Width 100% (남는 공간을 채우되 maxWidth 5...",
+      "tags": [
+        "input",
+        "button",
+        "lookup",
+        "address",
+        "verify",
+        "input-with-action"
+      ],
+      "related": [
+        "molecule/input-pair",
+        "atom/button"
+      ],
+      "propsSummary": {
+        "required": [
+          "inputType",
+          "buttonLabel"
+        ],
+        "optional": [
+          "inputOptions",
+          "override"
+        ],
+        "props": {
+          "inputType": {
+            "type": "string",
+            "enum": [
+              "inputText",
+              "inputNumber",
+              "inputMask"
+            ]
+          },
+          "inputOptions": {
+            "type": "object"
+          },
+          "buttonLabel": {
+            "type": "string"
+          },
+          "override": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "tier": "molecule",
+      "name": "input-pair",
+      "path": "molecule/input-pair.json",
+      "title": "pattern.molecule.input-pair",
+      "description": "두 개의 입력 컨트롤이 가로로 나란히 50%/50% 로 배치되는 페어 (molecule). 쿼리/필터 행에 자주 쓰이는 'duo' 구조 — 예: 부서(inputCombo) + 담당자(inputSearch), 시작일(inputDate) + 종료일(inputDate), 기간(inputCombo) + 상태(inputCombo). 두 입력은 서로 다른 inputType 을 가질 수 있다 (per-item). 각 입력은 Caption(입력 위 라벨) 을 옵션으로 가질 수 있으며 Caption 유무에 따라...",
+      "tags": [
+        "input",
+        "pair",
+        "duo",
+        "horizontal",
+        "filter",
+        "query-row",
+        "combo",
+        "search",
+        "date",
+        "mixed"
+      ],
+      "related": [],
+      "propsSummary": {
+        "required": [
+          "inputOptions"
+        ],
+        "optional": [
+          "bgColor",
+          "override"
+        ],
+        "props": {
+          "inputOptions": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": "object"
+          },
+          "bgColor": {
+            "type": "string",
+            "enum": [
+              "surface",
+              "surface.subtle",
+              "surface.tag",
+              "surface.brand-soft"
+            ]
+          },
+          "override": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  ]
+}

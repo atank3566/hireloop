@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/data-sources.schema.json",
+  "title": "DataSources",
+  "description": "scenarioMeta.DataSources — 명명 데이터소스 모음. Combo / RadioBox / Search / Tree / CheckBox(Multi) / Approval / TimeTable / Scheduler 등에서 'DataSourceName' 으로 참조. 키=DataSource 이름, 값=dataSource 분기. 엔진 enum: Fixed/Grid/Service/Collection/API (engine/common/const.js).",
+  "type": "object",
+  "propertyNames": { "$ref": "#/$defs/dataSourceName" },
+  "additionalProperties": { "$ref": "#/$defs/dataSource" },
+
+  "$defs": {
+    "dataSourceName": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[^`.~!@#$%^&*()=|\\\\'\";:/?,{}\\[\\]<> \\t\\n]+$",
+      "$comment": "studio-util.js#L4228 isIcludeSpecial() 의 negation. AI 생성 권장: ^[A-Za-z][A-Za-z0-9_]*$ + 의미있는 접미사(_DS / _D / Query 등). 운영 메타엔 한글/언더스코어/하이픈 등 다양 — 특수문자만 차단.",
+      "description": "DataSource 이름. 엔진 isIcludeSpecial 차단 문자: ` . ~ ! @ # $ % ^ & * ( ) = | \\ ' \" ; : / ? , { } [ ] < > 와 공백/탭/개행. AI 생성 권장 패턴: 영문자 시작 + 영문/숫자/언더스코어 + 의미있는 접미사 (`_DS` / `_D` / `Query` / `List` / `Items` 등)."
+    },
+
+    "dataSource": {
+      "description": "DataSourceType discriminator 로 5종 분기 (Fixed / Grid / Collection / Service / API). AI 샘플 데이터 생성은 Fixed / Grid 만 사용 (validate.mjs [sample] 후검증). Collection / Service / API 는 외부 시스템 의존 — 운영 메타 전용.",
+      "type": "object",
+      "required": ["DataSourceType"],
+      "additionalProperties": true,
+      "oneOf": [
+        { "$ref": "#/$defs/dataSourceFixed" },
+        { "$ref": "#/$defs/dataSourceGrid" },
+        { "$ref": "#/$defs/dataSourceCollection" },
+        { "$ref": "#/$defs/dataSourceService" },
+        { "$ref": "#/$defs/dataSourceApi" }
+      ]
+    },
+
+    "fixedItem": {
+      "type": "object",
+      "description": "Fixed/Grid DataSource 의 인라인 항목. 일반적으로 ItemName/ItemValue 페어이지만 임의 필드 허용 (CollectionMapper 로 매핑). ★ additionalProperties 는 자유 데이터 컬럼(임의 키/값)이므로 {} (any) — true 로 두면 strict 변환이 unevaluatedProperties:false 로 뒤집어 자유 컬럼(id/name 등)을 오탐 차단한다.",
+      "additionalProperties": {},
+      "properties": {
+        "ItemName":  { "type": "string" },
+        "ItemValue": { "type": "string", "$comment": "프로퍼티 INPUTBOX 가 항상 string 저장. 숫자 보관 시 따옴표 필수." }
+      }
+    },
+
+    "fixedItemsArray": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/fixedItem" }
+    },
+
+    "fixedItemsValue": {
+      "description": "FixedItems / GridItems 는 보통 배열이지만 운영 메타에 JS 표현식 문자열로 저장된 경우가 있다 (런타임 new Function() 평가). AI 생성 시에는 배열 형태로만 작성한다.",
+      "oneOf": [
+        { "$ref": "#/$defs/fixedItemsArray" },
+        { "type": "string", "$comment": "운영 메타 호환용. AI 생성 금지." }
+      ]
+    },
+
+    "dataSourceFixed": {
+      "type": "object",
+      "title": "Fixed DataSource",
+      "description": "정적 인라인 데이터. AI 생성 권장. Combo/RadioBox/CheckBox(Multi) 의 선택지 또는 Tree 노드.",
+      "required": ["DataSourceType", "FixedItems"],
+      "additionalProperties": true,
+      "properties": {
+        "DataSourceType": { "const": "Fixed" },
+        "FixedItems":     { "$ref": "#/$defs/fixedItemsValue" }
+      }
+    },
+
+    "dataSourceGrid": {
+      "type": "object",
+      "title": "Grid DataSource",
+      "description": "그리드형 인라인 데이터. GridHeader (열 정의) + GridItems (행 데이터). AI 생성 가능 — 외부 시스템 의존 없음.",
+      "required": ["DataSourceType", "GridItems"],
+      "additionalProperties": true,
+      "properties": {
+        "DataSourceType": { "const": "Grid" },
+        "GridHeader":     {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "(선택) 컬럼 키 문자열 배열 — 예 [\"fCode\", \"fName\"]. GridItems 행의 필드명. (객체 배열 [{Key,Title}] 로 들어오면 materialize 가 키 배열로 정본화.)"
+        },
+        "GridItems": { "$ref": "#/$defs/fixedItemsValue" }
+      }
+    },
+
+    "dataSourceCollection": {
+      "type": "object",
+      "title": "Collection DataSource",
+      "description": "다른 카테고리(Category) 데이터 참조. 외부 시스템 의존 — AI 샘플 생성 금지(대신 Fixed/Grid 사용).",
+      "required": ["DataSourceType", "CategoryName"],
+      "additionalProperties": true,
+      "properties": {
+        "DataSourceType": { "const": "Collection" },
+        "CategoryName":   { "$ref": "naming-objects.schema.json#/$defs/categoryName", "description": "참조할 카테고리 이름. _c.<CategoryName>. JS 빌트인 충돌 키는 schema 차단." },
+        "Target":         {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "(선택) 필터 등 추가 조건.",
+          "properties": {
+            "Filters": {
+              "type": "array",
+              "items": { "$ref": "data-objects.schema.json#/$defs/sectorFilter" }
+            }
+          }
+        },
+        "UseInnerBlock": { "type": "boolean" },
+        "InnerBlock":    {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "InnerBlock (중첩 데이터) 참조. UseInnerBlock=true 일 때.",
+          "properties": {
+            "InnerBlockKey": { "type": "string" }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": { "UseInnerBlock": { "const": true } },
+            "required": ["UseInnerBlock"]
+          },
+          "then": { "required": ["InnerBlock"] }
+        }
+      ]
+    },
+
+    "dataSourceService": {
+      "type": "object",
+      "title": "Service DataSource",
+      "description": "ServiceBinding 호출 결과. 외부 시스템 의존 — AI 샘플 생성 금지. ServiceName 은 ServiceBinding 의 키와 일치 필수.",
+      "required": ["DataSourceType", "ServiceName"],
+      "additionalProperties": true,
+      "properties": {
+        "DataSourceType": { "const": "Service" },
+        "ServiceName":    { "type": "string" },
+        "Version":        { "type": "number", "minimum": 1, "$comment": "프로퍼티가 숫자로 저장." },
+        "SystemID":       { "type": "string", "examples": ["ksystem", "Other", "Flextudio"] },
+        "UseCategory":    { "type": "boolean", "$comment": "프로퍼티 SWITCH/CHECKBOX 가 boolean 저장." },
+        "UseParamOptions":{ "type": "boolean" },
+        "ParamBlocks":    {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": true,
+            "properties": {
+              "UseFilter": { "type": "boolean" },
+              "UserData":  { "type": "array", "items": { "type": "string" } },
+              "Filters":   {
+                "type": "array",
+                "items": { "$ref": "data-objects.schema.json#/$defs/sectorFilter" }
+              }
+            }
+          }
+        },
+        "ParamBlock":     { "type": "object", "additionalProperties": true, "description": "(레거시) 단일 ParamBlock 형태." },
+        "ServiceBinding": { "type": "object", "additionalProperties": true, "description": "(인라인) ServiceBinding 정의. 일부 운영 메타에서 사용." }
+      }
+    },
+
+    "dataSourceApi": {
+      "type": "object",
+      "title": "API DataSource",
+      "description": "직접 API 호출. 외부 시스템 의존 — AI 샘플 생성 금지. 엔진 내부적으로 Service 와 동일 함수 사용.",
+      "required": ["DataSourceType", "ModuleID"],
+      "additionalProperties": true,
+      "properties": {
+        "DataSourceType":     { "const": "API" },
+        "Action":             { "type": "string", "examples": ["API"] },
+        "SystemID":           { "type": "string" },
+        "SystemType":         { "type": "string" },
+        "ModuleID":           { "type": "string" },
+        "SetCategory":        { "type": "boolean", "$comment": "프로퍼티가 boolean 저장." },
+        "UsePKey":            { "type": "boolean" },
+        "UseParamBlock":      { "type": "boolean" },
+        "UseResultBlock":     { "type": "boolean" },
+        "UseCategory":        { "type": "boolean", "$comment": "프로퍼티가 boolean 저장." },
+        "NotSeperateInnerBlock": { "type": "boolean" },
+        "fEvent":             { "type": "object", "additionalProperties": true },
+        "fEventKey":          { "type": "array", "items": { "type": "string" } },
+        "ParamBlocks":        { "type": "array" },
+        "ResultBlocks":       { "type": "array" }
+      }
+    }
+  }
+}

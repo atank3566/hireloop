@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/input-date.schema.json",
+  "title": "InputDate",
+  "description": "날짜 입력 + 캘린더 다이얼로그. CalendarType / SelectType 은 InputDate 본체가 아니라 Dialog.Layouts[*].Controls[*] 의 Calendar 컨트롤에 위치. DateFormat 은 본체에 위치하며 CalendarType 과 정합되어야 한다.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    { "$ref": "_base.schema.json#/$defs/inputBase" },
+    {
+      "properties": {
+        "ControlType": { "const": "InputDate" },
+        "DateFormat": {
+          "type": "string",
+          "enum": ["", "YYYY-MM-DD", "YYYY.MM.DD", "YYYY/MM/DD", "YYYY-MM"],
+          "description": "표시 포맷. dayCalendar→YYYY-MM-DD/YYYY.MM.DD/YYYY/MM/DD, monthCalendar→YYYY-MM, yearCalendar→'' (기본). 빈 문자열은 런타임 기본 포맷."
+        },
+        "Dialog": { "$ref": "_base.schema.json#/$defs/calendarDialog" }
+      }
+    },
+    {
+      "$comment": "DateFormat='YYYY-MM' 이면 monthCalendar 와 함께 사용해야 함. Dialog 내 Calendar.CalendarType 과 정합 cross-check 는 validate.mjs 후검증 (JSON Schema 에서 Calendar.CalendarType 까지 추적하는 if/then 은 표현 가능하나 가독성 이슈로 후검증으로 분리)."
+    }
+  ]
+}

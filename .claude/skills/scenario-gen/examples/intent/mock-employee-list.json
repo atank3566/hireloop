@@ -1,0 +1,54 @@
+{
+  "ScenarioTitle": "intent.mock 데모 — 사원 목록",
+  "StartSteps": ["Step1"],
+  "Steps": {
+    "Step1": {
+      "StepType": "StepView",
+      "UseBackButton": true,
+      "Question": "사원 목록",
+      "Events": {
+        "Init": [
+          {
+            "Action": "Script",
+            "intent": {
+              "mock": {
+                "CtgEmployee": [
+                  { "fName": "홍길동", "fAge": 30, "fDept": "개발팀" },
+                  { "fName": "김철수", "fAge": 25, "fDept": "개발팀" },
+                  { "fName": "이영희", "fAge": 28, "fDept": "디자인팀" }
+                ],
+                "CtgDept": [
+                  { "fDeptName": "개발팀", "fHead": "박개발" },
+                  { "fDeptName": "디자인팀", "fHead": "최디자인" }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "Contents": [
+        {
+          "ContentsType": "Group",
+          "Id": "f_1",
+          "UseDataConnection": true,
+          "DataConnection": {
+            "TargetType": "category",
+            "CategoryName": "CtgEmployee",
+            "DataUsage": "query"
+          },
+          "Contents": [
+            {
+              "ContentsType": "Group",
+              "Id": "f_2",
+              "UseDataConnection": false,
+              "Contents": []
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "Events": {},
+  "ServiceBinding": {},
+  "Collections": {}
+}

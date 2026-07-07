@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/data-objects.schema.json",
+  "title": "Data Objects",
+  "description": "데이터 바인딩/필터 관련 공통 객체 카탈로그. Group의 DataConnection 과 TargetSector.Filters 등.",
+
+  "$defs": {
+    "ckeyOrEmpty": {
+      "$comment": "ckey 또는 빈 문자열. DCLinkItems / Parent / Condition 키처럼 비편집 상태 메타에 빈 키가 들어오는 위치 전용.",
+      "type": "string",
+      "anyOf": [
+        { "const": "" },
+        { "$ref": "naming-objects.schema.json#/$defs/ckey" }
+      ]
+    },
+
+    "dataConnection": {
+      "type": "object",
+      "description": "Group의 데이터 바인딩. TargetType 은 항상 'category' 고정 (DataConnection 사용 시 단일 진실원본 — 누락 금지). 그 외 권장 필수: DataUsage, CategoryName. DataUsage 분기별 동작은 data-objects.md 참조.",
+      "additionalProperties": true,
+      "required": ["TargetType"],
+      "properties": {
+        "TargetType": {
+          "type": "string",
+          "const": "category",
+          "default": "category",
+          "description": "DataConnection 사용 시 고정값 'category'. UseDataConnection=true 면 반드시 포함 (다른 값/누락 모두 금지)."
+        },
+        "DataUsage": {
+          "type": "string",
+          "enum": ["default", "new", "update", "detail", "query"]
+        },
+        "CategoryName":    { "$ref": "naming-objects.schema.json#/$defs/categoryName" },
+        "UseNewSector":    { "type": "boolean" },
+        "OnlyIfNoSector":  { "type": "boolean" },
+        "UseTargetSector": { "type": "boolean" },
+
+        "UseDCLink": {
+          "type": "boolean",
+          "description": "상위 Group 의 DataConnection 과 연결 사용 여부. 신규(new) DataUsage 에서 부모 섹터의 키를 자식 섹터에 자동 매핑할 때 true. true 면 DCLinkCkey 함께 사용. 단일 진실원본."
+        },
+        "DCLinkCkey": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "UseDCLink=true 일 때 부모↔자식 키 매핑 정의. DCLinkItems 배열로 1:N 매핑 지원.",
+          "properties": {
+            "DCLinkItems": {
+              "type": "array",
+              "description": "부모-자식 키 매핑 항목 배열. 각 항목은 DCParentKey(부모 섹터 측), DCChildKey(자식 섹터 측) 쌍. 비편집 상태에서는 빈 문자열 허용.",
+              "items": {
+                "type": "object",
+                "additionalProperties": true,
+                "properties": {
+                  "DCParentKey": { "$ref": "#/$defs/ckeyOrEmpty" },
+                  "DCChildKey":  { "$ref": "#/$defs/ckeyOrEmpty" }
+                }
+              }
+            }
+          }
+        },
+
+        "TargetSector": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "필터 컨테이너. 카테고리 식별은 상위 DataConnection.CategoryName 만 사용. TargetSector 안에 CategoryName 키를 두는 것은 잘못된 형태로 schema 차원에서 차단 — 어떤 값이든 거부 (group.schema.json 의 UseInnerBlock:false 차단과 동일 패턴).",
+          "properties": {
+            "CategoryName": false,
+            "Filters": {
+              "type": "array",
+              "description": "필터 배열. 모든 필터 통과 섹터만 렌더링. FilterType 별 형태는 data-objects.md TargetSector.Filters 카탈로그 참조.",
+              "items": { "$ref": "#/$defs/sectorFilter" }
+            }
+          }
+        }
+      },
+      "allOf": [
+        {
+          "$comment": "DataUsage 별 부속 필드 결합 규칙 — switch (L2643~2680) 의 공식 규칙.",
+          "if": { "properties": { "DataUsage": { "const": "default" } }, "required": ["DataUsage"] },
+          "then": {
+            "properties": {
+              "UseNewSector":   { "const": true },
+              "OnlyIfNoSector": { "const": true }
+            },
+            "required": ["UseNewSector", "OnlyIfNoSector"]
+          }
+        },
+        {
+          "if": { "properties": { "DataUsage": { "const": "new" } }, "required": ["DataUsage"] },
+          "then": {
+            "properties": { "UseNewSector": { "const": true } },
+            "required": ["UseNewSector"]
+          }
+        },
+        {
+          "if": { "properties": { "DataUsage": { "enum": ["detail", "update"] } }, "required": ["DataUsage"] },
+          "then": {
+            "properties": { "UseTargetSector": { "const": true } },
+            "required": ["UseTargetSector", "TargetSector"]
+          }
+        },
+        {
+          "$comment": "UseDCLink=true 면 DCLinkCkey 필요.",
+          "if": {
+            "properties": { "UseDCLink": { "const": true } },
+            "required": ["UseDCLink"]
+          },
+          "then": { "required": ["DCLinkCkey"] }
+        }
+      ]
+    },
+
+    "sectorFilter": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["FilterType"],
+      "description": "TargetSector.Filters 의 한 항목. FilterType 으로 분기. 비편집 상태(필터 추가 직후 키/값 미입력)도 운영 메타로 저장되므로 부속 필드 required 는 비움.",
+      "oneOf": [
+        {
+          "title": "Status",
+          "properties": {
+            "FilterType": { "const": "Status" },
+            "Status": {
+              "type": "array",
+              "$comment": "빈 배열도 비편집 상태로 허용 (사용자가 상태 미선택). 값이 있을 경우 sectorStatus 5종 중 하나.",
+              "items": { "type": "string", "enum": ["active", "selected", "added", "updated", "deleted"] }
+            }
+          }
+        },
+        {
+          "title": "Condition",
+          "properties": {
+            "FilterType":         { "const": "Condition" },
+            "ConditionKey":       { "$ref": "#/$defs/ckeyOrEmpty", "description": "필터 대상 컬렉션 키. 시스템 게터 / JS 빌트인 차단. 비편집 상태 빈 문자열 허용." },
+            "ConditionOperators": {
+              "type": "string",
+              "enum": ["==", "!=", ">", ">=", "<", "<=", "Exists", "Not_Exists", "Like", "RegExp"]
+            },
+            "ConditionValue":     { "$comment": "정적 값 또는 같은 섹터의 다른 필드 참조 `{=Field}`. 다른 카테고리 참조 불가 — 그 경우 Custom 사용." }
+          }
+        },
+        {
+          "title": "Custom",
+          "properties": {
+            "FilterType": { "const": "Custom" },
+            "Script": { "type": "string", "description": "sector 변수 사용, boolean 반환. 다른 카테고리 참조 가능. 비편집 상태 빈 문자열 허용." }
+          }
+        },
+        {
+          "title": "Parent",
+          "description": "1:N 관계 자식 그룹에서 부모 키 매칭. 자식 Group 의 DataConnection 에 배치. 상위 Group 에 DataConnection 이 있고 자식이 query 일 때 사용.",
+          "properties": {
+            "FilterType":  { "const": "Parent" },
+            "DCParentKey": { "$ref": "#/$defs/ckeyOrEmpty", "description": "부모 섹터 측 매칭 키. 시스템 게터 / JS 빌트인 차단. 비편집 상태 빈 문자열 허용." },
+            "DCChildKey":  { "$ref": "#/$defs/ckeyOrEmpty", "description": "자식 섹터 측 매칭 키. 시스템 게터 / JS 빌트인 차단. 비편집 상태 빈 문자열 허용." }
+          }
+        }
+      ]
+    }
+  }
+}

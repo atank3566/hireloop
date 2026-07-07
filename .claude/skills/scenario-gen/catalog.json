@@ -1,0 +1,406 @@
+{
+  "$comment": "flextudio meta-contract v1 카탈로그. self-contained — schema/md 와 동기화 유지.",
+  "version": "v1",
+
+  "stepTypes": [
+    {
+      "value": "StepView",
+      "description": "일반 화면. StepDialogType과 결합해 SlideUp/PopUp 변종 표현."
+    },
+    {
+      "value": "StepSub",
+      "description": "다른 시나리오 임베드. Protocol + ScenarioId 필수."
+    }
+  ],
+
+  "stepDialogTypes": [
+    { "value": "",        "description": "일반 풀스크린 뷰." },
+    { "value": "SlideUp", "description": "바텀시트형 슬라이드업." },
+    { "value": "PopUp",   "description": "중앙 팝업. Width/Height/PopupPosition 필수." }
+  ],
+
+  "contentsTypes": [
+    { "value": "Group", "description": "컨테이너. Layout이 통합됨." }
+  ],
+
+  "controlKeys": [
+    { "value": "",         "description": "정상 상태." },
+    { "value": "Required", "description": "필수 입력. 런타임 자동 검증." },
+    { "value": "ReadOnly", "description": "읽기 전용." },
+    { "value": "Hide",     "description": "숨김." },
+    { "value": "Disabled", "description": "비활성." }
+  ],
+
+  "dataUsages": [
+    { "value": "default", "requires": ["UseNewSector:true", "OnlyIfNoSector:true"], "description": "섹터 없으면 생성, 있으면 기존." },
+    { "value": "new",     "requires": ["UseNewSector:true"], "description": "진입 시 빈 섹터 자동 생성." },
+    { "value": "update",  "requires": ["UseTargetSector:true", "TargetSector.Status=[active]"], "description": "activeSector 읽기+쓰기 바인딩." },
+    { "value": "detail",  "requires": ["UseTargetSector:true", "TargetSector.Status=[active]"], "description": "activeSector 읽기 전용 바인딩." },
+    { "value": "query",   "requires": ["Group.ScrollType:ScrollY", "Height.MatchText:true"], "description": "그룹 자체가 섹터 수만큼 복제." }
+  ],
+
+  "filterTypes": [
+    { "value": "Status",    "props": ["Status"],                                 "description": "섹터 상태로 필터." },
+    { "value": "Condition", "props": ["ConditionKey", "ConditionOperators", "ConditionValue"], "description": "컬럼 값으로 필터. ConditionValue는 같은 섹터의 필드만 참조 (`{=Field}`)." },
+    { "value": "Custom",    "props": ["Script"],                                 "description": "JS 표현식 필터. sector 변수 사용, boolean 반환. 다른 카테고리 참조 시 사용." },
+    { "value": "Parent",    "props": ["DCParentKey", "DCChildKey"],              "description": "부모-자식 매칭. 자식 group의 DataConnection에 배치." }
+  ],
+
+  "sectorStatuses": [
+    { "value": "active",   "description": "활성 (삭제되지 않은) 섹터." },
+    { "value": "selected", "description": "선택된 섹터." },
+    { "value": "added",    "description": "신규 추가 섹터." },
+    { "value": "updated",  "description": "수정된 섹터." },
+    { "value": "deleted",  "description": "삭제 표시된 섹터." }
+  ],
+
+  "conditionOperators": [
+    { "value": "==",         "description": "Equals." },
+    { "value": "!=",         "description": "Not equals." },
+    { "value": ">",          "description": "Greater than (numeric)." },
+    { "value": ">=",         "description": "Greater or equal (numeric)." },
+    { "value": "<",          "description": "Less than (numeric)." },
+    { "value": "<=",         "description": "Less or equal (numeric)." },
+    { "value": "Exists",     "description": "필드에 값 존재 (undefined 아님)." },
+    { "value": "Not_Exists", "description": "필드가 비어있음/null/undefined." },
+    { "value": "Like",       "description": "패턴 매치 (`%`=any chars, `_`=single char)." },
+    { "value": "RegExp",     "description": "JavaScript 정규식." }
+  ],
+
+  "dataSourceTypes": [
+    { "value": "Fixed",      "requires": ["FixedItems"],            "external": false, "sampleSafe": true,  "description": "정적 인라인 데이터. AI 샘플 생성 권장." },
+    { "value": "Grid",       "requires": ["GridItems"],             "external": false, "sampleSafe": true,  "description": "그리드형 인라인 데이터 (헤더 + 행). AI 샘플 생성 가능." },
+    { "value": "Collection", "requires": ["CategoryName"],          "external": true,  "sampleSafe": false, "description": "다른 카테고리 참조. 운영 전용." },
+    { "value": "Service",    "requires": ["ServiceName"],           "external": true,  "sampleSafe": false, "description": "ServiceBinding 호출. 운영 전용." },
+    { "value": "API",        "requires": ["ModuleID"],              "external": true,  "sampleSafe": false, "description": "직접 API 호출. 운영 전용." }
+  ],
+
+  "dataSourceNameRules": {
+    "blockedChars": ["`", ".", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "=", "|", "\\", "'", "\"", ";", ":", "/", "?", ",", "{", "}", "[", "]", "<", ">", " ", "\t", "\n"],
+    "engineSource": "studio-util.js#L4225 isIcludeSpecial()",
+    "schemaPattern": "^[^`.~!@#$%^&*()=|\\\\'\";:/?,{}\\[\\]<> \\t\\n]+$",
+    "minLength": 1,
+    "recommendedSuffixes": [
+      { "suffix": "_DS",   "usage": "일반 DataSource" },
+      { "suffix": "DS",    "usage": "일반 DataSource (camelCase 끝)" },
+      { "suffix": "_D",    "usage": "코드/마스터 데이터 (운영 메타 패턴)" },
+      { "suffix": "Query", "usage": "쿼리/조회용" },
+      { "suffix": "List",  "usage": "목록 데이터" },
+      { "suffix": "Items", "usage": "항목 데이터" }
+    ],
+    "examples": {
+      "valid":   ["Cust_D", "EmployeeGridDS", "MenuOptionQuery", "daySettingQuery", "test-DS_v2", "StatusListDS"],
+      "invalid": ["Bad.Name", "My DS", "DS!", "${name}", "data/source", "ds@v1"]
+    }
+  },
+
+  "controlEvents": [
+    { "control": "Group",         "orderKey": "ContentEvent",    "events": ["Click", "ScrollEnd"],                "schemaRef": "groupEvents",          "location": "본체" },
+    { "control": "InputText",     "orderKey": "InputEventOrder", "events": ["change", "input", "focusin", "focusout"], "schemaRef": "inputEventsFull",       "location": "본체" },
+    { "control": "MultiInputBox", "orderKey": "InputEventOrder", "events": ["change", "input", "focusin", "focusout"], "schemaRef": "inputEventsFull",       "location": "본체" },
+    { "control": "InputNumber",   "orderKey": "InputEventOrder", "events": ["change"],                            "schemaRef": "inputEventsChangeOnly", "location": "본체" },
+    { "control": "InputMask",     "orderKey": "InputEventOrder", "events": ["change"],                            "schemaRef": "inputEventsChangeOnly", "location": "본체" },
+    { "control": "InputDate",     "orderKey": "DateOrder",       "events": ["DialogClose"],                       "schemaRef": "dateEvents",           "location": "Dialog…Calendar" },
+    { "control": "Combo",         "orderKey": "ComboOrder",      "events": ["change", "DialogClose"],             "schemaRef": "comboEvents",          "location": "Dialog…ComboList" },
+    { "control": "Search",        "orderKey": "SearchOrder",     "events": ["change", "Delete", "DialogClose"],   "schemaRef": "searchEvents",         "location": "Dialog…List" },
+    { "control": "CheckBox",      "orderKey": "CheckBoxOrder",   "events": ["Click"],                             "schemaRef": "checkBoxEvents",       "location": "본체",       "orderOptional": true },
+    { "control": "RadioBox",      "orderKey": null,              "events": ["Click"],                             "schemaRef": "directClickEvents",    "location": "본체" },
+    { "control": "Label",         "orderKey": null,              "events": ["Click"],                             "schemaRef": "labelEvents",          "location": "본체 (UseClickEvent + Events.Click)" },
+    { "control": "ImageBox",      "orderKey": "ImageEventOrder", "events": ["Click"],                             "schemaRef": "imageBoxEvents",       "location": "본체" },
+    { "control": "InputFile",     "orderKey": "InputFileOrder",  "events": ["change"],                            "schemaRef": "inputFileEvents",      "location": "본체" },
+    { "control": "Calendar",          "orderKey": "DateOrder",                "events": ["DialogClose"],                                  "schemaRef": "dateEvents",                  "location": "본체 (단독 사용 시 본체, InputDate 자식인 경우에도 본체=Calendar)" },
+    { "control": "CalendarNavigator", "orderKey": "CalendarNaviEventsOrder",  "events": ["ClickPrevNextBtn", "OnChangeSwipe", "SelectDay"], "schemaRef": "control/calendar-navigator.schema.json#/.../Events", "location": "본체" },
+    { "control": "Tab",               "orderKey": null,                       "events": ["Click"],                                        "schemaRef": "Items[].Events.Click",        "location": "Items 항목별 (본체에 Events 없음)" },
+    { "control": "Tree",              "orderKey": "TreeOrder",                "events": ["Selected", "Checked"],                          "schemaRef": "treeEvents",                  "location": "본체. Click:'' 빈 문자열 필수 (운영 컨벤션). Checked 는 UseMultiData=true 전용." },
+    { "control": "Embed",             "orderKey": null,                       "events": [],                                               "schemaRef": null,                          "location": "본체에 별도 이벤트 없음 — DOM 조작은 Step Loaded/Init 이벤트(부모 Step) 에서 document.getElementById() 으로 처리." }
+  ],
+
+  "stepEvents": [
+    { "value": "Init",         "description": "최초 시작 전. 데이터/카테고리 초기화." },
+    { "value": "Loaded",       "description": "UI 렌더 후. DOM 의존 작업(Chart/Map/Canvas)." },
+    { "value": "OnBackLoaded", "description": "뒤로가기 복귀 시." },
+    { "value": "OnLeave",      "description": "이탈 직전. cleanup." },
+    { "value": "OnForeground", "description": "앱 포그라운드 복귀 (모바일)." },
+    { "value": "ScrollEnd",    "description": "스크롤 끝 도달." }
+  ],
+
+  "colorTokens": [
+    { "value": "var(--colorMain)",        "usage": "Primary brand color" },
+    { "value": "var(--colorMainLight)",   "usage": "Primary light background" },
+    { "value": "var(--colorWhite)",       "usage": "White" },
+    { "value": "var(--colorBlack)",       "usage": "Black (강조 텍스트, 아이콘)" },
+    { "value": "var(--colorGray1)",       "usage": "Darkest gray (primary text)" },
+    { "value": "var(--colorGray2)",       "usage": "Dark gray (secondary text)" },
+    { "value": "var(--colorGray3)",       "usage": "Medium gray (tertiary text)" },
+    { "value": "var(--colorGray4)",       "usage": "Light gray (disabled, placeholder)" },
+    { "value": "var(--colorGray5)",       "usage": "Lighter gray (border, divider)" },
+    { "value": "var(--colorGray9)",       "usage": "Near-white gray (background)" },
+    { "value": "var(--colorGray10)",      "usage": "Lightest gray (tag background)" },
+    { "value": "var(--colorRed)",         "usage": "Error / Delete" },
+    { "value": "var(--colorRedLight)",    "usage": "Error background" },
+    { "value": "var(--colorBlue)",        "usage": "Info / Link" },
+    { "value": "var(--colorBlueLight)",   "usage": "Info background" },
+    { "value": "var(--colorGreen)",       "usage": "Success / Approved" },
+    { "value": "var(--colorGreenLight)",  "usage": "Success background" },
+    { "value": "var(--colorOrange)",      "usage": "Warning / Required indicator" },
+    { "value": "var(--colorPurple)",      "usage": "Accent" },
+    { "value": "var(--colorPurpleLight)", "usage": "Accent background" },
+    { "value": "var(--colorYellow)",      "usage": "Caution / Pending" },
+    { "value": "var(--colorYellowLight)", "usage": "Caution background" },
+    { "value": "var(--colorMint)",        "usage": "Mint / Complete" },
+    { "value": "var(--colorMintLight)",   "usage": "Mint background" },
+    { "value": "var(--colorSub0)",        "usage": "Supplementary color 0" },
+    { "value": "var(--colorSub0Light)",   "usage": "Supplementary color 0 background" },
+    { "value": "var(--colorSub1)",        "usage": "Supplementary color 1" },
+    { "value": "var(--colorSub3)",        "usage": "Supplementary color 3" }
+  ],
+
+  "controlTypes": [
+    { "value": "InputText",     "description": "한 줄 텍스트 입력 (text/password/number/email/tel).", "isLeaf": true },
+    { "value": "InputNumber",   "description": "숫자 입력 (decimal/integer/number).",                  "isLeaf": true },
+    { "value": "InputMask",     "description": "마스크 패턴 입력 (hhmm/money 등).",                    "isLeaf": true },
+    { "value": "InputDate",     "description": "날짜 입력 + 캘린더 다이얼로그.",                       "isLeaf": false, "hasDialog": "Calendar" },
+    { "value": "MultiInputBox", "description": "여러 줄 텍스트 입력 (TextArea).",                      "isLeaf": true },
+    { "value": "Combo",         "description": "드롭다운 선택 + ComboList 다이얼로그. 8개 이하 고정 목록.", "isLeaf": false, "hasDialog": "ComboList" },
+    { "value": "Search",        "description": "Code Help / Lookup. 키워드 검색 + DataSource 기반.",    "isLeaf": false, "hasDialog": "List" },
+    { "value": "CheckBox",      "description": "체크박스. Items[] 다중 항목 또는 단일 토글.",          "isLeaf": true },
+    { "value": "RadioBox",      "description": "라디오 그룹. Fixed Items 또는 DataSource.",            "isLeaf": true },
+    { "value": "Label",         "description": "텍스트/아이콘 표시. labeltext / LabelCKey 모드.",      "isLeaf": true },
+    { "value": "ImageBox",      "description": "이미지 표시/업로드. ImageBoxType=View(ViewGroup) | Edit(ViewGroup+EditGroup).", "isLeaf": true },
+    { "value": "InputFile",     "description": "파일 첨부. Attributes.UseCategory + CategoryName 으로 카테고리 누적, Limit 로 개수 제한.",   "isLeaf": true },
+    { "value": "Calendar",          "description": "캘린더 picker. InputDate.Dialog 자식 또는 단독 사용. CalendarType(day/month/year) + SelectType(SingleDate/FromTo). 공식: docs.flextudio.com/.../datepicker.", "isLeaf": true },
+    { "value": "CalendarNavigator", "description": "캘린더 네비게이터. NavigatorType=Month/WeekPeriod/Day (공식 3종 — 'Custom' AI 생성 금지). TimeTable 내부 또는 독립 사용. Events/DayArea/DaySetting/SelectDay/UseEvents 빈 객체라도 필수. 공식: docs.flextudio.com/.../calendarnavigator.", "isLeaf": true },
+    { "value": "Tab",               "description": "탭 컨트롤. Items[].LinkedStepId 로 다른 Step 의 화면을 내부에 렌더. Height 100% 필수, 자기 Step 자기 참조 금지. ★ 내부 LinkedStep 은 StepButton 미렌더 + Step Event(Init/Loaded/...) 미실행 + 서브시나리오 Step 표시 불가 — 초기화는 부모 Step Init 에 통합. 공식: docs.flextudio.com/.../tab.", "isLeaf": false, "hasDialog": null },
+    { "value": "Tree",              "description": "계층형 트리. NodeId/ParentId/Title 로 flat array 의 부모-자식 관계 표현. UseMultiData=true 면 체크박스 다중 선택. 이벤트는 TreeOrder + Selected/Checked (Click:'' 빈 문자열 필수). 공식: docs.flextudio.com/.../tree.", "isLeaf": true },
+    { "value": "Embed",             "description": "raw HTML 직접 삽입. Embed 속성에 HTML 문자열. <script> 직접 삽입 불가 — 외부 라이브러리는 Step Loaded 에서 f.Script.load() 로 불러와 유니크 id 의 div/canvas 를 잡는 패턴. Caption 반드시 빈 문자열. 외부 라이브러리 URL 은 Scenario.StyleURLs 또는 f.Script.load() 인자. 공식: docs.flextudio.com/.../embed.", "isLeaf": true }
+  ],
+
+  "inputTextTypes": [
+    { "value": "text",     "description": "일반 텍스트 (기본)." },
+    { "value": "password", "description": "마스킹 입력." },
+    { "value": "number",   "description": "숫자 키패드 힌트 (입력은 문자열)." },
+    { "value": "email",    "description": "이메일 키보드 힌트." },
+    { "value": "tel",      "description": "전화번호 키보드 힌트." }
+  ],
+
+  "inputNumberTypes": [
+    { "value": "decimal", "description": "소수 허용." },
+    { "value": "integer", "description": "정수만." },
+    { "value": "number",  "description": "일반 숫자 (레거시 운영 메타). 신규는 decimal 권장." }
+  ],
+
+  "inputMaskMaskTypes": [
+    { "value": "Time",  "description": "시간 마스크 (짝: InputType=hhmm)." },
+    { "value": "Money", "description": "통화 마스크 (짝: InputType=money)." },
+    { "value": "Date",  "description": "날짜 마스크 (운영 메타)." }
+  ],
+
+  "calendarSelectTypes": [
+    { "value": "SingleDate", "requires": ["SingleDate.Ckeys"],                "appliesTo": ["dayCalendar","monthCalendar","yearCalendar"], "description": "단일 날짜 선택." },
+    { "value": "FromTo",     "requires": ["StartDate.Ckeys","EndDate.Ckeys"], "appliesTo": ["dayCalendar"],                                "description": "기간 선택. dayCalendar 에서만." }
+  ],
+
+  "checkBoxControlStyles": [
+    { "value": "",                "description": "기본 사각." },
+    { "value": "None",            "description": "기본 사각 (명시)." },
+    { "value": "styleSquare",     "description": "사각 (명시)." },
+    { "value": "styleCircle",     "description": "원형." },
+    { "value": "styleCircleGray", "description": "회색 원형 (비활성/보조)." },
+    { "value": "styleSwitch",     "description": "토글 스위치." },
+    { "value": "styleIconHeart",  "description": "하트 아이콘." },
+    { "value": "styleRadius",     "description": "라운드." }
+  ],
+
+  "radioBoxControlStyles": [
+    { "value": "",                "description": "기본 라디오." },
+    { "value": "None",            "description": "기본 라디오 (명시)." },
+    { "value": "styleRectangle",  "description": "사각 카드 (UseItemDesign 과 함께)." },
+    { "value": "styleTab",        "description": "탭 형태 — 필터/뷰 전환." },
+    { "value": "stylePeriod",     "description": "기간 선택형." },
+    { "value": "styleRadius",     "description": "라운드." }
+  ],
+
+  "inputMaskTypes": [
+    { "value": "hhmm",  "description": "시간 HH:MM." },
+    { "value": "money", "description": "통화 (천단위 콤마). UseNumberOnly 권장." }
+  ],
+
+  "labelTypes": [
+    { "value": "labeltext", "description": "정적 텍스트 (+ {{i18n}} / {=Field} / {=$Field} / {% JS %}).", "requires": ["labeltext"] },
+    { "value": "LabelCKey", "description": "카테고리 필드값 직접 표시.",                                 "requires": ["LabelCKey"] }
+  ],
+
+  "calendarTypes": [
+    { "value": "dayCalendar",   "description": "일 선택." },
+    { "value": "monthCalendar", "description": "월 선택. DateFormat='YYYY-MM' 권장." },
+    { "value": "yearCalendar",  "description": "년 선택." }
+  ],
+
+  "dateFormats": [
+    { "value": "YYYY-MM-DD", "example": "2026-05-04" },
+    { "value": "YYYY.MM.DD", "example": "2026.05.04" },
+    { "value": "YYYY/MM/DD", "example": "2026/05/04" },
+    { "value": "YYYY-MM",    "example": "2026-05 (monthCalendar 전용)" }
+  ],
+
+  "navigatorTypes": [
+    { "value": "Month",      "description": "월 단위 네비게이션 — 다음달/이전달 이동. (StartDate + EndDate 필수.)" },
+    { "value": "WeekPeriod", "description": "주 단위 네비게이션 — 다음주/이전주 이동. (StartDate + EndDate 필수, 'YYYY-MM-W' 포맷 가능.)" },
+    { "value": "Day",        "description": "일 단위 네비게이션 — 다음날/이전날 이동. (SingleDate 권장.)" }
+  ],
+  "navigatorTypeBlocked": [
+    { "value": "Custom", "reason": "공식 가이드 미표기 — AI 생성 메타에 등장 금지. 운영 메타에 보일 수는 있음." }
+  ],
+
+  "navigatorDateFormats": [
+    { "value": "",                "description": "런타임 기본 포맷." },
+    { "value": "YYYY.MM.DD",      "description": "일 단위." },
+    { "value": "YYYY/MM/DD",      "description": "일 단위." },
+    { "value": "YYYY-MM-DD",      "description": "일 단위." },
+    { "value": "YYYY년MM월DD일",  "description": "일 단위 (한글)." },
+    { "value": "YYYY-MM-W",       "description": "주 단위 — NavigatorType='WeekPeriod' 전용." },
+    { "value": "YYYY.MM",         "description": "월 단위." },
+    { "value": "YYYY/MM",         "description": "월 단위." },
+    { "value": "YYYY-MM",         "description": "월 단위." },
+    { "value": "YYYY년MM월",      "description": "월 단위 (한글)." },
+    { "value": "YYYY년",          "description": "년 단위 (한글)." }
+  ],
+
+  "navigatorControlStyles": [
+    { "value": "",               "description": "기본." },
+    { "value": "None",           "description": "기본 (명시)." },
+    { "value": "StyleBack",      "description": "뒤 배경형." },
+    { "value": "StyleHalf",      "description": "절반 표시." },
+    { "value": "StyleAlignLeft", "description": "좌측 정렬." }
+  ],
+
+  "groupForbiddenKeys": {
+    "$comment": "Group 메타 트리에서 절대 등장하면 안 되는 키 — group.schema.json 에서 schema 값 false 로 차단 (별도 후검증 없이 생성 단계에서 거부).",
+    "UseInnerBlock": "★ Group 메타 트리의 InnerBlock 반복은 AI 생성 금지 ([no-inner-block] 정책). 반복은 DataUsage:'query' 패턴으로 표현. (Service/DataSource 결과 매핑의 동명 키와는 별개 개념 — events.schema.json / data-sources.schema.json / service/* 담당.)",
+    "InnerBlockKey": "UseInnerBlock 동반 키. 함께 차단.",
+    "RepeatStyle":   "구 메타 키. v1 에서 제거 — group.schema.json 에 정의 자체가 없어 additionalProperties 로 들어가지 않도록 생성 시 출력 금지."
+  },
+
+  "displayTypes": {
+    "$comment": "Combo / Search / InputDate 같은 데이터소스 연결 컨트롤 본체의 표시 모드. 미지정 시 default='CtrlDisplayCkey' (property-data.js:5705,7054).",
+    "engineSource": "property-data.js:5701-5762 (Search), 7050-7110 (Combo) — createDisplayType.",
+    "modes": [
+      {
+        "value": "CtrlDisplayCkey",
+        "isDefault": true,
+        "pairKey": "CtrlDisplayCkey",
+        "description": "본체에 컬렉션 필드값을 그대로 표시. ★ 'CtrlDisplayCkey' 키에 표시 대상 컬렉션 필드명 등록 필수 — 누락 시 빈 화면. 데이터소스(Service/Collection)에서 받은 필드를 직접 표시하는 일반 패턴."
+      },
+      {
+        "value": "DisplayValue",
+        "isDefault": false,
+        "pairKey": "DisplayValue",
+        "description": "본체에 표시 표현식을 등록. `{=FieldName}` (정적 바인딩) 또는 `{% return JS %}` (조건/포맷 가공). 여러 필드 조합/포맷이 필요할 때."
+      }
+    ],
+    "rule": "두 키('CtrlDisplayCkey' / 'DisplayValue') 는 상호배타. AI 생성 시 모드를 정한 다음 그쪽 키만 채우고 다른 쪽은 두지 않는다. DisplayType 키 자체를 생략하면 default='CtrlDisplayCkey' 모드로 동작 — 이 경우 'CtrlDisplayCkey' 에 표시 컬렉션키 명시 필수.",
+    "examples": {
+      "ctrlDisplayCkeyMode": {
+        "DisplayType": "CtrlDisplayCkey",
+        "CtrlDisplayCkey": "CompanyName"
+      },
+      "ctrlDisplayCkeyOmittedDefault": {
+        "$comment": "DisplayType 생략 → default='CtrlDisplayCkey' 모드로 자동 인식. CtrlDisplayCkey 만 있으면 충분.",
+        "CtrlDisplayCkey": "CompanyName"
+      },
+      "displayValueMode": {
+        "DisplayType": "DisplayValue",
+        "DisplayValue": "{=CompanyName}"
+      },
+      "displayValueExpression": {
+        "DisplayType": "DisplayValue",
+        "DisplayValue": "{% if('{=name}'==''){return '{{선택}}'} else {return '{=name}'} %}"
+      },
+      "comboEmptyDisplayValue": {
+        "$comment": "Combo 본체 DisplayValue:'' 빈 문자열 → 런타임은 ComboList.SaveNameKey 를 자동 표시. 별도 CtrlDisplayCkey 불필요. (DisplayValue 가 falsy 라 default='CtrlDisplayCkey' 로 인식되지만 SaveNameKey 가 fallback.)",
+        "DisplayValue": ""
+      }
+    }
+  },
+
+  "useDataSourceRules": {
+    "$comment": "DataSource/Fixed 분기를 가지는 컨트롤들의 UseDataSource 명시 규칙 — 런타임 default 차이 때문에 컨트롤마다 명시 필요성이 다르다.",
+    "engineSource": [
+      "property-data.js:7439 (ComboList default=true)",
+      "property-data.js:8818 (RadioBox default=false)",
+      "studio-panel-cat.js:1054 (Combo 분기: UseDataSource || undefined → DataSource)",
+      "studio-panel-cat.js:1129 (RadioBox 분기: UseDataSource truthy → DataSource)"
+    ],
+    "controls": [
+      {
+        "control": "ComboList",
+        "runtimeDefault": true,
+        "schemaDefault": true,
+        "rule": "default=true 라 키 생략 시 DataSource 모드로 인식. Fixed 모드는 `UseDataSource: false` 명시 권장.",
+        "schemaEnforcement": [
+          "UseDataSource:true → DataSourceName 필수 (if/then)"
+        ]
+      },
+      {
+        "control": "RadioBox",
+        "runtimeDefault": false,
+        "schemaDefault": false,
+        "rule": "default=false 라 Fixed 는 생략 가능. DataSource 모드는 `UseDataSource: true` 명시 필수.",
+        "schemaEnforcement": [
+          "UseDataSource:true → DataSourceName 필수 (if/then)"
+        ]
+      },
+      {
+        "control": "Search 내부 List",
+        "runtimeDefault": "n/a (DataSource 강제)",
+        "schemaDefault": true,
+        "rule": "Search 는 항상 DataSource 기반. UseDataSource 키 통상 생략. 명시 시 true 권장.",
+        "schemaEnforcement": []
+      }
+    ],
+    "stringValueWarning": "운영 메타에는 `\"UseDataSource\": \"true\"` / `\"false\"` (문자열) 패턴이 있을 수 있음. 런타임 일부 분기는 == 비교로 받지만 `if(meta.UseDataSource)` truthy 검사 분기에서는 문자열 \"false\" 가 truthy 라 의도와 반대로 동작. AI 생성에는 boolean 만 사용.",
+    "stringValueExample": {
+      "operationalMeta": "{ \"UseDataSource\": \"false\" }",
+      "aiGeneratedMeta": "{ \"UseDataSource\": false }"
+    }
+  },
+
+  "tabConstraints": {
+    "$comment": "Tab 컨트롤의 운영 제약 — system-prompt-v2.md 4.19 + 공식 가이드 (docs.flextudio.com/.../tab) 인용.",
+    "heightRequirement":   "100% (SizeUnit:'%' + SizeValue:100). 고정 px 면 헤더만 표시.",
+    "linkedStepIdSelfRef": "자기 자신 Step 금지 — 무한 재귀.",
+    "stepFeaturesDisabled": [
+      "스텝버튼 미렌더 (BottomButton 정의해도 그려지지 않음)",
+      "스텝 이벤트 미실행 (Init / Loaded / OnBackLoaded / OnLeave / OnForeground / ScrollEnd 모두)",
+      "서브시나리오 Step (StepType:'StepSub') 표시 불가"
+    ],
+    "initLocation": "데이터 로딩/카테고리 초기화는 부모 Step (Tab 이 있는 Step) 의 Init 에 통합. LinkedStep Init 에 두면 미실행.",
+    "tabSwitchHandler": "탭 전환 시 동작이 필요하면 Items[].Events.Click 에 핸들러를 두고 그 안에서 reload/필터 변경.",
+    "siblingExclusivity": "Tab 은 부모 Step Contents 의 유일한 컨트롤. 같은 레벨에 다른 컨트롤 두면 100% 높이에 밀려 보이지 않음."
+  },
+
+  "imageBoxTypes": [
+    { "value": "View", "requires": ["ViewGroup"],              "description": "읽기 전용 이미지 표시." },
+    { "value": "Edit", "requires": ["ViewGroup", "EditGroup"], "description": "업로드/촬영 + 표시. ViewGroup 은 placeholder, EditGroup 이 FlexFile 저장 정의." }
+  ],
+
+  "imageSrcTypes": [
+    { "value": "FlexFile", "requires": ["FlexKey", "ckey"], "appliesTo": ["ViewGroup", "EditGroup"], "description": "FlexFile 서버 저장 파일. View 에서는 string FlexKey, Edit.EditGroup 에서는 { ckey, Name } 객체." },
+    { "value": "Url",      "requires": ["ImageUrl"],       "appliesTo": ["ViewGroup"],              "description": "외부 URL 직접 표시. {=Field} 바인딩 가능." },
+    { "value": "Base64",   "requires": ["ImageUrl"],       "appliesTo": ["ViewGroup"],              "description": "Base64 인코딩 인라인." },
+    { "value": "Upload",   "requires": [],                 "appliesTo": ["ViewGroup"],              "description": "Edit 모드 ViewGroup 의 업로드 placeholder. EditGroup 와 짝." }
+  ],
+
+  "imageBoxSharedTargets": [
+    { "value": "tenant", "description": "테넌트 공유 (일반)." },
+    { "value": "user",   "description": "사용자 전용." },
+    { "value": "global", "description": "전역 공유." }
+  ],
+
+  "inputFileAttributes": {
+    "UseCategory":  { "type": "boolean", "description": "true=별도 컬렉션 카테고리에 파일 메타 누적. CategoryName 필수." },
+    "CategoryName": { "type": "string",  "description": "UseCategory=true 일 때 사용할 카테고리명. scenario.Panel.Category 에 정의 필요." },
+    "Limit":        { "type": "number",  "description": "최대 첨부 개수. 0/미설정 = 무제한." },
+    "AcceptType":   { "type": "string",  "description": "허용 MIME / 확장자 (선택). 예: 'image/*', '.pdf,.docx'." }
+  }
+}

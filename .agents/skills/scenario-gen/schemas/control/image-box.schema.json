@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://flextudio.local/meta-contract/v1/control/image-box.schema.json",
+  "title": "ImageBox",
+  "description": "이미지 표시/업로드 컨트롤. ImageBoxType=View → ViewGroup 으로 이미지 표시. ImageBoxType=Edit → ViewGroup(=업로드 placeholder) + EditGroup(FlexFile 저장) 둘 다 권장. Edit 업로드 → 파일키가 EditGroup.FlexKey.ckey 컬렉션 필드에 저장 → View 에서 ImageSrcType='FlexFile' + 동일 FlexKey/ckey 로 표시. **AI 시나리오 생성 시**: ViewGroup/EditGroup 등 데이터 바인딩 메타는 생략 가능 (스튜디오/사용자가 사후 설정). 단 ViewGroup/EditGroup 을 작성한다면 그 안의 ImageSrcType 별 필수 키는 강제.",
+  "type": "object",
+  "additionalProperties": true,
+  "required": ["Id", "ControlType"],
+  "allOf": [
+    { "$ref": "_base.schema.json#/$defs/controlBase" },
+    {
+      "properties": {
+        "ControlType":  { "const": "ImageBox" },
+        "ImageBoxType": {
+          "type": "string",
+          "enum": ["View", "Edit"],
+          "description": "View=읽기전용 이미지 표시. Edit=업로드/촬영 + 표시."
+        },
+        "ViewGroup": { "$ref": "_base.schema.json#/$defs/imageBoxViewGroup" },
+        "EditGroup": { "$ref": "_base.schema.json#/$defs/imageBoxEditGroup" },
+        "UseDefaultValue": {
+          "type": "boolean",
+          "default": false,
+          "description": "기본(폴백) 이미지 사용 여부. ★ 단일 키지만 ImageBoxType 별로 의미가 다름: (1) ImageBoxType='Edit' → true 면 EditGroup 업로드 전/실패 시 ViewGroup 의 이미지를 placeholder 로 표시 (property-data createUseDefault, 토글 UI 'UseDefault'). (2) ImageBoxType='View' → true 면 DefaultViewGroup 활성 — ViewGroup 의 FlexFile/Base64 로드 실패 시 fallback (property-data createUseDefaultView, 토글 UI 'UseDefaultView', 표시 조건: ViewGroup.ImageSrcType ∈ {'FlexFile','Base64'}). engine const K.USE_DEFAULTVALUE='UseDefaultValue' — 프로퍼티 EDITOR_CTRL.CHECKBOX, boolean strict."
+        },
+        "DefaultViewGroup": {
+          "$ref": "_base.schema.json#/$defs/imageBoxViewGroup",
+          "description": "기본 이미지 정의 — ImageBoxType='View' + UseDefaultValue=true 조합에서 fallback 으로 표시될 이미지. shape 은 ViewGroup 과 동일 ($defs/imageBoxViewGroup). UseDefaultValue=true 면 사용자 수동 설정으로 채워짐. ★ AI 생성 시 미포함 — 운영 사후 설정 전용."
+        },
+        "UseCondition": { "type": "boolean", "description": "조건부 동작 사용. Edit 모드 샘플은 문자열 'false' 도 허용." },
+        "UseMultiData": { "type": "boolean", "description": "다중 이미지 사용. Edit 모드 샘플은 문자열 'false' 도 허용." },
+        "UseEvents":    { "type": "boolean", "description": "이벤트 사용. Edit 모드 샘플은 문자열 'false' 도 허용." },
+        "Events":       { "$ref": "_base.schema.json#/$defs/imageBoxEvents" }
+      },
+      "required": ["ImageBoxType"]
+    },
+    {
+      "$comment": "ImageBoxType='View' + UseDefaultValue=true → DefaultViewGroup 권장. 운영 메타에 종종 누락 — schema 강제 안 함 (가이드 차원).",
+      "if": {
+        "properties": {
+          "ImageBoxType":    { "const": "View" },
+          "UseDefaultValue": { "const": true }
+        },
+        "required": ["ImageBoxType", "UseDefaultValue"]
+      },
+      "then": {}
+    }
+  ]
+}
